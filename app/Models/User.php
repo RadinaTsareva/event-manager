@@ -4,6 +4,7 @@ namespace App\Models;
 
 // use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
+use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Laravel\Sanctum\HasApiTokens;
@@ -12,6 +13,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $id
  * @property String $name
  * @property String $email
+ * @property string $gender
+ * @property string $role
  */
 class User extends Authenticatable
 {
@@ -46,4 +49,44 @@ class User extends Authenticatable
     protected $casts = [
         'email_verified_at' => 'datetime',
     ];
+
+    public const ROLE_ORGANISER = 'organizer';
+    public const ROLE_CLIENT = 'client';
+    public const ROLE_ADMIN = 'admin';
+
+    public const ROLES = [
+        self::ROLE_CLIENT,
+        self::ROLE_ORGANISER,
+        self::ROLE_ADMIN
+    ];
+
+    public const GENDER_FEMALE = 'female';
+    public const GENDER_MALE = 'male';
+    public const GENDER_NONE = 'none';
+
+    public const GENDERS = [
+        self::GENDER_FEMALE,
+        self::GENDER_MALE,
+        self::GENDER_NONE
+    ];
+
+
+    public function eventsOrganized(): HasMany
+    {
+        return $this->hasMany(Event::class, 'organizer_id', 'id');
+    }
+
+    public function eventsClient(): HasMany
+    {
+        return $this->hasMany(Event::class, 'client_id', 'id');
+    }
+    public function blacklistsCreated(): HasMany
+    {
+        return $this->hasMany(Blacklist::class, 'created_by_user_id', 'id');
+    }
+
+    public function blacklistsIn(): HasMany
+    {
+        return $this->hasMany(Blacklist::class, 'block_user_id', 'id');
+    }
 }
