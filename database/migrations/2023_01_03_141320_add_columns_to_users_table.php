@@ -14,8 +14,10 @@ return new class extends Migration
     public function up()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->integer('max_count_blacklist_in')->default(4);
+            $table->integer('max_count_blacklists_in')->default(4);
             $table->enum('gender', ['female', 'male', 'none'])->default('none');
+            $table->boolean('blocked')->default(false);
+            $table->enum('role', ['client', 'organizer', 'admin']);
         });
     }
 
@@ -27,8 +29,10 @@ return new class extends Migration
     public function down()
     {
         Schema::table('users', function (Blueprint $table) {
-            $table->dropColumn('max_count_blacklist_in');
+            $table->dropColumn('max_count_blacklists_in');
             $table->dropColumn('gender');
+            $table->dropColumn('blocked');
+            $table->dropColumn('role');
         });
     }
 };

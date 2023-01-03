@@ -7,14 +7,18 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
+use Illuminate\Validation\Rules\Enum;
 use Laravel\Sanctum\HasApiTokens;
 
 /**
  * @property int $id
  * @property String $name
  * @property String $email
- * @property string $gender
- * @property string $role
+ * @property enum $gender
+ * @property enum $role
+ * @property boolean $blocked
+ * @property int $max_count_blacklists_in
+ *
  */
 class User extends Authenticatable
 {

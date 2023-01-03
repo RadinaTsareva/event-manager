@@ -12,11 +12,10 @@ use Illuminate\Validation\Rules\Enum;
 /**
  * @property int $organizer_id
  * @property int $client_id
- * @property enum $role
  * @property string $type
  * @property enum $status
  * @property string $number_of_people
- * @property string $food_type
+ * @property enum $food_type
  * @property boolean $needs_hotel
  * @property date $date
  * @property double $price_per_person

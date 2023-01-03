@@ -17,11 +17,10 @@ return new class extends Migration
             $table->increments('id');
             $table->integer('organizer_id')->unsigned();
             $table->integer('client_id')->unsigned();
-            $table->enum('role', ['client', 'organizer', 'admin']);
             $table->enum('status', ['requested', 'waiting-approval', 'requested-actions', 'finished', 'cancelled']);
             $table->string('type');
             $table->integer('number_of_people');
-            $table->string('food_type');
+            $table->enum('food_type', ['menu', 'catering']);
             $table->boolean('needs_hotel');
             $table->string('place')->nullable();
             $table->dateTime('date')->nullable();
