@@ -19,6 +19,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property boolean $blocked
  * @property int $max_count_blacklists_in
  *
+ * @method static create(array $array)
+ * @method static where(string $string, mixed $email)
  */
 class User extends Authenticatable
 {

@@ -3,112 +3,62 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\UserCreateRequest;
+use App\Http\Requests\API\UserLoginRequest;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
-use Illuminate\Support\Facades\Validator;
 
 class AuthController extends Controller
 {
-    public function loginUser(Request $request): JsonResponse
+    public function loginUser(UserLoginRequest $request): JsonResponse
     {
         try {
-            $validateUser = Validator::make(
-                $request->all(),
-                [
-                    'email' => 'required|email',
-                    'password' => 'required'
-                ]
-            );
-
-            if ($validateUser->fails()) {
-                return response()->json(
-                    [
-                        'status' => false,
-                        'message' => 'validation error',
-                        'errors' => $validateUser->errors()
-                    ],
-                    401
-                );
-            }
-
-            if (!Auth::attempt($request->only(['email', 'password']))) {
-                return response()->json(
-                    [
-                        'status' => false,
-                        'message' => 'Email & Password does not match with our record.',
-                    ],
-                    401
-                );
-            }
-
             $user = User::where('email', $request->email)->first();
 
             return response()->json(
                 [
-                    'status' => true,
+                    'status' => 200,
                     'message' => 'User Logged In Successfully',
                     'token' => $user->createToken('auth_token')->plainTextToken
                 ],
-                200
             );
         } catch (\Throwable $th) {
             return response()->json(
                 [
-                    'status' => false,
+                    'status' => 500,
                     'message' => $th->getMessage()
-                ],
-                500
+                ]
             );
         }
     }
 
     /**
      * Create User
-     * @param Request $request
+     * @param UserCreateRequest $request
      * @return JsonResponse
      */
-    public function createUser(Request $request): JsonResponse
+    public function createUser(UserCreateRequest $request): JsonResponse
     {
         try {
-            //Validated
-            $validateUser = Validator::make(
-                $request->all(),
-                [
-                    'name' => 'required',
-                    'email' => 'required|email|unique:users,email',
-                    'password' => 'required'
-                ]
-            );
-
-            if ($validateUser->fails()) {
-                return response()->json(
-                    [
-                        'status' => false,
-                        'message' => 'validation error',
-                        'errors' => $validateUser->errors()
-                    ],
-                    401
-                );
-            }
-
             $user = User::create(
                 [
                     'name' => $request->name,
                     'email' => $request->email,
-                    'password' => Hash::make($request->password)
+                    'password' => Hash::make($request->password),
+                    'gender' => $request->gender,
+                    'role' => $request->role
                 ]
             );
 
             return response()->json(
-                  [
-                      'status' => true,
-                      'message' => 'User Created Successfully',
-                      'token' => $user->createToken('auth_token')->plainTextToken
-                  ]
-                , 200
+                [
+                    'status' => 200,
+                    'message' => 'User Created Successfully',
+                    'token' => $user->createToken('auth_token')->plainTextToken
+                ]
             );
         } catch (\Throwable $th) {
             return response()->json(
