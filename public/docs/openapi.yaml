@@ -1,0 +1,476 @@
+openapi: 3.0.3
+info:
+  title: Laravel
+  description: ''
+  version: 1.0.0
+servers:
+  -
+    url: 'http://127.0.0.1:8000'
+paths:
+  /api/current-user:
+    get:
+      summary: "Get current user's info"
+      operationId: getCurrentUsersInfo
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    name: radina555eee
+                    email: dasdar44d@dada.com
+                    gender: none
+                    blocked: 0
+                    role: client
+                  status: 200
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      name:
+                        type: string
+                        example: radina555eee
+                      email:
+                        type: string
+                        example: dasdar44d@dada.com
+                      gender:
+                        type: string
+                        example: none
+                      blocked:
+                        type: integer
+                        example: 0
+                      role:
+                        type: string
+                        example: client
+                  status:
+                    type: integer
+                    example: 200
+      tags:
+        - Endpoints
+  /api/auth/logout:
+    post:
+      summary: 'Logout for user'
+      operationId: logoutForUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses: {  }
+      tags:
+        - Endpoints
+  /api/auth/change-password:
+    post:
+      summary: 'Change password for user'
+      operationId: changePasswordForUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  status: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The current password is match with old password.'
+                  errors:
+                    current_password:
+                      - 'The current password is match with old password.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The current password is match with old password.'
+                  errors:
+                    type: object
+                    properties:
+                      current_password:
+                        type: array
+                        example:
+                          - 'The current password is match with old password.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                current_password:
+                  type: string
+                  description: ''
+                  example: qui
+                new_password:
+                  type: string
+                  description: ''
+                  example: eius
+                new_confirm_password:
+                  type: string
+                  description: 'The value and <code>new_password</code> must match.'
+                  example: null
+              required:
+                - current_password
+                - new_password
+  /api/auth/update-user:
+    post:
+      summary: "Update user's info"
+      operationId: updateUsersInfo
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  status: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The selected gender is invalid.'
+                  errors:
+                    gender:
+                      - 'The selected gender is invalid.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The selected gender is invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      gender:
+                        type: array
+                        example:
+                          - 'The selected gender is invalid.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: false
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: et
+                gender:
+                  type: string
+                  description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
+                  example: male
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: trace.kilback@example.com
+                role:
+                  type: string
+                  description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
+                  example: client
+  /api/auth/login:
+    post:
+      summary: ''
+      operationId: postApiAuthLogin
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}"
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'Email & Password does not match with our record.'
+                  errors:
+                    email:
+                      - 'Email & Password does not match with our record.'
+                properties:
+                  message:
+                    type: string
+                    example: 'Email & Password does not match with our record.'
+                  errors:
+                    type: object
+                    properties:
+                      email:
+                        type: array
+                        example:
+                          - 'Email & Password does not match with our record.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: sborer@example.net
+                password:
+                  type: string
+                  description: ''
+                  example: eos
+              required:
+                - email
+                - password
+      security: []
+  /api/auth/register:
+    post:
+      summary: 'Create User'
+      operationId: createUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            text/plain:
+              schema:
+                type: string
+                example: "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}"
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The selected gender is invalid. (and 1 more error)'
+                  errors:
+                    gender:
+                      - 'The selected gender is invalid.'
+                    email:
+                      - 'The email has already been taken.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The selected gender is invalid. (and 1 more error)'
+                  errors:
+                    type: object
+                    properties:
+                      gender:
+                        type: array
+                        example:
+                          - 'The selected gender is invalid.'
+                        items:
+                          type: string
+                      email:
+                        type: array
+                        example:
+                          - 'The email has already been taken.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                name:
+                  type: string
+                  description: ''
+                  example: architecto
+                gender:
+                  type: string
+                  description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
+                  example: female
+                email:
+                  type: string
+                  description: 'Must be a valid email address.'
+                  example: zhagenes@example.com
+                role:
+                  type: string
+                  description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
+                  example: admin
+                password:
+                  type: string
+                  description: ''
+                  example: eum
+              required:
+                - name
+                - gender
+                - email
+                - role
+                - password
+      security: []
+tags:
+  -
+    name: Endpoints
+    description: ''
+components:
+  securitySchemes:
+    default:
+      type: http
+      scheme: bearer
+      description: ''
+security:
+  -
+    default: []

@@ -17,6 +17,24 @@ use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
 {
+    /**
+     * @unauthenticated
+     * Log in the user
+     *
+     * @response {
+     *  "access_token": "eyJ0eXA...",
+     *  "token_type": "Bearer",
+     * }
+     *
+     * @response 403 {
+     *  "message": "Email & Password does not match with our record.",
+     *  "errors": {
+     *  "email": [
+     *      "Email & Password does not match with our record."
+     *      ]
+     *  }
+     * }
+     */
     public function loginUser(UserLoginRequest $request): JsonResponse
     {
         try {
@@ -35,8 +53,26 @@ class AuthController extends Controller
 
     /**
      * Create User
+     * @unauthenticated
      * @param UserCreateRequest $request
      * @return JsonResponse
+     *
+     * @response {
+     *  "access_token": "eyJ0eXA...",
+     *  "token_type": "Bearer",
+     * }
+     *
+     * @response 403 {
+     *  "message": "The selected gender is invalid. (and 1 more error)",
+     *  "errors": {
+     *      "gender": [
+     *          "The selected gender is invalid."
+     *      ],
+     *      "email": [
+     *          "The email has already been taken."
+     *      ]
+     *  }
+     * }
      */
     public function createUser(UserCreateRequest $request): JsonResponse
     {
@@ -62,6 +98,23 @@ class AuthController extends Controller
         }
     }
 
+
+    /** Change password for user
+     *
+     * @response {
+     *  "data": [],
+     *  "status": 200
+     * }
+     *
+     * @response 403{
+     *  "message": "The current password is match with old password.",
+     *   "errors": {
+     *       "current_password": [
+     *          "The current password is match with old password."
+     *       ]
+     *    }
+     * }
+     */
     public function changePassword(UserChangePasswordRequest $request): SuccessResource|ErrorResponse
     {
         try {
@@ -72,6 +125,22 @@ class AuthController extends Controller
         }
     }
 
+    /** Update user's info
+     *
+     * @response {
+     *  "data": [],
+     *  "status": 200
+     * }
+     *
+     * @response 403 {
+     *  "message": "The selected gender is invalid.",
+     *   "errors": {
+     *       "gender": [
+     *          "The selected gender is invalid."
+     *       ]
+     *    }
+     * }
+     */
     public function updateUser(UserUpdateRequest $request): SuccessResource|ErrorResponse
     {
         try {
@@ -92,11 +161,31 @@ class AuthController extends Controller
     }
 
 
+    /** Get current user's info
+     *
+     * @response {
+     *   "data": {
+     *      "id": 1,
+     *      "name": "radina555eee",
+     *      "email": "dasdar44d@dada.com",
+     *      "gender": "none",
+     *      "blocked": 0,
+     *      "role": "client"
+     *   },
+     *   "status": 200
+     * }
+     */
     public function currentUser(Request $request): UserResource
     {
         return new UserResource($request->user());
     }
 
+    /**
+     * Logout for user
+     *
+     * @param Request $request
+     * @return void
+     */
     public function logoutUser(Request $request)
     {
         $request->user()->currentAccessToken()->delete();
