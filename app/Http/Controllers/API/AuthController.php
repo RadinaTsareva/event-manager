@@ -7,8 +7,10 @@ use App\Http\Requests\API\UserChangePasswordRequest;
 use App\Http\Requests\API\UserCreateRequest;
 use App\Http\Requests\API\UserLoginRequest;
 use App\Http\Requests\API\UserUpdateRequest;
+use App\Http\Resources\Api\ErrorResponse;
+use App\Http\Resources\Api\SuccessResource;
+use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
-use App\Rules\MatchOldPassword;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
@@ -22,18 +24,12 @@ class AuthController extends Controller
 
             return response()->json(
                 [
-                    'status' => 200,
-                    'message' => 'User Logged In Successfully',
-                    'token' => $user->createToken('auth_token')->plainTextToken
-                ],
-            );
-        } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'status' => 500,
-                    'message' => $th->getMessage()
+                    'access_token' => $user->createToken('auth_token')->plainTextToken,
+                    'token_type' => 'Bearer',
                 ]
             );
+        } catch (\Throwable $th) {
+            return new ErrorResponse((array)$th->getMessage());
         }
     }
 
@@ -57,45 +53,26 @@ class AuthController extends Controller
 
             return response()->json(
                 [
-                    'status' => 200,
-                    'message' => 'User Created Successfully',
-                    'token' => $user->createToken('auth_token')->plainTextToken
+                    'access_token' => $user->createToken('auth_token')->plainTextToken,
+                    'token_type' => 'Bearer',
                 ]
             );
         } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'status' => false,
-                    'message' => $th->getMessage()
-                ],
-                500
-            );
+            return new ErrorResponse((array)$th->getMessage());
         }
     }
 
-    public function changePassword(UserChangePasswordRequest $request): JsonResponse
+    public function changePassword(UserChangePasswordRequest $request): SuccessResource|ErrorResponse
     {
         try {
             User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
-
-            return response()->json(
-                [
-                    'status' => 200,
-                    'message' => 'Password Changed Successfully'
-                ]
-            );
+            return new SuccessResource([]);
         } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'status' => false,
-                    'message' => $th->getMessage()
-                ],
-                500
-            );
+            return new ErrorResponse((array)$th->getMessage());
         }
     }
 
-    public function updateUser(UserUpdateRequest $request): JsonResponse
+    public function updateUser(UserUpdateRequest $request): SuccessResource|ErrorResponse
     {
         try {
             $user = auth()->user();
@@ -108,27 +85,16 @@ class AuthController extends Controller
                 ]
             );
 
-            return response()->json(
-                [
-                    'status' => 200,
-                    'message' => 'User Updated Successfully'
-                ]
-            );
+            return new SuccessResource([]);
         } catch (\Throwable $th) {
-            return response()->json(
-                [
-                    'status' => false,
-                    'message' => $th->getMessage()
-                ],
-                500
-            );
+            return new ErrorResponse((array)$th->getMessage());
         }
     }
 
 
-    public function currentUser(Request $request)
+    public function currentUser(Request $request): UserResource
     {
-        return $request->user();
+        return new UserResource($request->user());
     }
 
     public function logoutUser(Request $request)
