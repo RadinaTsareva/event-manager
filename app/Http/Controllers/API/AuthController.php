@@ -6,6 +6,7 @@ use App\Http\Controllers\Controller;
 use App\Http\Requests\API\UserChangePasswordRequest;
 use App\Http\Requests\API\UserCreateRequest;
 use App\Http\Requests\API\UserLoginRequest;
+use App\Http\Requests\API\UserUpdateRequest;
 use App\Models\User;
 use App\Rules\MatchOldPassword;
 use Illuminate\Http\JsonResponse;
@@ -75,7 +76,7 @@ class AuthController extends Controller
     public function changePassword(UserChangePasswordRequest $request): JsonResponse
     {
         try {
-            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+            User::find(auth()->user()->id)->update(['password' => Hash::make($request->new_password)]);
 
             return response()->json(
                 [
@@ -93,6 +94,37 @@ class AuthController extends Controller
             );
         }
     }
+
+    public function updateUser(UserUpdateRequest $request): JsonResponse
+    {
+        try {
+            $user = auth()->user();
+            User::find($user->id)->update(
+                [
+                    'gender' => $request->gender ?? $user->gender,
+                    'name' => $request->name ?? $user->name,
+                    'email' => $request->email ?? $user->email,
+                    'role' => $request->role ?? $user->role //not sure of that should be changeable
+                ]
+            );
+
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'User Updated Successfully'
+                ]
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'status' => false,
+                    'message' => $th->getMessage()
+                ],
+                500
+            );
+        }
+    }
+
 
     public function currentUser(Request $request)
     {
