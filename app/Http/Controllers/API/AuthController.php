@@ -3,12 +3,13 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\UserChangePasswordRequest;
 use App\Http\Requests\API\UserCreateRequest;
 use App\Http\Requests\API\UserLoginRequest;
 use App\Models\User;
+use App\Rules\MatchOldPassword;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class AuthController extends Controller
@@ -58,6 +59,28 @@ class AuthController extends Controller
                     'status' => 200,
                     'message' => 'User Created Successfully',
                     'token' => $user->createToken('auth_token')->plainTextToken
+                ]
+            );
+        } catch (\Throwable $th) {
+            return response()->json(
+                [
+                    'status' => false,
+                    'message' => $th->getMessage()
+                ],
+                500
+            );
+        }
+    }
+
+    public function changePassword(UserChangePasswordRequest $request): JsonResponse
+    {
+        try {
+            User::find(auth()->user()->id)->update(['password'=> Hash::make($request->new_password)]);
+
+            return response()->json(
+                [
+                    'status' => 200,
+                    'message' => 'Password Changed Successfully'
                 ]
             );
         } catch (\Throwable $th) {

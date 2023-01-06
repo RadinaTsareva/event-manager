@@ -16,9 +16,9 @@ return new class extends Migration
         Schema::create('rating_and_feedback', function (Blueprint $table) {
             $table->id();
             $table->integer('event_id');
-            $table->integer('rating_for_client');
+            $table->float('rating_for_client');
             $table->text('feedback_for_client');
-            $table->integer('rating_for_organiser');
+            $table->float('rating_for_organiser');
             $table->text('feedback_for_organiser');
             $table->timestamps();
         });

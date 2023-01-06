@@ -7,14 +7,16 @@ use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Validation\Rule;
 use Illuminate\Validation\Rules\Password;
 
+/**
+ * @property mixed $email
+ * @property mixed $password
+ * @property mixed $name
+ * @property mixed $role
+ * @property mixed $gender
+ *
+ **/
 class UserCreateRequest extends FormRequest
 {
-    public mixed $name;
-    public mixed $gender;
-    public mixed $email;
-    public mixed $role;
-    public mixed $password;
-
     /**
      * Get the validation rules that apply to the request.
      *
