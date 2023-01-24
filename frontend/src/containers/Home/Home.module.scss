@@ -1,0 +1,71 @@
+@import "../../sharedStyles/shared.module.scss";
+
+.Layout {
+    // TODO adjust responsive
+    width: fit-content;
+    display: flex;
+    flex-direction: column;
+}
+
+.Container {
+    width: 100%;
+    display: flex;
+    margin: 0 auto;
+    padding: 0 20px;
+
+    .ContainerSection {
+        align-items: center;
+        margin: 50px 0 0;
+    }
+
+    >div:nth-of-type(2) {
+        width: 100%;
+        max-width: 800px;
+        margin: 0 20px;
+    }
+}
+
+.Heading {
+    margin-bottom: 20px;
+
+    h1 {
+        text-align: center;
+        color: $tertiary-color;
+        font-weight: 400;
+        line-height: 36px;
+        font-size: 34pt;
+        margin-bottom: 20px;
+    }
+
+    p,
+    span {
+        display: block;
+        text-align: center;
+        color: $muted-color;
+        opacity: 0.8;
+        font-weight: 400;
+        line-height: 14px;
+        font-size: 14pt;
+
+        span {
+            display: inline-block;
+        }
+
+        .Pills {
+            margin: 0 10px;
+            --bs-nav-pills-link-active-bg: #6841AB;
+
+            a:hover {
+                color: $tertiary-color;
+            }
+
+            a {
+                color: $muted-color;
+            }
+        }
+    }
+}
+
+.ServiceTheme {
+    background-color: pink;
+}

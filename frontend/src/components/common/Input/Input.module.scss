@@ -1,0 +1,55 @@
+@import '../../../sharedStyles/shared.module.scss';
+
+.Input {
+    margin-bottom: 16px;
+
+    input {
+        color: $tertiary-color;
+    }
+
+    >span {
+        color: $primary-color;
+        font-weight: bold;
+    }
+}
+
+.Input>input,
+.Input>textarea {
+    width: 100%;
+    border: none;
+    border-bottom: 1px solid $muted-color;
+    border-radius: 0;
+    padding: 5px 5px;
+    margin-bottom: 10px;
+    font-size: 12pt;
+    color: $tertiary-color;
+}
+
+textarea {
+    resize: vertical;
+    min-height: 22pt;
+}
+
+.Input>input:focus,
+.Input>input:active,
+.Input>input:visited,
+.Input>textarea:focus,
+.Input>textarea:active,
+.Input>textarea:visited {
+    outline: none;
+    box-shadow: none;
+    -webkit-transition: border 0.5s linear;
+    -moz-transition: border 0.5s linear;
+    -o-transition: border 0.5s linear;
+    border: none;
+    border-bottom: 1px solid $secondary-color;
+}
+
+label {
+    display: block;
+    color: $muted-color;
+    font-weight: 500;
+    font-size: 10pt;
+    line-height: 20px;
+    margin-top: 5px;
+}

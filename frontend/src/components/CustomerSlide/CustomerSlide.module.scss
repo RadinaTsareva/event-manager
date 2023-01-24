@@ -1,0 +1,39 @@
+@import "../../sharedStyles/shared.module.scss";
+
+.Container {
+    margin: 50px 0;
+    width: 100%;
+
+    .Slider {
+        width: 90%;
+        margin: auto;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+
+        >button {
+            padding: 11px 12px;
+            height: fit-content;
+            border-radius: 30px;
+            border: none;
+            background-color: $primary-color;
+
+            .Arrow {
+                color: white;
+            }
+
+            &:disabled {
+                opacity: 0.4;
+            }
+        }
+
+        .Page {
+            width: 90%;
+            display: flex;
+            // columns: 3;
+            align-items: center;
+            justify-content: space-around;
+            height: 100%;
+        }
+    }
+}

@@ -1,0 +1,25 @@
+$primary-color: #8F4E99;
+$secondary-color: #D99CCC;
+$tertiary-color: #9954C4;
+$muted-color: #6841AB;
+
+$accept-color: #55C28B;
+$reject-color: #C27B72;
+$edit-color: #6B60C2;
+$pending-color: #C2B14C;
+
+body {
+    color: $primary-color;
+}
+
+:export {
+    primaryColor: $primary-color;
+    secondaryColor: $secondary-color;
+    tertiaryColor: $tertiary-color;
+    mutedColor: $muted-color;
+
+    acceptColor: $accept-color;
+    rejectColor: $reject-color;
+    editColor: $edit-color;
+    pendingColor: $pending-color;
+}

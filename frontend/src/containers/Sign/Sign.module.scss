@@ -1,0 +1,72 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Register {
+    >ul {
+        justify-content: center;
+        border: none;
+
+        >li>button {
+            text-decoration: none !important;
+            color: $muted-color;
+            border: none !important;
+
+            &:hover,
+            &:active,
+            &:focus,
+            &:focus:not(:focus-visible) {
+                border: none;
+                outline: none;
+                text-decoration: none;
+                color: $tertiary-color;
+                background-color: $secondary-color;
+            }
+
+            &[aria-selected=true] {
+                border: none !important;
+                text-decoration: none !important;
+                color: $secondary-color !important;
+                background-color: $primary-color !important;
+            }
+        }
+    }
+}
+
+.Heading {
+    font-size: 50pt;
+    margin-bottom: 30px;
+}
+
+.Form {
+    background-size: cover;
+    background-position: bottom center;
+
+    .Tabs {
+        color: $tertiary-color;
+        border: 1px solid $primary-color;
+        border-radius: 25px;
+        padding: 30px 20px;
+        -webkit-box-shadow: 0px 2px 10px 2px $primary-color;
+        box-shadow: 0px 2px 10px 2px $primary-color;
+
+        >ul {
+            justify-content: center;
+
+            >li {
+                button {
+                    text-decoration: none;
+                    color: $muted-color;
+                }
+
+                button[aria-selected=true] {
+                    text-decoration: none;
+                    color: $primary-color;
+                }
+            }
+        }
+
+        form {
+
+            width: 400px;
+        }
+    }
+}

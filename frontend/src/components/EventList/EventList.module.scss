@@ -1,0 +1,27 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Element {
+    height: 50%;
+    width: fit-content;
+
+    .Heading {
+        text-align: left;
+        color: $tertiary-color;
+        font-weight: 400;
+        line-height: 16px;
+        font-size: 16pt;
+        margin-left: 10px;
+        text-transform: capitalize;
+    }
+
+    .Warning {
+        text-align: center;
+        color: $muted-color;
+        opacity: 0.6;
+        font-weight: 400;
+        line-height: 12px;
+        font-size: 12pt;
+        margin: 0 0 20px;
+    }
+
+}
