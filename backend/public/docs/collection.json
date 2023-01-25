@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "286abf08-6425-4380-910b-d3c3cffc251d",
+        "_postman_id": "e1dbf680-da86-46ef-8a3f-4d3c193ec67b",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -46,7 +46,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"data\": {\n     \"id\": 1,\n     \"name\": \"radina555eee\",\n     \"email\": \"dasdar44d@dada.com\",\n     \"gender\": \"none\",\n     \"blocked\": 0,\n     \"role\": \"client\"\n  },\n  \"status\": 200\n}",
+                            "body": "{\n  \"data\": {\n     \"id\": 1,\n     \"name\": \"radina555eee\",\n     \"email\": \"dasdar44d@dada.com\",\n     \"gender\": \"none\",\n     \"blocked\": 0,\n     \"role\": \"client\",\n     \"address\": \"Address 1\",\n     \"phone-number\" : \"08990889011\"\n  },\n  \"status\": 200\n}",
                             "name": ""
                         }
                     ]
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"qui\",\"new_password\":\"eius\"}"
+                            "raw": "{\"current_password\":\"id\",\"new_password\":\"perspiciatis\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"et\",\"gender\":\"male\",\"email\":\"trace.kilback@example.com\",\"role\":\"client\"}"
+                            "raw": "{\"name\":\"rerum\",\"gender\":\"male\",\"email\":\"dante.bradtke@example.net\",\"role\":\"admin\",\"address\":\"occaecati\",\"phone_number\":\"aut\"}"
                         },
                         "description": ""
                     },
@@ -180,7 +180,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"sborer@example.net\",\"password\":\"eos\"}"
+                            "raw": "{\"email\":\"spinka.zoey@example.org\",\"password\":\"dolorem\"}"
                         },
                         "description": "",
                         "auth": {
@@ -224,7 +224,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"architecto\",\"gender\":\"female\",\"email\":\"zhagenes@example.com\",\"role\":\"admin\",\"password\":\"eum\"}"
+                            "raw": "{\"name\":\"eaque\",\"gender\":\"male\",\"email\":\"harber.marvin@example.net\",\"role\":\"admin\",\"password\":\"assumenda\",\"phone_number\":\"qui\",\"address\":\"repellendus\"}"
                         },
                         "description": "",
                         "auth": {

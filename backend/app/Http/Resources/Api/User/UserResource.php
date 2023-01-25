@@ -15,6 +15,8 @@ class UserResource extends ApiResource
             'gender' => $this->resource->gender,
             'blocked' => $this->resource->blocked,
             'role' => $this->resource->role,
+            'address' => $this->resource->address,
+            'phone-number' => $this->resource->phone_number,
         ];
     }
 }

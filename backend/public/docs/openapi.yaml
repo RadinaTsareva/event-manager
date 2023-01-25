@@ -49,6 +49,8 @@ paths:
                     gender: none
                     blocked: 0
                     role: client
+                    address: 'Address 1'
+                    phone-number: '08990889011'
                   status: 200
                 properties:
                   data:
@@ -72,6 +74,12 @@ paths:
                       role:
                         type: string
                         example: client
+                      address:
+                        type: string
+                        example: 'Address 1'
+                      phone-number:
+                        type: string
+                        example: '08990889011'
                   status:
                     type: integer
                     example: 200
@@ -187,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: qui
+                  example: id
                 new_password:
                   type: string
                   description: ''
-                  example: eius
+                  example: perspiciatis
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -279,7 +287,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: et
+                  example: rerum
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -287,11 +295,19 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: trace.kilback@example.com
+                  example: dante.bradtke@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: client
+                  example: admin
+                address:
+                  type: string
+                  description: ''
+                  example: occaecati
+                phone_number:
+                  type: string
+                  description: ''
+                  example: aut
   /api/auth/login:
     post:
       summary: ''
@@ -356,11 +372,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: sborer@example.net
+                  example: spinka.zoey@example.org
                 password:
                   type: string
                   description: ''
-                  example: eos
+                  example: dolorem
               required:
                 - email
                 - password
@@ -437,15 +453,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: architecto
+                  example: eaque
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: female
+                  example: male
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: zhagenes@example.com
+                  example: harber.marvin@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
@@ -453,13 +469,23 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: eum
+                  example: assumenda
+                phone_number:
+                  type: string
+                  description: ''
+                  example: qui
+                address:
+                  type: string
+                  description: ''
+                  example: repellendus
               required:
                 - name
                 - gender
                 - email
                 - role
                 - password
+                - phone_number
+                - address
       security: []
 tags:
   -

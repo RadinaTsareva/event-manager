@@ -83,7 +83,9 @@ class AuthController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'gender' => $request->gender,
-                    'role' => $request->role
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                    'address' => $request->address,
                 ]
             );
 
@@ -150,7 +152,9 @@ class AuthController extends Controller
                     'gender' => $request->gender ?? $user->gender,
                     'name' => $request->name ?? $user->name,
                     'email' => $request->email ?? $user->email,
-                    'role' => $request->role ?? $user->role //not sure of that should be changeable
+                    'role' => $request->role ?? $user->role, //not sure of that should be changeable
+                    'phone_number' => $request->phone_number ?? $user->phone_number,
+                    'address' => $request->address ?? $user->address,
                 ]
             );
 
@@ -170,7 +174,9 @@ class AuthController extends Controller
      *      "email": "dasdar44d@dada.com",
      *      "gender": "none",
      *      "blocked": 0,
-     *      "role": "client"
+     *      "role": "client",
+     *      "address": "Address 1",
+     *      "phone-number" : "08990889011"
      *   },
      *   "status": 200
      * }

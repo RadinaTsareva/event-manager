@@ -100,7 +100,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: January 6, 2023</li>
+        <li>Last updated: January 25, 2023</li>
     </ul>
 </div>
 
@@ -175,7 +175,9 @@ fetch(url, {
         &quot;email&quot;: &quot;dasdar44d@dada.com&quot;,
         &quot;gender&quot;: &quot;none&quot;,
         &quot;blocked&quot;: 0,
-        &quot;role&quot;: &quot;client&quot;
+        &quot;role&quot;: &quot;client&quot;,
+        &quot;address&quot;: &quot;Address 1&quot;,
+        &quot;phone-number&quot;: &quot;08990889011&quot;
     },
     &quot;status&quot;: 200
 }</code>
@@ -388,8 +390,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"current_password\": \"qui\",
-    \"new_password\": \"eius\"
+    \"current_password\": \"id\",
+    \"new_password\": \"perspiciatis\"
 }"
 </code></pre></div>
 
@@ -406,8 +408,8 @@ const headers = {
 };
 
 let body = {
-    "current_password": "qui",
-    "new_password": "eius"
+    "current_password": "id",
+    "new_password": "perspiciatis"
 };
 
 fetch(url, {
@@ -523,10 +525,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="current_password"                data-endpoint="POSTapi-auth-change-password"
-               value="qui"
+               value="id"
                data-component="body">
     <br>
-<p>Example: <code>qui</code></p>
+<p>Example: <code>id</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
@@ -534,10 +536,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="new_password"                data-endpoint="POSTapi-auth-change-password"
-               value="eius"
+               value="perspiciatis"
                data-component="body">
     <br>
-<p>Example: <code>eius</code></p>
+<p>Example: <code>perspiciatis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_confirm_password</code></b>&nbsp;&nbsp;
@@ -571,10 +573,12 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"et\",
+    \"name\": \"rerum\",
     \"gender\": \"male\",
-    \"email\": \"trace.kilback@example.com\",
-    \"role\": \"client\"
+    \"email\": \"dante.bradtke@example.net\",
+    \"role\": \"admin\",
+    \"address\": \"occaecati\",
+    \"phone_number\": \"aut\"
 }"
 </code></pre></div>
 
@@ -591,10 +595,12 @@ const headers = {
 };
 
 let body = {
-    "name": "et",
+    "name": "rerum",
     "gender": "male",
-    "email": "trace.kilback@example.com",
-    "role": "client"
+    "email": "dante.bradtke@example.net",
+    "role": "admin",
+    "address": "occaecati",
+    "phone_number": "aut"
 };
 
 fetch(url, {
@@ -710,10 +716,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-auth-update-user"
-               value="et"
+               value="rerum"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>rerum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -732,10 +738,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-update-user"
-               value="trace.kilback@example.com"
+               value="dante.bradtke@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>trace.kilback@example.com</code></p>
+<p>Must be a valid email address. Example: <code>dante.bradtke@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -743,10 +749,32 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="role"                data-endpoint="POSTapi-auth-update-user"
-               value="client"
+               value="admin"
                data-component="body">
     <br>
-<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>client</code></p>
+<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>admin</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="address"                data-endpoint="POSTapi-auth-update-user"
+               value="occaecati"
+               data-component="body">
+    <br>
+<p>Example: <code>occaecati</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-auth-update-user"
+               value="aut"
+               data-component="body">
+    <br>
+<p>Example: <code>aut</code></p>
         </div>
         </form>
 
@@ -767,8 +795,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"sborer@example.net\",
-    \"password\": \"eos\"
+    \"email\": \"spinka.zoey@example.org\",
+    \"password\": \"dolorem\"
 }"
 </code></pre></div>
 
@@ -784,8 +812,8 @@ const headers = {
 };
 
 let body = {
-    "email": "sborer@example.net",
-    "password": "eos"
+    "email": "spinka.zoey@example.org",
+    "password": "dolorem"
 };
 
 fetch(url, {
@@ -890,10 +918,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-login"
-               value="sborer@example.net"
+               value="spinka.zoey@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>sborer@example.net</code></p>
+<p>Must be a valid email address. Example: <code>spinka.zoey@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -901,10 +929,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-auth-login"
-               value="eos"
+               value="dolorem"
                data-component="body">
     <br>
-<p>Example: <code>eos</code></p>
+<p>Example: <code>dolorem</code></p>
         </div>
         </form>
 
@@ -925,11 +953,13 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"architecto\",
-    \"gender\": \"female\",
-    \"email\": \"zhagenes@example.com\",
+    \"name\": \"eaque\",
+    \"gender\": \"male\",
+    \"email\": \"harber.marvin@example.net\",
     \"role\": \"admin\",
-    \"password\": \"eum\"
+    \"password\": \"assumenda\",
+    \"phone_number\": \"qui\",
+    \"address\": \"repellendus\"
 }"
 </code></pre></div>
 
@@ -945,11 +975,13 @@ const headers = {
 };
 
 let body = {
-    "name": "architecto",
-    "gender": "female",
-    "email": "zhagenes@example.com",
+    "name": "eaque",
+    "gender": "male",
+    "email": "harber.marvin@example.net",
     "role": "admin",
-    "password": "eum"
+    "password": "assumenda",
+    "phone_number": "qui",
+    "address": "repellendus"
 };
 
 fetch(url, {
@@ -1057,10 +1089,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-auth-register"
-               value="architecto"
+               value="eaque"
                data-component="body">
     <br>
-<p>Example: <code>architecto</code></p>
+<p>Example: <code>eaque</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -1068,10 +1100,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-auth-register"
-               value="female"
+               value="male"
                data-component="body">
     <br>
-<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>female</code></p>
+<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>male</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -1079,10 +1111,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-register"
-               value="zhagenes@example.com"
+               value="harber.marvin@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>zhagenes@example.com</code></p>
+<p>Must be a valid email address. Example: <code>harber.marvin@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -1101,10 +1133,32 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-auth-register"
-               value="eum"
+               value="assumenda"
                data-component="body">
     <br>
-<p>Example: <code>eum</code></p>
+<p>Example: <code>assumenda</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phone_number"                data-endpoint="POSTapi-auth-register"
+               value="qui"
+               data-component="body">
+    <br>
+<p>Example: <code>qui</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="address"                data-endpoint="POSTapi-auth-register"
+               value="repellendus"
+               data-component="body">
+    <br>
+<p>Example: <code>repellendus</code></p>
         </div>
         </form>
 

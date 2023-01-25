@@ -18,6 +18,8 @@ return new class extends Migration
             $table->enum('gender', ['female', 'male', 'none'])->default('none');
             $table->boolean('blocked')->default(false);
             $table->enum('role', ['client', 'organizer', 'admin']);
+            $table->string('phone_number');
+            $table->string('address');
         });
     }
 
