@@ -70,7 +70,7 @@ class EventsService {
 
     static getFoodTypes = async (organizer, eventType, isCatering) => {
         return ['Food type 1', 'Food type 2', 'Food type 3']
-        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> ready from Radi
+        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> still not sure what to do with isCatering
     }
 
     static getPersonal = async (month) => {
@@ -87,7 +87,7 @@ class EventsService {
 
     static getById = async (id) => {
         return personalEvents.filter(event => event.id === +id)[0]
-        // return RequestAPI.get(`/events/${id}`) -> ready from Radi
+        // return RequestAPI.get(`/events/${id}`) -> ready from Radi (with auth)
     }
 
     static accept = async (id) => {
