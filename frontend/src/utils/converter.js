@@ -1,4 +1,4 @@
-import { STATUS } from './enums';
+import { ROLES, STATUS } from './enums';
 import colors from '../sharedStyles/shared.module.scss';
 
 export const convertToDate = (date) => {
@@ -14,7 +14,17 @@ export const convertColorByStatus = (status) => {
         case STATUS.PENDING:
         case STATUS.EDIT_PENDING:
             return colors.pendingColor
+        case STATUS.FINISHED:
+            return colors.secondaryColor
         default:
             return colors.editColor
     }
+}
+
+export const getStatusOrderByRole = (role) => {
+    if (role === ROLES.CLIENT) {
+        return [STATUS.EDITABLE, STATUS.FINISHED, STATUS.ACCEPTED, STATUS.REJECTED, STATUS.PENDING, STATUS.EDIT_PENDING]
+    }
+
+    return [STATUS.EDIT_PENDING, STATUS.PENDING, STATUS.FINISHED, STATUS.ACCEPTED, STATUS.REJECTED, STATUS.EDITABLE]
 }

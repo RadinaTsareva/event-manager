@@ -1,0 +1,10 @@
+@import '../../../sharedStyles/shared.module.scss';
+
+.Badge {
+    display: inline;
+    margin: 0 5px;
+    background-color: $secondary-color;
+    padding: 4px 8px;
+    border-radius: 25px;
+    color: $muted-color;
+}

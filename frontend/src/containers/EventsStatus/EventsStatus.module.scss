@@ -1,0 +1,99 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Heading {
+    margin-bottom: 50px;
+
+    h1 {
+        text-align: center;
+        color: $tertiary-color;
+        font-weight: 400;
+        line-height: 36px;
+        font-size: 34pt;
+        margin-bottom: 20px;
+    }
+
+    p {
+        text-align: center;
+        color: $muted-color;
+        opacity: 0.6;
+        font-weight: 400;
+        line-height: 14px;
+        font-size: 14pt;
+    }
+}
+
+.Tabs {
+    color: $tertiary-color;
+    border: 1px solid $primary-color;
+    border-left: none;
+    border-right: none;
+    padding: 30px 20px 0 20px;
+
+    >ul {
+        justify-content: center;
+
+        >li {
+            button {
+                text-decoration: none;
+                color: $muted-color;
+                text-transform: capitalize;
+            }
+
+            button[aria-selected=true] {
+                text-decoration: none;
+                color: $primary-color !important;
+            }
+
+            button:hover {
+                text-decoration: none;
+                color: $secondary-color;
+            }
+        }
+    }
+
+    >div>div {
+        overflow-y: auto;
+        height: fit-content;
+        max-height: 500px;
+
+        .List {
+            list-style-type: none;
+
+            li {
+                display: flex;
+                flex-direction: row;
+                align-items: center;
+                padding: 20px 20px;
+
+                &:not(:last-of-type) {
+                    border-bottom: 1px solid $primary-color;
+                }
+
+                &.Important>span {
+                    color: $muted-color;
+                    font-weight: 600;
+                    font-size: 14pt;
+                    margin-right: 10px;
+                }
+
+                >span:first-of-type {
+                    margin-right: 5px;
+                    display: flex;
+                }
+
+                button {
+                    margin: 0;
+                    margin-left: auto;
+                }
+
+                p {
+                    color: $muted-color;
+                    font-weight: 400;
+                    font-size: 14pt;
+                    margin: auto;
+                }
+            }
+        }
+    }
+
+}

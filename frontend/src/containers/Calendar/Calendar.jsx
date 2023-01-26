@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DayPilotMonth } from "daypilot-pro-react";
 import { useNavigate } from 'react-router';
 
-import { ROLES } from '../../utils/enums';
+import { ROLES, STATUS } from '../../utils/enums';
 import classes from './Calendar.module.scss';
 import { convertColorByStatus } from '../../utils/converter';
 
@@ -58,12 +58,16 @@ const Calendar = (props) => {
     }
 
     const eventActions = (e) => {
-        return (<div>
-            <p><span>Actions</span></p>
-            <div className={classes.ActionBtns}>
-                <button className={classes.ManageBtn} onClick={() => manageEventHandler(e)}>Manage</button>
-            </div>
-        </div>)
+        if (props.accountRole && event.status !== STATUS.FINISHED) {
+            return (<div>
+                <p><span>Actions</span></p>
+                <div className={classes.ActionBtns}>
+                    <button className={classes.ManageBtn} onClick={() => manageEventHandler(e)}>Manage</button>
+                </div>
+            </div>)
+        }
+
+        return null
     }
 
     return (
@@ -107,7 +111,7 @@ const Calendar = (props) => {
                                 End: {new Date(event.end).toLocaleString()}
                             </p>
                         </div>
-                        {props.accountRole && eventActions(event)}
+                        {eventActions(event)}
                         {props.accountRole !== ROLES.ORGANIZER
                             && <button className={classes.GalleryBtn} onClick={() => galleryHandler(event)}>Visit Gallery</button>}
                     </div>

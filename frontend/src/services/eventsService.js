@@ -11,6 +11,7 @@ const personalEvents = [{
     organizerName: 'John Doe',
     organizerEmail: 'alabala2@gmail.com',
     organizerId: 1,
+    clientEmail: 'alabala@gmail.com',
     type: 'Type 1',
     moreInfo: 'More info 1',
     description: 'Description 1',
@@ -28,13 +29,14 @@ const personalEvents = [{
 }, {
     // TODO an event should look like this, with empty fields on commencement
     id: 3,
-    status: STATUS.EDITABLE,
+    status: STATUS.FINISHED,
     name: 'Event 3',
     start: new Date(Date.now() + 10000 * 60 * 60 * 3),
     end: new Date(Date.now() + 10000 * 60 * 60 * 5),
     organizerName: 'John Doe',
     organizerEmail: 'alabala1@gmail.com',
     organizerId: 1,
+    clientEmail: 'alabala@gmail.com',
     type: 'Type 1',
     moreInfo: 'More info 1',
     description: 'Description 1',
@@ -53,12 +55,13 @@ const personalEvents = [{
 
 const allEvents = [{
     id: 2,
-    status: STATUS.ACCEPTED,
+    status: STATUS.FINISHED,
     name: 'Event 2',
     type: 'Type 2',
     place: 'Place 2',
     clientEmail: 'alabala@gmail.com',
     isPublic: true,
+    hasFeedback: true,
     start: new Date(Date.now() + 1000 * 60 * 60 * 2),
     end: new Date(Date.now() + 1000 * 60 * 60 * 3),
     organizerName: 'John Doe',
@@ -82,6 +85,42 @@ const comments = [
         content: 'Comment 3',
     }
 ]
+
+const personalStatusEvents = [
+    {
+        id: 1,
+        status: STATUS.EDITABLE,
+        name: 'Event 1',
+        hasFeedback: false,
+        organizerEmail: 'alabala1@gmail.com',
+        clientEmail: 'alabala@gmail.com',
+    },
+    {
+        id: 2,
+        status: STATUS.EDIT_PENDING,
+        name: 'Event 2',
+        hasFeedback: false,
+        organizerEmail: 'alabala1@gmail.com',
+        clientEmail: 'alabala@gmail.com',
+    },
+    {
+        id: 3,
+        status: STATUS.FINISHED,
+        name: 'Event 3',
+        hasFeedback: false,
+        organizerEmail: 'alabala1@gmail.com',
+        clientEmail: 'alabala@gmail.com',
+    },
+    {
+        id: 4,
+        status: STATUS.FINISHED,
+        name: 'Event 4',
+        hasFeedback: true,
+        organizerEmail: 'alabala1@gmail.com',
+        clientEmail: 'alabala@gmail.com',
+    },
+]
+
 class EventsService {
     static getPics = async (id) => {
         return Array(10).fill('https://picsum.photos/200/300')
@@ -113,6 +152,11 @@ class EventsService {
         return allEvents
         // only finished events
         // return RequestAPI.get('/events') -> ready from Radi
+    }
+
+    static getAllPersonal = async () => {
+        return personalStatusEvents
+        // return RequestAPI.get('/events/personal/all')
     }
 
     static getById = async (id) => {

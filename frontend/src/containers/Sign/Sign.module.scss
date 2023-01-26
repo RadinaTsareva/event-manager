@@ -59,7 +59,7 @@
 
                 button[aria-selected=true] {
                     text-decoration: none;
-                    color: $primary-color;
+                    color: $primary-color !important;
                 }
             }
         }

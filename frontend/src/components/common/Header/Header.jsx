@@ -6,8 +6,9 @@ import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { GearFill, BoxArrowInRight, StarFill, CalendarEventFill, ExclamationCircle } from 'react-bootstrap-icons';
-import Spinner from '../Spinner/Spinner';
 import { ROLES } from '../../../utils/enums';
+import Spinner from '../Spinner/Spinner';
+import Badge from '../Badge/Badge';
 
 const Header = (props) => {
     const { isLoggedIn, account } = useStoreState((state) => state.userStore);
@@ -19,13 +20,6 @@ const Header = (props) => {
         logout()
         navigate('/sign');
     }
-
-    const eventsHandler = () => {
-        navigate('/')
-    }
-
-    console.log('account', account);
-    console.log('isLoggedIn', isLoggedIn);
 
     if (account === null && isLoggedIn) {
         return (<Spinner />)
@@ -54,20 +48,20 @@ const Header = (props) => {
                                 <hr />
                                 <div className={classes.BodyNav}>
                                     <Nav>
-                                        {account.role !== ROLES.CLIENT ?
-                                            <div className={classes.Nav}>
-                                                <StarFill />
-                                                <Link className="nav-link" to="/management">Manage requests</Link>
-                                            </div>
-                                            :
+                                        {account.role === ROLES.CLIENT ?
                                             <div className={classes.Nav}>
                                                 <CalendarEventFill />
                                                 <Link className="nav-link" to="/request">Make a new request</Link>
                                             </div>
+                                            : null
                                         }
                                         <div className={classes.Nav}>
+                                            <StarFill />
+                                            <Link className="nav-link" to="/events/status">My events <Badge>{account.pendingEventsCount}</Badge></Link>
+                                        </div>
+                                        <div className={classes.Nav}>
                                             <GearFill />
-                                            <p onClick={eventsHandler}>Account settings</p>
+                                            <Link className="nav-link" to="/">Account settings</Link>
                                         </div>
                                     </Nav>
                                     {isLoggedIn ?

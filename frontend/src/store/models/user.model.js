@@ -1,6 +1,5 @@
 import { action, thunk } from 'easy-peasy';
 import UserService from '../../services/userService';
-import { ROLES } from '../../utils/enums';
 
 export const userStore = {
     /**

@@ -9,6 +9,7 @@ import Gallery from '../containers/Gallery/Gallery';
 import Home from '../containers/Home/Home';
 import { ROLES } from '../utils/enums';
 import EventManagement from '../containers/EventManagement/EventManagement';
+import EventsStatus from '../containers/EventsStatus/EventsStatus';
 
 const RouteOptions = {
     GO_TO_HOME: 'GO_TO_HOME',
@@ -36,7 +37,7 @@ const Router = (props) => {
             navigate(location.pathname)
         }
         // TODO
-        setAccount({ role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2] })
+        setAccount({ role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2], pendingEventsCount: 2 })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
@@ -76,6 +77,7 @@ const Router = (props) => {
                         <Routes>
                             <Route path="/" exact element={<Home />} />
                             <Route path="/events/:id" exact element={<EventManagement />} />
+                            <Route path="/events/status" exact element={<EventsStatus />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )
@@ -88,6 +90,7 @@ const Router = (props) => {
                             <Route path="/request" exact element={<EventManagement newEvent />} />
                             <Route path="/events/:id" exact element={<EventManagement />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
+                            <Route path="/events/status" exact element={<EventsStatus />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )
@@ -96,8 +99,8 @@ const Router = (props) => {
                 return (
                     (
                         <Routes>
-                            <Route path='/' exact element={<Sign />} />
-                            <Route path="*" element={<Navigate to='/sign' />} />
+                            <Route path='/' exact element={<Home />} />
+                            <Route path="*" element={<Navigate to='/home' />} />
                         </Routes>
                     )
                 );

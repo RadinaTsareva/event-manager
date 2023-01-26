@@ -70,6 +70,7 @@ const EventManagement = (props) => {
                 </div>
             )
         }
+
         return (
             <div className={classes.Container}>
                 <div className={classes.Heading}>
@@ -128,6 +129,13 @@ const EventManagement = (props) => {
                     </Col>
                 }
             </Row>
+            {
+                event.status === STATUS.PENDING &&
+                <div className={classes.ActionBtns}>
+                    <button className={classes.AcceptBtn} type='button' onClick={acceptClickedHandler}>Accept</button>
+                    <button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</button>
+                </div>
+            }
         </div >
     )
 }
