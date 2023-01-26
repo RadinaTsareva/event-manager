@@ -33,7 +33,7 @@ const Calendar = (props) => {
             const end = new Date(e.end)
             e.start = start
             e.end = end
-            e.text = `${e.name}, ${e.organizer.firstName} ${e.organizer.lastName}`
+            e.text = `${e.name}, ${e.organizerName}`
             e.backColor = 'white'
             e.fontColor = 'black'
             e.barColor = color
@@ -92,8 +92,7 @@ const Calendar = (props) => {
                         <div>
                             <p><span>Organizer</span></p>
                             <p>
-                                <span>{event.organizer.firstName}</span>
-                                <span>{event.organizer.lastName}</span>
+                                <span>{event.organizerName}</span>
                             </p>
                         </div>
                         <div>

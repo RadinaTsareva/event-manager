@@ -5,7 +5,7 @@ import classes from './Header.module.scss';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { GearFill, ExclamationCircle, StarFill, CalendarEventFill } from 'react-bootstrap-icons';
+import { GearFill, BoxArrowInRight, StarFill, CalendarEventFill, ExclamationCircle } from 'react-bootstrap-icons';
 import Spinner from '../Spinner/Spinner';
 import { ROLES } from '../../../utils/enums';
 
@@ -83,10 +83,12 @@ const Header = (props) => {
                         </Navbar.Offcanvas>
                     </>
                     : <Nav>
-                        <div className={classes.Nav}>
-                            <ExclamationCircle />
-                            <Link className={[classes.Logout, "nav-link"].join(' ')} to='/login'>Log in</Link>
-                        </div>
+                        <Nav.Item>
+                            <div className={classes.NavLogin}>
+                                <BoxArrowInRight />
+                                <Link className={[classes.Login, "nav-link"].join(' ')} to='/login'>Log in</Link>
+                            </div>
+                        </Nav.Item>
                     </Nav>}
             </Container>
         </Navbar>

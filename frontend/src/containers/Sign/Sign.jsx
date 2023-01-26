@@ -36,7 +36,6 @@ const Login = (props) => {
                     >
                         <Tab eventKey="login" title="Log in">
                             <Form>
-                                <h3 className="h3 text-center">Log in</h3>
                                 <Input
                                     controlId="formGroupEmail" type="email"
                                     placeholder="Enter email" label="Email address"

@@ -1,13 +1,123 @@
 @import "../../sharedStyles/shared.module.scss";
 
 .Container {
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+    min-width: 30vw;
 
-    >div {
-        margin: 0 50px;
+    .Heading {
+        margin-bottom: 50px;
+
+        h1 {
+            text-align: center;
+            color: $tertiary-color;
+            font-weight: 400;
+            line-height: 36px;
+            font-size: 34pt;
+            margin-bottom: 20px;
+        }
+
+        span {
+            margin-left: 10px;
+
+            .Visible {
+                color: $accept-color;
+            }
+
+            .Hidden {
+                color: $pending-color;
+            }
+        }
+    }
+
+    .Carousel {
+        margin: auto;
+        width: 100%;
         border: 1px solid $primary-color;
+        border-left: none;
+        border-right: none;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        padding: 10px;
+
+        img {
+            width: 500px !important;
+        }
+    }
+
+    .EventInfo {
+        h3 {
+            text-align: center;
+            color: $primary-color;
+            font-weight: 400;
+            line-height: 36px;
+            font-size: 20pt;
+            margin: 30px 0 10px 0;
+        }
+
+        .EventInfo {
+            width: 100%;
+            -webkit-column-count: 2;
+            -moz-column-count: 2;
+            column-count: 2;
+            text-align: center;
+
+            p {
+                padding: 0 10px;
+
+                span {
+                    font-weight: bold;
+                }
+            }
+        }
+    }
+
+    .CommentSection {
+        h3 {
+            text-align: center;
+            color: $primary-color;
+            font-weight: 400;
+            line-height: 36px;
+            font-size: 20pt;
+            margin: 30px 0 10px 0;
+        }
+
+        .Comments {
+            border: 3px solid $secondary-color;
+            border-radius: 5px;
+            padding: 10px;
+            margin-bottom: 10px;
+            height: 200px;
+            overflow-y: auto;
+
+            .Comment {
+                &:not(:last-child) {
+                    border-bottom: 1px solid $secondary-color;
+                    margin-bottom: 10px;
+                }
+
+                p:first-child {
+                    font-weight: bold;
+                    margin-bottom: 5px;
+                    font-size: 10pt;
+                }
+
+                p:last-child {
+                    font-size: 13pt;
+                }
+            }
+        }
+
+        .SubmitComment {
+            textarea {
+                width: 100%;
+                height: 100px;
+                resize: none;
+                border: 1px solid $primary-color;
+                border-radius: 5px;
+                padding: 10px;
+                margin-bottom: 10px;
+            }
+        }
     }
 }

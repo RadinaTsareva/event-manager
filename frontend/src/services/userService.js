@@ -1,28 +1,18 @@
+import { ROLES } from "../utils/enums";
 import { RequestAPI } from "./baseApi";
 
 class UserService {
-    static login = (data) => {
-        return RequestAPI.post('/users/login', data)
+    static login = async (data) => {
+        return { role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2] }
+        // await RequestAPI.post('/users/login', data)
     }
 
-    static registerClient = (data) => {
-        return RequestAPI.post('/users/register', data)
+    static registerUser = async (data) => {
+        await RequestAPI.post('/users/register', data)
     }
 
-    static registerOrganizer = (data) => {
-        return RequestAPI.post('/users/register?type=BusinessHolder', data)
-    }
-
-    static setBusinessType = (data) => {
-        return RequestAPI.post('/users/profile/businessType', { data })
-    }
-
-    static getProfile = () => {
-        return RequestAPI.get('/users/profile')
-    }
-
-    static setAvailability = (availability) => {
-        return RequestAPI.post('/users/profile/availability', { availability })
+    static blacklistUser = async (id) => {
+        // await RequestAPI.post(`/users/${id}/blacklist`)
     }
 }
 

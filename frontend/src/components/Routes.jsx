@@ -36,7 +36,7 @@ const Router = (props) => {
             navigate(location.pathname)
         }
         // TODO
-        // setAccount({ role: ROLES.CLIENT, token: 'token' })
+        setAccount({ role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2] })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 

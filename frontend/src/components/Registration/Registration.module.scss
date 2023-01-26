@@ -54,7 +54,6 @@
     }
 
     form {
-
         width: 400px;
 
         input[type=text],
@@ -65,6 +64,11 @@
         input:active:focus {
             color: $tertiary-color;
             background-color: white !important;
+        }
+
+        &,
+        button {
+            margin-top: 30px;
         }
     }
 }

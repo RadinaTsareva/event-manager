@@ -74,9 +74,28 @@
                 text-decoration: none;
             }
 
+
             .Logout {
                 color: $primary-color;
             }
         }
+    }
+
+}
+
+.NavLogin {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+
+    >svg {
+        color: white;
+    }
+
+    .Login {
+        color: white;
+        font-weight: 500;
+        font-size: 15pt;
+        display: inline !important;
     }
 }

@@ -1,8 +1,9 @@
 export const ROLES = {
     CLIENT: 'client',
     ORGANIZER: 'organizer',
-    ADMIN: 'admin',
 }
+
+export const ADMIN_ROLE = 'admin'
 
 export const STATUS = {
     PENDING: 'Pending',
@@ -18,4 +19,10 @@ export const RESPONSE_STATUS = {
     FAILURE: 'failure',
     VALIDATION_ERROR: 'validationError',
     UNAUTHORIZED: 'unauthorized'
+}
+
+export const GENDER = {
+    MALE: 'male',
+    FEMALE: 'female',
+    NONE: 'none'
 }

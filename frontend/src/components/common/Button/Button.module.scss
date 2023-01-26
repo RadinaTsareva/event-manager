@@ -5,12 +5,12 @@
     border-color: $primary-color;
     margin: auto;
     display: block;
-    color: $secondary-color;
+    color: white;
 
     &:hover {
         background-color: $muted-color;
         border-color: $muted-color;
-        color: $secondary-color;
+        color: white;
     }
 
     &:focus,
