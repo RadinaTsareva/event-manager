@@ -9,13 +9,14 @@ use App\Http\Requests\API\UserLoginRequest;
 use App\Http\Requests\API\UserUpdateRequest;
 use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\SuccessResource;
+use App\Http\Resources\Api\User\BasicUserResource;
 use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
     /**
      * Log in the user
@@ -192,8 +193,35 @@ class AuthController extends Controller
      * @param Request $request
      * @return void
      */
-    public function logoutUser(Request $request)
+    public function logoutUser(Request $request): void
     {
         $request->user()->currentAccessToken()->delete();
+    }
+
+    /**
+     * Getting all organizers
+     *
+     * @response {
+     *      "data": {
+     *          "id": 2,
+     *          "name": "radina",
+     *          "email": "dasda34e4d@dada.comh"
+     *      },
+     *      "status": 200
+     * }
+     *
+     * @return BasicUserResource|array
+     */
+    public function getOrganizers(): BasicUserResource|array
+    {
+        $usersResources = [];
+        $users = User::where('role', User::ROLE_ORGANISER)->get();
+        if (count($users) != 0) {
+            foreach ($users as $user) {
+                $usersResources = new BasicUserResource($user);
+            }
+        }
+
+        return $usersResources;
     }
 }

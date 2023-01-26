@@ -12,7 +12,8 @@ class BasicInfoEventResource extends ApiResource
             'name' => $this->resource->name,
             'start' => $this->resource->start_date,
             'end' => $this->resource->end_date,
-            'organizer' => $this->resource->organizer->name,
+            'organizerName' => $this->resource->organizer->name,
+            'organizerEmail' => $this->resource->organizer->email,
             'type' => $this->resource->type,
         ];
     }

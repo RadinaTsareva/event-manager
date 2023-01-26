@@ -5,12 +5,12 @@ export const ROLES = {
 }
 
 export const STATUS = {
-    PENDING: 'Pending',
-    ACCEPTED: 'Accepted',
-    REJECTED: 'Rejected',
-    EDITABLE: 'Editable',
-    EDIT_PENDING: 'Edit Pending',
-    FINISHED: 'Finished',
+    PENDING: 'pending',
+    ACCEPTED: 'accepted',
+    REJECTED: 'rejected',
+    EDITABLE: 'editable',
+    EDIT_PENDING: 'edit_pending',
+    FINISHED: 'finished',
 }
 
 export const RESPONSE_STATUS = {

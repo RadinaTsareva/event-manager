@@ -41,7 +41,7 @@ const personalEvents = [{
     foodDetails: 'Food details 3',
     priceForAccommodation: 300,
     accommodationDetails: 'Accommodation details 3',
-    accommodationContact: '+380000000000', // TODO discuss this
+    accommodationContact: '+380000000000',
 }]
 
 const allEvents = [{
@@ -68,9 +68,9 @@ class EventsService {
         // return RequestAPI.get('/events/organizers') -> ready from Radi
     }
 
-    static getFoodTypes = async (organizer, eventType) => {
+    static getFoodTypes = async (organizer, eventType, isCatering) => {
         return ['Food type 1', 'Food type 2', 'Food type 3']
-        // return RequestAPI.get(`/events/${eventType}/foodTypes`) -> ready from Radi
+        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> ready from Radi
     }
 
     static getPersonal = async (month) => {
@@ -82,23 +82,23 @@ class EventsService {
     static getAll = async (month) => {
         return allEvents
         // only finished events
-        // return RequestAPI.get('/events') //TODO does this need Auth?
+        // return RequestAPI.get('/events') -> ready from Radi
     }
 
     static getById = async (id) => {
         return personalEvents.filter(event => event.id === +id)[0]
-        // return RequestAPI.get(`/events/${id}`) -> ready from Radi (it is for logged in users)
+        // return RequestAPI.get(`/events/${id}`) -> ready from Radi
     }
 
     static accept = async (id) => {
-        // return RequestAPI.post(`/events/${id}/accept`)
+        // return RequestAPI.post(`/events/${id}/accept`) -> ready from Radi
     }
 
     static reject = async (id) => {
-        // return RequestAPI.post(`/events/${id}/reject`)
+        // return RequestAPI.post(`/events/${id}/reject`) -> ready from Radi
     }
 
-    static send = async (id, data) => {
+    static send = async (id, data) => { //this is for the whole data
         console.log('[SEND] data', data)
         // return RequestAPI.post('/events', data)
     }

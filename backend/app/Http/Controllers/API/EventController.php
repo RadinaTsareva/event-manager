@@ -7,13 +7,14 @@ use App\Http\Resources\Api\BasicInfoEventResource;
 use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\EventResource;
 use App\Models\Event;
-use App\Models\User;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
 class EventController extends Controller
 {
     /**
      * Getting all event's types
+     *
      * @response ["wedding","party"]
      *
      * @return array
@@ -24,18 +25,9 @@ class EventController extends Controller
     }
 
     /**
-     * Getting all organizers
-     *
-     * @response ["radina"]
-     * @return array
-     */
-    public function getOrganizers(): array
-    {
-        return User::where('role', User::ROLE_ORGANISER)->pluck('name')->toArray();
-    }
-
-    /**
      * Getting food types for event type
+     *
+     * @param Request $request
      * @param string $eventType
      * @return ErrorResponse|array
      *
@@ -44,12 +36,12 @@ class EventController extends Controller
      *      "success":false,
      *      "messages":["Wrong event type"]
      * }
-     *
      */
-    public function getFoodTypesForEventType(string $eventType): ErrorResponse|array
+    public function getFoodTypesForEventType(Request $request, string $eventType): ErrorResponse|array
     {
+        //TODO do something with isCatering
         if (in_array($eventType, Event::TYPES)) {
-            return Event::FOOD_TYPE[$eventType];
+            return Event::FOOD_TYPES[$eventType];
         }
 
         return new ErrorResponse((array)'Wrong event type');
@@ -66,7 +58,8 @@ class EventController extends Controller
      *      "name": "event 1",
      *      "start": null,
      *      "end": null,
-     *      "organizer": "radina",
+     *      "organizerName": "radina",
+     *      "organizerEmail": "radina@gmail.com",
      *      "type": "wedding",
      *      "moreInfo": null,
      *      "description": null,
@@ -77,7 +70,8 @@ class EventController extends Controller
      *      "foodDetails": null,
      *      "priceForAccommodation": null,
      *      "accommodationDetails": null,
-     *      "accommodationContact": null
+     *      "accommodationContact": null,
+     *      "hasGivenFeedback": false
      *   }
      * ]
      * @return array
@@ -103,6 +97,7 @@ class EventController extends Controller
 
     /**
      * Getting all finished events
+     *
      * @unauthenticated
      *
      * @response
@@ -113,7 +108,8 @@ class EventController extends Controller
      *      "name": "event 1",
      *      "start": null,
      *      "end": null,
-     *      "organizer": "radina",
+     *      "organizerName": "radina",
+     *      "organizerEmail": "radina@gmail.com",
      *      "type": "wedding"
      *   }
      * ]
@@ -143,7 +139,8 @@ class EventController extends Controller
      *      "name": "radi",
      *      "start": null,
      *      "end": null,
-     *      "organizer": "radina",
+     *      "organizerName": "radina",
+     *      "organizerEmail": "radina@gmail.com",
      *      "type": "wedding",
      *      "moreInfo": null,
      *      "description": null,
@@ -154,7 +151,8 @@ class EventController extends Controller
      *      "foodDetails": null,
      *      "priceForAccommodation": null,
      *      "accommodationDetails": null,
-     *      "accommodationContact": null
+     *      "accommodationContact": null,
+     *      "hasGivenFeedback": false
      *    },
      *   "status": 200
      * }
@@ -171,7 +169,7 @@ class EventController extends Controller
      * {
      *      "success": false,
      *      "messages": [
-     *          "This event does not belong to the current user."
+     *          "This event is private"
      *      ]
      * }
      *
@@ -181,17 +179,65 @@ class EventController extends Controller
      */
     public function getPersonalEvent(int $id): ErrorResponse|EventResource
     {
-        $user = Auth::user();
         $event = Event::find($id);
+        $user = Auth::user();
 
         if (!$event) {
             return new ErrorResponse((array)'Missing event');
         }
 
-        if (!($event->client_id == $user->id || $event->organizer_id == $user->id)) {
-            return new ErrorResponse((array)'This event does not belong to the current user.');
+        if (!$event->is_public) {
+            if (!($event->client_id == $user->id || $event->organizer_id == $user->id)) {
+                return new ErrorResponse((array)'This event is private');
+            }
         }
 
         return new EventResource($event);
+    }
+
+    /**
+     * Accepting event
+     *
+     * @response 403 {
+     *      "success":false,
+     *      "messages":["Non existing event"]
+     * }
+     *
+     * @param int $id
+     * @return ErrorResponse|void
+     */
+    public function acceptEvent(int $id)
+    {
+        //TODO add more checks
+        $event = Event::find($id);
+        if ($event) {
+            $event->status = Event::EVENT_STATUS_ACCEPTED;
+            $event->update();
+        } else {
+            return new ErrorResponse((array)'Non existing event');
+        }
+    }
+
+    /**
+     * Rejecting event
+     *
+     * @response 403 {
+     *      "success":false,
+     *      "messages":["Non existing event"]
+     * }
+     *
+     * @param int $id
+     * @return ErrorResponse|void
+     */
+    public function rejectEvent(int $id)
+    {
+        //TODO add more checks
+        $event = Event::find($id);
+        if ($event) {
+            $event->status = Event::EVENT_STATUS_REJECTED;
+            $event->update();
+        } else {
+            return new ErrorResponse((array)'Non existing event');
+        }
     }
 }

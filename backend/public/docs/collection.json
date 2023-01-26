@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "b6e3054b-7d87-4416-b193-edbe40b453f0",
+        "_postman_id": "59412391-e6f3-4acc-a1db-3c77ae5c61ef",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"qui\",\"new_password\":\"at\"}"
+                            "raw": "{\"current_password\":\"corporis\",\"new_password\":\"nulla\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"nihil\",\"gender\":\"male\",\"email\":\"elinor32@example.org\",\"role\":\"organizer\",\"address\":\"nisi\",\"phone_number\":\"et\"}"
+                            "raw": "{\"name\":\"consequatur\",\"gender\":\"none\",\"email\":\"uebert@example.org\",\"role\":\"organizer\",\"address\":\"est\",\"phone_number\":\"ex\"}"
                         },
                         "description": ""
                     },
@@ -217,7 +217,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\"radina\"]",
+                            "body": "{\n     \"data\": {\n         \"id\": 2,\n         \"name\": \"radina\",\n         \"email\": \"dasda34e4d@dada.comh\"\n     },\n     \"status\": 200\n}",
                             "name": ""
                         }
                     ]
@@ -295,7 +295,87 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n   {\n     \"id\": 1,\n     \"status\": \"requested-actions\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null\n  }\n]",
+                            "body": "[\n   {\n     \"id\": 1,\n     \"status\": \"requested-actions\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"hasGivenFeedback\": false\n  }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Accepting event",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id\/accept",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id\/accept",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\":false,\n     \"messages\":[\"Non existing event\"]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Rejecting event",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id\/reject",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id\/reject",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\":false,\n     \"messages\":[\"Non existing event\"]\n}",
                             "name": ""
                         }
                     ]
@@ -335,7 +415,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"data\": {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null\n   },\n  \"status\": 200\n}",
+                            "body": "{\n \"data\": {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"hasGivenFeedback\": false\n   },\n  \"status\": 200\n}",
                             "name": ""
                         },
                         {
@@ -347,7 +427,7 @@
                         {
                             "header": [],
                             "code": 403,
-                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"This event does not belong to the current user.\"\n     ]\n}",
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"This event is private\"\n     ]\n}",
                             "name": ""
                         }
                     ]
@@ -382,7 +462,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n  {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\"\n  }\n]",
+                            "body": "[\n  {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"type\": \"wedding\"\n  }\n]",
                             "name": ""
                         }
                     ]
@@ -409,7 +489,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"cremin.jarod@example.net\",\"password\":\"voluptas\"}"
+                            "raw": "{\"email\":\"kkunze@example.com\",\"password\":\"cupiditate\"}"
                         },
                         "description": "",
                         "auth": {
@@ -453,7 +533,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"omnis\",\"gender\":\"male\",\"email\":\"kenyon.stracke@example.com\",\"role\":\"client\",\"password\":\"laudantium\",\"phone_number\":\"sapiente\",\"address\":\"et\"}"
+                            "raw": "{\"name\":\"et\",\"gender\":\"male\",\"email\":\"qruecker@example.net\",\"role\":\"admin\",\"password\":\"quo\",\"phone_number\":\"corrupti\",\"address\":\"sed\"}"
                         },
                         "description": "",
                         "auth": {
