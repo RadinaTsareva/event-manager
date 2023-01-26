@@ -5,13 +5,14 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\BelongsTo;
-use Illuminate\Database\Eloquent\Relations\HasOne;
 
 
 /**
- * @property string $name
  * @property int $event_id
- * @property string $link
+ * @property float $rating_for_client
+ * @property string $feedback_for_client
+ * @property float $rating_for_organiser
+ * @property string $feedback_for_organiser
  */
 class RatingAndFeedback extends Model
 {

@@ -9,17 +9,18 @@ use App\Http\Requests\API\UserLoginRequest;
 use App\Http\Requests\API\UserUpdateRequest;
 use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\SuccessResource;
+use App\Http\Resources\Api\User\BasicUserResource;
 use App\Http\Resources\Api\User\UserResource;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 
-class AuthController extends Controller
+class UserController extends Controller
 {
     /**
-     * @unauthenticated
      * Log in the user
+     * @unauthenticated
      *
      * @response {
      *  "access_token": "eyJ0eXA...",
@@ -83,7 +84,9 @@ class AuthController extends Controller
                     'email' => $request->email,
                     'password' => Hash::make($request->password),
                     'gender' => $request->gender,
-                    'role' => $request->role
+                    'role' => $request->role,
+                    'phone_number' => $request->phone_number,
+                    'address' => $request->address,
                 ]
             );
 
@@ -150,7 +153,9 @@ class AuthController extends Controller
                     'gender' => $request->gender ?? $user->gender,
                     'name' => $request->name ?? $user->name,
                     'email' => $request->email ?? $user->email,
-                    'role' => $request->role ?? $user->role //not sure of that should be changeable
+                    'role' => $request->role ?? $user->role, //not sure of that should be changeable
+                    'phone_number' => $request->phone_number ?? $user->phone_number,
+                    'address' => $request->address ?? $user->address,
                 ]
             );
 
@@ -170,7 +175,9 @@ class AuthController extends Controller
      *      "email": "dasdar44d@dada.com",
      *      "gender": "none",
      *      "blocked": 0,
-     *      "role": "client"
+     *      "role": "client",
+     *      "address": "Address 1",
+     *      "phone-number" : "08990889011"
      *   },
      *   "status": 200
      * }
@@ -186,8 +193,35 @@ class AuthController extends Controller
      * @param Request $request
      * @return void
      */
-    public function logoutUser(Request $request)
+    public function logoutUser(Request $request): void
     {
         $request->user()->currentAccessToken()->delete();
+    }
+
+    /**
+     * Getting all organizers
+     *
+     * @response {
+     *      "data": {
+     *          "id": 2,
+     *          "name": "radina",
+     *          "email": "dasda34e4d@dada.comh"
+     *      },
+     *      "status": 200
+     * }
+     *
+     * @return BasicUserResource|array
+     */
+    public function getOrganizers(): BasicUserResource|array
+    {
+        $usersResources = [];
+        $users = User::where('role', User::ROLE_ORGANISER)->get();
+        if (count($users) != 0) {
+            foreach ($users as $user) {
+                $usersResources = new BasicUserResource($user);
+            }
+        }
+
+        return $usersResources;
     }
 }

@@ -13,6 +13,8 @@ use Illuminate\Validation\Rules\Password;
  * @property mixed $name
  * @property mixed $role
  * @property mixed $gender
+ * @property mixed $phone_number
+ * @property mixed $address
  *
  **/
 class UserCreateRequest extends FormRequest
@@ -30,6 +32,8 @@ class UserCreateRequest extends FormRequest
             'email' => ['required', 'email', 'unique:users,email'],
             'role' => ['required', 'string', Rule::in(User::ROLES)],
             'password' => ['required', 'confirmed', Password::defaults()],
+            'phone_number' => ['required', 'string'],
+            'address' => ['required', 'string'],
         ];
     }
 }

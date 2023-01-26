@@ -4,7 +4,7 @@ namespace App\Http\Resources\Api\User;
 
 use App\Http\Resources\Api\ApiResource;
 
-class UserResource extends ApiResource
+class BasicUserResource extends ApiResource
 {
     public function toArray($request): array
     {
@@ -12,11 +12,6 @@ class UserResource extends ApiResource
             'id' => $this->resource->id,
             'name' => $this->resource->name,
             'email' => $this->resource->email,
-            'gender' => $this->resource->gender,
-            'blocked' => $this->resource->blocked,
-            'role' => $this->resource->role,
-            'address' => $this->resource->address,
-            'phone-number' => $this->resource->phone_number,
         ];
     }
 }
