@@ -49,7 +49,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 5D6k4h31c8bgPVZfe6avdaE'
+      - 'Bearer dv3fckZ8DbeVaa65g4h6E1P'
     controller: null
     method: null
     route: null
@@ -83,7 +83,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer e1aa8vVfbdZ466gkPEDh3c5'
+      - 'Bearer EV36Dhfdekac6b4a8PZ15vg'
     controller: null
     method: null
     route: null
@@ -114,14 +114,14 @@ endpoints:
         name: current_password
         description: ''
         required: true
-        example: id
+        example: qui
         type: string
         custom: []
       new_password:
         name: new_password
         description: ''
         required: true
-        example: perspiciatis
+        example: at
         type: string
         custom: []
       new_confirm_password:
@@ -132,8 +132,8 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      current_password: id
-      new_password: perspiciatis
+      current_password: qui
+      new_password: at
     fileParameters: []
     responses:
       -
@@ -164,7 +164,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer gDaPhb8d6aVvckEf45Z3e16'
+      - 'Bearer 85VDE4dbZ6vg16Phaa3cfek'
     controller: null
     method: null
     route: null
@@ -195,7 +195,7 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: rerum
+        example: nihil
         type: string
         custom: []
       gender:
@@ -209,37 +209,37 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: dante.bradtke@example.net
+        example: elinor32@example.org
         type: string
         custom: []
       role:
         name: role
         description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
         required: false
-        example: admin
+        example: organizer
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: false
-        example: occaecati
+        example: nisi
         type: string
         custom: []
       phone_number:
         name: phone_number
         description: ''
         required: false
-        example: aut
+        example: et
         type: string
         custom: []
     cleanBodyParameters:
-      name: rerum
+      name: nihil
       gender: male
-      email: dante.bradtke@example.net
-      role: admin
-      address: occaecati
-      phone_number: aut
+      email: elinor32@example.org
+      role: organizer
+      address: nisi
+      phone_number: et
     fileParameters: []
     responses:
       -
@@ -270,7 +270,347 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer gaZ1dabhDfcEk6568v3Ve4P'
+      - 'Bearer a3hgDabv5kec8Ef6P1Z4d6V'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/events/types
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: "Getting all event's types"
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '["wedding","party"]'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer V8v3dbDZ6gfP1akehE5c46a'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/events/organizers
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all organizers'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '["radina"]'
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer ceVv64hfdE6815aZbaDPk3g'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/events/{eventType}/foodTypes'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting food types for event type'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      eventType:
+        name: eventType
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      eventType: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: '["sea-food","sweets"]'
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success":false,
+               "messages":["Wrong event type"]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer va6V1Pkf4hgZec8d3a6E5Db'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/events/personal
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all events that are not finished for user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+             {
+               "id": 1,
+               "status": "requested-actions",
+               "name": "event 1",
+               "start": null,
+               "end": null,
+               "organizer": "radina",
+               "type": "wedding",
+               "moreInfo": null,
+               "description": null,
+               "accommodationNeeded": 1,
+               "place": null,
+               "pricePerGuest": null,
+               "priceForFood": null,
+               "foodDetails": null,
+               "priceForAccommodation": null,
+               "accommodationDetails": null,
+               "accommodationContact": null
+            }
+          ]
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 1fd3gEDbV4Pa6e5Zhak6v8c'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/events/{id}'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting event by id'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the event.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          {
+           "data": {
+               "id": 1,
+               "status": "finished",
+               "name": "radi",
+               "start": null,
+               "end": null,
+               "organizer": "radina",
+               "type": "wedding",
+               "moreInfo": null,
+               "description": null,
+               "accommodationNeeded": 1,
+               "place": null,
+               "pricePerGuest": null,
+               "priceForFood": null,
+               "foodDetails": null,
+               "priceForAccommodation": null,
+               "accommodationDetails": null,
+               "accommodationContact": null
+             },
+            "status": 200
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "Missing event"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "This event does not belong to the current user."
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6EbhP4de61kc853VfDavaZg'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/events
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all finished events'
+      description: ''
+      authenticated: false
+      custom: []
+    headers:
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+            {
+               "id": 1,
+               "status": "finished",
+               "name": "event 1",
+               "start": null,
+               "end": null,
+               "organizer": "radina",
+               "type": "wedding"
+            }
+          ]
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth: []
     controller: null
     method: null
     route: null
@@ -284,7 +624,7 @@ endpoints:
       groupDescription: ''
       subgroup: ''
       subgroupDescription: ''
-      title: ''
+      title: 'Log in the user'
       description: ''
       authenticated: false
       custom: []
@@ -300,19 +640,19 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: spinka.zoey@example.org
+        example: cremin.jarod@example.net
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: dolorem
+        example: voluptas
         type: string
         custom: []
     cleanBodyParameters:
-      email: spinka.zoey@example.org
-      password: dolorem
+      email: cremin.jarod@example.net
+      password: voluptas
     fileParameters: []
     responses:
       -
@@ -370,7 +710,7 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: eaque
+        example: omnis
         type: string
         custom: []
       gender:
@@ -384,45 +724,45 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: harber.marvin@example.net
+        example: kenyon.stracke@example.com
         type: string
         custom: []
       role:
         name: role
         description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
         required: true
-        example: admin
+        example: client
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: assumenda
+        example: laudantium
         type: string
         custom: []
       phone_number:
         name: phone_number
         description: ''
         required: true
-        example: qui
+        example: sapiente
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: repellendus
+        example: et
         type: string
         custom: []
     cleanBodyParameters:
-      name: eaque
+      name: omnis
       gender: male
-      email: harber.marvin@example.net
-      role: admin
-      password: assumenda
-      phone_number: qui
-      address: repellendus
+      email: kenyon.stracke@example.com
+      role: client
+      password: laudantium
+      phone_number: sapiente
+      address: et
     fileParameters: []
     responses:
       -

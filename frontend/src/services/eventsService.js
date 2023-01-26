@@ -2,6 +2,7 @@ import { STATUS } from "../utils/enums";
 import { RequestAPI } from "./baseApi";
 
 const personalEvents = [{
+    //radi => this is the format i did (below)
     id: 1,
     status: STATUS.EDITABLE,
     name: 'Event 1',
@@ -40,7 +41,7 @@ const personalEvents = [{
     foodDetails: 'Food details 3',
     priceForAccommodation: 300,
     accommodationDetails: 'Accommodation details 3',
-    accommodationContact: '+380000000000',
+    accommodationContact: '+380000000000', // TODO discuss this
 }]
 
 const allEvents = [{
@@ -53,39 +54,40 @@ const allEvents = [{
         firstName: 'John',
         lastName: 'Doe'
     }
+    //TODO I added type also in the BE
 }]
 
 class EventsService {
     static getTypes = async (organizer) => {
         return ['Type 1', 'Type 2', 'Type 3']
-        // return RequestAPI.get('/events/types')
+        // return RequestAPI.get('/events/types') -> ready from Radi
     }
 
     static getOrganizers = async () => {
         return ['Organizer 1', 'Organizer 2', 'Organizer 3']
-        // return RequestAPI.get('/events/organizers')
+        // return RequestAPI.get('/events/organizers') -> ready from Radi
     }
 
     static getFoodTypes = async (organizer, eventType) => {
         return ['Food type 1', 'Food type 2', 'Food type 3']
-        // return RequestAPI.get(`/events/${eventType}/foodTypes`)
+        // return RequestAPI.get(`/events/${eventType}/foodTypes`) -> ready from Radi
     }
 
     static getPersonal = async (month) => {
         return personalEvents
         // only not finished events
-        // return RequestAPI.get('/events/personal')
+        // return RequestAPI.get('/events/personal') -> ready from Radi
     }
 
     static getAll = async (month) => {
         return allEvents
         // only finished events
-        // return RequestAPI.get('/events')
+        // return RequestAPI.get('/events') //TODO does this need Auth?
     }
 
     static getById = async (id) => {
         return personalEvents.filter(event => event.id === +id)[0]
-        // return RequestAPI.get(`/events/${id}`)
+        // return RequestAPI.get(`/events/${id}`) -> ready from Radi (it is for logged in users)
     }
 
     static accept = async (id) => {

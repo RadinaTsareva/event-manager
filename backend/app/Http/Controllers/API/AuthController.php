@@ -18,8 +18,8 @@ use Illuminate\Support\Facades\Hash;
 class AuthController extends Controller
 {
     /**
-     * @unauthenticated
      * Log in the user
+     * @unauthenticated
      *
      * @response {
      *  "access_token": "eyJ0eXA...",

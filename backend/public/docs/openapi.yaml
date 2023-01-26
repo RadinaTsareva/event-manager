@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: id
+                  example: qui
                 new_password:
                   type: string
                   description: ''
-                  example: perspiciatis
+                  example: at
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,7 +287,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: rerum
+                  example: nihil
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -295,23 +295,415 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: dante.bradtke@example.net
+                  example: elinor32@example.org
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: admin
+                  example: organizer
                 address:
                   type: string
                   description: ''
-                  example: occaecati
+                  example: nisi
                 phone_number:
                   type: string
                   description: ''
-                  example: aut
+                  example: et
+  /api/events/types:
+    get:
+      summary: "Getting all event's types"
+      operationId: gettingAllEventsTypes
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - wedding
+                  - party
+      tags:
+        - Endpoints
+  /api/events/organizers:
+    get:
+      summary: 'Getting all organizers'
+      operationId: gettingAllOrganizers
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - radina
+      tags:
+        - Endpoints
+  '/api/events/{eventType}/foodTypes':
+    get:
+      summary: 'Getting food types for event type'
+      operationId: gettingFoodTypesForEventType
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - sea-food
+                  - sweets
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'Wrong event type'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'Wrong event type'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: eventType
+        description: ''
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/events/personal:
+    get:
+      summary: 'Getting all events that are not finished for user'
+      operationId: gettingAllEventsThatAreNotFinishedForUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    status: requested-actions
+                    name: 'event 1'
+                    start: null
+                    end: null
+                    organizer: radina
+                    type: wedding
+                    moreInfo: null
+                    description: null
+                    accommodationNeeded: 1
+                    place: null
+                    pricePerGuest: null
+                    priceForFood: null
+                    foodDetails: null
+                    priceForAccommodation: null
+                    accommodationDetails: null
+                    accommodationContact: null
+      tags:
+        - Endpoints
+  '/api/events/{id}':
+    get:
+      summary: 'Getting event by id'
+      operationId: gettingEventById
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data:
+                    id: 1
+                    status: finished
+                    name: radi
+                    start: null
+                    end: null
+                    organizer: radina
+                    type: wedding
+                    moreInfo: null
+                    description: null
+                    accommodationNeeded: 1
+                    place: null
+                    pricePerGuest: null
+                    priceForFood: null
+                    foodDetails: null
+                    priceForAccommodation: null
+                    accommodationDetails: null
+                    accommodationContact: null
+                  status: 200
+                properties:
+                  data:
+                    type: object
+                    properties:
+                      id:
+                        type: integer
+                        example: 1
+                      status:
+                        type: string
+                        example: finished
+                      name:
+                        type: string
+                        example: radi
+                      start:
+                        type: string
+                        example: null
+                      end:
+                        type: string
+                        example: null
+                      organizer:
+                        type: string
+                        example: radina
+                      type:
+                        type: string
+                        example: wedding
+                      moreInfo:
+                        type: string
+                        example: null
+                      description:
+                        type: string
+                        example: null
+                      accommodationNeeded:
+                        type: integer
+                        example: 1
+                      place:
+                        type: string
+                        example: null
+                      pricePerGuest:
+                        type: string
+                        example: null
+                      priceForFood:
+                        type: string
+                        example: null
+                      foodDetails:
+                        type: string
+                        example: null
+                      priceForAccommodation:
+                        type: string
+                        example: null
+                      accommodationDetails:
+                        type: string
+                        example: null
+                      accommodationContact:
+                        type: string
+                        example: null
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'This event does not belong to the current user.'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'This event does not belong to the current user.'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/events:
+    get:
+      summary: 'Getting all finished events'
+      operationId: gettingAllFinishedEvents
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    id: 1
+                    status: finished
+                    name: 'event 1'
+                    start: null
+                    end: null
+                    organizer: radina
+                    type: wedding
+      tags:
+        - Endpoints
+      security: []
   /api/auth/login:
     post:
-      summary: ''
-      operationId: postApiAuthLogin
+      summary: 'Log in the user'
+      operationId: logInTheUser
       description: ''
       parameters:
         -
@@ -372,11 +764,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: spinka.zoey@example.org
+                  example: cremin.jarod@example.net
                 password:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: voluptas
               required:
                 - email
                 - password
@@ -453,7 +845,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: eaque
+                  example: omnis
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -461,23 +853,23 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: harber.marvin@example.net
+                  example: kenyon.stracke@example.com
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: admin
+                  example: client
                 password:
                   type: string
                   description: ''
-                  example: assumenda
+                  example: laudantium
                 phone_number:
                   type: string
                   description: ''
-                  example: qui
+                  example: sapiente
                 address:
                   type: string
                   description: ''
-                  example: repellendus
+                  example: et
               required:
                 - name
                 - gender

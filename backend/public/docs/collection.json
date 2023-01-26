@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "e1dbf680-da86-46ef-8a3f-4d3c193ec67b",
+        "_postman_id": "b6e3054b-7d87-4416-b193-edbe40b453f0",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"id\",\"new_password\":\"perspiciatis\"}"
+                            "raw": "{\"current_password\":\"qui\",\"new_password\":\"at\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"rerum\",\"gender\":\"male\",\"email\":\"dante.bradtke@example.net\",\"role\":\"admin\",\"address\":\"occaecati\",\"phone_number\":\"aut\"}"
+                            "raw": "{\"name\":\"nihil\",\"gender\":\"male\",\"email\":\"elinor32@example.org\",\"role\":\"organizer\",\"address\":\"nisi\",\"phone_number\":\"et\"}"
                         },
                         "description": ""
                     },
@@ -159,7 +159,236 @@
                     ]
                 },
                 {
-                    "name": "POST api\/auth\/login",
+                    "name": "Getting all event's types",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/types"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\"wedding\",\"party\"]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all organizers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/organizers",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/organizers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\"radina\"]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting food types for event type",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:eventType\/foodTypes",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:eventType\/foodTypes",
+                            "variable": [
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\"sea-food\",\"sweets\"]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\":false,\n     \"messages\":[\"Wrong event type\"]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all events that are not finished for user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/personal",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/personal"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n   {\n     \"id\": 1,\n     \"status\": \"requested-actions\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null\n  }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting event by id",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n \"data\": {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null\n   },\n  \"status\": 200\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"Missing event\"\n     ]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"This event does not belong to the current user.\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all finished events",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": "",
+                        "auth": {
+                            "type": "noauth"
+                        }
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n  {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizer\": \"radina\",\n     \"type\": \"wedding\"\n  }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Log in the user",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
@@ -180,7 +409,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"spinka.zoey@example.org\",\"password\":\"dolorem\"}"
+                            "raw": "{\"email\":\"cremin.jarod@example.net\",\"password\":\"voluptas\"}"
                         },
                         "description": "",
                         "auth": {
@@ -224,7 +453,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"eaque\",\"gender\":\"male\",\"email\":\"harber.marvin@example.net\",\"role\":\"admin\",\"password\":\"assumenda\",\"phone_number\":\"qui\",\"address\":\"repellendus\"}"
+                            "raw": "{\"name\":\"omnis\",\"gender\":\"male\",\"email\":\"kenyon.stracke@example.com\",\"role\":\"client\",\"password\":\"laudantium\",\"phone_number\":\"sapiente\",\"address\":\"et\"}"
                         },
                         "description": "",
                         "auth": {
