@@ -1,5 +1,6 @@
 <?php
 
+use App\Http\Controllers\API\BlacklistController;
 use App\Http\Controllers\API\EventCommentController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\EventPictureController;
@@ -22,6 +23,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/auth/logout', [UserController::class, 'logoutUser']);
     Route::post('/auth/change-password', [UserController::class, 'changePassword']);
     Route::post('/auth/update-user', [UserController::class, 'updateUser']);
+    Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
     Route::get('/events/types', [EventController::class, 'getTypes']);
     Route::get('/events/organizers', [UserController::class, 'getOrganizers']);
@@ -39,6 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/events', [EventController::class, 'getAllEvents']);
 
-Route::post('/auth/login', [UserController::class, 'loginUser']);
-Route::post('/auth/register', [UserController::class, 'createUser']);
+Route::post('/auth/login', [UserController::class, 'loginUser']);//TODO rename
+Route::post('/auth/register', [UserController::class, 'createUser']);//TODO rename
 

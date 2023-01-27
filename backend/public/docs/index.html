@@ -83,6 +83,9 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-update-user">
                                 <a href="#endpoints-POSTapi-auth-update-user">Update user's info</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users--id--blacklist">
+                                <a href="#endpoints-POSTapi-users--id--blacklist">Blocking user</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-events-types">
                                 <a href="#endpoints-GETapi-events-types">Getting all event's types</a>
                             </li>
@@ -429,8 +432,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"current_password\": \"culpa\",
-    \"new_password\": \"eaque\"
+    \"current_password\": \"aut\",
+    \"new_password\": \"nihil\"
 }"
 </code></pre></div>
 
@@ -447,8 +450,8 @@ const headers = {
 };
 
 let body = {
-    "current_password": "culpa",
-    "new_password": "eaque"
+    "current_password": "aut",
+    "new_password": "nihil"
 };
 
 fetch(url, {
@@ -564,10 +567,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="current_password"                data-endpoint="POSTapi-auth-change-password"
-               value="culpa"
+               value="aut"
                data-component="body">
     <br>
-<p>Example: <code>culpa</code></p>
+<p>Example: <code>aut</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
@@ -575,10 +578,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="new_password"                data-endpoint="POSTapi-auth-change-password"
-               value="eaque"
+               value="nihil"
                data-component="body">
     <br>
-<p>Example: <code>eaque</code></p>
+<p>Example: <code>nihil</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_confirm_password</code></b>&nbsp;&nbsp;
@@ -612,12 +615,12 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"laboriosam\",
+    \"name\": \"officia\",
     \"gender\": \"none\",
-    \"email\": \"tjacobson@example.net\",
-    \"role\": \"admin\",
-    \"address\": \"in\",
-    \"phone_number\": \"dolores\"
+    \"email\": \"yjacobi@example.org\",
+    \"role\": \"client\",
+    \"address\": \"voluptatibus\",
+    \"phone_number\": \"nostrum\"
 }"
 </code></pre></div>
 
@@ -634,12 +637,12 @@ const headers = {
 };
 
 let body = {
-    "name": "laboriosam",
+    "name": "officia",
     "gender": "none",
-    "email": "tjacobson@example.net",
-    "role": "admin",
-    "address": "in",
-    "phone_number": "dolores"
+    "email": "yjacobi@example.org",
+    "role": "client",
+    "address": "voluptatibus",
+    "phone_number": "nostrum"
 };
 
 fetch(url, {
@@ -755,10 +758,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-auth-update-user"
-               value="laboriosam"
+               value="officia"
                data-component="body">
     <br>
-<p>Example: <code>laboriosam</code></p>
+<p>Example: <code>officia</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -777,10 +780,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-update-user"
-               value="tjacobson@example.net"
+               value="yjacobi@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>tjacobson@example.net</code></p>
+<p>Must be a valid email address. Example: <code>yjacobi@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -788,10 +791,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="role"                data-endpoint="POSTapi-auth-update-user"
-               value="admin"
+               value="client"
                data-component="body">
     <br>
-<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>admin</code></p>
+<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>client</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -799,10 +802,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="address"                data-endpoint="POSTapi-auth-update-user"
-               value="in"
+               value="voluptatibus"
                data-component="body">
     <br>
-<p>Example: <code>in</code></p>
+<p>Example: <code>voluptatibus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -810,12 +813,160 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTapi-auth-update-user"
-               value="dolores"
+               value="nostrum"
                data-component="body">
     <br>
-<p>Example: <code>dolores</code></p>
+<p>Example: <code>nostrum</code></p>
         </div>
         </form>
+
+                    <h2 id="endpoints-POSTapi-users--id--blacklist">Blocking user</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users--id--blacklist">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/users/1/blacklist" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json"</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/users/1/blacklist"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users--id--blacklist">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;status&quot;: 200
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;success&quot;: false,
+    &quot;messages&quot;: [
+        &quot;Non existing user&quot;
+    ]
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-users--id--blacklist" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users--id--blacklist"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users--id--blacklist" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users--id--blacklist" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users--id--blacklist"></code></pre>
+</span>
+<form id="form-POSTapi-users--id--blacklist" data-method="POST"
+      data-path="api/users/{id}/blacklist"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users--id--blacklist', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users--id--blacklist"
+                    onclick="tryItOut('POSTapi-users--id--blacklist');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users--id--blacklist"
+                    onclick="cancelTryOut('POSTapi-users--id--blacklist');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users--id--blacklist" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/{id}/blacklist</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-users--id--blacklist"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-users--id--blacklist"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-users--id--blacklist"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="POSTapi-users--id--blacklist"
+               value="1"
+               data-component="url">
+    <br>
+<p>The ID of the user. Example: <code>1</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-GETapi-events-types">Getting all event&#039;s types</h2>
 
@@ -2244,15 +2395,15 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"organizerId\": 17,
-    \"name\": \"est\",
-    \"start\": \"2011-06-11\",
-    \"end\": \"2060-12-23\",
-    \"type\": \"wedding\",
+    \"organizerId\": 5,
+    \"name\": \"facilis\",
+    \"start\": \"2018-05-02\",
+    \"end\": \"2115-09-26\",
+    \"type\": \"party\",
     \"isCatering\": true,
-    \"foodType\": \"iure\",
-    \"description\": \"Alias quas in dolorem voluptates et.\",
-    \"guestsCount\": 21,
+    \"foodType\": \"sint\",
+    \"description\": \"Eius laboriosam quo fuga beatae totam possimus.\",
+    \"guestsCount\": 80,
     \"accommodationNeeded\": true
 }"
 </code></pre></div>
@@ -2270,15 +2421,15 @@ const headers = {
 };
 
 let body = {
-    "organizerId": 17,
-    "name": "est",
-    "start": "2011-06-11",
-    "end": "2060-12-23",
-    "type": "wedding",
+    "organizerId": 5,
+    "name": "facilis",
+    "start": "2018-05-02",
+    "end": "2115-09-26",
+    "type": "party",
     "isCatering": true,
-    "foodType": "iure",
-    "description": "Alias quas in dolorem voluptates et.",
-    "guestsCount": 21,
+    "foodType": "sint",
+    "description": "Eius laboriosam quo fuga beatae totam possimus.",
+    "guestsCount": 80,
     "accommodationNeeded": true
 };
 
@@ -2395,10 +2546,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="organizerId"                data-endpoint="POSTapi-events-new"
-               value="17"
+               value="5"
                data-component="body">
     <br>
-<p>Example: <code>17</code></p>
+<p>Example: <code>5</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -2406,10 +2557,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-events-new"
-               value="est"
+               value="facilis"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>facilis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start</code></b>&nbsp;&nbsp;
@@ -2417,10 +2568,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="start"                data-endpoint="POSTapi-events-new"
-               value="2011-06-11"
+               value="2018-05-02"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date before or equal to <code>end</code>. Example: <code>2011-06-11</code></p>
+<p>Must be a valid date. Must be a date before or equal to <code>end</code>. Example: <code>2018-05-02</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end</code></b>&nbsp;&nbsp;
@@ -2428,10 +2579,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="end"                data-endpoint="POSTapi-events-new"
-               value="2060-12-23"
+               value="2115-09-26"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start</code>. Example: <code>2060-12-23</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start</code>. Example: <code>2115-09-26</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
@@ -2439,10 +2590,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="type"                data-endpoint="POSTapi-events-new"
-               value="wedding"
+               value="party"
                data-component="body">
     <br>
-<p>Must be one of <code>wedding</code> or <code>party</code>. Example: <code>wedding</code></p>
+<p>Must be one of <code>wedding</code> or <code>party</code>. Example: <code>party</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>isCatering</code></b>&nbsp;&nbsp;
@@ -2471,10 +2622,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="foodType"                data-endpoint="POSTapi-events-new"
-               value="iure"
+               value="sint"
                data-component="body">
     <br>
-<p>Example: <code>iure</code></p>
+<p>Example: <code>sint</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -2482,10 +2633,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="POSTapi-events-new"
-               value="Alias quas in dolorem voluptates et."
+               value="Eius laboriosam quo fuga beatae totam possimus."
                data-component="body">
     <br>
-<p>Example: <code>Alias quas in dolorem voluptates et.</code></p>
+<p>Example: <code>Eius laboriosam quo fuga beatae totam possimus.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>guestsCount</code></b>&nbsp;&nbsp;
@@ -2493,10 +2644,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="guestsCount"                data-endpoint="POSTapi-events-new"
-               value="21"
+               value="80"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>21</code></p>
+<p>Must be at least 1. Example: <code>80</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationNeeded</code></b>&nbsp;&nbsp;
@@ -2540,15 +2691,15 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"eventId\": 7,
-    \"place\": \"sed\",
-    \"placeWebsite\": \"et\",
-    \"placeGoogleMapsLink\": \"quod\",
-    \"pricePerGuest\": 20,
-    \"priceForFood\": 29,
-    \"priceForAccommodation\": 919.6599,
-    \"accommodationDetails\": \"vel\",
-    \"accommodationContact\": \"cumque\"
+    \"eventId\": 18,
+    \"place\": \"temporibus\",
+    \"placeWebsite\": \"reprehenderit\",
+    \"placeGoogleMapsLink\": \"unde\",
+    \"pricePerGuest\": 23,
+    \"priceForFood\": 17,
+    \"priceForAccommodation\": 7122523.038345425,
+    \"accommodationDetails\": \"vitae\",
+    \"accommodationContact\": \"quia\"
 }"
 </code></pre></div>
 
@@ -2565,15 +2716,15 @@ const headers = {
 };
 
 let body = {
-    "eventId": 7,
-    "place": "sed",
-    "placeWebsite": "et",
-    "placeGoogleMapsLink": "quod",
-    "pricePerGuest": 20,
-    "priceForFood": 29,
-    "priceForAccommodation": 919.6599,
-    "accommodationDetails": "vel",
-    "accommodationContact": "cumque"
+    "eventId": 18,
+    "place": "temporibus",
+    "placeWebsite": "reprehenderit",
+    "placeGoogleMapsLink": "unde",
+    "pricePerGuest": 23,
+    "priceForFood": 17,
+    "priceForAccommodation": 7122523.038345425,
+    "accommodationDetails": "vitae",
+    "accommodationContact": "quia"
 };
 
 fetch(url, {
@@ -2707,10 +2858,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="eventId"                data-endpoint="POSTapi-events--id-"
-               value="7"
+               value="18"
                data-component="body">
     <br>
-<p>Example: <code>7</code></p>
+<p>Example: <code>18</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>place</code></b>&nbsp;&nbsp;
@@ -2718,10 +2869,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="place"                data-endpoint="POSTapi-events--id-"
-               value="sed"
+               value="temporibus"
                data-component="body">
     <br>
-<p>Example: <code>sed</code></p>
+<p>Example: <code>temporibus</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>placeWebsite</code></b>&nbsp;&nbsp;
@@ -2729,10 +2880,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="placeWebsite"                data-endpoint="POSTapi-events--id-"
-               value="et"
+               value="reprehenderit"
                data-component="body">
     <br>
-<p>Example: <code>et</code></p>
+<p>Example: <code>reprehenderit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>placeGoogleMapsLink</code></b>&nbsp;&nbsp;
@@ -2740,10 +2891,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="placeGoogleMapsLink"                data-endpoint="POSTapi-events--id-"
-               value="quod"
+               value="unde"
                data-component="body">
     <br>
-<p>Example: <code>quod</code></p>
+<p>Example: <code>unde</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>pricePerGuest</code></b>&nbsp;&nbsp;
@@ -2751,10 +2902,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="pricePerGuest"                data-endpoint="POSTapi-events--id-"
-               value="20"
+               value="23"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>20</code></p>
+<p>Must be at least 1. Example: <code>23</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priceForFood</code></b>&nbsp;&nbsp;
@@ -2762,10 +2913,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="priceForFood"                data-endpoint="POSTapi-events--id-"
-               value="29"
+               value="17"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>29</code></p>
+<p>Must be at least 1. Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priceForAccommodation</code></b>&nbsp;&nbsp;
@@ -2773,10 +2924,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="priceForAccommodation"                data-endpoint="POSTapi-events--id-"
-               value="919.6599"
+               value="7122523.0383454"
                data-component="body">
     <br>
-<p>Example: <code>919.6599</code></p>
+<p>Example: <code>7122523.0383454</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationDetails</code></b>&nbsp;&nbsp;
@@ -2784,10 +2935,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="accommodationDetails"                data-endpoint="POSTapi-events--id-"
-               value="vel"
+               value="vitae"
                data-component="body">
     <br>
-<p>Example: <code>vel</code></p>
+<p>Example: <code>vitae</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationContact</code></b>&nbsp;&nbsp;
@@ -2795,10 +2946,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="accommodationContact"                data-endpoint="POSTapi-events--id-"
-               value="cumque"
+               value="quia"
                data-component="body">
     <br>
-<p>Example: <code>cumque</code></p>
+<p>Example: <code>quia</code></p>
         </div>
         </form>
 
@@ -2940,8 +3091,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"derick.hegmann@example.org\",
-    \"password\": \"illum\"
+    \"email\": \"anibal.grady@example.net\",
+    \"password\": \"quia\"
 }"
 </code></pre></div>
 
@@ -2957,8 +3108,8 @@ const headers = {
 };
 
 let body = {
-    "email": "derick.hegmann@example.org",
-    "password": "illum"
+    "email": "anibal.grady@example.net",
+    "password": "quia"
 };
 
 fetch(url, {
@@ -3063,10 +3214,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-login"
-               value="derick.hegmann@example.org"
+               value="anibal.grady@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>derick.hegmann@example.org</code></p>
+<p>Must be a valid email address. Example: <code>anibal.grady@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -3074,10 +3225,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-auth-login"
-               value="illum"
+               value="quia"
                data-component="body">
     <br>
-<p>Example: <code>illum</code></p>
+<p>Example: <code>quia</code></p>
         </div>
         </form>
 
@@ -3098,13 +3249,13 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"dolorum\",
-    \"gender\": \"male\",
-    \"email\": \"abernathy.retta@example.net\",
-    \"role\": \"client\",
-    \"password\": \"quia\",
-    \"phone_number\": \"est\",
-    \"address\": \"quia\"
+    \"name\": \"et\",
+    \"gender\": \"none\",
+    \"email\": \"daren64@example.net\",
+    \"role\": \"organizer\",
+    \"password\": \"facilis\",
+    \"phone_number\": \"consequatur\",
+    \"address\": \"nihil\"
 }"
 </code></pre></div>
 
@@ -3120,13 +3271,13 @@ const headers = {
 };
 
 let body = {
-    "name": "dolorum",
-    "gender": "male",
-    "email": "abernathy.retta@example.net",
-    "role": "client",
-    "password": "quia",
-    "phone_number": "est",
-    "address": "quia"
+    "name": "et",
+    "gender": "none",
+    "email": "daren64@example.net",
+    "role": "organizer",
+    "password": "facilis",
+    "phone_number": "consequatur",
+    "address": "nihil"
 };
 
 fetch(url, {
@@ -3234,10 +3385,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-auth-register"
-               value="dolorum"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>dolorum</code></p>
+<p>Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -3245,10 +3396,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-auth-register"
-               value="male"
+               value="none"
                data-component="body">
     <br>
-<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>male</code></p>
+<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>none</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -3256,10 +3407,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-auth-register"
-               value="abernathy.retta@example.net"
+               value="daren64@example.net"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>abernathy.retta@example.net</code></p>
+<p>Must be a valid email address. Example: <code>daren64@example.net</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -3267,10 +3418,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="role"                data-endpoint="POSTapi-auth-register"
-               value="client"
+               value="organizer"
                data-component="body">
     <br>
-<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>client</code></p>
+<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>organizer</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
@@ -3278,10 +3429,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="password"                data-endpoint="POSTapi-auth-register"
-               value="quia"
+               value="facilis"
                data-component="body">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>facilis</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
@@ -3289,10 +3440,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="phone_number"                data-endpoint="POSTapi-auth-register"
-               value="est"
+               value="consequatur"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>consequatur</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -3300,10 +3451,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="address"                data-endpoint="POSTapi-auth-register"
-               value="quia"
+               value="nihil"
                data-component="body">
     <br>
-<p>Example: <code>quia</code></p>
+<p>Example: <code>nihil</code></p>
         </div>
         </form>
 
