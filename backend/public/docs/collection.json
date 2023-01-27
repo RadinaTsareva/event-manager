@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "3b4c316a-71e2-446e-b44d-aeea72232e64",
+        "_postman_id": "d9f8875a-e2a2-464d-b54c-667f7477c4d1",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"consectetur\",\"new_password\":\"voluptatem\"}"
+                            "raw": "{\"current_password\":\"aperiam\",\"new_password\":\"soluta\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"aut\",\"gender\":\"none\",\"email\":\"karen.keeling@example.net\",\"role\":\"admin\",\"address\":\"omnis\",\"phone_number\":\"est\"}"
+                            "raw": "{\"name\":\"et\",\"gender\":\"male\",\"email\":\"deion27@example.net\",\"role\":\"client\",\"address\":\"sed\",\"phone_number\":\"sed\"}"
                         },
                         "description": ""
                     },
@@ -545,6 +545,47 @@
                     ]
                 },
                 {
+                    "name": "Creates an event with basic data from client",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/new",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/new"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"organizerId\":16,\"name\":\"ea\",\"start\":\"1999-01-15\",\"end\":\"2039-07-15\",\"type\":\"wedding\",\"isCatering\":true,\"foodType\":\"vitae\",\"description\":\"Repudiandae nisi itaque et unde porro molestiae eum.\",\"guestsCount\":21,\"accommodationNeeded\":true}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"The selected type is invalid.\",\n     \"errors\": {\n         \"type\": [\n             \"The selected type is invalid.\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "Getting all finished events",
                     "request": {
                         "url": {
@@ -601,7 +642,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"major58@example.net\",\"password\":\"provident\"}"
+                            "raw": "{\"email\":\"ebahringer@example.net\",\"password\":\"quibusdam\"}"
                         },
                         "description": "",
                         "auth": {
@@ -645,7 +686,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"possimus\",\"gender\":\"none\",\"email\":\"halvorson.ambrose@example.com\",\"role\":\"organizer\",\"password\":\"autem\",\"phone_number\":\"atque\",\"address\":\"cum\"}"
+                            "raw": "{\"name\":\"dignissimos\",\"gender\":\"none\",\"email\":\"buckridge.moses@example.net\",\"role\":\"organizer\",\"password\":\"dicta\",\"phone_number\":\"id\",\"address\":\"perferendis\"}"
                         },
                         "description": "",
                         "auth": {

@@ -33,6 +33,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/events/{id}', [EventController::class, 'getPersonalEvent']);
     Route::get('/events/{id}/comments', [EventCommentController::class, 'getEventComments']);
     Route::get('/events/{id}/pics', [EventPictureController::class, 'getEventPictures']);
+    Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
 });
 
 Route::get('/events', [EventController::class, 'getAllEvents']);

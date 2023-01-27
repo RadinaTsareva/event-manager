@@ -87,7 +87,6 @@ class Event extends Model
         self::EVENT_TYPE_PARTY,
     ];
     public const EVENT_STATUS_PENDING= 'pending';
-    public const EVENT_STATUS_WAITING_APPROVAL = 'waiting-approval';
     public const EVENT_STATUS_EDIT_PENDING = 'edit_pending';
     public const EVENT_STATUS_ACCEPTED = 'accepted';
     public const EVENT_STATUS_REJECTED = 'rejected';
@@ -98,7 +97,6 @@ class Event extends Model
         self::EVENT_STATUS_REJECTED,
         self::EVENT_STATUS_ACCEPTED,
         self::EVENT_STATUS_EDIT_PENDING,
-        self::EVENT_STATUS_WAITING_APPROVAL,
         self::EVENT_STATUS_PENDING,
         self::EVENT_STATUS_FINISHED,
         self::EVENT_STATUS_EDITABLE

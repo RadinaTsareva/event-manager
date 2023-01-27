@@ -3,10 +3,12 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\Event\BasicInfoEventResource;
+use App\Http\Requests\API\EventCreateFirstStageRequest;
 use App\Http\Resources\Api\ErrorResponse;
-use App\Http\Resources\Api\Event\PersonalEventResource;
+use App\Http\Resources\Api\Event\BasicInfoEventResource;
 use App\Http\Resources\Api\Event\EventResource;
+use App\Http\Resources\Api\Event\PersonalEventResource;
+use App\Http\Resources\Api\SuccessResource;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -279,5 +281,49 @@ class EventController extends Controller
         } else {
             return new ErrorResponse((array)'Non existing event');
         }
+    }
+
+    /**
+     * Creates an event with basic data from client
+     *
+     * @response
+     * {
+     *      "data": [],
+     *      "status": 200
+     * }
+     *
+     * @response 403
+     * {
+     *      "message": "The selected type is invalid.",
+     *      "errors": {
+     *          "type": [
+     *              "The selected type is invalid."
+     *          ]
+     *      }
+     * }
+     * @param EventCreateFirstStageRequest $request
+     * @return SuccessResource
+     */
+    public function saveFirstStageEvent(EventCreateFirstStageRequest $request): SuccessResource
+    {
+        $client = Auth::user();
+        Event::create(
+            array(
+                'name' => $request->name,
+                'client_id' => $client->id,
+                'organizer_id' => $request->organizerId,
+                'status' => Event::EVENT_STATUS_PENDING,
+                'type' => $request->type,
+                'has_catering' => $request->isCatering,
+                'food_type' => $request->foodType,
+                'description' => $request->description,
+                'number_of_people' => $request->guestsCount,
+                'needs_hotel' => $request->accommodationNeeded,
+                'start_date' => $request->start,
+                'end_date' => $request->end
+            )
+        );
+
+        return new SuccessResource([]);
     }
 }
