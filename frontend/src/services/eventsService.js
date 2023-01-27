@@ -18,7 +18,7 @@ const personalEvents = [{
     place: '',
     pricePerGuest: 0,
     priceForFood: 0,
-    foodDetails: '',
+    foodDetails: '', // TODO this is foodType in the BE or is catering ??
     priceForAccommodation: 0,
     accommodationDetails: '',
     accommodationContact: '',
@@ -165,7 +165,7 @@ class EventsService {
 
     static create = async (data) => {
         console.log('[CREATE] data', data)
-        // return RequestAPI.post('/events/new', data)
+        // return RequestAPI.post('/events/new', data) ->ready from Radi
     }
 
     static accept = async (id) => {
@@ -178,7 +178,7 @@ class EventsService {
 
     static send = async (id, data) => { //this is for the whole data
         console.log('[SEND] data', data)
-        // return RequestAPI.post('/events', data)
+        // return RequestAPI.post('/events', data) //TODO adding event_id in the data -> done in the BE
     }
 
     static update = async (id, data) => {

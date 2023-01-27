@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: aperiam
+                  example: culpa
                 new_password:
                   type: string
                   description: ''
-                  example: soluta
+                  example: eaque
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,27 +287,27 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: et
+                  example: laboriosam
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: male
+                  example: none
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: deion27@example.net
+                  example: tjacobson@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: client
+                  example: admin
                 address:
                   type: string
                   description: ''
-                  example: sed
+                  example: in
                 phone_number:
                   type: string
                   description: ''
-                  example: sed
+                  example: dolores
   /api/events/types:
     get:
       summary: "Getting all event's types"
@@ -831,6 +831,141 @@ paths:
                       type: string
       tags:
         - Endpoints
+    post:
+      summary: "Saves the event's data that the organizer is putting"
+      operationId: savesTheEventsDataThatTheOrganizerIsPutting
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  status: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'This field is required. (and 2 more errors)'
+                  errors:
+                    priceForAccommodation:
+                      - 'This field is required.'
+                    accommodationDetails:
+                      - 'This field is required.'
+                    accommodationContact:
+                      - 'This field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'This field is required. (and 2 more errors)'
+                  errors:
+                    type: object
+                    properties:
+                      priceForAccommodation:
+                        type: array
+                        example:
+                          - 'This field is required.'
+                        items:
+                          type: string
+                      accommodationDetails:
+                        type: array
+                        example:
+                          - 'This field is required.'
+                        items:
+                          type: string
+                      accommodationContact:
+                        type: array
+                        example:
+                          - 'This field is required.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                eventId:
+                  type: integer
+                  description: ''
+                  example: 7
+                place:
+                  type: string
+                  description: ''
+                  example: sed
+                placeWebsite:
+                  type: string
+                  description: ''
+                  example: et
+                placeGoogleMapsLink:
+                  type: string
+                  description: ''
+                  example: quod
+                pricePerGuest:
+                  type: number
+                  description: 'Must be at least 1.'
+                  example: 20
+                priceForFood:
+                  type: number
+                  description: 'Must be at least 1.'
+                  example: 29
+                priceForAccommodation:
+                  type: number
+                  description: ''
+                  example: 919.6599
+                accommodationDetails:
+                  type: string
+                  description: ''
+                  example: vel
+                accommodationContact:
+                  type: string
+                  description: ''
+                  example: cumque
+              required:
+                - eventId
+                - place
+                - placeWebsite
+                - placeGoogleMapsLink
+                - pricePerGuest
+                - priceForFood
     parameters:
       -
         in: path
@@ -1021,19 +1156,19 @@ paths:
                 organizerId:
                   type: integer
                   description: ''
-                  example: 16
+                  example: 17
                 name:
                   type: string
                   description: ''
-                  example: ea
+                  example: est
                 start:
                   type: string
                   description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
-                  example: '1999-01-15'
+                  example: '2011-06-11'
                 end:
                   type: string
                   description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
-                  example: '2039-07-15'
+                  example: '2060-12-23'
                 type:
                   type: string
                   description: 'Must be one of <code>wedding</code> or <code>party</code>.'
@@ -1045,11 +1180,11 @@ paths:
                 foodType:
                   type: string
                   description: ''
-                  example: vitae
+                  example: iure
                 description:
                   type: string
                   description: ''
-                  example: 'Repudiandae nisi itaque et unde porro molestiae eum.'
+                  example: 'Alias quas in dolorem voluptates et.'
                 guestsCount:
                   type: integer
                   description: 'Must be at least 1.'
@@ -1178,11 +1313,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: ebahringer@example.net
+                  example: derick.hegmann@example.org
                 password:
                   type: string
                   description: ''
-                  example: quibusdam
+                  example: illum
               required:
                 - email
                 - password
@@ -1259,31 +1394,31 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: dignissimos
+                  example: dolorum
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: none
+                  example: male
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: buckridge.moses@example.net
+                  example: abernathy.retta@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: organizer
+                  example: client
                 password:
                   type: string
                   description: ''
-                  example: dicta
+                  example: quia
                 phone_number:
                   type: string
                   description: ''
-                  example: id
+                  example: est
                 address:
                   type: string
                   description: ''
-                  example: perferendis
+                  example: quia
               required:
                 - name
                 - gender

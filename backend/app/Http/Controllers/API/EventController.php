@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\EventCreateFirstStageRequest;
+use App\Http\Requests\API\EventCreateSecondStageRequest;
 use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\Event\BasicInfoEventResource;
 use App\Http\Resources\Api\Event\EventResource;
@@ -323,6 +324,56 @@ class EventController extends Controller
                 'end_date' => $request->end
             )
         );
+
+        return new SuccessResource([]);
+    }
+
+    /**
+     * Saves the event's data that the organizer is putting
+     *
+     * @response
+     * {
+     *      "data": [],
+     *      "status": 200
+     * }
+     *
+     * @response 403
+     * {
+     *      "message": "This field is required. (and 2 more errors)",
+     *      "errors": {
+     *          "priceForAccommodation": [
+     *              "This field is required."
+     *          ],
+     *          "accommodationDetails": [
+     *              "This field is required."
+     *          ],
+     *          "accommodationContact": [
+     *              "This field is required."
+     *          ]
+     *      }
+     * }
+     * @param EventCreateSecondStageRequest $request
+     * @return ErrorResponse|SuccessResource
+     */
+    public function saveSecondStageEvent(EventCreateSecondStageRequest $request): ErrorResponse|SuccessResource
+    {
+        $event = Event::find($request->eventId);
+        if (!$event) {
+            return new ErrorResponse(['Non existing event']);
+        }
+
+        $event->price_per_person = $request->pricePerGuest;
+        $event->price_for_food = $request->priceForFood;
+        $event->place = $request->place;
+        $event->place_google_maps_link = $request->placeGoogleMapsLink;
+        $event->place_website_link = $request->placeWebsite;
+        if ($event->needs_hotel) {
+            $event->price_for_hotel = $request->priceForAccommodation ?? null;
+            $event->hotel_phone_number = $request->accommodationContact ?? null;
+            $event->hotel_details = $request->accommodationDetails ?? null;
+        }
+        $event->status = Event::EVENT_STATUS_EDITABLE;
+        $event->update();
 
         return new SuccessResource([]);
     }

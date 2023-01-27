@@ -46,14 +46,16 @@ const EditableForm = (props) => {
             }
         }
 
+        //needs also the placeGoogleMapsLink and placeWebsite
+        //needs eventId in the data
         await EventsService.send(props.event.id, {
             place,
-            start: dateFrom,
-            end: dateTo,
+            start: dateFrom, //those are set in the create
+            end: dateTo, //those are set in the create
             pricePerGuest,
             priceForFood,
-            foodDetails,
-            ...accommodationData
+            foodDetails, //no idea what that is, nothing like that in the DB
+            ...accommodationData //can be null depending if the event wants accommodation
         })
         toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
     }
