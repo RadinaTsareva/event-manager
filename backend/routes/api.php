@@ -1,6 +1,8 @@
 <?php
 
+use App\Http\Controllers\API\EventCommentController;
 use App\Http\Controllers\API\EventController;
+use App\Http\Controllers\API\EventPictureController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -25,9 +27,12 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/events/organizers', [UserController::class, 'getOrganizers']);
     Route::get('/events/{eventType}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
     Route::get('/events/personal', [EventController::class, 'getPersonalEvents']);
+    Route::get('/events/personal/all',[EventController::class, 'getAllPersonalEvents']);
     Route::post('/events/{id}/accept', [EventController::class, 'acceptEvent']);
     Route::post('/events/{id}/reject', [EventController::class, 'rejectEvent']);
     Route::get('/events/{id}', [EventController::class, 'getPersonalEvent']);
+    Route::get('/events/{id}/comments', [EventCommentController::class, 'getEventComments']);
+    Route::get('/events/{id}/pics', [EventPictureController::class, 'getEventPictures']);
 });
 
 Route::get('/events', [EventController::class, 'getAllEvents']);

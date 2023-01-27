@@ -1,7 +1,8 @@
 <?php
 
-namespace App\Http\Resources\Api;
+namespace App\Http\Resources\Api\Event;
 
+use App\Http\Resources\Api\ApiResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -17,6 +18,7 @@ class EventResource extends ApiResource
             'end' => $this->resource->end_date,
             'organizerName' => $this->resource->organizer->name,
             'organizerEmail' => $this->resource->organizer->email,
+            'organizerId' => $this->resource->organizer->id,
             'type' => $this->resource->type,
             'moreInfo' => $this->resource->more_info,
             'description' => $this->resource->description,
@@ -28,7 +30,9 @@ class EventResource extends ApiResource
             'priceForAccommodation' => $this->resource->price_for_hotel,
             'accommodationDetails' => $this->resource->hotel_details,
             'accommodationContact' => $this->resource->hotel_phone_number,
-            'hasGivenFeedback' => $this->checkForFeedback()
+            'accommodationWebsite' => $this->resource->hotel_website_link,
+            'hasGivenFeedback' => $this->checkForFeedback(),
+            'isPublic' => $this->resource->is_public
         ];
     }
 

@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\HasOne;
  * @property int $created_by_user_id
  * @property int $event_id
  * @property string $comment
+ * @method static where(string $string, int $id)
  */
 class EventComment extends Model
 {

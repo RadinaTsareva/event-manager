@@ -1,8 +1,10 @@
 <?php
 
-namespace App\Http\Resources\Api;
+namespace App\Http\Resources\Api\Event;
 
-class BasicInfoEventResource extends ApiResource
+use App\Http\Resources\Api\ApiResource;
+
+class PersonalEventResource extends ApiResource
 {
     public function toArray($request): array
     {
@@ -10,11 +12,8 @@ class BasicInfoEventResource extends ApiResource
             'id' => $this->resource->id,
             'status' => $this->resource->status,
             'name' => $this->resource->name,
-            'start' => $this->resource->start_date,
-            'end' => $this->resource->end_date,
-            'organizerName' => $this->resource->organizer->name,
             'organizerEmail' => $this->resource->organizer->email,
-            'type' => $this->resource->type,
+            'clientEmail' => $this->resource->client->email,
         ];
     }
 }

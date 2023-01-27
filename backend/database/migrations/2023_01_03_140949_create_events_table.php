@@ -19,7 +19,7 @@ return new class extends Migration
             $table->integer('organizer_id')->unsigned();
             $table->integer('client_id')->unsigned();
             $table->enum('status', ['pending', 'accepted', 'rejected', 'editable', 'edit_pending', 'finished']);
-            $table->string('is_public')->default(false);
+            $table->boolean('is_public')->default(false);
             $table->string('type');
             $table->integer('number_of_people');
             $table->boolean('has_catering');
@@ -38,6 +38,7 @@ return new class extends Migration
             $table->text('place_website_link')->nullable();
             $table->text('hotel_phone_number')->nullable();
             $table->text('hotel_details')->nullable();
+            $table->text('hotel_website_link')->nullable();
             $table->timestamps();
         });
     }

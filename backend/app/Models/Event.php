@@ -30,9 +30,11 @@ use Illuminate\Validation\Rules\Enum;
  * @property string $more_info
  * @property string $hotel_phone_number
  * @property string $hotel_details
+ * @property string $hotel_website_link
  * @property boolean $has_catering
  * @property boolean $is_public
  * @method static find(int $id)
+ * @method static where(string $string, string $EVENT_STATUS_FINISHED)
  */
 class Event extends Model
 {
@@ -66,7 +68,8 @@ class Event extends Model
         'has_catering',
         'is_public',
         'hotel_details',
-        'hotel_phone_number'
+        'hotel_phone_number',
+        'hotel_website_link'
     ];
 
     public const FOOD_TYPES = [
