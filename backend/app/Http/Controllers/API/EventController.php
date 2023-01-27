@@ -3,9 +3,10 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
-use App\Http\Resources\Api\BasicInfoEventResource;
+use App\Http\Resources\Api\Event\BasicInfoEventResource;
 use App\Http\Resources\Api\ErrorResponse;
-use App\Http\Resources\Api\EventResource;
+use App\Http\Resources\Api\Event\PersonalEventResource;
+use App\Http\Resources\Api\Event\EventResource;
 use App\Models\Event;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
@@ -60,6 +61,7 @@ class EventController extends Controller
      *      "end": null,
      *      "organizerName": "radina",
      *      "organizerEmail": "radina@gmail.com",
+     *      "organizerId": 1,
      *      "type": "wedding",
      *      "moreInfo": null,
      *      "description": null,
@@ -71,7 +73,9 @@ class EventController extends Controller
      *      "priceForAccommodation": null,
      *      "accommodationDetails": null,
      *      "accommodationContact": null,
+     *      "accommodationWebsite": null,
      *      "hasGivenFeedback": false
+     *      "isPublic": false
      *   }
      * ]
      * @return array
@@ -105,24 +109,57 @@ class EventController extends Controller
      *   {
      *      "id": 1,
      *      "status": "finished",
-     *      "name": "event 1",
+     *      "name": "1",
+     *      "type": "11",
+     *      "place": null,
+     *      "clientEmail": "client@gmail.com",
+     *      "isPublic": true,
      *      "start": null,
      *      "end": null,
      *      "organizerName": "radina",
-     *      "organizerEmail": "radina@gmail.com",
-     *      "type": "wedding"
+     *      "organizerEmail": "radina@gmail.com"
      *   }
      * ]
      * @return array
      */
     public function getAllEvents(): array
     {
-        $events = Event::where('status', Event::EVENT_STATUS_FINISHED)->get();
+        $events = Event::where('status', Event::EVENT_STATUS_FINISHED)->where('is_public', true)->get();
         $eventsResources = [];
 
         if (count($events) != 0) {
             foreach ($events as $event) {
                 $eventsResources[] = new BasicInfoEventResource($event);
+            }
+        }
+
+        return $eventsResources;
+    }
+
+    /**
+     * Getting all owned events
+     *
+     * @response
+     * [
+     *      {
+     *          "id": 1,
+     *          "status": "finished",
+     *          "name": "1",
+     *          "organizerEmail": "dasda34e4d@dada.comhee",
+     *          "clientEmail": "dasda34e4d@dada.comhee"
+     *      }
+     * ]
+     * @return array
+     */
+    public function getAllPersonalEvents(): array
+    {
+        $user = Auth::user();
+        $events = Event::where('client_id', $user->id)->orWhere('organizer_id', $user->id)->get();
+        $eventsResources = [];
+
+        if (count($events) != 0) {
+            foreach ($events as $event) {
+                $eventsResources[] = new PersonalEventResource($event);
             }
         }
 
@@ -141,6 +178,7 @@ class EventController extends Controller
      *      "end": null,
      *      "organizerName": "radina",
      *      "organizerEmail": "radina@gmail.com",
+     *      "organizerId": 1,
      *      "type": "wedding",
      *      "moreInfo": null,
      *      "description": null,
@@ -152,7 +190,9 @@ class EventController extends Controller
      *      "priceForAccommodation": null,
      *      "accommodationDetails": null,
      *      "accommodationContact": null,
-     *      "hasGivenFeedback": false
+     *      "accommodationWebsite": null,
+     *      "hasGivenFeedback": false,
+     *      "isPublic": false
      *    },
      *   "status": 200
      * }

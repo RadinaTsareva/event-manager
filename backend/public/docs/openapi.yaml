@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: corporis
+                  example: consectetur
                 new_password:
                   type: string
                   description: ''
-                  example: nulla
+                  example: voluptatem
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,7 +287,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: consequatur
+                  example: aut
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -295,19 +295,19 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: uebert@example.org
+                  example: karen.keeling@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: organizer
+                  example: admin
                 address:
                   type: string
                   description: ''
-                  example: est
+                  example: omnis
                 phone_number:
                   type: string
                   description: ''
-                  example: ex
+                  example: est
   /api/events/types:
     get:
       summary: "Getting all event's types"
@@ -508,6 +508,43 @@ paths:
         200:
           description: ''
           content:
+            text/plain:
+              schema:
+                type: string
+                example: "[\n   {\n     \"id\": 1,\n     \"status\": \"requested-actions\",\n     \"name\": \"event 1\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"organizerId\": 1,\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"accommodationWebsite\": null,\n     \"hasGivenFeedback\": false\n     \"isPublic\": false\n  }\n]"
+      tags:
+        - Endpoints
+  /api/events/personal/all:
+    get:
+      summary: 'Getting all owned events'
+      operationId: gettingAllOwnedEvents
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
             application/json:
               schema:
                 type: array
@@ -516,24 +553,10 @@ paths:
                 example:
                   -
                     id: 1
-                    status: requested-actions
-                    name: 'event 1'
-                    start: null
-                    end: null
-                    organizerName: radina
-                    organizerEmail: radina@gmail.com
-                    type: wedding
-                    moreInfo: null
-                    description: null
-                    accommodationNeeded: 1
-                    place: null
-                    pricePerGuest: null
-                    priceForFood: null
-                    foodDetails: null
-                    priceForAccommodation: null
-                    accommodationDetails: null
-                    accommodationContact: null
-                    hasGivenFeedback: false
+                    status: finished
+                    name: '1'
+                    organizerEmail: dasda34e4d@dada.comhee
+                    clientEmail: dasda34e4d@dada.comhee
       tags:
         - Endpoints
   '/api/events/{id}/accept':
@@ -697,6 +720,7 @@ paths:
                     end: null
                     organizerName: radina
                     organizerEmail: radina@gmail.com
+                    organizerId: 1
                     type: wedding
                     moreInfo: null
                     description: null
@@ -708,7 +732,9 @@ paths:
                     priceForAccommodation: null
                     accommodationDetails: null
                     accommodationContact: null
+                    accommodationWebsite: null
                     hasGivenFeedback: false
+                    isPublic: false
                   status: 200
                 properties:
                   data:
@@ -735,6 +761,9 @@ paths:
                       organizerEmail:
                         type: string
                         example: radina@gmail.com
+                      organizerId:
+                        type: integer
+                        example: 1
                       type:
                         type: string
                         example: wedding
@@ -768,7 +797,13 @@ paths:
                       accommodationContact:
                         type: string
                         example: null
+                      accommodationWebsite:
+                        type: string
+                        example: null
                       hasGivenFeedback:
+                        type: boolean
+                        example: false
+                      isPublic:
                         type: boolean
                         example: false
                   status:
@@ -794,6 +829,107 @@ paths:
                       - 'This event is private'
                     items:
                       type: string
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/events/{id}/comments':
+    get:
+      summary: 'Getting all comments for event'
+      operationId: gettingAllCommentsForEvent
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: object
+                example:
+                  -
+                    userId: 1
+                    userName: radina
+                    content: 'really good :D'
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the event.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  '/api/events/{id}/pics':
+    get:
+      summary: 'Getting all pics for event'
+      operationId: gettingAllPicsForEvent
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - 'https://picsum.photos/200/300'
       tags:
         - Endpoints
     parameters:
@@ -838,12 +974,15 @@ paths:
                   -
                     id: 1
                     status: finished
-                    name: 'event 1'
+                    name: '1'
+                    type: '11'
+                    place: null
+                    clientEmail: client@gmail.com
+                    isPublic: true
                     start: null
                     end: null
                     organizerName: radina
                     organizerEmail: radina@gmail.com
-                    type: wedding
       tags:
         - Endpoints
       security: []
@@ -911,11 +1050,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: kkunze@example.com
+                  example: major58@example.net
                 password:
                   type: string
                   description: ''
-                  example: cupiditate
+                  example: provident
               required:
                 - email
                 - password
@@ -992,31 +1131,31 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: et
+                  example: possimus
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: male
+                  example: none
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: qruecker@example.net
+                  example: halvorson.ambrose@example.com
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: admin
+                  example: organizer
                 password:
                   type: string
                   description: ''
-                  example: quo
+                  example: autem
                 phone_number:
                   type: string
                   description: ''
-                  example: corrupti
+                  example: atque
                 address:
                   type: string
                   description: ''
-                  example: sed
+                  example: cum
               required:
                 - name
                 - gender

@@ -2,7 +2,6 @@ import { STATUS } from "../utils/enums";
 import { RequestAPI } from "./baseApi";
 
 const personalEvents = [{
-    //radi => this is the format i did (below)
     id: 1,
     status: STATUS.EDITABLE,
     name: 'Event 1',
@@ -49,7 +48,7 @@ const personalEvents = [{
     accommodationDetails: 'Accommodation details 3',
     accommodationContact: '+380000000000',
     accommodationWebsite: 'https://www.google.com',
-    hasFeedback: false,
+    hasFeedback: false, // TODO change to hasGivenFeedback (i wrote it like that in the BE)
     isPublic: false,
 }]
 
@@ -124,7 +123,7 @@ const personalStatusEvents = [
 class EventsService {
     static getPics = async (id) => {
         return Array(10).fill('https://picsum.photos/200/300')
-        // return RequestAPI.get(`/events/${id}/pics`)
+        // return RequestAPI.get(`/events/${id}/pics`) -> ready from Radi
     }
 
     static getTypes = async (organizer) => {
@@ -156,7 +155,7 @@ class EventsService {
 
     static getAllPersonal = async () => {
         return personalStatusEvents
-        // return RequestAPI.get('/events/personal/all')
+        // return RequestAPI.get('/events/personal/all') -> ready from Radi
     }
 
     static getById = async (id) => {
@@ -194,7 +193,7 @@ class EventsService {
     static getCommentsByEventId = async (id) => {
         // sorted by date from newest to oldest
         return comments
-        // return RequestAPI.get(`/events/${id}/comments`)
+        // return RequestAPI.get(`/events/${id}/comments`) -> ready from radi (user id == created_by_id in the DB)
     }
 
     static sendFeedback = async (id, rating, feedback) => {
