@@ -164,6 +164,11 @@ class EventsService {
         // return RequestAPI.get(`/events/${id}`) -> ready from Radi (with auth)
     }
 
+    static create = async (data) => {
+        console.log('[CREATE] data', data)
+        // return RequestAPI.post('/events/new', data)
+    }
+
     static accept = async (id) => {
         // return RequestAPI.post(`/events/${id}/accept`) -> ready from Radi
     }
