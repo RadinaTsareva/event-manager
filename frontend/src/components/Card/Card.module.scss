@@ -1,0 +1,66 @@
+@import "../../sharedStyles/shared.module.scss";
+
+.Card {
+    width: 272.72px;
+    height: 300.7px;
+    background: $primary-color;
+    box-shadow: 3.27429px 3.27429px 13.0972px $secondary-color;
+    border-radius: 12.2786px;
+    overflow: hidden;
+    padding-bottom: 10px;
+
+    p {
+        display: inline-block;
+        margin-bottom: 0;
+    }
+
+    .Heading {
+        height: 44px;
+        display: flex;
+        align-items: center;
+        padding: 10px 15px;
+        color: white;
+        font-weight: 500;
+        font-size: 18px;
+        line-height: 24px;
+        letter-spacing: 0.0753134px;
+        border-bottom: 1px solid white;
+
+        p {
+            flex: 1;
+
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        svg {
+            margin-right: 10px;
+            color: white;
+        }
+    }
+
+    .Select {
+        padding: 5px 10px;
+    }
+
+    .Body {
+        background-color: white;
+        padding: 10px 15px;
+        height: calc(300.7px - 110px);
+        overflow-y: auto;
+
+        p {
+            white-space: pre-line;
+            font-size: 13px;
+            line-height: 15px;
+            letter-spacing: 0.125522px;
+            color: $tertiary-color;
+        }
+    }
+
+    .Icon {
+        width: 25px;
+        margin-right: 10px;
+    }
+}

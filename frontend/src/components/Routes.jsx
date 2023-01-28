@@ -7,14 +7,16 @@ import Sign from '../containers/Sign/Sign';
 import Spinner from './common/Spinner/Spinner';
 import Gallery from '../containers/Gallery/Gallery';
 import Home from '../containers/Home/Home';
-import { ROLES } from '../utils/enums';
+import { ADMIN_ROLE, ROLES } from '../utils/enums';
 import EventManagement from '../containers/EventManagement/EventManagement';
 import EventsStatus from '../containers/EventsStatus/EventsStatus';
+import Admin from '../containers/Admin/Admin';
 
 const RouteOptions = {
     GO_TO_HOME: 'GO_TO_HOME',
     GO_TO_HOME_CLIENT: 'GO_TO_HOME_CLIENT',
     GO_TO_HOME_ORGANIZER: 'GO_TO_HOME_ORGANIZER',
+    GO_TO_ADMIN: 'GO_TO_ADMIN',
 };
 
 const Router = (props) => {
@@ -37,7 +39,7 @@ const Router = (props) => {
             navigate(location.pathname)
         }
         // TODO
-        setAccount({ role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2], pendingEventsCount: 2 })
+        setAccount({ role: ADMIN_ROLE, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2], pendingEventsCount: 2 })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
@@ -47,6 +49,8 @@ const Router = (props) => {
                 return RouteOptions.GO_TO_HOME_CLIENT;
             case isLoggedIn && account?.role === ROLES.ORGANIZER:
                 return RouteOptions.GO_TO_HOME_ORGANIZER;
+            case isLoggedIn && account?.role === ADMIN_ROLE:
+                return RouteOptions.GO_TO_ADMIN;
             case !isLoggedIn:
                 return RouteOptions.GO_TO_HOME;
             default:
@@ -91,6 +95,15 @@ const Router = (props) => {
                             <Route path="/events/:id" exact element={<EventManagement />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
                             <Route path="/events/status" exact element={<EventsStatus />} />
+                            <Route path="*" element={<Navigate to='/' />} />
+                        </Routes>
+                    )
+                );
+            case RouteOptions.GO_TO_ADMIN:
+                return (
+                    (
+                        <Routes>
+                            <Route path="/" exact element={<Admin />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )

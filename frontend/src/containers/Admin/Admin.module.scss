@@ -1,0 +1,171 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Admin {
+    width: calc(100vw - 24px);
+    height: calc(100vh - 100px);
+
+    .Sidebar {
+        padding: 50px;
+        border-right: 1px solid $primary-color;
+
+        .Account {
+            height: 20%;
+            display: flex;
+            justify-content: flex-end;
+            align-items: flex-end;
+            flex-direction: column;
+
+            h1 {
+                color: $muted-color;
+                font-size: 16.28535pt;
+                line-height: 13px;
+                text-transform: capitalize;
+            }
+        }
+
+        .BodyNav {
+            height: calc(80% - 2rem - 1px);
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+
+            .Nav {
+                width: 100%;
+                margin: 20px 25%;
+
+                * {
+                    font-size: 15pt;
+                }
+
+                display: flex;
+                justify-content: flex-start;
+                align-items: center;
+                height: 50px;
+
+                * {
+                    font-weight: 500;
+                    font-size: 20px;
+                    line-height: 16px;
+                }
+
+                svg:not([name=vivid]) {
+                    color: black;
+                    opacity: 0.6;
+                }
+
+                a {
+                    cursor: pointer;
+                    margin-bottom: 0;
+                    margin-left: 30px;
+                    color: $tertiary-color;
+                    text-decoration: none;
+                }
+
+                .Logout {
+                    color: $primary-color;
+                }
+
+                button {
+                    margin: 0 20px;
+                    padding: 10px;
+
+                    &.Active {
+                        background-color: $secondary-color !important;
+                    }
+                }
+            }
+        }
+    }
+
+    .Content {
+        margin: 0 10%;
+        height: 100%;
+
+        .SearchBar {
+            display: block;
+            margin: 20px auto;
+            width: fit-content;
+
+            >form {
+                * {
+                    display: inline-block;
+                    margin: 5px;
+                }
+
+                input {
+                    width: fit-content;
+                }
+            }
+        }
+
+        .Data {
+            margin: auto;
+            width: fit-content;
+            height: 80%;
+            margin: 30px auto;
+            overflow-y: scroll;
+
+            .Events {
+                width: 100%;
+                display: flex;
+                flex-direction: row;
+                flex-wrap: wrap;
+                justify-content: space-around;
+                align-items: center;
+
+                >div {
+                    margin: 10px;
+                }
+            }
+
+            .List {
+                min-width: 400px;
+                list-style-type: none;
+                padding: 0;
+
+                li {
+                    display: flex;
+                    flex-direction: row;
+                    align-items: center;
+                    padding: 20px 20px;
+
+                    &:not(:last-of-type) {
+                        border-bottom: 1px solid $primary-color;
+                    }
+
+                    &.Important>span {
+                        color: $muted-color;
+                        font-weight: 600;
+                        font-size: 14pt;
+                        margin-right: 10px;
+                    }
+
+                    >span:first-of-type {
+                        margin-right: 5px;
+                        display: flex;
+                    }
+
+                    button {
+                        margin: 0;
+                        margin-left: auto;
+                    }
+
+                    p {
+                        color: $muted-color;
+                        font-weight: 400;
+                        font-size: 14pt;
+                        margin: auto;
+                    }
+
+                    .Block {
+                        background-color: $reject-color;
+                    }
+
+                    .Unblock {
+                        background-color: $accept-color;
+                    }
+                }
+            }
+        }
+    }
+}

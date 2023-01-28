@@ -7,4 +7,8 @@
     padding: 4px 8px;
     border-radius: 25px;
     color: $muted-color;
+
+    >span {
+        font-weight: 600 !important;
+    }
 }

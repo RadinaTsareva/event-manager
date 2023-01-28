@@ -8,9 +8,8 @@
     color: white;
 
     &:hover {
-        background-color: $muted-color;
-        border-color: $muted-color;
-        color: white;
+        background-color: $muted-color !important;
+        border-color: $muted-color !important;
     }
 
     &:focus,

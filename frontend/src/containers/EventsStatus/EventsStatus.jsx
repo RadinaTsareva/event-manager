@@ -90,7 +90,7 @@ const EventsStatus = (props) => {
                             <ul className={classes.List}>
                                 {filteredByType[activeTab].map(event => (
                                     <li key={event.id} className={event.important ? classes.Important : ''} >
-                                        <span>{event.important && <ExclamationCircleFill size={18} />}</span>
+                                        {event.important && <span><ExclamationCircleFill size={18} /></span>}
                                         <span>{event.name} ({account.role === ROLES.CLIENT ? event.organizerEmail : event.clientEmail})</span>
                                         <Button onClick={() => navigateEventHandler(event)}>{event.status === STATUS.FINISHED ? 'Visit' : 'Manage'}</Button>
                                     </li>

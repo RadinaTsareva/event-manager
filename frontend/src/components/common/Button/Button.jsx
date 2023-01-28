@@ -4,12 +4,12 @@ import classes from './Button.module.scss';
 const Button = (props) => {
     return (
         <button
-            className={["btn btn-success", classes.Btn].join(', ')}
+            className={["btn btn-success", classes.Btn, props.className].join(' ')}
             type="button"
             onClick={props.onClick}
             disabled={props.disabled}
         >
-            {props.children}
+            <span>{props.children}</span>
         </button>
     )
 }

@@ -23,13 +23,15 @@ const Input = (props) => {
     }
 
     return (
-        <Form.Group className={["mb-3", classes.Input].join(', ')} controlId={props.controlId}>
-            <Form.Label>{props.label}</Form.Label>
-            <Form.Control value={typeof props.field === 'object' ? props.field.value : props.field}
+        <Form.Group className={["mb-3", classes.Input].join(' ')} controlId={props.controlId}>
+            {props.label && <Form.Label>{props.label}</Form.Label>}
+            <Form.Control
+                value={typeof props.field === 'object' ? props.field.value : props.field}
                 onChange={(e) => changeField(props.field, props.setField, e.target.value)}
                 onBlur={() => validate(props.field, props.setField, props.validateFn)}
                 {...(props.type === 'textarea' ? { as: 'textarea', rows: 2 } : { type: props.type })}
-                placeholder={props.placeholder} required={true}
+                placeholder={props.placeholder}
+                required={true}
                 disabled={props.disabled}
             />
             {typeof props.field === 'object' && !props.field.valid ? <span>{props.field.message}</span> : null}
@@ -39,10 +41,10 @@ const Input = (props) => {
 
 Input.propTypes = {
     controlId: PropTypes.string,
-    label: PropTypes.string,
+    label: PropTypes.string || undefined,
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    field: PropTypes.any,
+    field: PropTypes.string || PropTypes.object,
     setField: PropTypes.func,
     validateFn: PropTypes.func,
     disabled: PropTypes.bool || undefined

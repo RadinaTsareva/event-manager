@@ -2,11 +2,10 @@ import React from 'react';
 import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 
 import classes from './Header.module.scss';
-import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { GearFill, BoxArrowInRight, StarFill, CalendarEventFill, ExclamationCircle } from 'react-bootstrap-icons';
-import { ROLES } from '../../../utils/enums';
+import { ADMIN_ROLE, ROLES } from '../../../utils/enums';
 import Spinner from '../Spinner/Spinner';
 import Badge from '../Badge/Badge';
 
@@ -14,22 +13,23 @@ const Header = (props) => {
     const { isLoggedIn, account } = useStoreState((state) => state.userStore);
     const { logout } = useStoreActions((actions) => actions.userStore);
 
-    const navigate = useNavigate();
-
     const onLogoutClick = () => {
         logout()
-        navigate('/sign');
     }
 
     if (account === null && isLoggedIn) {
         return (<Spinner />)
     }
 
+    if (isLoggedIn && account.role === ADMIN_ROLE) {
+        return null
+    }
+
     return (
         <Navbar expand={!isLoggedIn} collapseOnSelect className={classes.Header} variant="dark">
             <Container fluid>
                 <Navbar.Brand href="/">Event Organizer</Navbar.Brand>
-                {(isLoggedIn && account) ?
+                {(isLoggedIn) ?
                     <>
                         <Navbar.Toggle aria-controls="offcanvasNavbar" />
                         <Navbar.Offcanvas
@@ -43,7 +43,7 @@ const Header = (props) => {
                             <Offcanvas.Body className={classes.Body}>
                                 <div className={classes.Account}>
                                     <h1>{account.email}</h1>
-                                    <h3>{account.role !== ROLES.CLIENT ? 'Organizer' : 'Client'}</h3>
+                                    <h3>{account.role}</h3>
                                 </div>
                                 <hr />
                                 <div className={classes.BodyNav}>
@@ -68,7 +68,7 @@ const Header = (props) => {
                                         <Nav>
                                             <div className={classes.Nav}>
                                                 <ExclamationCircle />
-                                                <Link className={[classes.Logout, "nav-link"].join(' ')} to='/login' onClick={onLogoutClick}>Log out</Link>
+                                                <Link className={[classes.Logout, "nav-link"].join(' ')} to='/' onClick={onLogoutClick}>Log out</Link>
                                             </div>
                                         </Nav>
                                         : null}
