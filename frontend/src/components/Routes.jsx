@@ -7,10 +7,11 @@ import Sign from '../containers/Sign/Sign';
 import Spinner from './common/Spinner/Spinner';
 import Gallery from '../containers/Gallery/Gallery';
 import Home from '../containers/Home/Home';
-import { ADMIN_ROLE, ROLES } from '../utils/enums';
+import { ADMIN_ROLE, GENDER, ROLES } from '../utils/enums';
 import EventManagement from '../containers/EventManagement/EventManagement';
 import EventsStatus from '../containers/EventsStatus/EventsStatus';
 import Admin from '../containers/Admin/Admin';
+import Settings from '../containers/Settings/Settings';
 
 const RouteOptions = {
     GO_TO_HOME: 'GO_TO_HOME',
@@ -39,7 +40,17 @@ const Router = (props) => {
             navigate(location.pathname)
         }
         // TODO
-        setAccount({ role: ADMIN_ROLE, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2], pendingEventsCount: 2 })
+        setAccount({
+            role: ROLES.ORGANIZER,
+            token: 'token',
+            email: 'alabala@gmail.com',
+            blacklisted: [1, 2],
+            pendingEventsCount: 2,
+            address: 'address',
+            phoneNumber: '+359882701774',
+            name: 'name',
+            gender: GENDER.FEMALE
+        })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
@@ -82,6 +93,7 @@ const Router = (props) => {
                             <Route path="/" exact element={<Home />} />
                             <Route path="/events/:id" exact element={<EventManagement />} />
                             <Route path="/events/status" exact element={<EventsStatus />} />
+                            <Route path="/settings" exact element={<Settings />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )
@@ -95,6 +107,7 @@ const Router = (props) => {
                             <Route path="/events/:id" exact element={<EventManagement />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
                             <Route path="/events/status" exact element={<EventsStatus />} />
+                            <Route path="/settings" exact element={<Settings />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )

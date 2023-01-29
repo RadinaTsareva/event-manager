@@ -61,7 +61,7 @@ const Header = (props) => {
                                         </div>
                                         <div className={classes.Nav}>
                                             <GearFill />
-                                            <Link className="nav-link" to="/">Account settings</Link>
+                                            <Link className="nav-link" to="/settings">Account settings</Link>
                                         </div>
                                     </Nav>
                                     {isLoggedIn ?

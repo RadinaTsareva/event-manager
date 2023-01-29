@@ -1,0 +1,46 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Container {
+    min-width: 30vw;
+
+    .Heading {
+        margin-bottom: 50px;
+
+        h1 {
+            text-align: center;
+            color: $tertiary-color;
+            font-weight: 400;
+            line-height: 36px;
+            font-size: 34pt;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: $muted-color;
+            opacity: 0.6;
+            font-weight: 400;
+            line-height: 14px;
+            font-size: 14pt;
+        }
+    }
+
+    .MiniForm {
+        border: 1px solid $primary-color;
+        padding: 15px;
+        border-radius: 25px;
+        margin: 20px auto;
+        max-width: 600px;
+
+        >form>label {
+            display: block;
+            margin: auto;
+            width: fit-content;
+            color: $tertiary-color;
+            font-weight: 500;
+            line-height: 14px;
+            font-size: 14pt;
+            margin-bottom: 10px;
+        }
+    }
+}

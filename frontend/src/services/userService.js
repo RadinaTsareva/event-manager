@@ -14,6 +14,12 @@ class UserService {
     static blacklistUser = async (id) => {
         // await RequestAPI.post(`/users/${id}/blacklist`)
     }
+
+    static updateInfo = async (data) => {
+        // role and email cannot be changed
+        // data: { name: 'name' } || { password: 'password' } || ...
+        // await RequestAPI.put('/users/update', data)
+    }
 }
 
 export default UserService;

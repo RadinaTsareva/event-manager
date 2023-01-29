@@ -42,8 +42,11 @@ const validateAddress = (address) => {
 }
 
 const validatePhoneNumber = (phoneNumber) => {
-    const firstChars = phoneNumber.toString().substr(0, 3)
-    return phoneNumber.toString().length === 10 && +phoneNumber.toString()[0] === 0 && (firstChars === "087" || firstChars === "089" || firstChars === "088" || +phoneNumber.toString()[1] === 2)
+    let length = 10
+    if (phoneNumber[0] === '+') {
+        length = 13
+    }
+    return phoneNumber.toString().length === length
 }
 
 const validateConfirmPassword = (password, confirmPassword) => {

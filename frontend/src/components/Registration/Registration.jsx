@@ -13,8 +13,7 @@ const defaultValues = {
     email: { name: 'email', value: "", valid: true, message: 'Invalid email' },
     password: { name: 'password', value: "", valid: true, message: 'Password must contain at least 1 upper case letter, 1 lower case letter and 1 number. It should be at least 8 characters!' },
     confirmPassword: { name: 'confirmPassword', value: "", valid: true, message: 'Passwords not matching' },
-    firstName: { name: 'firstName', value: "", valid: true, message: 'First name should be at least 2 characters long' },
-    lastName: { name: 'lastName', value: "", valid: true, message: 'Last name should be at least 2 characters long' },
+    name: { name: 'name', value: "", valid: true, message: 'Name should be at least 2 characters long' },
     description: { name: 'description', value: "", valid: true, message: 'Description should be at least 20 characters long' },
     address: { name: 'address', value: "", valid: true, message: 'Address should be at least 10 characters long' },
     phoneNumber: { name: 'phone', value: "", valid: true, message: 'Invalid phone number' },
@@ -43,10 +42,6 @@ const Registration = (props) => {
         setPhoneNumberField(defaultValues.phoneNumber)
         setRoleField(defaultValues.role)
         setGenderField(defaultValues.gender)
-    }
-
-    const validateConfirmPasswordHandler = () => {
-        return validateConfirmPassword(passwordField.value, confirmPasswordField.value)
     }
 
     const registerUserClickedHandler = () => {
@@ -112,18 +107,18 @@ const Registration = (props) => {
                     validateFn={validateEnum}
                     enum={ROLES}
                 />
-                {fields.slice(0, 5).map(data => {
-                    return (<Input key={data.label}
+                {fields.slice(0, 5).map(data =>
+                    <Input key={data.label}
                         controlId={data.controlId} label={data.label}
                         type={data.type} placeholder={data.placeholder}
                         field={data.field} setField={data.setField}
-                        validateFn={data.validateFn} />)
-                })}
+                        validateFn={data.validateFn} />
+                )}
                 <Input
                     controlId='formGroupPassword' label='Confirm password'
                     type='password' placeholder='Enter password'
                     field={confirmPasswordField} setField={setConfirmPasswordField}
-                    validateFn={validatePassword} onBlur={validateConfirmPasswordHandler} />
+                    validateFn={validatePassword} onBlur={() => validateConfirmPassword(passwordField.value, confirmPasswordField.value)} />
                 <Select
                     controlId='formGroupGender'
                     label='Gender'
