@@ -19,7 +19,6 @@ const EventManagement = (props) => {
     const urlParams = useParams()
 
     useEffect(() => {
-        console.log('!!props.newEvent', !!props.newEvent);
         if (!!props.newEvent) {
             setLoading(false)
         } else {

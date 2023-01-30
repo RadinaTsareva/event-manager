@@ -26,3 +26,9 @@ export const GENDER = {
     FEMALE: 'female',
     NONE: 'none'
 }
+
+export const ORGANIZER_EVENT_TYPES = {
+    EVENT: 'event-types',
+    MENU: 'menu-types',
+    CATERING: 'catering-types'
+}

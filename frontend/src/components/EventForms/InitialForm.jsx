@@ -5,7 +5,6 @@ import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
 import Spinner from '../common/Spinner/Spinner';
 import Input from '../common/Input/Input';
-import { STATUS } from '../../utils/enums';
 
 const InitialForm = (props) => {
     const [organizer, setOrganizer] = useState('');

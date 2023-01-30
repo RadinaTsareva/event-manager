@@ -43,4 +43,64 @@
             margin-bottom: 10px;
         }
     }
+
+    .Category {
+        padding: 10px 15px;
+        width: fit-content;
+        margin: 0 auto 30px;
+        border: 1px solid $primary-color;
+        border-radius: 15px;
+
+        color: $tertiary-color;
+        font-weight: 500;
+        font-size: 18.0097px;
+        line-height: 20px;
+    }
+
+    .Types {
+        margin: auto;
+        text-align: center;
+        max-height: 400px;
+        overflow-y: auto;
+        width: 610px;
+
+        table {
+            width: 100%;
+            color: $tertiary-color;
+        }
+
+        .Type {
+            svg {
+                color: $primary-color;
+                font-size: 20px;
+                cursor: pointer;
+            }
+
+            input {
+                text-align: center;
+                border: 1px solid $primary-color;
+                border-radius: 5px;
+                max-width: 150px;
+
+                &:disabled {
+                    border: none;
+                    opacity: 1;
+                    background-color: transparent;
+                }
+            }
+        }
+
+        .ExpandFormBtn {
+            font-size: 15pt;
+            font-weight: 500;
+        }
+
+        .SaveBtn {
+            background-color: $primary-color;
+            border: none;
+            color: white;
+            padding: 1px 10px;
+            border-radius: 10px;
+        }
+    }
 }

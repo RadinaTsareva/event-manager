@@ -1,16 +1,17 @@
 import React, { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { Form } from 'react-bootstrap';
+import { Form, Table } from 'react-bootstrap';
 import classes from './Settings.module.scss';
 
 import Input from '../../components/common/Input/Input';
 import { validateAddress, validateConfirmPassword, validateEnum, validateName, validatePassword, validatePhoneNumber } from '../../utils/validation';
 import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
-import { GENDER, ROLES } from '../../utils/enums';
+import { GENDER, ORGANIZER_EVENT_TYPES, ROLES } from '../../utils/enums';
 import UserService from '../../services/userService';
 import Spinner from '../../components/common/Spinner/Spinner';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
+import { CloudPlus, PencilFill, TrashFill } from 'react-bootstrap-icons';
 
 const defaultValues = {
     email: { name: 'email', value: "", valid: true, message: 'Invalid email' },
@@ -34,6 +35,15 @@ const Settings = (props) => {
     const [addressField, setAddressField] = useState();
     const [phoneNumberField, setPhoneNumberField] = useState();
     const [genderField, setGenderField] = useState();
+    const [eventTypes, setEventTypes] = useState([]);
+    const [expandEventForm, setExpandEventForm] = useState(false);
+    const [newEventType, setNewEventType] = useState({});
+    const [menuTypes, setMenuTypes] = useState([]);
+    const [expandMenuForm, setExpandMenuForm] = useState(false);
+    const [newMenuType, setNewMenuType] = useState({});
+    const [cateringTypes, setCateringTypes] = useState([]);
+    const [expandCateringForm, setExpandCateringForm] = useState(false);
+    const [newCateringType, setNewCateringType] = useState({});
     const [loading, setLoading] = useState(true);
 
     const infoSubmitHandler = async (data) => {
@@ -49,10 +59,13 @@ const Settings = (props) => {
     }
 
     useEffect(() => {
-        loadData()
+        setData()
+        loadEventTypes()
+        loadMenuTypes()
+        loadCateringTypes()
     }, []);
 
-    const loadData = () => {
+    const setData = () => {
         setNameField({ ...defaultValues.name, value: account.name })
         setAddressField({ ...defaultValues.address, value: account.address })
         setPhoneNumberField({ ...defaultValues.phoneNumber, value: account.phoneNumber })
@@ -60,6 +73,64 @@ const Settings = (props) => {
         setPasswordField({ ...defaultValues.password, value: account.password })
         setConfirmPasswordField({ ...defaultValues.confirmPassword, value: account.password })
         setLoading(false)
+    }
+
+    const loadEventTypes = async () => {
+        const eventTypes = await UserService.getEventTypes()
+        setEventTypes(eventTypes)
+    }
+
+    const loadMenuTypes = async () => {
+        const menuTypes = await UserService.getMenuTypes()
+        setMenuTypes(menuTypes)
+    }
+
+    const loadCateringTypes = async () => {
+        const cateringTypes = await UserService.getCateringTypes()
+        setCateringTypes(cateringTypes)
+    }
+
+    const enableEditHandler = (element, data) => {
+        const updatedElements = [...data.arrayField]
+        const found = updatedElements.find(el => el.value === element.value)
+        found.edit = true
+
+        data.setArrayField(updatedElements)
+    }
+
+    const deleteProductHandler = async (element, data) => {
+        const updatedElements = [...data.arrayField]
+        const found = updatedElements.find(el => el.id === element.id)
+        const index = updatedElements.indexOf(found)
+        updatedElements.splice(index, 1)
+        data.setArrayField(updatedElements)
+
+        await UserService.deleteType(element.id, data.type)
+
+        toastHandler({ success: TOAST_STATES.SUCCESS, message: 'Type deleted successfully' })
+    }
+
+    const updateProductHandler = async (element, data) => {
+        const updatedElements = [...data.arrayField]
+        const found = updatedElements.find(el => el.id === element.id)
+        delete found.edit
+        data.setArrayField(updatedElements)
+
+        await UserService.updateType(data.type, { ...element })
+        await data.loadData()
+    }
+
+    const handleSaveType = async (data) => {
+        if (Object.values(data.newType).every((el) => el !== '')) {
+            await UserService.addNewType(data.type, data.newType)
+        } else {
+            toastHandler({ success: TOAST_STATES.ERROR, message: 'Invalid new type data' })
+        }
+
+        data.setExpandForm(false)
+        data.setNewType({})
+
+        await data.loadData()
     }
 
     const fields = [
@@ -74,6 +145,24 @@ const Settings = (props) => {
         {
             controlId: 'formGroupAddress', label: 'Change address', type: 'text', placeholder: 'Enter new address',
             field: addressField, setField: setAddressField, validateFn: validateAddress
+        },
+    ]
+
+    const types = [
+        {
+            heading: 'Event types', th: 'Type', arrayField: eventTypes, setArrayField: setEventTypes,
+            expandForm: expandEventForm, setExpandForm: setExpandEventForm, newType: newEventType, setNewType: setNewEventType,
+            loadData: loadEventTypes, type: ORGANIZER_EVENT_TYPES.EVENT
+        },
+        {
+            heading: 'Menu types', th: 'Type', arrayField: menuTypes, setArrayField: setMenuTypes,
+            expandForm: expandMenuForm, setExpandForm: setExpandMenuForm, newType: newMenuType, setNewType: setNewMenuType,
+            loadData: loadMenuTypes, type: ORGANIZER_EVENT_TYPES.MENU
+        },
+        {
+            heading: 'Catering types', th: 'Type', arrayField: cateringTypes, setArrayField: setCateringTypes,
+            expandForm: expandCateringForm, setExpandForm: setExpandCateringForm, newType: newCateringType, setNewType: setNewCateringType,
+            loadData: loadCateringTypes, type: ORGANIZER_EVENT_TYPES.CATERING
         },
     ]
 
@@ -132,10 +221,44 @@ const Settings = (props) => {
             </div>
             {
                 account.role === ROLES.ORGANIZER &&
-                <>
-                    {/* TODO add organizer settings */}
-                    TODO
-                </>
+                types.map(data =>
+                    <div key={data.type}>
+                        <hr />
+                        <div>
+                            <div className={classes.Category}>{data.heading}</div>
+                            <div className={classes.Types}>
+                                <Table hover responsive>
+                                    <thead>
+                                        <tr>
+                                            <th>Delete</th>
+                                            <th>{data.th}</th>
+                                            <th>Edit</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        {data.arrayField.map(type =>
+                                            <tr className={classes.Type} key={type.value} onDoubleClick={() => enableEditHandler(type, data)}>
+                                                <td><TrashFill onClick={() => deleteProductHandler(type, data)} /></td>
+                                                <td><input disabled={!type.edit} defaultValue={type.value} onChange={(e) => type.value = e.target.value}></input></td>
+                                                <td>{type.edit
+                                                    ? <CloudPlus onClick={() => updateProductHandler(type, data)} />
+                                                    : <PencilFill onClick={() => enableEditHandler(type, data)} />}</td>
+                                            </tr>
+                                        )}
+                                        {data.expandForm ?
+                                            <tr className={classes.Type} >
+                                                <td></td>
+                                                <td><input onChange={(e) => data.setNewType({ ...data.newType, value: e.target.value })} placeholder='Type' /></td>
+                                                <td><CloudPlus onClick={() => handleSaveType(data)} /></td>
+                                            </tr>
+                                            : null}
+                                    </tbody>
+                                </Table>
+                                {data.expandForm ? null : <button className={[classes.ExpandFormBtn, classes.SaveBtn].join(' ')} onClick={() => data.setExpandForm(true)}>+</button>}
+                            </div>
+                        </div>
+                    </div>
+                )
             }
         </div>
     );
