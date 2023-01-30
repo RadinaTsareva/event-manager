@@ -39,19 +39,31 @@ class UserService {
         // await RequestAPI.put('/users/update', data)
     }
 
-    static getEventTypes = async () => {
+    static getEventTypes = async (id = null) => {
         return eventTypes
-        // return RequestAPI.get('/users/event-types')
+        // if(id) {
+        //     return RequestAPI.get(`/users/${id}/event-types`)
+        // } else {
+        //     return RequestAPI.get('/users/event-types')
+        // }
     }
 
-    static getMenuTypes = async () => {
+    static getMenuTypes = async (id = null) => {
         return menuTypes
-        // return RequestAPI.get('/users/menu-types')
+        // if(id) {
+        //     return RequestAPI.get(`/users/${id}/menu-types`)
+        // } else {
+        //     return RequestAPI.get('/users/menu-types')
+        // }
     }
 
-    static getCateringTypes = async () => {
+    static getCateringTypes = async (id = null) => {
         return cateringTypes
-        // return RequestAPI.get('/users/catering-types')
+        // if(id) {
+        //     return RequestAPI.get(`/users/${id}/catering-types`)
+        // } else {
+        //     return RequestAPI.get('/users/catering-types')
+        // }
     }
 
     static deleteType = async (id, type) => {

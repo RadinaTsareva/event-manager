@@ -5,7 +5,7 @@ import Button from '../common/Button/Button';
 import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
-import { validateAddress, validateConfirmPassword, validateEmail, validateEnum, validateName, validatePassword, validatePhoneNumber } from '../../utils/validation';
+import { validateConfirmPassword, validateEmail, validateEnum, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
 import { useStoreActions } from 'easy-peasy';
 import { GENDER, ROLES } from '../../utils/enums';
 
@@ -76,7 +76,7 @@ const Registration = (props) => {
     const fields = [
         {
             controlId: 'formGroupName', label: 'Name', type: 'text', placeholder: 'Enter name',
-            field: nameField, setField: setNameField, validateFn: validateName
+            field: nameField, setField: setNameField, validateFn: (text) => validateText(text, 1)
         },
         {
             controlId: 'formGroupPhoneNumber', label: 'Phone number', type: 'text', placeholder: 'Enter phone number',
@@ -88,7 +88,7 @@ const Registration = (props) => {
         },
         {
             controlId: 'formGroupAddress', label: 'Address', type: 'text', placeholder: 'Enter address',
-            field: addressField, setField: setAddressField, validateFn: validateAddress
+            field: addressField, setField: setAddressField, validateFn: (text) => validateText(text, 9)
         },
         {
             controlId: 'formGroupPassword', label: 'Password', type: 'password', placeholder: 'Enter password',

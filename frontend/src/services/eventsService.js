@@ -126,13 +126,8 @@ class EventsService {
         // return RequestAPI.get(`/events/${id}/pics`) -> ready from Radi
     }
 
-    static getTypes = async (organizer) => {
-        return ['Type 1', 'Type 2', 'Type 3']
-        // return RequestAPI.get('/events/types') -> ready from Radi
-    }
-
     static getOrganizers = async () => {
-        return ['Organizer 1', 'Organizer 2', 'Organizer 3']
+        return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
         // return RequestAPI.get('/events/organizers') -> ready from Radi
     }
 

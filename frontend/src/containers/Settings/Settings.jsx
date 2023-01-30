@@ -4,7 +4,7 @@ import { Form, Table } from 'react-bootstrap';
 import classes from './Settings.module.scss';
 
 import Input from '../../components/common/Input/Input';
-import { validateAddress, validateConfirmPassword, validateEnum, validateName, validatePassword, validatePhoneNumber } from '../../utils/validation';
+import { validateConfirmPassword, validateEnum, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
 import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
 import { GENDER, ORGANIZER_EVENT_TYPES, ROLES } from '../../utils/enums';
@@ -136,7 +136,7 @@ const Settings = (props) => {
     const fields = [
         {
             controlId: 'formGroupName', label: 'Change name', type: 'text', placeholder: 'Enter new name',
-            field: nameField, setField: setNameField, validateFn: validateName
+            field: nameField, setField: setNameField, validateFn: (text) => validateText(text, 1)
         },
         {
             controlId: 'formGroupPhoneNumber', label: 'Change phone number', type: 'text', placeholder: 'Enter new phone number',
@@ -144,7 +144,7 @@ const Settings = (props) => {
         },
         {
             controlId: 'formGroupAddress', label: 'Change address', type: 'text', placeholder: 'Enter new address',
-            field: addressField, setField: setAddressField, validateFn: validateAddress
+            field: addressField, setField: setAddressField, validateFn: (text) => validateText(text, 9)
         },
     ]
 

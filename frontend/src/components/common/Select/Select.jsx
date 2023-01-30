@@ -31,11 +31,19 @@ const Select = (props) => {
                 onChange={(e) => changeField(props.field, props.setField, e.target.value.toLowerCase())}
                 onBlur={() => validate(props.field, props.setField, props.validateFn)}
                 disabled={props.disabled}
-                aria-label={["Select", typeof props.field === 'object' ? props.field.name : props.type].join(' ')}>
-                <option value=''>Select {typeof props.field === 'object' ? props.field.name : props.type}</option>
-                {Object.values(props.enum).map(type =>
-                    <option key={type} value={type}>{type}</option>
-                )}
+                aria-label={["Select", props.field?.name || props.type].join(' ')}>
+                <option value=''>Select {props.field?.name || props.type}</option>
+                {
+                    Array.isArray(props.enum)
+                        ? typeof props.enum[0] === 'object'
+                            ? props.enum.map(type =>
+                                <option key={type.id} value={type.id}>{type.value}</option>
+                            ) : props.enum.map(type =>
+                                <option key={type} value={type}>{type}</option>
+                            ) : Object.keys(props.enum).map(type =>
+                                <option key={type} value={type}>{type}</option>
+                            )
+                }
             </Form.Select>
             {typeof props.field === 'object' && !props.field.valid ? <span>{props.field.message}</span> : null}
         </Form.Group>
@@ -48,7 +56,7 @@ Select.propTypes = {
     field: PropTypes.string || PropTypes.object,
     setField: PropTypes.func,
     validateFn: PropTypes.func,
-    enum: PropTypes.object,
+    enum: PropTypes.array || PropTypes.object,
     disabled: PropTypes.bool || undefined,
     type: PropTypes.string || undefined
 };

@@ -29,16 +29,13 @@ const validatePassword = (password) => {
     return true
 }
 
-const validateName = (name) => {
-    return name.toString().length > 1
+const validateText = (text, length) => {
+    return text.toString().length > length
 }
 
-const validateDescription = (description) => {
-    return description.toString().length > 19
-}
-
-const validateAddress = (address) => {
-    return address.toString().length > 9
+const validateDate = (date) => {
+    const today = new Date()
+    return !!date && new Date(date).getTime() > today.getTime()
 }
 
 const validatePhoneNumber = (phoneNumber) => {
@@ -61,9 +58,8 @@ export {
     validateEnum,
     validateEmail,
     validatePassword,
-    validateName,
-    validateDescription,
-    validateAddress,
+    validateText,
+    validateDate,
     validatePhoneNumber,
     validateConfirmPassword
 }
