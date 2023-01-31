@@ -81,6 +81,7 @@ const Router = (props) => {
                         <Routes>
                             <Route path="/" exact element={<Home />} />
                             <Route path="/login" element={<Sign />} />
+                            <Route path="/settings" exact element={<Settings />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>

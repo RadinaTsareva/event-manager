@@ -29,24 +29,24 @@ const Select = (props) => {
                 className={classes.SelectForm}
                 value={typeof props.field === 'object' ? props.field.value : props.field}
                 onChange={(e) => changeField(props.field, props.setField, e.target.value.toLowerCase())}
-                onBlur={() => validate(props.field, props.setField, props.validateFn)}
+                {...(props.validateFn ? { onBlur: () => validate(props.field, props.setField, props.validateFn) } : null)}
                 disabled={props.disabled}
                 aria-label={["Select", props.field?.name || props.type].join(' ')}>
                 <option value=''>Select {props.field?.name || props.type}</option>
                 {
-                    Array.isArray(props.enum)
-                        ? typeof props.enum[0] === 'object'
-                            ? props.enum.map(type =>
+                    Array.isArray(props.options)
+                        ? typeof props.options[0] === 'object'
+                            ? props.options.map(type =>
                                 <option key={type.id} value={type.id}>{type.value}</option>
-                            ) : props.enum.map(type =>
+                            ) : props.options.map(type =>
                                 <option key={type} value={type.toLowerCase()}>{type}</option>
-                            ) : Object.values(props.enum).map(type =>
+                            ) : Object.values(props.options).map(type =>
                                 <option key={type} value={type.toLowerCase()}>{type}</option>
                             )
                 }
             </Form.Select>
             {typeof props.field === 'object' && !props.field.valid ? <span>{props.field.message}</span> : null}
-        </Form.Group>
+        </Form.Group >
     )
 }
 
@@ -56,8 +56,7 @@ Select.propTypes = {
     field: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     setField: PropTypes.func,
     validateFn: PropTypes.func,
-    // enum: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
-    enum: PropTypes.any,
+    options: PropTypes.any,
     disabled: PropTypes.bool,
     type: PropTypes.string
 };

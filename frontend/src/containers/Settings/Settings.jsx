@@ -1,10 +1,11 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { useStoreActions, useStoreState } from 'easy-peasy';
 import { Form, Table } from 'react-bootstrap';
 import classes from './Settings.module.scss';
 
 import Input from '../../components/common/Input/Input';
-import { validateConfirmPassword, validateEnum, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
+import { validateConfirmPassword, validateOptions, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
 import Button from '../../components/common/Button/Button';
 import Select from '../../components/common/Select/Select';
 import { GENDER, ORGANIZER_EVENT_TYPES, ROLES } from '../../utils/enums';
@@ -35,15 +36,21 @@ const Settings = (props) => {
     const [addressField, setAddressField] = useState();
     const [phoneNumberField, setPhoneNumberField] = useState();
     const [genderField, setGenderField] = useState();
+
     const [eventTypes, setEventTypes] = useState([]);
     const [expandEventForm, setExpandEventForm] = useState(false);
     const [newEventType, setNewEventType] = useState({});
+
     const [menuTypes, setMenuTypes] = useState([]);
     const [expandMenuForm, setExpandMenuForm] = useState(false);
     const [newMenuType, setNewMenuType] = useState({});
+    const [menuEventType, setMenuEventType] = useState();
+
     const [cateringTypes, setCateringTypes] = useState([]);
     const [expandCateringForm, setExpandCateringForm] = useState(false);
     const [newCateringType, setNewCateringType] = useState({});
+    const [cateringEventType, setCateringEventType] = useState();
+
     const [loading, setLoading] = useState(true);
 
     const infoSubmitHandler = async (data) => {
@@ -61,8 +68,6 @@ const Settings = (props) => {
     useEffect(() => {
         setData()
         loadEventTypes()
-        loadMenuTypes()
-        loadCateringTypes()
     }, []);
 
     const setData = () => {
@@ -78,15 +83,23 @@ const Settings = (props) => {
     const loadEventTypes = async () => {
         const eventTypes = await UserService.getEventTypes()
         setEventTypes(eventTypes)
+
+        if (!menuEventType && !cateringEventType) {
+            setMenuTypes(await UserService.getMenuTypes(eventTypes[0].id))
+            setMenuEventType({ value: eventTypes[0].id })
+
+            setCateringTypes(await UserService.getCateringTypes(eventTypes[0].id))
+            setCateringEventType({ value: eventTypes[0].id })
+        }
     }
 
-    const loadMenuTypes = async () => {
-        const menuTypes = await UserService.getMenuTypes()
+    const loadMenuTypes = async (data) => {
+        const menuTypes = await UserService.getMenuTypes(data || menuEventType.value)
         setMenuTypes(menuTypes)
     }
 
-    const loadCateringTypes = async () => {
-        const cateringTypes = await UserService.getCateringTypes()
+    const loadCateringTypes = async (data) => {
+        const cateringTypes = await UserService.getCateringTypes(data || cateringEventType.value)
         setCateringTypes(cateringTypes)
     }
 
@@ -110,19 +123,18 @@ const Settings = (props) => {
         toastHandler({ success: TOAST_STATES.SUCCESS, message: 'Type deleted successfully' })
     }
 
-    const updateProductHandler = async (element, data) => {
+    const updateTypeHandler = async (element, data) => {
         const updatedElements = [...data.arrayField]
         const found = updatedElements.find(el => el.id === element.id)
         delete found.edit
         data.setArrayField(updatedElements)
 
         await UserService.updateType(data.type, { ...element })
-        await data.loadData()
     }
 
-    const handleSaveType = async (data) => {
+    const saveTypeHandler = async (data) => {
         if (Object.values(data.newType).every((el) => el !== '')) {
-            await UserService.addNewType(data.type, data.newType)
+            await UserService.addNewType(data.type, { value: data.newType.value, eventTypeId: data.select?.field.value })
         } else {
             toastHandler({ success: TOAST_STATES.ERROR, message: 'Invalid new type data' })
         }
@@ -131,6 +143,11 @@ const Settings = (props) => {
         data.setNewType({})
 
         await data.loadData()
+    }
+
+    const selectEventTypeHandler = async (eventType, data) => {
+        data.select.setField(eventType)
+        await data.loadData(+eventType.value)
     }
 
     const fields = [
@@ -157,12 +174,14 @@ const Settings = (props) => {
         {
             heading: 'Menu types', th: 'Type', arrayField: menuTypes, setArrayField: setMenuTypes,
             expandForm: expandMenuForm, setExpandForm: setExpandMenuForm, newType: newMenuType, setNewType: setNewMenuType,
-            loadData: loadMenuTypes, type: ORGANIZER_EVENT_TYPES.MENU
+            loadData: loadMenuTypes, type: ORGANIZER_EVENT_TYPES.MENU,
+            select: { controlId: 'formGroupType', label: 'Select type', field: menuEventType, setField: setMenuEventType, options: eventTypes, }
         },
         {
             heading: 'Catering types', th: 'Type', arrayField: cateringTypes, setArrayField: setCateringTypes,
             expandForm: expandCateringForm, setExpandForm: setExpandCateringForm, newType: newCateringType, setNewType: setNewCateringType,
-            loadData: loadCateringTypes, type: ORGANIZER_EVENT_TYPES.CATERING
+            loadData: loadCateringTypes, type: ORGANIZER_EVENT_TYPES.CATERING,
+            select: { controlId: 'formGroupType', label: 'Select type', field: cateringEventType, setField: setCateringEventType, options: eventTypes, }
         },
     ]
 
@@ -197,8 +216,8 @@ const Settings = (props) => {
                         controlId='formGroupGender'
                         field={genderField}
                         setField={setGenderField}
-                        validateFn={validateEnum}
-                        enum={GENDER}
+                        validateFn={validateOptions}
+                        options={GENDER}
                     />
                     <Button disabled={!genderField.valid || genderField.value === ''} onClick={() => infoSubmitHandler(genderField)}>Submit</Button>
                 </Form>
@@ -216,7 +235,7 @@ const Settings = (props) => {
                         type='password' placeholder='Confirm new password'
                         field={confirmPasswordField} setField={setConfirmPasswordField}
                         validateFn={validatePassword} onBlur={() => validateConfirmPassword(passwordField.value, confirmPasswordField.value)} />
-                    <Button disabled={!passwordField.valid || passwordField.value === "" && (!confirmPasswordField.valid || confirmPasswordField.value === "")} onClick={() => infoSubmitHandler(passwordField)}>Submit</Button>
+                    <Button disabled={(!passwordField.valid || passwordField.value === "") && (!confirmPasswordField.valid || confirmPasswordField.value === "")} onClick={() => infoSubmitHandler(passwordField)}>Submit</Button>
                 </Form>
             </div>
             {
@@ -226,6 +245,13 @@ const Settings = (props) => {
                         <hr />
                         <div>
                             <div className={classes.Category}>{data.heading}</div>
+                            {data.select && <Select
+                                controlId={data.select.controlId}
+                                label={data.select.label}
+                                field={data.select.field}
+                                setField={(e) => selectEventTypeHandler(e, data)}
+                                options={data.select.options}
+                            />}
                             <div className={classes.Types}>
                                 <Table hover responsive>
                                     <thead>
@@ -241,7 +267,7 @@ const Settings = (props) => {
                                                 <td><TrashFill onClick={() => deleteProductHandler(type, data)} /></td>
                                                 <td><input disabled={!type.edit} defaultValue={type.value} onChange={(e) => type.value = e.target.value}></input></td>
                                                 <td>{type.edit
-                                                    ? <CloudPlus onClick={() => updateProductHandler(type, data)} />
+                                                    ? <CloudPlus onClick={() => updateTypeHandler(type, data)} />
                                                     : <PencilFill onClick={() => enableEditHandler(type, data)} />}</td>
                                             </tr>
                                         )}
@@ -249,7 +275,7 @@ const Settings = (props) => {
                                             <tr className={classes.Type} >
                                                 <td></td>
                                                 <td><input onChange={(e) => data.setNewType({ ...data.newType, value: e.target.value })} placeholder='Type' /></td>
-                                                <td><CloudPlus onClick={() => handleSaveType(data)} /></td>
+                                                <td><CloudPlus onClick={() => saveTypeHandler(data)} /></td>
                                             </tr>
                                             : null}
                                     </tbody>

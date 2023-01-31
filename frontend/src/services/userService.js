@@ -1,4 +1,4 @@
-import {RequestAPI} from "./baseApi";
+import { RequestAPI } from "./baseApi";
 
 const eventTypes = [
     { id: 1, value: 'event type 1' },
@@ -47,21 +47,22 @@ class UserService {
         // }
     }
 
-    static getMenuTypes = async (eventType, id = null) => { // ready from Radi
-        return menuTypes
+    static getMenuTypes = async (eventTypeId, id = null) => { // ready from Radi
+        const item = menuTypes.find(t => t.id === +eventTypeId);
+        return !!item ? [item] : [];
         // if(id) {
-        //     return RequestAPI.get(`/users/${id}/${eventType}/menu-types`)
+        //     return RequestAPI.get(`/users/${id}/${eventTypeId}/menu-types`)
         // } else {
-        //     return RequestAPI.get('/users/${eventType}/menu-types')
+        //     return RequestAPI.get('/users/${eventTypeId}/menu-types')
         // }
     }
 
-    static getCateringTypes = async (eventType, id = null) => { //ready from Radi
+    static getCateringTypes = async (eventTypeId, id = null) => { //ready from Radi
         return cateringTypes
         // if(id) {
-        //     return RequestAPI.get(`/users/${id}/${eventType}/catering-types`)
+        //     return RequestAPI.get(`/users/${id}/${eventTypeId}/catering-types`)
         // } else {
-        //     return RequestAPI.get('/users/${eventType}/catering-types')
+        //     return RequestAPI.get('/users/${eventTypeId}/catering-types')
         // }
     }
 
@@ -82,11 +83,11 @@ class UserService {
         // await RequestAPI.put(`/users/${type}`, data)
     }
 
-    static addNewType = async (type, eventType, data) => {
+    static addNewType = async (type, data) => {
         const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
-        typeArr.push({id: typeArr.length + 1, value: data.value});
+        typeArr.push({ id: typeArr.length + 1, ...data });
         // type: 'event-types' || 'menu-types' || 'catering-types'
-        // data: { value: 'type name' , eventType : 'wedding'}
+        // data: { value: 'type name' , eventTypeId: 1 }
         // await RequestAPI.post(`/users/${type}`, data)
     }
 }

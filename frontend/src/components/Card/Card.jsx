@@ -3,7 +3,7 @@ import PropTypes from 'prop-types';
 
 import classes from './Card.module.scss';
 import Select from '../common/Select/Select';
-import { validateEnum } from '../../utils/validation';
+import { validateOptions } from '../../utils/validation';
 
 const Card = (props) => (
     <div className={classes.Card} style={{ backgroundColor: props.theme }}>
@@ -17,8 +17,8 @@ const Card = (props) => (
                 type={props.type}
                 field={props.field}
                 setField={props.setField}
-                validateFn={validateEnum}
-                enum={props.enum}
+                validateFn={validateOptions}
+                options={props.options}
             />
         </div>
         <div className={classes.Body}>
@@ -33,7 +33,7 @@ Card.propTypes = {
     caption: PropTypes.string,
     field: PropTypes.string,
     setField: PropTypes.func,
-    enum: PropTypes.object,
+    options: PropTypes.object,
     icon: PropTypes.element,
     type: PropTypes.string,
 }

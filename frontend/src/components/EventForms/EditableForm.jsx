@@ -1,8 +1,8 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import classes from './EventForms.module.scss';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
-import { ROLES } from '../../utils/enums';
 import Spinner from '../common/Spinner/Spinner';
 import { Form } from 'react-bootstrap';
 import Input from '../common/Input/Input';

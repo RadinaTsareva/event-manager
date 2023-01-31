@@ -5,7 +5,7 @@ import Button from '../common/Button/Button';
 import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
-import { validateConfirmPassword, validateEmail, validateEnum, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
+import { validateConfirmPassword, validateEmail, validateOptions, validatePassword, validatePhoneNumber, validateText } from '../../utils/validation';
 import { useStoreActions } from 'easy-peasy';
 import { GENDER, ROLES } from '../../utils/enums';
 
@@ -104,8 +104,8 @@ const Registration = (props) => {
                     label='Role'
                     field={roleField}
                     setField={setRoleField}
-                    validateFn={validateEnum}
-                    enum={ROLES}
+                    validateFn={validateOptions}
+                    options={ROLES}
                 />
                 {fields.slice(0, 5).map(data =>
                     <Input key={data.label}
@@ -124,8 +124,8 @@ const Registration = (props) => {
                     label='Gender'
                     field={genderField}
                     setField={setGenderField}
-                    validateFn={validateEnum}
-                    enum={GENDER}
+                    validateFn={validateOptions}
+                    options={GENDER}
                 />
                 <Button onClick={registerUserClickedHandler}>Register</Button>
             </Form>

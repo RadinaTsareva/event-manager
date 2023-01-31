@@ -50,12 +50,12 @@ const validateConfirmPassword = (password, confirmPassword) => {
     return password.toString() === confirmPassword.toString()
 }
 
-const validateEnum = (value) => {
+const validateOptions = (value) => {
     return !!value
 }
 
 export {
-    validateEnum,
+    validateOptions,
     validateEmail,
     validatePassword,
     validateText,

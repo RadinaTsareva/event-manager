@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useStoreActions } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Col, Form, Row } from 'react-bootstrap';
@@ -129,7 +130,7 @@ const Admin = (props) => {
                                         }
                                         field={event.status}
                                         setField={(status) => setEventStatusHandler(event.id, status)}
-                                        enum={STATUS}
+                                        options={STATUS}
                                         type='event status'
                                         icon={<CalendarEvent />}
                                         theme={convertColorByStatus(event.status)} />

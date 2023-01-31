@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Form } from 'react-bootstrap';
 import classes from './EventForms.module.scss';
@@ -6,7 +7,7 @@ import EventsService from '../../services/eventsService';
 import Spinner from '../common/Spinner/Spinner';
 import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
-import { validateDate, validateEnum, validateText } from '../../utils/validation';
+import { validateDate, validateOptions, validateText } from '../../utils/validation';
 import UserService from '../../services/userService';
 import Calendar from '../../containers/Calendar/Calendar';
 
@@ -44,13 +45,7 @@ const InitialForm = (props) => {
         loadData()
     }, [loading]);
 
-    useEffect(() => {
-        if (organizer.value) {
-            loadEvents()
-        }
-    }, [month]);
-
-    const loadEvents = async () => {
+    const loadEvents = async (organizer) => {
         const res = await EventsService.getAllByOrganizer(month, organizer.value)
         setEvents(res)
     }
@@ -88,7 +83,7 @@ const InitialForm = (props) => {
     const organizerSelectedHandler = async (newValue) => {
         setOrganizer(newValue)
 
-        await loadEvents()
+        await loadEvents(newValue)
 
         const res = await UserService.getEventTypes(organizer.value)
         setTypes(res)
@@ -165,9 +160,9 @@ const InitialForm = (props) => {
                     label='Organizer'
                     field={organizer}
                     setField={organizerSelectedHandler}
-                    validateFn={validateEnum}
+                    validateFn={validateOptions}
                     disabled={props.disableFields}
-                    enum={organizers}
+                    options={organizers}
                 />
                 {organizer.value &&
                     <Calendar
@@ -192,9 +187,9 @@ const InitialForm = (props) => {
                         label='Event type'
                         field={type}
                         setField={typeSelectedHandler}
-                        validateFn={validateEnum}
+                        validateFn={validateOptions}
                         disabled={props.disableFields}
-                        enum={types}
+                        options={types}
                     />
                 }
                 {type.value &&
@@ -232,9 +227,9 @@ const InitialForm = (props) => {
                             label='Food type'
                             field={foodType}
                             setField={setFoodType}
-                            validateFn={validateEnum}
+                            validateFn={validateOptions}
                             disabled={props.disableFields}
-                            enum={foodTypes}
+                            options={foodTypes}
                         />
                         <Form.Check
                             className={classes.Checkbox}
