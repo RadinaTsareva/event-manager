@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "2bbf3c40-ab2f-4134-9394-871fc6aece29",
+        "_postman_id": "73ece55e-732a-4a56-8413-80ede2d178a6",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"sunt\",\"new_password\":\"doloribus\"}"
+                            "raw": "{\"current_password\":\"ab\",\"new_password\":\"quod\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"mollitia\",\"gender\":\"female\",\"email\":\"adela22@example.net\",\"role\":\"organizer\",\"address\":\"porro\",\"phone_number\":\"suscipit\"}"
+                            "raw": "{\"name\":\"repellat\",\"gender\":\"female\",\"email\":\"pbarton@example.net\",\"role\":\"client\",\"address\":\"saepe\",\"phone_number\":\"aut\"}"
                         },
                         "description": ""
                     },
@@ -286,7 +286,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "4",
+                                    "value": "15",
                                     "description": ""
                                 }
                             ]
@@ -402,7 +402,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "13",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -442,7 +442,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -482,7 +482,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "9",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -534,7 +534,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "7",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -574,7 +574,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "16",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -624,7 +624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":20,\"name\":\"aliquid\",\"start\":\"2014-06-05\",\"end\":\"2056-09-21\",\"type\":\"animi\",\"isCatering\":true,\"foodType\":\"accusamus\",\"description\":\"Sapiente quaerat quo molestias autem debitis corporis ea.\",\"guestsCount\":15,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":14,\"name\":\"voluptatem\",\"start\":\"2010-04-18\",\"end\":\"2025-03-22\",\"type\":\"temporibus\",\"isCatering\":true,\"foodType\":\"voluptate\",\"description\":\"Earum et similique accusamus delectus.\",\"guestsCount\":83,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -661,7 +661,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -679,7 +679,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":15,\"place\":\"dicta\",\"placeWebsite\":\"eos\",\"placeGoogleMapsLink\":\"autem\",\"pricePerGuest\":3,\"priceForFood\":78,\"priceForAccommodation\":4681473,\"accommodationDetails\":\"voluptatibus\",\"accommodationContact\":\"aut\"}"
+                            "raw": "{\"eventId\":5,\"place\":\"esse\",\"placeWebsite\":\"iste\",\"placeGoogleMapsLink\":\"at\",\"pricePerGuest\":13,\"priceForFood\":87,\"priceForAccommodation\":222.2542964,\"accommodationDetails\":\"iusto\",\"accommodationContact\":\"iure\"}"
                         },
                         "description": ""
                     },
@@ -867,6 +867,90 @@
                     ]
                 },
                 {
+                    "name": "Getting all catering types for user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id\/catering-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/catering-types",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all catering types for organizer",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/catering-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/catering-types"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "Getting all finished events",
                     "request": {
                         "url": {
@@ -923,7 +1007,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"calista55@example.net\",\"password\":\"et\"}"
+                            "raw": "{\"email\":\"rosamond.bednar@example.com\",\"password\":\"aut\"}"
                         },
                         "description": "",
                         "auth": {
@@ -967,7 +1051,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"officia\",\"gender\":\"male\",\"email\":\"halie53@example.net\",\"role\":\"organizer\",\"password\":\"impedit\",\"phone_number\":\"eos\",\"address\":\"amet\"}"
+                            "raw": "{\"name\":\"ut\",\"gender\":\"male\",\"email\":\"blair.gislason@example.net\",\"role\":\"organizer\",\"password\":\"accusantium\",\"phone_number\":\"commodi\",\"address\":\"est\"}"
                         },
                         "description": "",
                         "auth": {
