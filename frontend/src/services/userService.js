@@ -66,7 +66,7 @@ class UserService {
         // }
     }
 
-    static deleteType = async (id, type) => {
+    static deleteType = async (id, type) => { //ready from Radi
         const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
         const index = typeArr.findIndex(t => t.id === id);
         typeArr.splice(index, 1);
@@ -74,7 +74,7 @@ class UserService {
         // await RequestAPI.delete(`/users/${type}`, { id })
     }
 
-    static updateType = async (type, data) => {
+    static updateType = async (type, data) => { //ready from Radi
         const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
         const index = typeArr.findIndex(t => t.id === data.id);
         typeArr[index].value = data.value;

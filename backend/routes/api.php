@@ -25,7 +25,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/current-user', [UserController::class, 'currentUser']);
     Route::post('/users/logout', [UserController::class, 'logoutUser']);
     Route::post('/users/change-password', [UserController::class, 'changePassword']);
-    Route::put('/users/update', [UserController::class, 'updateUser']);
+    Route::post('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
     Route::get('/events/types', [EventController::class, 'getTypes']);
@@ -47,6 +47,9 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/{eventType}/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
     Route::get('/users/{id}/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
     Route::get('/users/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
+    Route::post('/users/{type}', [UserController::class, 'addNewType']);
+    Route::post('/users/{type}', [UserController::class, 'updateType']);
+    Route::post('/users/{type}', [UserController::class, 'deleteType']);
 
 });
 

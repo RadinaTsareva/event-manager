@@ -15,6 +15,12 @@ class CateringType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'event_type_id',
+        'organizer_id'
+    ];
+
     public function organizer(): BelongsTo
     {
         return $this->BelongsTo(User::class);

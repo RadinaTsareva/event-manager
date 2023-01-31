@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "c9775f79-1b84-4715-81f2-27f49e4d56d7",
+        "_postman_id": "1a81e7d7-0e32-4cb7-98a2-31b2f4d1867f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"possimus\",\"new_password\":\"recusandae\"}"
+                            "raw": "{\"current_password\":\"in\",\"new_password\":\"iure\"}"
                         },
                         "description": ""
                     },
@@ -126,7 +126,7 @@
                             "query": [],
                             "raw": "{{baseUrl}}\/api\/users\/update"
                         },
-                        "method": "PUT",
+                        "method": "POST",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"dolores\",\"gender\":\"male\",\"email\":\"unique05@example.net\",\"role\":\"organizer\",\"address\":\"possimus\",\"phone_number\":\"hic\"}"
+                            "raw": "{\"name\":\"qui\",\"gender\":\"male\",\"email\":\"elroy.murazik@example.org\",\"role\":\"admin\",\"address\":\"dolorem\",\"phone_number\":\"quaerat\"}"
                         },
                         "description": ""
                     },
@@ -286,7 +286,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "6",
+                                    "value": "8",
                                     "description": ""
                                 }
                             ]
@@ -402,7 +402,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -442,7 +442,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "15",
+                                    "value": "3",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -482,7 +482,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -534,7 +534,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "10",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -574,7 +574,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "7",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -624,7 +624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":12,\"name\":\"unde\",\"start\":\"2009-11-17\",\"end\":\"2039-11-09\",\"type\":\"perspiciatis\",\"isCatering\":false,\"foodType\":\"dicta\",\"description\":\"Nemo tenetur et voluptatem porro quibusdam velit repellendus non.\",\"guestsCount\":7,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":9,\"name\":\"nulla\",\"start\":\"2010-12-21\",\"end\":\"2023-08-26\",\"type\":\"possimus\",\"isCatering\":true,\"foodType\":\"et\",\"description\":\"Quidem sequi laudantium reiciendis et non doloremque.\",\"guestsCount\":61,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -661,7 +661,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "18",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -679,7 +679,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":17,\"place\":\"aut\",\"placeWebsite\":\"exercitationem\",\"placeGoogleMapsLink\":\"nesciunt\",\"pricePerGuest\":63,\"priceForFood\":4,\"priceForAccommodation\":0.825,\"accommodationDetails\":\"excepturi\",\"accommodationContact\":\"quia\"}"
+                            "raw": "{\"eventId\":18,\"place\":\"itaque\",\"placeWebsite\":\"dolore\",\"placeGoogleMapsLink\":\"at\",\"pricePerGuest\":83,\"priceForFood\":32,\"priceForAccommodation\":115.919,\"accommodationDetails\":\"iusto\",\"accommodationContact\":\"et\"}"
                         },
                         "description": ""
                     },
@@ -800,7 +800,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "maiores",
+                                    "value": "labore",
                                     "description": ""
                                 }
                             ]
@@ -898,7 +898,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "nulla",
+                                    "value": "sit",
                                     "description": ""
                                 }
                             ]
@@ -979,6 +979,55 @@
                     ]
                 },
                 {
+                    "name": "Deleting type",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:type",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:type",
+                            "variable": [
+                                {
+                                    "id": "type",
+                                    "key": "type",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":129.684}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"Non existing catering type\",\n     \"errors\": {\n     \"id\": [\n         \"Non existing catering type\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
                     "name": "Getting all finished events",
                     "request": {
                         "url": {
@@ -1035,7 +1084,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"morar.al@example.org\",\"password\":\"nesciunt\"}"
+                            "raw": "{\"email\":\"icruickshank@example.net\",\"password\":\"dolor\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1079,7 +1128,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"iusto\",\"gender\":\"female\",\"email\":\"ymckenzie@example.org\",\"role\":\"organizer\",\"password\":\"est\",\"phone_number\":\"a\",\"address\":\"voluptatem\"}"
+                            "raw": "{\"name\":\"laboriosam\",\"gender\":\"male\",\"email\":\"myah79@example.com\",\"role\":\"client\",\"password\":\"rerum\",\"phone_number\":\"quis\",\"address\":\"quod\"}"
                         },
                         "description": "",
                         "auth": {
