@@ -119,7 +119,6 @@ const personalStatusEvents = [
         clientEmail: 'alabala@gmail.com',
     },
 ]
-
 class EventsService {
     static getPics = async (id) => {
         return Array(10).fill('https://picsum.photos/200/300')
@@ -132,7 +131,10 @@ class EventsService {
     }
 
     static getFoodTypes = async (organizer, eventType, isCatering) => {
-        return ['Food type 1', 'Food type 2', 'Food type 3']
+        if (isCatering) {
+            return ['Food type 1', 'Food type 2', 'Food type 3']
+        }
+        return ['Food type 4', 'Food type 5', 'Food type 6']
         // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> still not sure what to do with isCatering
     }
 
@@ -146,6 +148,27 @@ class EventsService {
         return allEvents
         // only finished events
         // return RequestAPI.get('/events') -> ready from Radi
+    }
+
+    static getAllByOrganizer = async (month, id) => {
+        return [{
+            start: new Date(Date.now() + 1000 * 60 * 60 * 20 * id),
+            end: new Date(Date.now() + 1000 * 60 * 60 * 30 * id),
+        },
+        {
+            start: new Date(Date.now() + 1000 * 60 * 60 * 40 * id),
+            end: new Date(Date.now() + 1000 * 60 * 60 * 50 * id),
+        },
+        {
+            start: new Date(Date.now() + 1000 * 60 * 60 * 60 * id),
+            end: new Date(Date.now() + 1000 * 60 * 60 * 70 * id),
+        },
+        {
+            start: new Date(Date.now() + 1000 * 60 * 60 * 80 * id),
+            end: new Date(Date.now() + 1000 * 60 * 60 * 90 * id),
+        }]
+        // only finished events
+        // return RequestAPI.get(`/events?organizer=${id}`)
     }
 
     static getAllPersonal = async () => {

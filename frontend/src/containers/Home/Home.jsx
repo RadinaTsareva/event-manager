@@ -15,7 +15,7 @@ const Home = () => {
     const [personalEvents, setPersonalEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
     const [events, setEvents] = useState([]);
-    const [month, setMonth] = useState();
+    const [month, setMonth] = useState(new Date(Date.now()).getMonth());
 
     useEffect((e) => {
         if (isLoggedIn) {

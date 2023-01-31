@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from 'react';
-import { Form, FormGroup } from 'react-bootstrap';
+import { Form } from 'react-bootstrap';
 import classes from './EventForms.module.scss';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
@@ -8,6 +8,7 @@ import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
 import { validateDate, validateEnum, validateText } from '../../utils/validation';
 import UserService from '../../services/userService';
+import Calendar from '../../containers/Calendar/Calendar';
 
 const defaultValues = {
     eventName: { name: 'eventName', value: "", valid: true, message: 'Event name should be at least 5 characters long' },
@@ -24,6 +25,8 @@ const defaultValues = {
 const InitialForm = (props) => {
     const [organizer, setOrganizer] = useState(defaultValues.organizer);
     const [organizers, setOrganizers] = useState([]);
+    const [month, setMonth] = useState(new Date(Date.now()).getMonth());
+    const [events, setEvents] = useState([]);
     const [eventName, setEventName] = useState(defaultValues.eventName);
     const [dateFrom, setDateFrom] = useState(defaultValues.dateFrom);
     const [dateTo, setDateTo] = useState(defaultValues.dateTo);
@@ -40,6 +43,17 @@ const InitialForm = (props) => {
     useEffect(() => {
         loadData()
     }, [loading]);
+
+    useEffect(() => {
+        if (organizer.value) {
+            loadEvents()
+        }
+    }, [month]);
+
+    const loadEvents = async () => {
+        const res = await EventsService.getAllByOrganizer(month, organizer.value)
+        setEvents(res)
+    }
 
     const loadData = async () => {
         if (!props.event) {
@@ -64,11 +78,25 @@ const InitialForm = (props) => {
         setFoodTypes(res)
     }
 
+    const menuOrCateringSelectedHandler = async (value) => {
+        let res = await EventsService.getFoodTypes(organizer, type.value, value)
+        setFoodTypes(res)
+        setIsCatering(value)
+    }
+
+
     const organizerSelectedHandler = async (newValue) => {
         setOrganizer(newValue)
 
+        await loadEvents()
+
         const res = await UserService.getEventTypes(organizer.value)
         setTypes(res)
+    }
+
+    const timeRangeHandler = ({ start, end }) => {
+        setDateFrom({ ...dateFrom, value: start.toString('yyyy-MM-ddThh:mm') })
+        setDateTo({ ...dateTo, value: end.toString('yyyy-MM-ddThh:mm') })
     }
 
     const sendClickedHandler = async () => {
@@ -141,6 +169,12 @@ const InitialForm = (props) => {
                     disabled={props.disableFields}
                     enum={organizers}
                 />
+                {organizer.value &&
+                    <Calendar
+                        monthChangedHandler={setMonth}
+                        events={events}
+                        timeRangeHandler={timeRangeHandler}
+                        preview={true} />}
                 {fields.map(data =>
                     <div className={classes.Field} key={data.label}>
                         <Input key={data.label}
@@ -168,7 +202,7 @@ const InitialForm = (props) => {
                         <Form.Group controlId="formFoodCheckbox" className={classes.Radio}>
                             <Form.Check
                                 defaultChecked={!isCatering}
-                                onChange={() => setIsCatering(!isCatering)}
+                                onChange={() => menuOrCateringSelectedHandler(!isCatering)}
                                 type='radio'
                                 id={'menu'}
                                 name="group1"
@@ -176,7 +210,7 @@ const InitialForm = (props) => {
                             />
                             <Form.Check
                                 defaultChecked={isCatering}
-                                onChange={() => setIsCatering(!isCatering)}
+                                onChange={() => menuOrCateringSelectedHandler(!isCatering)}
                                 type='radio'
                                 id={'catering'}
                                 name="group1"
@@ -197,8 +231,7 @@ const InitialForm = (props) => {
                             controlId='formGroupFoodType'
                             label='Food type'
                             field={foodType}
-                            // TODO: fix this
-                            setField={(newValue) => setFoodType(newValue)}
+                            setField={setFoodType}
                             validateFn={validateEnum}
                             disabled={props.disableFields}
                             enum={foodTypes}

@@ -39,9 +39,9 @@ const Select = (props) => {
                             ? props.enum.map(type =>
                                 <option key={type.id} value={type.id}>{type.value}</option>
                             ) : props.enum.map(type =>
-                                <option key={type} value={type}>{type}</option>
-                            ) : Object.keys(props.enum).map(type =>
-                                <option key={type} value={type}>{type}</option>
+                                <option key={type} value={type.toLowerCase()}>{type}</option>
+                            ) : Object.values(props.enum).map(type =>
+                                <option key={type} value={type.toLowerCase()}>{type}</option>
                             )
                 }
             </Form.Select>
@@ -52,13 +52,14 @@ const Select = (props) => {
 
 Select.propTypes = {
     controlId: PropTypes.string,
-    label: PropTypes.string || undefined,
-    field: PropTypes.string || PropTypes.object,
+    label: PropTypes.string,
+    field: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     setField: PropTypes.func,
     validateFn: PropTypes.func,
-    enum: PropTypes.array || PropTypes.object,
-    disabled: PropTypes.bool || undefined,
-    type: PropTypes.string || undefined
+    // enum: PropTypes.oneOfType([PropTypes.array, PropTypes.object]),
+    enum: PropTypes.any,
+    disabled: PropTypes.bool,
+    type: PropTypes.string
 };
 
 export default Select;

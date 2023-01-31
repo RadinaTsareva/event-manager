@@ -41,13 +41,13 @@ const Input = (props) => {
 
 Input.propTypes = {
     controlId: PropTypes.string,
-    label: PropTypes.string || undefined,
+    label: PropTypes.string,
     type: PropTypes.string,
     placeholder: PropTypes.string,
-    field: PropTypes.string || PropTypes.object,
+    field: PropTypes.oneOfType([PropTypes.string, PropTypes.object]),
     setField: PropTypes.func,
     validateFn: PropTypes.func,
-    disabled: PropTypes.bool || undefined
+    disabled: PropTypes.bool
 };
 
 export default Input;

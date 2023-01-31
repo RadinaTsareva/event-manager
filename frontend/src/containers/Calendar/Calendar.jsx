@@ -1,5 +1,5 @@
 import React, { useEffect, useRef, useState } from 'react';
-import { DayPilotMonth } from "daypilot-pro-react";
+import { DayPilot, DayPilotMonth } from "daypilot-pro-react";
 import { useNavigate } from 'react-router';
 
 import { ROLES, STATUS } from '../../utils/enums';
@@ -13,6 +13,10 @@ const Calendar = (props) => {
         weekStarts: 1,
         visible: true,
         startDate: new Date(Date.now()).toISOString(),
+        ...(props.preview ? { cellHeight: 50 } : {}),
+        eventClickHandling: props.preview ? 'Disabled' : 'Enabled',
+        cellHeaderClickHandling: props.preview ? 'Disabled' : 'Enabled',
+        allowMultiSelect: false,
     });
     const [event, setEvent] = useState(null);
     const calendarRef = useRef(null);
@@ -26,14 +30,13 @@ const Calendar = (props) => {
     }, [data.startDate, props.events]);
 
     const loadEvents = () => {
-        const res = props.events
-        const events = res.map(e => {
+        const events = props.events.map(e => {
             const color = convertColorByStatus(e.status)
             const start = new Date(e.start)
             const end = new Date(e.end)
             e.start = start
             e.end = end
-            e.text = `${e.name}, ${e.organizerName}`
+            e.text = `${e.name || 'Event'}${e.organizerName ? ', ' + e.organizerName : ''}`
             e.backColor = 'white'
             e.fontColor = 'black'
             e.barColor = color
@@ -70,8 +73,24 @@ const Calendar = (props) => {
         return null
     }
 
+    const beforeRender = (args) => {
+        if (props.preview) {
+            const disabled = props.events.find(item => DayPilot.Util.overlaps(args.cell.start, args.cell.end, new DayPilot.Date(item.start), new DayPilot.Date(item.end)));
+            if (disabled) {
+                args.cell.properties.disabled = true;
+                args.cell.properties.backColor = convertColorByStatus(STATUS.REJECTED);
+            }
+
+            const disabledOld = args.cell.start < DayPilot.Date.today().addDays(1);
+            if (disabledOld) {
+                args.cell.properties.disabled = true;
+                args.cell.properties.backColor = convertColorByStatus(STATUS.REJECTED);
+            }
+        }
+    }
+
     return (
-        <div className={classes.Container}>
+        <div className={[classes.Container, props.className].join(' ')}>
             <div className={classes.Selector}>
                 <p>Select date</p>
                 <input type='date'
@@ -87,10 +106,12 @@ const Calendar = (props) => {
             <div className={classes.Calendar}>
                 <DayPilotMonth ref={calendarRef}
                     {...data}
+                    onBeforeCellRender={beforeRender}
+                    onTimeRangeSelected={props.timeRangeHandler}
                     onEventClick={clickHandler}
                 />
             </div>
-            {event ?
+            {event && !props.preview ?
                 <>
                     <div className={classes.Event}>
                         <div>
