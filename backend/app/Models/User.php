@@ -88,6 +88,7 @@ class User extends Authenticatable
     {
         return $this->hasMany(Event::class, 'client_id', 'id');
     }
+
     public function blacklistsCreated(): HasMany
     {
         return $this->hasMany(Blacklist::class, 'created_by_user_id', 'id');
@@ -96,5 +97,29 @@ class User extends Authenticatable
     public function blacklistsIn(): HasMany
     {
         return $this->hasMany(Blacklist::class, 'block_user_id', 'id');
+    }
+
+    public function eventTypes(): HasMany
+    {
+        return $this->hasMany(EventType::class, 'organizer_id');
+    }
+
+    public function menuTypes(): HasMany
+    {
+        return $this->hasMany(MenuType::class, 'organizer_id');
+    }
+
+    public function cateringTypes(): HasMany
+    {
+        return $this->hasMany(CateringType::class, 'organizer_id');
+    }
+
+    public function foodTypesForEventType(int $eventTypeId, bool $isCatering): array
+    {
+        if ($isCatering) {
+            return $this->cateringTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();
+        } else {
+            return $this->menuTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();
+        }
     }
 }

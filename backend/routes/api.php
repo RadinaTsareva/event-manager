@@ -19,10 +19,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/current-user', [UserController::class, 'currentUser']);
-    Route::post('/auth/logout', [UserController::class, 'logoutUser']);
-    Route::post('/auth/change-password', [UserController::class, 'changePassword']);
-    Route::post('/auth/update-user', [UserController::class, 'updateUser']);
+    Route::get('/users/current-user', [UserController::class, 'currentUser']);
+    Route::post('/users/logout', [UserController::class, 'logoutUser']);
+    Route::post('/users/change-password', [UserController::class, 'changePassword']);
+    Route::put('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
     Route::get('/events/types', [EventController::class, 'getTypes']);
@@ -41,6 +41,6 @@ Route::middleware('auth:sanctum')->group(function () {
 
 Route::get('/events', [EventController::class, 'getAllEvents']);
 
-Route::post('/auth/login', [UserController::class, 'loginUser']);//TODO rename
-Route::post('/auth/register', [UserController::class, 'createUser']);//TODO rename
+Route::post('/users/login', [UserController::class, 'loginUser']);
+Route::post('/users/register', [UserController::class, 'createUser']);
 

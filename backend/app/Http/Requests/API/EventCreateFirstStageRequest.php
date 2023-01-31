@@ -2,10 +2,11 @@
 
 namespace App\Http\Requests\API;
 
-use App\Models\Event;
+use App\Models\User;
 use Illuminate\Foundation\Http\FormRequest;
 use Illuminate\Support\Facades\Date;
-use Illuminate\Validation\Rule;
+use Illuminate\Validation\Validator;
+
 
 /**
  * @property int $organizerId
@@ -28,18 +29,40 @@ class EventCreateFirstStageRequest extends FormRequest
      */
     public function rules(): array
     {
-        //TODO add rule for the food type
         return [
             'organizerId' => ['required', 'exists:users,id', 'integer'],
             'name' => ['required', 'string'],
             'start' => ['required', 'date', 'before_or_equal:end'],
             'end' => ['required', 'date', 'after_or_equal:start'],
-            'type' => ['required', 'string', Rule::in(Event::TYPES)],
+            'type' => ['required', 'string'],
             'isCatering' => ['required', 'boolean'],
             'foodType' => ['required', 'string'],
             'description' => ['required', 'string'],
             'guestsCount' => ['required', 'integer', 'min:1'],
             'accommodationNeeded' => ['required', 'boolean']
         ];
+    }
+
+    public function withValidator(Validator $validator)
+    {
+        $organizer = User::find($this->get('organizerId'));
+        if ($organizer) {
+            $validator->after(function ($validator) use ($organizer) {
+                $evenTypes = $organizer->eventTypes()->pluck('name')->toArray();
+                if (in_array($this->get('type'), $evenTypes)) {
+                    $validator->errors()->add('type', 'This event type is not part of the organizer\'s ones');
+                }
+                if($this->get('isCatering')) {
+                    $foodTypes = $organizer->cateringTypes()->pluck('name')->toArray();
+                } else {
+                    $foodTypes = $organizer->menuTypes()->pluck('name')->toArray();
+                }
+
+                if (in_array($this->get('foodType'), $foodTypes)) {
+                    $validator->errors()->add('type', 'This food type is not part of the organizer\'s menu,catering options');
+                }
+
+            });
+        }
     }
 }

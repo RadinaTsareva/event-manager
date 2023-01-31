@@ -71,21 +71,6 @@ class Event extends Model
         'hotel_phone_number',
         'hotel_website_link'
     ];
-
-    public const FOOD_TYPES = [
-        self::EVENT_TYPE_PARTY => [
-            self::FOOD_TYPE_FAST_FOOD
-        ],
-        self::EVENT_TYPE_WEDDING => [
-            self::FOOD_TYPE_SEA_FOOD,
-            self::FOOD_TYPE_SWEETS
-        ],
-    ];
-
-    public const TYPES = [
-        self::EVENT_TYPE_WEDDING,
-        self::EVENT_TYPE_PARTY,
-    ];
     public const EVENT_STATUS_PENDING= 'pending';
     public const EVENT_STATUS_EDIT_PENDING = 'edit_pending';
     public const EVENT_STATUS_ACCEPTED = 'accepted';
@@ -101,15 +86,6 @@ class Event extends Model
         self::EVENT_STATUS_FINISHED,
         self::EVENT_STATUS_EDITABLE
     ];
-
-    //event types
-    public const EVENT_TYPE_WEDDING = 'wedding';
-    public const EVENT_TYPE_PARTY = 'party';
-
-    //food types
-    public const FOOD_TYPE_SEA_FOOD = 'sea-food';
-    public const FOOD_TYPE_FAST_FOOD = 'fast-food';
-    public const FOOD_TYPE_SWEETS = 'sweets';
 
 
     public function organizer(): HasOne

@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "a085b59d-1f94-46ad-ab68-6eec7e30c185",
+        "_postman_id": "f53d1c1d-da2c-47a9-a2f4-a98e3982dc19",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -24,9 +24,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/current-user",
+                            "path": "api\/users\/current-user",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/current-user"
+                            "raw": "{{baseUrl}}\/api\/users\/current-user"
                         },
                         "method": "GET",
                         "header": [
@@ -56,9 +56,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/logout",
+                            "path": "api\/users\/logout",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                            "raw": "{{baseUrl}}\/api\/users\/logout"
                         },
                         "method": "POST",
                         "header": [
@@ -81,9 +81,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/change-password",
+                            "path": "api\/users\/change-password",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/change-password"
+                            "raw": "{{baseUrl}}\/api\/users\/change-password"
                         },
                         "method": "POST",
                         "header": [
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"aut\",\"new_password\":\"nihil\"}"
+                            "raw": "{\"current_password\":\"incidunt\",\"new_password\":\"quos\"}"
                         },
                         "description": ""
                     },
@@ -122,11 +122,11 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/update-user",
+                            "path": "api\/users\/update",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/update-user"
+                            "raw": "{{baseUrl}}\/api\/users\/update"
                         },
-                        "method": "POST",
+                        "method": "PUT",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"officia\",\"gender\":\"none\",\"email\":\"yjacobi@example.org\",\"role\":\"client\",\"address\":\"voluptatibus\",\"phone_number\":\"nostrum\"}"
+                            "raw": "{\"name\":\"ullam\",\"gender\":\"female\",\"email\":\"heathcote.tristian@example.com\",\"role\":\"admin\",\"address\":\"quasi\",\"phone_number\":\"vero\"}"
                         },
                         "description": ""
                     },
@@ -233,6 +233,12 @@
                             "code": 200,
                             "body": "[\"wedding\",\"party\"]",
                             "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n \"success\":false,\n \"messages\":[\n     \"The selected organizer is not an organizer or doesn't exists.\"\n ]\n}",
+                            "name": ""
                         }
                     ]
                 },
@@ -280,7 +286,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "1",
+                                    "value": "15",
                                     "description": ""
                                 }
                             ]
@@ -309,7 +315,13 @@
                         {
                             "header": [],
                             "code": 403,
-                            "body": "{\n     \"success\":false,\n     \"messages\":[\"Wrong event type\"]\n}",
+                            "body": "{\n     \"success\":false,\n     \"messages\":[\"The selected organizer is not an organizer or doesn't exists.\"]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n    \"message\": \"The organizer id field is required.\",\n    \"errors\": {\n        \"organizerId\": [\n            \"The organizer id field is required.\"\n         ]\n     }\n}",
                             "name": ""
                         }
                     ]
@@ -390,7 +402,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -430,7 +442,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "14",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -470,7 +482,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -562,7 +574,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "12",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -612,7 +624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":5,\"name\":\"facilis\",\"start\":\"2018-05-02\",\"end\":\"2115-09-26\",\"type\":\"party\",\"isCatering\":true,\"foodType\":\"sint\",\"description\":\"Eius laboriosam quo fuga beatae totam possimus.\",\"guestsCount\":80,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":12,\"name\":\"quia\",\"start\":\"2011-10-11\",\"end\":\"2026-05-25\",\"type\":\"ipsam\",\"isCatering\":false,\"foodType\":\"a\",\"description\":\"Reiciendis aut ut illo sint.\",\"guestsCount\":4,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -627,6 +639,12 @@
                             "header": [],
                             "code": 403,
                             "body": "{\n     \"message\": \"The selected type is invalid.\",\n     \"errors\": {\n         \"type\": [\n             \"The selected type is invalid.\"\n         ]\n     }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"This event type is not part of the organizer's ones (and 1 more error)\",\n     \"errors\": {\n         \"type\": [\n             \"This event type is not part of the organizer's ones\",\n             \"This food type is not part of the organizer's menu,catering options\"\n         ]\n     }\n}",
                             "name": ""
                         }
                     ]
@@ -643,7 +661,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -661,7 +679,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":18,\"place\":\"temporibus\",\"placeWebsite\":\"reprehenderit\",\"placeGoogleMapsLink\":\"unde\",\"pricePerGuest\":23,\"priceForFood\":17,\"priceForAccommodation\":7122523.038345425,\"accommodationDetails\":\"vitae\",\"accommodationContact\":\"quia\"}"
+                            "raw": "{\"eventId\":4,\"place\":\"dolores\",\"placeWebsite\":\"quisquam\",\"placeGoogleMapsLink\":\"nihil\",\"pricePerGuest\":1,\"priceForFood\":57,\"priceForAccommodation\":376819798.81,\"accommodationDetails\":\"atque\",\"accommodationContact\":\"consequuntur\"}"
                         },
                         "description": ""
                     },
@@ -720,9 +738,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/login",
+                            "path": "api\/users\/login",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                            "raw": "{{baseUrl}}\/api\/users\/login"
                         },
                         "method": "POST",
                         "header": [
@@ -737,7 +755,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"anibal.grady@example.net\",\"password\":\"quia\"}"
+                            "raw": "{\"email\":\"nina12@example.com\",\"password\":\"ducimus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -748,7 +766,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}",
+                            "body": "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  0 \/\/ TODO\n}",
                             "name": ""
                         },
                         {
@@ -764,9 +782,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/register",
+                            "path": "api\/users\/register",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/register"
+                            "raw": "{{baseUrl}}\/api\/users\/register"
                         },
                         "method": "POST",
                         "header": [
@@ -781,7 +799,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"et\",\"gender\":\"none\",\"email\":\"daren64@example.net\",\"role\":\"organizer\",\"password\":\"facilis\",\"phone_number\":\"consequatur\",\"address\":\"nihil\"}"
+                            "raw": "{\"name\":\"est\",\"gender\":\"female\",\"email\":\"maggie.herman@example.org\",\"role\":\"organizer\",\"password\":\"aut\",\"phone_number\":\"explicabo\",\"address\":\"libero\"}"
                         },
                         "description": "",
                         "auth": {
@@ -792,7 +810,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}",
+                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n}",
                             "name": ""
                         },
                         {

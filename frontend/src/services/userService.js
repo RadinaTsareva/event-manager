@@ -20,9 +20,9 @@ const cateringTypes = [
 ]
 
 class UserService {
-    static login = async (data) => {
-        return { role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklisted: [1, 2] }
-        // await RequestAPI.post('/users/login', data)
+    static login = async (data) => { //blacklistedCount -> the blacklist this user is blocked
+        // return { role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklistedCount: 1 }
+        await RequestAPI.post('/users/login', data)
     }
 
     static registerUser = async (data) => {
