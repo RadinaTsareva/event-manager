@@ -1,5 +1,4 @@
-import { ROLES } from "../utils/enums";
-import { RequestAPI } from "./baseApi";
+import {RequestAPI} from "./baseApi";
 
 const eventTypes = [
     { id: 1, value: 'event type 1' },
@@ -48,21 +47,21 @@ class UserService {
         // }
     }
 
-    static getMenuTypes = async (id = null) => { //ready from Radi
+    static getMenuTypes = async (eventType, id = null) => { //not ready from Radi
         return menuTypes
         // if(id) {
-        //     return RequestAPI.get(`/users/${id}/menu-types`)
+        //     return RequestAPI.get(`/users/${id}/${eventType}/menu-types`)
         // } else {
-        //     return RequestAPI.get('/users/menu-types')
+        //     return RequestAPI.get('/users/${eventType}/menu-types')
         // }
     }
 
-    static getCateringTypes = async (id = null) => { //ready from Radi
+    static getCateringTypes = async (eventType, id = null) => { //not ready from Radi
         return cateringTypes
         // if(id) {
-        //     return RequestAPI.get(`/users/${id}/catering-types`)
+        //     return RequestAPI.get(`/users/${id}/${eventType}/catering-types`)
         // } else {
-        //     return RequestAPI.get('/users/catering-types')
+        //     return RequestAPI.get('/users/${eventType}/catering-types')
         // }
     }
 
@@ -83,11 +82,11 @@ class UserService {
         // await RequestAPI.put(`/users/${type}`, data)
     }
 
-    static addNewType = async (type, data) => {
+    static addNewType = async (type, eventType, data) => {
         const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
-        typeArr.push({ id: typeArr.length + 1, value: data.value });
+        typeArr.push({id: typeArr.length + 1, value: data.value});
         // type: 'event-types' || 'menu-types' || 'catering-types'
-        // data: { value: 'type name' }
+        // data: { value: 'type name' , eventType : 'wedding'}
         // await RequestAPI.post(`/users/${type}`, data)
     }
 }
