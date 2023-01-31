@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\API\BlacklistController;
+use App\Http\Controllers\API\CateringTypeController;
 use App\Http\Controllers\API\EventCommentController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\EventPictureController;
+use App\Http\Controllers\API\EventTypeController;
+use App\Http\Controllers\API\MenuTypeController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -37,6 +40,14 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/events/{id}/pics', [EventPictureController::class, 'getEventPictures']);
     Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
     Route::post('/events/{id}', [EventController::class, 'saveSecondStageEvent']);
+
+    Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
+    Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);
+    Route::get('/users/{id}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
+    Route::get('/users/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
+    Route::get('/users/{id}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
+    Route::get('/users/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
+
 });
 
 Route::get('/events', [EventController::class, 'getAllEvents']);

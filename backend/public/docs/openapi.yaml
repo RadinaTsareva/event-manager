@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: incidunt
+                  example: sunt
                 new_password:
                   type: string
                   description: ''
-                  example: quos
+                  example: doloribus
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,7 +287,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: ullam
+                  example: mollitia
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -295,19 +295,19 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: heathcote.tristian@example.com
+                  example: adela22@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: admin
+                  example: organizer
                 address:
                   type: string
                   description: ''
-                  example: quasi
+                  example: porro
                 phone_number:
                   type: string
                   description: ''
-                  example: vero
+                  example: suscipit
   '/api/users/{id}/blacklist':
     post:
       summary: 'Blocking user'
@@ -572,7 +572,7 @@ paths:
         in: path
         name: eventType
         description: ''
-        example: 15
+        example: 4
         required: true
         schema:
           type: integer
@@ -713,7 +713,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 20
+        example: 9
         required: true
         schema:
           type: integer
@@ -772,7 +772,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 14
+        example: 9
         required: true
         schema:
           type: integer
@@ -1025,39 +1025,39 @@ paths:
                 eventId:
                   type: integer
                   description: ''
-                  example: 4
+                  example: 15
                 place:
                   type: string
                   description: ''
-                  example: dolores
+                  example: dicta
                 placeWebsite:
                   type: string
                   description: ''
-                  example: quisquam
+                  example: eos
                 placeGoogleMapsLink:
                   type: string
                   description: ''
-                  example: nihil
+                  example: autem
                 pricePerGuest:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 1
+                  example: 3
                 priceForFood:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 57
+                  example: 78
                 priceForAccommodation:
                   type: number
                   description: ''
-                  example: 376819798.81
+                  example: 4681473.0
                 accommodationDetails:
                   type: string
                   description: ''
-                  example: atque
+                  example: voluptatibus
                 accommodationContact:
                   type: string
                   description: ''
-                  example: consequuntur
+                  example: aut
               required:
                 - eventId
                 - place
@@ -1070,7 +1070,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 8
+        example: 19
         required: true
         schema:
           type: integer
@@ -1122,7 +1122,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 1
+        example: 11
         required: true
         schema:
           type: integer
@@ -1171,7 +1171,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 12
+        example: 16
         required: true
         schema:
           type: integer
@@ -1257,39 +1257,39 @@ paths:
                 organizerId:
                   type: integer
                   description: ''
-                  example: 12
+                  example: 20
                 name:
                   type: string
                   description: ''
-                  example: quia
+                  example: aliquid
                 start:
                   type: string
                   description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
-                  example: '2011-10-11'
+                  example: '2014-06-05'
                 end:
                   type: string
                   description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
-                  example: '2026-05-25'
+                  example: '2056-09-21'
                 type:
                   type: string
                   description: ''
-                  example: ipsam
+                  example: animi
                 isCatering:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 foodType:
                   type: string
                   description: ''
-                  example: a
+                  example: accusamus
                 description:
                   type: string
                   description: ''
-                  example: 'Reiciendis aut ut illo sint.'
+                  example: 'Sapiente quaerat quo molestias autem debitis corporis ea.'
                 guestsCount:
                   type: integer
                   description: 'Must be at least 1.'
-                  example: 4
+                  example: 15
                 accommodationNeeded:
                   type: boolean
                   description: ''
@@ -1305,6 +1305,264 @@ paths:
                 - description
                 - guestsCount
                 - accommodationNeeded
+  '/api/users/{id}/event-types':
+    get:
+      summary: 'Getting all event types for user'
+      operationId: gettingAllEventTypesForUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - wedding
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'User either does not exist or it is not an organizer'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'User either does not exist or it is not an organizer'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users/event-types:
+    get:
+      summary: 'Getting all event types for organizer'
+      operationId: gettingAllEventTypesForOrganizer
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - wedding
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'User either does not exist or it is not an organizer'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'User either does not exist or it is not an organizer'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
+  '/api/users/{id}/menu-types':
+    get:
+      summary: 'Getting all menu types for user'
+      operationId: gettingAllMenuTypesForUser
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - sea-food
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'User either does not exist or it is not an organizer'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'User either does not exist or it is not an organizer'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the user.'
+        example: 1
+        required: true
+        schema:
+          type: integer
+  /api/users/menu-types:
+    get:
+      summary: 'Getting all menu types for organizer'
+      operationId: gettingAllMenuTypesForOrganizer
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  type: string
+                example:
+                  - sea-food
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  success: false
+                  messages:
+                    - 'User either does not exist or it is not an organizer'
+                properties:
+                  success:
+                    type: boolean
+                    example: false
+                  messages:
+                    type: array
+                    example:
+                      - 'User either does not exist or it is not an organizer'
+                    items:
+                      type: string
+      tags:
+        - Endpoints
   /api/events:
     get:
       summary: 'Getting all finished events'
@@ -1414,11 +1672,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: nina12@example.com
+                  example: calista55@example.net
                 password:
                   type: string
                   description: ''
-                  example: ducimus
+                  example: et
               required:
                 - email
                 - password
@@ -1495,15 +1753,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: est
+                  example: officia
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: female
+                  example: male
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: maggie.herman@example.org
+                  example: halie53@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
@@ -1511,15 +1769,15 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: aut
+                  example: impedit
                 phone_number:
                   type: string
                   description: ''
-                  example: explicabo
+                  example: eos
                 address:
                   type: string
                   description: ''
-                  example: libero
+                  example: amet
               required:
                 - name
                 - gender

@@ -133,7 +133,7 @@ class EventsService {
 
     static getFoodTypes = async (organizer, eventType, isCatering) => {
         return ['Food type 1', 'Food type 2', 'Food type 3'] //I need the organizer id in the request
-        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> still not sure what to do with isCatering
+        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}&&organizerId=${organizer.id}`) // TODO fix if wrong
     }
 
     static getPersonal = async (month) => {

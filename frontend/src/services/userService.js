@@ -39,7 +39,7 @@ class UserService {
         // await RequestAPI.put('/users/update', data)
     }
 
-    static getEventTypes = async (id = null) => {
+    static getEventTypes = async (id = null) => { //ready from Radi
         return eventTypes
         // if(id) {
         //     return RequestAPI.get(`/users/${id}/event-types`)
@@ -48,7 +48,7 @@ class UserService {
         // }
     }
 
-    static getMenuTypes = async (id = null) => {
+    static getMenuTypes = async (id = null) => { //ready from Radi
         return menuTypes
         // if(id) {
         //     return RequestAPI.get(`/users/${id}/menu-types`)
@@ -57,7 +57,7 @@ class UserService {
         // }
     }
 
-    static getCateringTypes = async (id = null) => {
+    static getCateringTypes = async (id = null) => { //ready from Radi
         return cateringTypes
         // if(id) {
         //     return RequestAPI.get(`/users/${id}/catering-types`)
