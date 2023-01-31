@@ -78,6 +78,17 @@ class User extends Authenticatable
         self::GENDER_NONE
     ];
 
+    public const TYPES = [
+        SELF::CATERING_TYPES,
+        SELF::MENU_TYPES,
+        SELF::EVENT_TYPES,
+    ];
+
+    public const EVENT_TYPES = 'event-types';
+    public const MENU_TYPES = 'menu-types';
+    public const CATERING_TYPES = 'catering-types';
+
+
 
     public function eventsOrganized(): HasMany
     {

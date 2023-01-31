@@ -14,6 +14,11 @@ class EventType extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'organizer_id'
+    ];
+
     public function organizer(): BelongsTo
     {
         return $this->BelongsTo(User::class);
