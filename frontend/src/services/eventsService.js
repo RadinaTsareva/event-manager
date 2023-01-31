@@ -135,7 +135,7 @@ class EventsService {
             return ['Food type 1', 'Food type 2', 'Food type 3']
         }
         return ['Food type 4', 'Food type 5', 'Food type 6']
-        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}`) -> still not sure what to do with isCatering
+        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}&&organizerId=${organizer.id}`) // TODO fix if wrong
     }
 
     static getPersonal = async (month) => {

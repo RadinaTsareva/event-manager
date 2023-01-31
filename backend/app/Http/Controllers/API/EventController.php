@@ -11,6 +11,8 @@ use App\Http\Resources\Api\Event\EventResource;
 use App\Http\Resources\Api\Event\PersonalEventResource;
 use App\Http\Resources\Api\SuccessResource;
 use App\Models\Event;
+use App\Models\EventType;
+use App\Models\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -21,11 +23,26 @@ class EventController extends Controller
      *
      * @response ["wedding","party"]
      *
-     * @return array
+     * @response 403 {
+     *  "success":false,
+     *  "messages":[
+     *      "The selected organizer is not an organizer or doesn't exists."
+     *  ]
+     * }
+     *
+     * @param Request $request
+     * @return array|ErrorResponse
      */
-    public function getTypes(): array
+    public function getTypes(Request $request): array|ErrorResponse
     {
-        return Event::TYPES;
+        $organizer = User::find($request->get('organizerId'));
+        if (!$organizer) {
+            return new ErrorResponse((array)'The selected organizer doesn\'t exists.');
+        }
+        if ($organizer->role != User::ROLE_ORGANISER) {
+            return new ErrorResponse((array)'The selected organizer is not an organizer or doesn\'t exists.');
+        }
+        return $organizer->eventTypes()->pluck('name')->toArray();
     }
 
     /**
@@ -38,17 +55,33 @@ class EventController extends Controller
      * @response ["sea-food","sweets"]
      * @response 403 {
      *      "success":false,
-     *      "messages":["Wrong event type"]
+     *      "messages":["The selected organizer is not an organizer or doesn't exists."]
+     * }
+     *
+     * @response 403 {
+     *     "message": "The organizer id field is required.",
+     *     "errors": {
+     *         "organizerId": [
+     *             "The organizer id field is required."
+     *          ]
+     *      }
      * }
      */
     public function getFoodTypesForEventType(Request $request, string $eventType): ErrorResponse|array
     {
-        //TODO do something with isCatering
-        if (in_array($eventType, Event::TYPES)) {
-            return Event::FOOD_TYPES[$eventType];
+        $user = User::find($request->get('organizerId'));
+        if ($user && $user->role == User::ROLE_ORGANISER) {
+            $eventType = EventType::where('name', $eventType)->where('organizer_id', $user->id)->first();
+            if (!$request->get('isCatering')) {
+                return new ErrorResponse((array)'The field isCatering is required.');
+            }
+            if ($eventType) {
+                return $user->foodTypesForEventType($eventType->id, $request->get('isCatering'));
+            }
+            return new ErrorResponse((array)'Non existent event type for that organizer');
         }
 
-        return new ErrorResponse((array)'Wrong event type');
+        return new ErrorResponse((array)'The selected organizer is not an organizer or doesn\'t exists.');
     }
 
     /**
@@ -299,6 +332,17 @@ class EventController extends Controller
      *      "errors": {
      *          "type": [
      *              "The selected type is invalid."
+     *          ]
+     *      }
+     * }
+     *
+     * @response 403
+     * {
+     *      "message": "This event type is not part of the organizer's ones (and 1 more error)",
+     *      "errors": {
+     *          "type": [
+     *              "This event type is not part of the organizer's ones",
+     *              "This food type is not part of the organizer's menu,catering options"
      *          ]
      *      }
      * }

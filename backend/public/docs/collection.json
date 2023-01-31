@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "a085b59d-1f94-46ad-ab68-6eec7e30c185",
+        "_postman_id": "c9775f79-1b84-4715-81f2-27f49e4d56d7",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -24,9 +24,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/current-user",
+                            "path": "api\/users\/current-user",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/current-user"
+                            "raw": "{{baseUrl}}\/api\/users\/current-user"
                         },
                         "method": "GET",
                         "header": [
@@ -56,9 +56,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/logout",
+                            "path": "api\/users\/logout",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/logout"
+                            "raw": "{{baseUrl}}\/api\/users\/logout"
                         },
                         "method": "POST",
                         "header": [
@@ -81,9 +81,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/change-password",
+                            "path": "api\/users\/change-password",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/change-password"
+                            "raw": "{{baseUrl}}\/api\/users\/change-password"
                         },
                         "method": "POST",
                         "header": [
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"aut\",\"new_password\":\"nihil\"}"
+                            "raw": "{\"current_password\":\"possimus\",\"new_password\":\"recusandae\"}"
                         },
                         "description": ""
                     },
@@ -122,11 +122,11 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/update-user",
+                            "path": "api\/users\/update",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/update-user"
+                            "raw": "{{baseUrl}}\/api\/users\/update"
                         },
-                        "method": "POST",
+                        "method": "PUT",
                         "header": [
                             {
                                 "key": "Content-Type",
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"officia\",\"gender\":\"none\",\"email\":\"yjacobi@example.org\",\"role\":\"client\",\"address\":\"voluptatibus\",\"phone_number\":\"nostrum\"}"
+                            "raw": "{\"name\":\"dolores\",\"gender\":\"male\",\"email\":\"unique05@example.net\",\"role\":\"organizer\",\"address\":\"possimus\",\"phone_number\":\"hic\"}"
                         },
                         "description": ""
                     },
@@ -233,6 +233,12 @@
                             "code": 200,
                             "body": "[\"wedding\",\"party\"]",
                             "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n \"success\":false,\n \"messages\":[\n     \"The selected organizer is not an organizer or doesn't exists.\"\n ]\n}",
+                            "name": ""
                         }
                     ]
                 },
@@ -280,7 +286,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "1",
+                                    "value": "6",
                                     "description": ""
                                 }
                             ]
@@ -309,7 +315,13 @@
                         {
                             "header": [],
                             "code": 403,
-                            "body": "{\n     \"success\":false,\n     \"messages\":[\"Wrong event type\"]\n}",
+                            "body": "{\n     \"success\":false,\n     \"messages\":[\"The selected organizer is not an organizer or doesn't exists.\"]\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n    \"message\": \"The organizer id field is required.\",\n    \"errors\": {\n        \"organizerId\": [\n            \"The organizer id field is required.\"\n         ]\n     }\n}",
                             "name": ""
                         }
                     ]
@@ -390,7 +402,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "12",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -430,7 +442,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "15",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -470,7 +482,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "12",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -522,7 +534,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "10",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -562,7 +574,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -612,7 +624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":5,\"name\":\"facilis\",\"start\":\"2018-05-02\",\"end\":\"2115-09-26\",\"type\":\"party\",\"isCatering\":true,\"foodType\":\"sint\",\"description\":\"Eius laboriosam quo fuga beatae totam possimus.\",\"guestsCount\":80,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":12,\"name\":\"unde\",\"start\":\"2009-11-17\",\"end\":\"2039-11-09\",\"type\":\"perspiciatis\",\"isCatering\":false,\"foodType\":\"dicta\",\"description\":\"Nemo tenetur et voluptatem porro quibusdam velit repellendus non.\",\"guestsCount\":7,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -627,6 +639,12 @@
                             "header": [],
                             "code": 403,
                             "body": "{\n     \"message\": \"The selected type is invalid.\",\n     \"errors\": {\n         \"type\": [\n             \"The selected type is invalid.\"\n         ]\n     }\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"This event type is not part of the organizer's ones (and 1 more error)\",\n     \"errors\": {\n         \"type\": [\n             \"This event type is not part of the organizer's ones\",\n             \"This food type is not part of the organizer's menu,catering options\"\n         ]\n     }\n}",
                             "name": ""
                         }
                     ]
@@ -643,7 +661,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "18",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -661,7 +679,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":18,\"place\":\"temporibus\",\"placeWebsite\":\"reprehenderit\",\"placeGoogleMapsLink\":\"unde\",\"pricePerGuest\":23,\"priceForFood\":17,\"priceForAccommodation\":7122523.038345425,\"accommodationDetails\":\"vitae\",\"accommodationContact\":\"quia\"}"
+                            "raw": "{\"eventId\":17,\"place\":\"aut\",\"placeWebsite\":\"exercitationem\",\"placeGoogleMapsLink\":\"nesciunt\",\"pricePerGuest\":63,\"priceForFood\":4,\"priceForAccommodation\":0.825,\"accommodationDetails\":\"excepturi\",\"accommodationContact\":\"quia\"}"
                         },
                         "description": ""
                     },
@@ -676,6 +694,286 @@
                             "header": [],
                             "code": 403,
                             "body": "{\n     \"message\": \"This field is required. (and 2 more errors)\",\n     \"errors\": {\n         \"priceForAccommodation\": [\n             \"This field is required.\"\n         ],\n         \"accommodationDetails\": [\n             \"This field is required.\"\n         ],\n         \"accommodationContact\": [\n             \"This field is required.\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all event types for user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id\/event-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/event-types",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"wedding\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all event types for organizer",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/event-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/event-types"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"wedding\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all menu types for user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id\/:eventType\/menu-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/:eventType\/menu-types",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                },
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "maiores",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all menu types for organizer",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:eventType\/menu-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:eventType\/menu-types",
+                            "variable": [
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all catering types for user",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:id\/:eventType\/catering-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/:eventType\/catering-types",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "1",
+                                    "description": "The ID of the user."
+                                },
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "nulla",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all catering types for organizer",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:eventType\/catering-types",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:eventType\/catering-types",
+                            "variable": [
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n    \"sea-food\"\n]",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"success\": false,\n     \"messages\": [\n         \"User either does not exist or it is not an organizer\"\n     ]\n}",
                             "name": ""
                         }
                     ]
@@ -720,9 +1018,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/login",
+                            "path": "api\/users\/login",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/login"
+                            "raw": "{{baseUrl}}\/api\/users\/login"
                         },
                         "method": "POST",
                         "header": [
@@ -737,7 +1035,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"anibal.grady@example.net\",\"password\":\"quia\"}"
+                            "raw": "{\"email\":\"morar.al@example.org\",\"password\":\"nesciunt\"}"
                         },
                         "description": "",
                         "auth": {
@@ -748,7 +1046,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}",
+                            "body": "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  0 \/\/ TODO\n}",
                             "name": ""
                         },
                         {
@@ -764,9 +1062,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/auth\/register",
+                            "path": "api\/users\/register",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/auth\/register"
+                            "raw": "{{baseUrl}}\/api\/users\/register"
                         },
                         "method": "POST",
                         "header": [
@@ -781,7 +1079,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"et\",\"gender\":\"none\",\"email\":\"daren64@example.net\",\"role\":\"organizer\",\"password\":\"facilis\",\"phone_number\":\"consequatur\",\"address\":\"nihil\"}"
+                            "raw": "{\"name\":\"iusto\",\"gender\":\"female\",\"email\":\"ymckenzie@example.org\",\"role\":\"organizer\",\"password\":\"est\",\"phone_number\":\"a\",\"address\":\"voluptatem\"}"
                         },
                         "description": "",
                         "auth": {
@@ -792,7 +1090,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n}",
+                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n}",
                             "name": ""
                         },
                         {

@@ -1,9 +1,12 @@
 <?php
 
 use App\Http\Controllers\API\BlacklistController;
+use App\Http\Controllers\API\CateringTypeController;
 use App\Http\Controllers\API\EventCommentController;
 use App\Http\Controllers\API\EventController;
 use App\Http\Controllers\API\EventPictureController;
+use App\Http\Controllers\API\EventTypeController;
+use App\Http\Controllers\API\MenuTypeController;
 use App\Http\Controllers\Api\UserController;
 use Illuminate\Support\Facades\Route;
 
@@ -19,10 +22,10 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::middleware('auth:sanctum')->group(function () {
-    Route::get('/current-user', [UserController::class, 'currentUser']);
-    Route::post('/auth/logout', [UserController::class, 'logoutUser']);
-    Route::post('/auth/change-password', [UserController::class, 'changePassword']);
-    Route::post('/auth/update-user', [UserController::class, 'updateUser']);
+    Route::get('/users/current-user', [UserController::class, 'currentUser']);
+    Route::post('/users/logout', [UserController::class, 'logoutUser']);
+    Route::post('/users/change-password', [UserController::class, 'changePassword']);
+    Route::put('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
     Route::get('/events/types', [EventController::class, 'getTypes']);
@@ -37,10 +40,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/events/{id}/pics', [EventPictureController::class, 'getEventPictures']);
     Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
     Route::post('/events/{id}', [EventController::class, 'saveSecondStageEvent']);
+
+    Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
+    Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);
+    Route::get('/users/{id}/{eventType}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
+    Route::get('/users/{eventType}/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
+    Route::get('/users/{id}/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
+    Route::get('/users/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
+
 });
 
 Route::get('/events', [EventController::class, 'getAllEvents']);
 
-Route::post('/auth/login', [UserController::class, 'loginUser']);//TODO rename
-Route::post('/auth/register', [UserController::class, 'createUser']);//TODO rename
+Route::post('/users/login', [UserController::class, 'loginUser']);
+Route::post('/users/register', [UserController::class, 'createUser']);
 

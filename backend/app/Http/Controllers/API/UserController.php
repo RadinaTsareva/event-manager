@@ -11,6 +11,7 @@ use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\SuccessResource;
 use App\Http\Resources\Api\User\BasicUserResource;
 use App\Http\Resources\Api\User\UserResource;
+use App\Models\Blacklist;
 use App\Models\User;
 use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
@@ -23,8 +24,11 @@ class UserController extends Controller
      * @unauthenticated
      *
      * @response {
-     *  "access_token": "eyJ0eXA...",
+     *  "token": "eyJ0eXA...",
      *  "token_type": "Bearer",
+     *  "role" => "admin",
+     *  "email" => "radina@gmail.com",
+     *  "blacklistedCount" =>  0 // TODO
      * }
      *
      * @response 403 {
@@ -43,8 +47,11 @@ class UserController extends Controller
 
             return response()->json(
                 [
-                    'access_token' => $user->createToken('auth_token')->plainTextToken,
+                    'token' => $user->createToken('auth_token')->plainTextToken,
                     'token_type' => 'Bearer',
+                    'role' => $user->role,
+                    'email' => $user->email,
+                    'blacklistedCount' => $user->blacklistsIn()->count()
                 ]
             );
         } catch (\Throwable $th) {
@@ -61,6 +68,8 @@ class UserController extends Controller
      * @response {
      *  "access_token": "eyJ0eXA...",
      *  "token_type": "Bearer",
+     *  "role" => "admin",
+     *  "email" => "radina@gmail.com",
      * }
      *
      * @response 403 {
@@ -92,8 +101,10 @@ class UserController extends Controller
 
             return response()->json(
                 [
-                    'access_token' => $user->createToken('auth_token')->plainTextToken,
+                    'token' => $user->createToken('auth_token')->plainTextToken,
                     'token_type' => 'Bearer',
+                    'role' => $user->role,
+                    'email' => $user->email,
                 ]
             );
         } catch (\Throwable $th) {

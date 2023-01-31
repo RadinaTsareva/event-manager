@@ -6,7 +6,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/current-user
+    uri: api/users/current-user
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -51,7 +51,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer PgE45f38evVchb1adZ6a6kD'
+      - 'Bearer 1a8e6k5ZD6P34EbghaVcfdv'
     controller: null
     method: null
     route: null
@@ -59,7 +59,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/logout
+    uri: api/users/logout
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -85,7 +85,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Ea6fDe3a8vg1h4ZbkVPc65d'
+      - 'Bearer Ea56gad6chkVDv3Z1ePb8f4'
     controller: null
     method: null
     route: null
@@ -93,7 +93,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/change-password
+    uri: api/users/change-password
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -116,14 +116,14 @@ endpoints:
         name: current_password
         description: ''
         required: true
-        example: aut
+        example: possimus
         type: string
         custom: []
       new_password:
         name: new_password
         description: ''
         required: true
-        example: nihil
+        example: recusandae
         type: string
         custom: []
       new_confirm_password:
@@ -134,8 +134,8 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      current_password: aut
-      new_password: nihil
+      current_password: possimus
+      new_password: recusandae
     fileParameters: []
     responses:
       -
@@ -166,15 +166,15 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer vV5cbfE6h1gaDZ8ead436Pk'
+      - 'Bearer bZ5af4c8hePDa6vg6Ed13Vk'
     controller: null
     method: null
     route: null
     custom: []
   -
     httpMethods:
-      - POST
-    uri: api/auth/update-user
+      - PUT
+    uri: api/users/update
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -197,51 +197,51 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: officia
+        example: dolores
         type: string
         custom: []
       gender:
         name: gender
         description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
         required: false
-        example: none
+        example: male
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: yjacobi@example.org
+        example: unique05@example.net
         type: string
         custom: []
       role:
         name: role
         description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
         required: false
-        example: client
+        example: organizer
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: false
-        example: voluptatibus
+        example: possimus
         type: string
         custom: []
       phone_number:
         name: phone_number
         description: ''
         required: false
-        example: nostrum
+        example: hic
         type: string
         custom: []
     cleanBodyParameters:
-      name: officia
-      gender: none
-      email: yjacobi@example.org
-      role: client
-      address: voluptatibus
-      phone_number: nostrum
+      name: dolores
+      gender: male
+      email: unique05@example.net
+      role: organizer
+      address: possimus
+      phone_number: hic
     fileParameters: []
     responses:
       -
@@ -272,7 +272,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 4g8b65caVkDve1hZa3dPf6E'
+      - 'Bearer PvDeZf546kV3ghca1Edb8a6'
     controller: null
     method: null
     route: null
@@ -334,7 +334,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer aDegdcV854a361vEZPkb6fh'
+      - 'Bearer aV668bdg4ZD5e13akPEvcfh'
     controller: null
     method: null
     route: null
@@ -370,11 +370,23 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 403
+        content: |-
+          {
+           "success":false,
+           "messages":[
+               "The selected organizer is not an organizer or doesn't exists."
+           ]
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer ec54bPf6Ek3VdDva86hag1Z'
+      - 'Bearer d165k4cgZ8EfahVaPeb36vD'
     controller: null
     method: null
     route: null
@@ -422,7 +434,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer abvEV86a4D6gd3P1Zckhef5'
+      - 'Bearer P8Dv43gb615aehcVd6EfZka'
     controller: null
     method: null
     route: null
@@ -449,11 +461,11 @@ endpoints:
         name: eventType
         description: ''
         required: true
-        example: 1
+        example: 6
         type: integer
         custom: []
     cleanUrlParameters:
-      eventType: 1
+      eventType: 6
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -471,7 +483,21 @@ endpoints:
         content: |-
           {
                "success":false,
-               "messages":["Wrong event type"]
+               "messages":["The selected organizer is not an organizer or doesn't exists."]
+          }
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+              "message": "The organizer id field is required.",
+              "errors": {
+                  "organizerId": [
+                      "The organizer id field is required."
+                   ]
+               }
           }
         headers: []
         description: ''
@@ -480,7 +506,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer afgace13bv6E6D5h4VPdkZ8'
+      - 'Bearer 3a4kd61eVga58DEvf6bhPZc'
     controller: null
     method: null
     route: null
@@ -546,7 +572,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer fE3Dac6g1h4ePa5k6bvV8dZ'
+      - 'Bearer 8aEdha1f5DV4k6Pcev3Zb6g'
     controller: null
     method: null
     route: null
@@ -595,7 +621,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer dP61Vfg3ba8kehcZa4vE65D'
+      - 'Bearer bhcaeVfd4aZv636P1DE8gk5'
     controller: null
     method: null
     route: null
@@ -622,11 +648,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 12
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 12
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -647,7 +673,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 5Zaf6caV3vd148ebgkP6EhD'
+      - 'Bearer gd56DeVv368k4afb1cEaPhZ'
     controller: null
     method: null
     route: null
@@ -674,11 +700,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 15
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 15
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -699,7 +725,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ge61vahVdPZDabc43fE8k56'
+      - 'Bearer P6D8evb3f6aZ54V1dahcEgk'
     controller: null
     method: null
     route: null
@@ -726,11 +752,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 12
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 12
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -798,7 +824,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer gaV6fc4Ede351hvk6Zba8DP'
+      - 'Bearer Ev614Pha6f83kbeDZaVdc5g'
     controller: null
     method: null
     route: null
@@ -825,11 +851,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 10
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 10
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -853,7 +879,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer afde6VDvZc4b53aP86hEk1g'
+      - 'Bearer 4a6Pdae6gvcb1Z5V3k8DfEh'
     controller: null
     method: null
     route: null
@@ -880,11 +906,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 4
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 4
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -901,7 +927,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Z4fk1g6d5D6ePa8vcEbah3V'
+      - 'Bearer 4Dagkcbh165d6PefVvaZ83E'
     controller: null
     method: null
     route: null
@@ -932,63 +958,63 @@ endpoints:
         name: organizerId
         description: ''
         required: true
-        example: 5
+        example: 12
         type: integer
         custom: []
       name:
         name: name
         description: ''
         required: true
-        example: facilis
+        example: unde
         type: string
         custom: []
       start:
         name: start
         description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
         required: true
-        example: '2018-05-02'
+        example: '2009-11-17'
         type: string
         custom: []
       end:
         name: end
         description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
         required: true
-        example: '2115-09-26'
+        example: '2039-11-09'
         type: string
         custom: []
       type:
         name: type
-        description: 'Must be one of <code>wedding</code> or <code>party</code>.'
+        description: ''
         required: true
-        example: party
+        example: perspiciatis
         type: string
         custom: []
       isCatering:
         name: isCatering
         description: ''
         required: true
-        example: true
+        example: false
         type: boolean
         custom: []
       foodType:
         name: foodType
         description: ''
         required: true
-        example: sint
+        example: dicta
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: 'Eius laboriosam quo fuga beatae totam possimus.'
+        example: 'Nemo tenetur et voluptatem porro quibusdam velit repellendus non.'
         type: string
         custom: []
       guestsCount:
         name: guestsCount
         description: 'Must be at least 1.'
         required: true
-        example: 80
+        example: 7
         type: integer
         custom: []
       accommodationNeeded:
@@ -999,15 +1025,15 @@ endpoints:
         type: boolean
         custom: []
     cleanBodyParameters:
-      organizerId: 5
-      name: facilis
-      start: '2018-05-02'
-      end: '2115-09-26'
-      type: party
-      isCatering: true
-      foodType: sint
-      description: 'Eius laboriosam quo fuga beatae totam possimus.'
-      guestsCount: 80
+      organizerId: 12
+      name: unde
+      start: '2009-11-17'
+      end: '2039-11-09'
+      type: perspiciatis
+      isCatering: false
+      foodType: dicta
+      description: 'Nemo tenetur et voluptatem porro quibusdam velit repellendus non.'
+      guestsCount: 7
       accommodationNeeded: true
     fileParameters: []
     responses:
@@ -1035,11 +1061,26 @@ endpoints:
         headers: []
         description: ''
         custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "message": "This event type is not part of the organizer's ones (and 1 more error)",
+               "errors": {
+                   "type": [
+                       "This event type is not part of the organizer's ones",
+                       "This food type is not part of the organizer's menu,catering options"
+                   ]
+               }
+          }
+        headers: []
+        description: ''
+        custom: []
     responseFields: []
     auth:
       - headers
       - Authorization
-      - 'Bearer 58kv3VPbZEDfaa46d6echg1'
+      - 'Bearer bDedEacg4VP58vaZh3fk661'
     controller: null
     method: null
     route: null
@@ -1066,11 +1107,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 1
+        example: 18
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 1
+      id: 18
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1078,56 +1119,56 @@ endpoints:
         name: eventId
         description: ''
         required: true
-        example: 18
+        example: 17
         type: integer
         custom: []
       place:
         name: place
         description: ''
         required: true
-        example: temporibus
+        example: aut
         type: string
         custom: []
       placeWebsite:
         name: placeWebsite
         description: ''
         required: true
-        example: reprehenderit
+        example: exercitationem
         type: string
         custom: []
       placeGoogleMapsLink:
         name: placeGoogleMapsLink
         description: ''
         required: true
-        example: unde
+        example: nesciunt
         type: string
         custom: []
       pricePerGuest:
         name: pricePerGuest
         description: 'Must be at least 1.'
         required: true
-        example: 23
+        example: 63
         type: number
         custom: []
       priceForFood:
         name: priceForFood
         description: 'Must be at least 1.'
         required: true
-        example: 17
+        example: 4
         type: number
         custom: []
       priceForAccommodation:
         name: priceForAccommodation
         description: ''
         required: false
-        example: 7122523.0383454
+        example: 0.825
         type: number
         custom: []
       accommodationDetails:
         name: accommodationDetails
         description: ''
         required: false
-        example: vitae
+        example: excepturi
         type: string
         custom: []
       accommodationContact:
@@ -1138,14 +1179,14 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      eventId: 18
-      place: temporibus
-      placeWebsite: reprehenderit
-      placeGoogleMapsLink: unde
-      pricePerGuest: 23
-      priceForFood: 17
-      priceForAccommodation: 7122523.0383454
-      accommodationDetails: vitae
+      eventId: 17
+      place: aut
+      placeWebsite: exercitationem
+      placeGoogleMapsLink: nesciunt
+      pricePerGuest: 63
+      priceForFood: 4
+      priceForAccommodation: 0.825
+      accommodationDetails: excepturi
       accommodationContact: quia
     fileParameters: []
     responses:
@@ -1183,7 +1224,393 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer beEaV513gca4fD6Ph6vkd8Z'
+      - 'Bearer dcP5g8DvfaV461eEkb3aZh6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}/event-types'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all event types for user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      id: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "wedding"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 148dkaehfac6PVDgb5vZ6E3'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: api/users/event-types
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all event types for organizer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters: []
+    cleanUrlParameters: []
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "wedding"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3gbfadh64Ea8Zk5vc6eVPD1'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}/{eventType}/menu-types'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all menu types for user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      eventType:
+        name: eventType
+        description: ''
+        required: true
+        example: maiores
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: 1
+      eventType: maiores
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "sea-food"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 3Zf41cPD6Vkdb6E8gva5hae'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{eventType}/menu-types'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all menu types for organizer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      eventType:
+        name: eventType
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      eventType: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "sea-food"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer gP3avhZ1fdc6D4ek8E5Vba6'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{id}/{eventType}/catering-types'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all catering types for user'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      id:
+        name: id
+        description: 'The ID of the user.'
+        required: true
+        example: 1
+        type: integer
+        custom: []
+      eventType:
+        name: eventType
+        description: ''
+        required: true
+        example: nulla
+        type: string
+        custom: []
+    cleanUrlParameters:
+      id: 1
+      eventType: nulla
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "sea-food"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer 6g6D1keP3aZEfV5h48badcv'
+    controller: null
+    method: null
+    route: null
+    custom: []
+  -
+    httpMethods:
+      - GET
+    uri: 'api/users/{eventType}/catering-types'
+    metadata:
+      groupName: Endpoints
+      groupDescription: ''
+      subgroup: ''
+      subgroupDescription: ''
+      title: 'Getting all catering types for organizer'
+      description: ''
+      authenticated: true
+      custom: []
+    headers:
+      Authorization: 'Bearer {YOUR_AUTH_KEY}'
+      Content-Type: application/json
+      Accept: application/json
+    urlParameters:
+      eventType:
+        name: eventType
+        description: ''
+        required: true
+        example: 1
+        type: integer
+        custom: []
+    cleanUrlParameters:
+      eventType: 1
+    queryParameters: []
+    cleanQueryParameters: []
+    bodyParameters: []
+    cleanBodyParameters: []
+    fileParameters: []
+    responses:
+      -
+        status: 200
+        content: |-
+          [
+              "sea-food"
+          ]
+        headers: []
+        description: ''
+        custom: []
+      -
+        status: 403
+        content: |-
+          {
+               "success": false,
+               "messages": [
+                   "User either does not exist or it is not an organizer"
+               ]
+          }
+        headers: []
+        description: ''
+        custom: []
+    responseFields: []
+    auth:
+      - headers
+      - Authorization
+      - 'Bearer EV31d65vPkhfDa4gc6bZe8a'
     controller: null
     method: null
     route: null
@@ -1242,7 +1669,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/login
+    uri: api/users/login
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -1264,27 +1691,30 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: anibal.grady@example.net
+        example: morar.al@example.org
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: quia
+        example: nesciunt
         type: string
         custom: []
     cleanBodyParameters:
-      email: anibal.grady@example.net
-      password: quia
+      email: morar.al@example.org
+      password: nesciunt
     fileParameters: []
     responses:
       -
         status: 200
         content: |-
           {
-           "access_token": "eyJ0eXA...",
+           "token": "eyJ0eXA...",
            "token_type": "Bearer",
+           "role" => "admin",
+           "email" => "radina@gmail.com",
+           "blacklistedCount" =>  0 // TODO
           }
         headers: []
         description: ''
@@ -1312,7 +1742,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/auth/register
+    uri: api/users/register
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -1334,21 +1764,21 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: et
+        example: iusto
         type: string
         custom: []
       gender:
         name: gender
         description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
         required: true
-        example: none
+        example: female
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: daren64@example.net
+        example: ymckenzie@example.org
         type: string
         custom: []
       role:
@@ -1362,31 +1792,31 @@ endpoints:
         name: password
         description: ''
         required: true
-        example: facilis
+        example: est
         type: string
         custom: []
       phone_number:
         name: phone_number
         description: ''
         required: true
-        example: consequatur
+        example: a
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: nihil
+        example: voluptatem
         type: string
         custom: []
     cleanBodyParameters:
-      name: et
-      gender: none
-      email: daren64@example.net
+      name: iusto
+      gender: female
+      email: ymckenzie@example.org
       role: organizer
-      password: facilis
-      phone_number: consequatur
-      address: nihil
+      password: est
+      phone_number: a
+      address: voluptatem
     fileParameters: []
     responses:
       -
@@ -1395,6 +1825,8 @@ endpoints:
           {
            "access_token": "eyJ0eXA...",
            "token_type": "Bearer",
+           "role" => "admin",
+           "email" => "radina@gmail.com",
           }
         headers: []
         description: ''

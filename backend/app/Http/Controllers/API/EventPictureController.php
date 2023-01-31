@@ -16,6 +16,6 @@ class EventPictureController extends Controller
      */
     public function getEventPictures(int $id): array
     {
-        return EventPicture::where('event_id', $id)->pluck('link');
+        return EventPicture::where('event_id', $id)->pluck('link')->toArray();
     }
 }
