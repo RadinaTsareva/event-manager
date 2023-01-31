@@ -87,7 +87,7 @@ class UserService {
         typeArr.push({id: typeArr.length + 1, value: data.value});
         // type: 'event-types' || 'menu-types' || 'catering-types'
         // data: { value: 'type name' , eventType : 'wedding'}
-        // await RequestAPI.post(`/users/${type}/${eventType}`, data)
+        // await RequestAPI.post(`/users/${type}`, data)
     }
 }
 
