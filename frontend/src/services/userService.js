@@ -47,7 +47,7 @@ class UserService {
         // }
     }
 
-    static getMenuTypes = async (eventType, id = null) => { //not ready from Radi
+    static getMenuTypes = async (eventType, id = null) => { // ready from Radi
         return menuTypes
         // if(id) {
         //     return RequestAPI.get(`/users/${id}/${eventType}/menu-types`)
@@ -56,7 +56,7 @@ class UserService {
         // }
     }
 
-    static getCateringTypes = async (eventType, id = null) => { //not ready from Radi
+    static getCateringTypes = async (eventType, id = null) => { //ready from Radi
         return cateringTypes
         // if(id) {
         //     return RequestAPI.get(`/users/${id}/${eventType}/catering-types`)

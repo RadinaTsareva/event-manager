@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "73ece55e-732a-4a56-8413-80ede2d178a6",
+        "_postman_id": "c9775f79-1b84-4715-81f2-27f49e4d56d7",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"ab\",\"new_password\":\"quod\"}"
+                            "raw": "{\"current_password\":\"possimus\",\"new_password\":\"recusandae\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"repellat\",\"gender\":\"female\",\"email\":\"pbarton@example.net\",\"role\":\"client\",\"address\":\"saepe\",\"phone_number\":\"aut\"}"
+                            "raw": "{\"name\":\"dolores\",\"gender\":\"male\",\"email\":\"unique05@example.net\",\"role\":\"organizer\",\"address\":\"possimus\",\"phone_number\":\"hic\"}"
                         },
                         "description": ""
                     },
@@ -286,7 +286,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "15",
+                                    "value": "6",
                                     "description": ""
                                 }
                             ]
@@ -402,7 +402,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "13",
+                                    "value": "12",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -442,7 +442,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "15",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -482,7 +482,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "12",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -534,7 +534,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "7",
+                                    "value": "10",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -574,7 +574,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -624,7 +624,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":14,\"name\":\"voluptatem\",\"start\":\"2010-04-18\",\"end\":\"2025-03-22\",\"type\":\"temporibus\",\"isCatering\":true,\"foodType\":\"voluptate\",\"description\":\"Earum et similique accusamus delectus.\",\"guestsCount\":83,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":12,\"name\":\"unde\",\"start\":\"2009-11-17\",\"end\":\"2039-11-09\",\"type\":\"perspiciatis\",\"isCatering\":false,\"foodType\":\"dicta\",\"description\":\"Nemo tenetur et voluptatem porro quibusdam velit repellendus non.\",\"guestsCount\":7,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -661,7 +661,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "18",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -679,7 +679,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":5,\"place\":\"esse\",\"placeWebsite\":\"iste\",\"placeGoogleMapsLink\":\"at\",\"pricePerGuest\":13,\"priceForFood\":87,\"priceForAccommodation\":222.2542964,\"accommodationDetails\":\"iusto\",\"accommodationContact\":\"iure\"}"
+                            "raw": "{\"eventId\":17,\"place\":\"aut\",\"placeWebsite\":\"exercitationem\",\"placeGoogleMapsLink\":\"nesciunt\",\"pricePerGuest\":63,\"priceForFood\":4,\"priceForAccommodation\":0.825,\"accommodationDetails\":\"excepturi\",\"accommodationContact\":\"quia\"}"
                         },
                         "description": ""
                     },
@@ -787,15 +787,21 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/:id\/menu-types",
+                            "path": "api\/users\/:id\/:eventType\/menu-types",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:id\/menu-types",
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/:eventType\/menu-types",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
                                     "value": "1",
                                     "description": "The ID of the user."
+                                },
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "maiores",
+                                    "description": ""
                                 }
                             ]
                         },
@@ -833,9 +839,17 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/menu-types",
+                            "path": "api\/users\/:eventType\/menu-types",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/menu-types"
+                            "raw": "{{baseUrl}}\/api\/users\/:eventType\/menu-types",
+                            "variable": [
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -871,15 +885,21 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/:id\/catering-types",
+                            "path": "api\/users\/:id\/:eventType\/catering-types",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:id\/catering-types",
+                            "raw": "{{baseUrl}}\/api\/users\/:id\/:eventType\/catering-types",
                             "variable": [
                                 {
                                     "id": "id",
                                     "key": "id",
                                     "value": "1",
                                     "description": "The ID of the user."
+                                },
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "nulla",
+                                    "description": ""
                                 }
                             ]
                         },
@@ -917,9 +937,17 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/catering-types",
+                            "path": "api\/users\/:eventType\/catering-types",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/catering-types"
+                            "raw": "{{baseUrl}}\/api\/users\/:eventType\/catering-types",
+                            "variable": [
+                                {
+                                    "id": "eventType",
+                                    "key": "eventType",
+                                    "value": "1",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -1007,7 +1035,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"rosamond.bednar@example.com\",\"password\":\"aut\"}"
+                            "raw": "{\"email\":\"morar.al@example.org\",\"password\":\"nesciunt\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1051,7 +1079,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"ut\",\"gender\":\"male\",\"email\":\"blair.gislason@example.net\",\"role\":\"organizer\",\"password\":\"accusantium\",\"phone_number\":\"commodi\",\"address\":\"est\"}"
+                            "raw": "{\"name\":\"iusto\",\"gender\":\"female\",\"email\":\"ymckenzie@example.org\",\"role\":\"organizer\",\"password\":\"est\",\"phone_number\":\"a\",\"address\":\"voluptatem\"}"
                         },
                         "description": "",
                         "auth": {

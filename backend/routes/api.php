@@ -43,10 +43,10 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
     Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);
-    Route::get('/users/{id}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
-    Route::get('/users/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
-    Route::get('/users/{id}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
-    Route::get('/users/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
+    Route::get('/users/{id}/{eventType}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
+    Route::get('/users/{eventType}/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
+    Route::get('/users/{id}/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
+    Route::get('/users/{eventType}/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
 
 });
 
