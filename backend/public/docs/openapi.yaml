@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: in
+                  example: quam
                 new_password:
                   type: string
                   description: ''
-                  example: iure
+                  example: nihil
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,7 +287,7 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: qui
+                  example: in
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
@@ -295,19 +295,19 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: elroy.murazik@example.org
+                  example: gage78@example.net
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: admin
+                  example: organizer
                 address:
                   type: string
                   description: ''
-                  example: dolorem
+                  example: aut
                 phone_number:
                   type: string
                   description: ''
-                  example: quaerat
+                  example: et
   '/api/users/{id}/blacklist':
     post:
       summary: 'Blocking user'
@@ -572,7 +572,7 @@ paths:
         in: path
         name: eventType
         description: ''
-        example: 8
+        example: 1
         required: true
         schema:
           type: integer
@@ -713,7 +713,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 20
+        example: 18
         required: true
         schema:
           type: integer
@@ -772,7 +772,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 3
+        example: 13
         required: true
         schema:
           type: integer
@@ -1029,35 +1029,35 @@ paths:
                 place:
                   type: string
                   description: ''
-                  example: itaque
+                  example: fugiat
                 placeWebsite:
                   type: string
                   description: ''
-                  example: dolore
+                  example: dolor
                 placeGoogleMapsLink:
                   type: string
                   description: ''
-                  example: at
+                  example: ducimus
                 pricePerGuest:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 83
+                  example: 39
                 priceForFood:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 32
+                  example: 87
                 priceForAccommodation:
                   type: number
                   description: ''
-                  example: 115.919
+                  example: 2314.837
                 accommodationDetails:
                   type: string
                   description: ''
-                  example: iusto
+                  example: eos
                 accommodationContact:
                   type: string
                   description: ''
-                  example: et
+                  example: quidem
               required:
                 - eventId
                 - place
@@ -1122,7 +1122,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 20
+        example: 9
         required: true
         schema:
           type: integer
@@ -1171,7 +1171,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 7
+        example: 16
         required: true
         schema:
           type: integer
@@ -1257,39 +1257,39 @@ paths:
                 organizerId:
                   type: integer
                   description: ''
-                  example: 9
+                  example: 18
                 name:
                   type: string
                   description: ''
-                  example: nulla
+                  example: sunt
                 start:
                   type: string
                   description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
-                  example: '2010-12-21'
+                  example: '2005-01-05'
                 end:
                   type: string
                   description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
-                  example: '2023-08-26'
+                  example: '2067-12-14'
                 type:
                   type: string
                   description: ''
-                  example: possimus
+                  example: corporis
                 isCatering:
                   type: boolean
                   description: ''
-                  example: true
+                  example: false
                 foodType:
                   type: string
                   description: ''
-                  example: et
+                  example: qui
                 description:
                   type: string
                   description: ''
-                  example: 'Quidem sequi laudantium reiciendis et non doloremque.'
+                  example: 'Nulla tempora aliquam ipsum dolorum id assumenda deleniti.'
                 guestsCount:
                   type: integer
                   description: 'Must be at least 1.'
-                  example: 61
+                  example: 40
                 accommodationNeeded:
                   type: boolean
                   description: ''
@@ -1434,7 +1434,7 @@ paths:
                       type: string
       tags:
         - Endpoints
-  '/api/users/{id}/{eventType}/menu-types':
+  '/api/users/{id}/{eventTypeId}/menu-types':
     get:
       summary: 'Getting all menu types for user'
       operationId: gettingAllMenuTypesForUser
@@ -1505,13 +1505,13 @@ paths:
           type: integer
       -
         in: path
-        name: eventType
+        name: eventTypeId
         description: ''
-        example: labore
+        example: et
         required: true
         schema:
           type: string
-  '/api/users/{eventType}/menu-types':
+  '/api/users/{eventTypeId}/menu-types':
     get:
       summary: 'Getting all menu types for organizer'
       operationId: gettingAllMenuTypesForOrganizer
@@ -1574,13 +1574,13 @@ paths:
     parameters:
       -
         in: path
-        name: eventType
+        name: eventTypeId
         description: ''
         example: 1
         required: true
         schema:
           type: integer
-  '/api/users/{id}/{eventType}/catering-types':
+  '/api/users/{id}/{eventTypeId}/catering-types':
     get:
       summary: 'Getting all catering types for user'
       operationId: gettingAllCateringTypesForUser
@@ -1651,13 +1651,13 @@ paths:
           type: integer
       -
         in: path
-        name: eventType
+        name: eventTypeId
         description: ''
-        example: sit
+        example: nobis
         required: true
         schema:
           type: string
-  '/api/users/{eventType}/catering-types':
+  '/api/users/{eventTypeId}/catering-types':
     get:
       summary: 'Getting all catering types for organizer'
       operationId: gettingAllCateringTypesForOrganizer
@@ -1720,7 +1720,7 @@ paths:
     parameters:
       -
         in: path
-        name: eventType
+        name: eventTypeId
         description: ''
         example: 1
         required: true
@@ -1806,7 +1806,7 @@ paths:
                 id:
                   type: number
                   description: ''
-                  example: 129.684
+                  example: 1806.31596302
               required:
                 - id
     parameters:
@@ -1927,11 +1927,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: icruickshank@example.net
+                  example: ima.west@example.com
                 password:
                   type: string
                   description: ''
-                  example: dolor
+                  example: adipisci
               required:
                 - email
                 - password
@@ -2008,31 +2008,31 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: laboriosam
+                  example: non
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: male
+                  example: none
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: myah79@example.com
+                  example: leuschke.raleigh@example.org
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
-                  example: client
+                  example: admin
                 password:
                   type: string
                   description: ''
-                  example: rerum
+                  example: veritatis
                 phone_number:
                   type: string
                   description: ''
-                  example: quis
+                  example: quo
                 address:
                   type: string
                   description: ''
-                  example: quod
+                  example: nihil
               required:
                 - name
                 - gender

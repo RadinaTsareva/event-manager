@@ -26,13 +26,13 @@ class CateringTypeController extends Controller
      *      ]
      * }
      * @param int $id
-     * @param string $eventType
+     * @param int $eventTypeId
      * @return array|ErrorResponse
      */
-    public function getCateringTypesForUser(int $id, string $eventType): ErrorResponse|array
+    public function getCateringTypesForUser(int $id, int $eventTypeId): ErrorResponse|array
     {
         $user = User::find($id);
-        return $this->validateUserAndCateringTypes($eventType, $user);
+        return $this->validateUserAndCateringTypes($eventTypeId, $user);
     }
 
     /**
@@ -50,25 +50,25 @@ class CateringTypeController extends Controller
      *          "User either does not exist or it is not an organizer"
      *      ]
      * }
-     * @param string $eventType
+     * @param int $eventTypeId
      * @return array|ErrorResponse
      */
 
-    public function getCateringTypesForOrganizer(string $eventType): array|ErrorResponse
+    public function getCateringTypesForOrganizer(int $eventTypeId): array|ErrorResponse
     {
         $user = Auth::user();
-        return $this->validateUserAndCateringTypes($eventType, $user);
+        return $this->validateUserAndCateringTypes($eventTypeId, $user);
     }
 
-    protected function validateUserAndCateringTypes(string $eventType, User $user = null): array|ErrorResponse
+    protected function validateUserAndCateringTypes(int $eventTypeId, User $user = null): array|ErrorResponse
     {
         if (!$user || $user->role != User::ROLE_ORGANISER) {
             return new ErrorResponse(['User either does not exist or it is not an organizer']);
         }
 
-        $eventType = EventType::where('organizer_id', $user->id)->where('name', $eventType)->first();
+        $eventType = EventType::find($eventTypeId);
 
-        if (!$eventType) {
+        if (!$eventType || $eventType->organizer_id != $user->id) {
             return new ErrorResponse(['Non valid or missing event type']);
         }
 
