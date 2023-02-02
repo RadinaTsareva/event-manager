@@ -37,8 +37,7 @@ class ChatService {
     static getOrganizers = async () => {
         // get organizers list
         return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
-        // TODO change route in backend
-        // return await RequestAPI.get('/organizers');
+        // return await RequestAPI.get('/organizers'); -> ready from Radi (sending id,name,email)
     }
 
     static sendMessage = async (id, message) => {
