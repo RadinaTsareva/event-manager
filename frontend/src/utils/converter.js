@@ -21,6 +21,13 @@ export const convertColorByStatus = (status) => {
     }
 }
 
+export const convertEventStatus = (status) => {
+    if (status === STATUS.EDIT_PENDING) {
+        return 'Edit pending'
+    }
+    return status
+}
+
 export const getStatusOrderByRole = (role) => {
     if (role === ROLES.CLIENT) {
         return [STATUS.EDITABLE, STATUS.FINISHED, STATUS.ACCEPTED, STATUS.REJECTED, STATUS.PENDING, STATUS.EDIT_PENDING]

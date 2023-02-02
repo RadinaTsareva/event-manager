@@ -3,7 +3,7 @@ import { RequestAPI } from "./baseApi";
 
 const personalEvents = [{
     id: 1,
-    status: STATUS.EDITABLE,
+    status: STATUS.REJECTED,
     name: 'Event 1',
     start: new Date(Date.now() + 10000 * 60 * 60 * 3),
     end: new Date(Date.now() + 10000 * 60 * 60 * 5),
@@ -14,9 +14,11 @@ const personalEvents = [{
     type: 'Type 1',
     moreInfo: 'More info 1',
     description: 'Description 1',
+    foodType: 'Food type 1',
     accommodationNeeded: true,
     place: '',
     pricePerGuest: 0,
+    guestsCount: 1,
     priceForFood: 0,
     foodDetails: '', // TODO this is foodType in the BE or is catering ??
     priceForAccommodation: 0,
@@ -28,7 +30,7 @@ const personalEvents = [{
 }, {
     // TODO an event should look like this, with empty fields on commencement
     id: 3,
-    status: STATUS.FINISHED,
+    status: STATUS.REJECTED,
     name: 'Event 3',
     start: new Date(Date.now() + 10000 * 60 * 60 * 3),
     end: new Date(Date.now() + 10000 * 60 * 60 * 5),
@@ -43,6 +45,8 @@ const personalEvents = [{
     place: 'Place 3',
     pricePerGuest: 100,
     priceForFood: 200,
+    foodType: 'Food type 1',
+    guestsCount: 10,
     foodDetails: 'Food details 3',
     priceForAccommodation: 300,
     accommodationDetails: 'Accommodation details 3',
@@ -127,7 +131,7 @@ class EventsService {
 
     static getOrganizers = async () => {
         return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
-        // return RequestAPI.get('/events/organizers') -> ready from Radi
+        // return RequestAPI.get('/organizers')
     }
 
     static getFoodTypes = async (organizer, eventType, isCatering) => {
@@ -194,7 +198,7 @@ class EventsService {
         // return RequestAPI.post(`/events/${id}/reject`) -> ready from Radi
     }
 
-    static send = async (id, data) => { //this is for the whole data
+    static send = async (data) => { //this is for the whole data
         console.log('[SEND] data', data)
         // return RequestAPI.post('/events', data) //TODO adding event_id in the data -> done in the BE
     }

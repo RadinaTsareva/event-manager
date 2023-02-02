@@ -1,4 +1,5 @@
 const emailRegex = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/
+const urlRegex = /^((https?):\/\/)?([w|W]{3}\.)+[a-zA-Z0-9\-\.]{3,}\.[a-zA-Z]{2,}(\.[a-zA-Z]{2,})?$/
 const lowerCaseLetters = /[a-z]/g;
 const upperCaseLetters = /[A-Z]/g;
 const numbers = /[0-9]/g;
@@ -8,6 +9,10 @@ const validateEmail = (email) => {
         .toLowerCase()
         .match(emailRegex) || email.toString() === "";
 };
+
+const validateNumber = (num) => {
+    return +num > 0
+}
 
 const validatePassword = (password) => {
     if (password.toString() === "") {
@@ -54,8 +59,17 @@ const validateOptions = (value) => {
     return !!value
 }
 
+const validateURL = (url) => {
+    return url.toString()
+        .toLowerCase()
+        .match(urlRegex) || url.toString() === "";;
+}
+
+
 export {
     validateOptions,
+    validateURL,
+    validateNumber,
     validateEmail,
     validatePassword,
     validateText,

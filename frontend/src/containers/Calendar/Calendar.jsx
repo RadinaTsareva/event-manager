@@ -52,7 +52,6 @@ const Calendar = (props) => {
     }
 
     const manageEventHandler = (e) => {
-        console.log('e', e);
         navigate('/events/' + e.id)
     }
 
@@ -61,7 +60,7 @@ const Calendar = (props) => {
     }
 
     const eventActions = (e) => {
-        if (props.accountRole && event.status !== STATUS.FINISHED) {
+        if (props.account?.role && event.status !== STATUS.FINISHED) {
             return (<div>
                 <p><span>Actions</span></p>
                 <div className={classes.ActionBtns}>
@@ -133,7 +132,7 @@ const Calendar = (props) => {
                             </p>
                         </div>
                         {eventActions(event)}
-                        {props.accountRole !== ROLES.ORGANIZER
+                        {event.status === STATUS.FINISHED && (event.isPublic || props.account.email === event.organizerEmail || props.account.email === event.clientEmail)
                             && <button className={classes.GalleryBtn} onClick={() => galleryHandler(event)}>Visit Gallery</button>}
                     </div>
                 </>

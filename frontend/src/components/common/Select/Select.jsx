@@ -32,7 +32,11 @@ const Select = (props) => {
                 {...(props.validateFn ? { onBlur: () => validate(props.field, props.setField, props.validateFn) } : null)}
                 disabled={props.disabled}
                 aria-label={["Select", props.field?.name || props.type].join(' ')}>
-                <option value=''>Select {props.field?.name || props.type}</option>
+                {
+                    props.disabled
+                        ? <option value=''>{props.field?.value || props.type}</option>
+                        : <option value=''>Select {props.field?.value || props.type}</option>
+                }
                 {
                     Array.isArray(props.options)
                         ? typeof props.options[0] === 'object'

@@ -92,7 +92,7 @@ const Home = () => {
                         <EventList status={STATUS.REJECTED} events={getEventsByStatus(STATUS.REJECTED)} />
                     </div>)
                 }
-                <Calendar monthChangedHandler={setMonth} events={events} accountRole={account?.role} />
+                <Calendar monthChangedHandler={setMonth} events={events} account={account} />
                 {isLoggedIn &&
                     (<div className={classes.ContainerSection}>
                         <EventList status={STATUS.PENDING} events={getEventsByStatus(STATUS.PENDING)} />

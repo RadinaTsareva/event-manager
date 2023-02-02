@@ -7,6 +7,7 @@ import EditableForm from '../../components/EventForms/EditableForm';
 import InitialForm from '../../components/EventForms/InitialForm';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
+import { convertEventStatus } from '../../utils/converter';
 import { ROLES, STATUS } from '../../utils/enums';
 import classes from './EventManagement.module.scss';
 
@@ -79,10 +80,11 @@ const EventManagement = (props) => {
                 <hr />
                 <Row>
                     <Col className={classes.Form}>
+                        <InitialForm heading="Details" disableFields={true} event={event} />
                         {event.status === STATUS.EDITABLE ?
                             <EditableForm heading="Edit" event={event} />
-                            : <EditableForm
-                                heading={event.status}
+                            : event.place && <EditableForm
+                                heading={convertEventStatus(event.status)}
                                 disableFields={true}
                                 event={event} />
                         }
@@ -113,7 +115,11 @@ const EventManagement = (props) => {
                             {
                                 event.status === STATUS.PENDING
                                     ? <InitialForm heading='Requested' disableFields={true} event={event} />
-                                    : <EditableForm heading='Edit needed' disableFields={true} event={event} />
+                                    :
+                                    <>
+                                        <InitialForm heading='Edit needed' disableFields={true} event={event} />
+                                        <EditableForm disableFields={true} event={event} />
+                                    </>
                             }
                         </Col>
                         <Col className={['vr', classes.VerticalLine].join(' ')} xs={1}></Col>
@@ -124,7 +130,8 @@ const EventManagement = (props) => {
                 }
                 {(event.status === STATUS.ACCEPTED || event.status === STATUS.REJECTED || event.status === STATUS.EDITABLE)
                     && <Col className={classes.Form}>
-                        <EditableForm heading={event.status === STATUS.EDITABLE ? 'Edit Pending' : event.status} disableFields={true} event={event} />
+                        <InitialForm heading={event.status === STATUS.EDITABLE ? 'Edit Pending' : event.status} disableFields={true} event={event} />
+                        {event.place && <EditableForm disableFields={true} event={event} />}
                     </Col>
                 }
             </Row>

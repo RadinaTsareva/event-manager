@@ -60,6 +60,10 @@ const Header = (props) => {
                                             <Link className="nav-link" to="/events/status">My events <Badge>{account.pendingEventsCount}</Badge></Link>
                                         </div>
                                         <div className={classes.Nav}>
+                                            <StarFill />
+                                            <Link className="nav-link" to="/chat">Chat</Link>
+                                        </div>
+                                        <div className={classes.Nav}>
                                             <GearFill />
                                             <Link className="nav-link" to="/settings">Account settings</Link>
                                         </div>

@@ -7,7 +7,7 @@ import EventsService from '../../services/eventsService';
 import Spinner from '../common/Spinner/Spinner';
 import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
-import { validateDate, validateOptions, validateText } from '../../utils/validation';
+import { validateDate, validateOptions, validateText, validateNumber } from '../../utils/validation';
 import UserService from '../../services/userService';
 import Calendar from '../../containers/Calendar/Calendar';
 
@@ -55,11 +55,15 @@ const InitialForm = (props) => {
             const organizers = await EventsService.getOrganizers()
             setOrganizers(organizers)
         } else {
-            setEventName(props.event.name)
-            setDateFrom(props.event.start.toISOString().substring(0, 16))
-            setDateTo(props.event.end.toISOString().substring(0, 16))
-            setType(props.event.type)
-            setDescription(props.event.description)
+            setOrganizer({ ...organizer, value: props.event.organizerName })
+            setEventName({ ...eventName, value: props.event.name })
+            setDateFrom({ ...dateFrom, value: props.event.start.toISOString().substring(0, 16) })
+            setDateTo({ ...dateTo, value: props.event.end.toISOString().substring(0, 16) })
+            setType({ ...type, value: props.event.type })
+            setIsCatering(props.event.isCatering)
+            setFoodType({ ...foodType, value: props.event.foodType })
+            setDescription({ ...description, value: props.event.description })
+            setGuestsCount({ ...guestsCount, value: props.event.guestsCount })
             setAccommodationNeeded(props.event.accommodationNeeded)
         }
 
@@ -143,7 +147,7 @@ const InitialForm = (props) => {
     const additionalFields = [
         {
             label: 'Guests count', type: 'number', placeholder: 'Guests count',
-            field: guestsCount, setField: setGuestsCount, validateFn: () => { }
+            field: guestsCount, setField: setGuestsCount, validateFn: validateNumber
         }
     ]
 
@@ -164,7 +168,7 @@ const InitialForm = (props) => {
                     disabled={props.disableFields}
                     options={organizers}
                 />
-                {organizer.value &&
+                {organizer.value && !props.disableFields &&
                     <Calendar
                         monthChangedHandler={setMonth}
                         events={events}
@@ -207,6 +211,7 @@ const InitialForm = (props) => {
                                 defaultChecked={isCatering}
                                 onChange={() => menuOrCateringSelectedHandler(!isCatering)}
                                 type='radio'
+                                disabled={props.disableFields}
                                 id={'catering'}
                                 name="group1"
                                 label={'Catering'}
@@ -236,6 +241,7 @@ const InitialForm = (props) => {
                             type='checkbox'
                             id='accommodationNeeded'
                             label='Accommodation needed'
+                            disabled={props.disableFields}
                             checked={accommodationNeeded}
                             onChange={(e) => setAccommodationNeeded(e.target.checked)}
                         />

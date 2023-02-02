@@ -26,6 +26,7 @@ const Input = (props) => {
         <Form.Group className={["mb-3", classes.Input].join(' ')} controlId={props.controlId}>
             {props.label && <Form.Label>{props.label}</Form.Label>}
             <Form.Control
+                autoComplete="off"
                 value={typeof props.field === 'object' ? props.field.value : props.field}
                 onChange={(e) => changeField(props.field, props.setField, e.target.value)}
                 onBlur={() => validate(props.field, props.setField, props.validateFn)}

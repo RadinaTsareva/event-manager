@@ -12,6 +12,7 @@ import EventManagement from '../containers/EventManagement/EventManagement';
 import EventsStatus from '../containers/EventsStatus/EventsStatus';
 import Admin from '../containers/Admin/Admin';
 import Settings from '../containers/Settings/Settings';
+import Chat from '../containers/Chat/Chat';
 
 const RouteOptions = {
     GO_TO_HOME: 'GO_TO_HOME',
@@ -81,7 +82,6 @@ const Router = (props) => {
                         <Routes>
                             <Route path="/" exact element={<Home />} />
                             <Route path="/login" element={<Sign />} />
-                            <Route path="/settings" exact element={<Settings />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
@@ -95,6 +95,7 @@ const Router = (props) => {
                             <Route path="/events/:id" exact element={<EventManagement />} />
                             <Route path="/events/status" exact element={<EventsStatus />} />
                             <Route path="/settings" exact element={<Settings />} />
+                            <Route path="/chat" exact element={<Chat />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )
@@ -109,6 +110,7 @@ const Router = (props) => {
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
                             <Route path="/events/status" exact element={<EventsStatus />} />
                             <Route path="/settings" exact element={<Settings />} />
+                            <Route path="/chat" exact element={<Chat />} />
                             <Route path="*" element={<Navigate to='/' />} />
                         </Routes>
                     )

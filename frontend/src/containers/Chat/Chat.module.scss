@@ -1,0 +1,76 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Container {
+    min-width: 30vw;
+    width: 50vw;
+
+    .Heading {
+        margin-bottom: 50px;
+
+        h1 {
+            text-align: center;
+            color: $tertiary-color;
+            font-weight: 400;
+            line-height: 36px;
+            font-size: 34pt;
+            margin-bottom: 20px;
+        }
+
+        p {
+            text-align: center;
+            color: $muted-color;
+            opacity: 0.6;
+            font-weight: 400;
+            line-height: 14px;
+            font-size: 14pt;
+        }
+    }
+
+    .ChatsList {
+        .User {
+            &:not(:first-of-type) {
+                border-top: 1px solid $primary-color;
+            }
+
+            padding: 15px 10px;
+
+            p {
+                cursor: pointer;
+                margin-bottom: 0;
+            }
+        }
+    }
+
+    .Chat {
+        .Messages {
+            height: 500px;
+            overflow-y: auto;
+            word-wrap: break-word;
+
+            .Message {
+                margin: 20px 0;
+
+                .From {
+                    font-weight: 600;
+                    color: $tertiary-color;
+                    font-size: 10pt;
+                    margin-bottom: 5px;
+                }
+
+                .Text {
+                    font-weight: 400;
+                    color: $muted-color;
+                    font-size: 14pt;
+                    margin-bottom: 0;
+                }
+
+                .CreatedAt {
+                    font-weight: 400;
+                    color: $muted-color;
+                    font-size: 8pt;
+                    margin-bottom: 5px;
+                }
+            }
+        }
+    }
+}
