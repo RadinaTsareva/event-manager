@@ -8,6 +8,7 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Validation\Rules\Enum;
 use Laravel\Sanctum\HasApiTokens;
+use Mockery\Exception;
 
 /**
  * @property int $id
@@ -132,5 +133,35 @@ class User extends Authenticatable
         } else {
             return $this->menuTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();
         }
+    }
+
+    public function messagesSend(): HasMany
+    {
+        return $this->hasMany(Message::class, 'user_id_sender');
+    }
+
+    public function messagesReceived(): HasMany
+    {
+        return $this->hasMany(Message::class, 'user_id_receiver');
+    }
+
+    public function getUserChatList(): array
+    {
+        $data = [];
+        $messagesReceivers = $this->messagesSend()->pluck('user_id_receiver');
+        foreach ($messagesReceivers as $messagesReceiver) {
+            $user = User::find($messagesReceiver->user_id_receiver);
+            if ($user) {
+                $newItem = [
+                    'id' => $user->id,
+                    'name' => $user->name
+                ];
+                $data[] = $newItem;
+            } else {
+                throw new Exception();
+            }
+        }
+
+        return $data;
     }
 }
