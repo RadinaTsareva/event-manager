@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "deed946a-bcdb-48e1-80aa-6d52478e6f5b",
+        "_postman_id": "ef321f80-d2cd-4ca7-8a56-39858042e306",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"quam\",\"new_password\":\"nihil\"}"
+                            "raw": "{\"current_password\":\"est\",\"new_password\":\"dignissimos\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"in\",\"gender\":\"male\",\"email\":\"gage78@example.net\",\"role\":\"organizer\",\"address\":\"aut\",\"phone_number\":\"et\"}"
+                            "raw": "{\"name\":\"vel\",\"gender\":\"male\",\"email\":\"kweissnat@example.org\",\"role\":\"organizer\",\"address\":\"deleniti\",\"phone_number\":\"assumenda\"}"
                         },
                         "description": ""
                     },
@@ -243,38 +243,6 @@
                     ]
                 },
                 {
-                    "name": "Getting all organizers",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/events\/organizers",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/organizers"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "{\n     \"data\": {\n         \"id\": 2,\n         \"name\": \"radina\",\n         \"email\": \"dasda34e4d@dada.comh\"\n     },\n     \"status\": 200\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
                     "name": "Getting food types for event type",
                     "request": {
                         "url": {
@@ -286,7 +254,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "1",
+                                    "value": "14",
                                     "description": ""
                                 }
                             ]
@@ -402,7 +370,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "18",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -442,7 +410,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "13",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -482,7 +450,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -534,7 +502,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -574,7 +542,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "16",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -624,7 +592,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":18,\"name\":\"sunt\",\"start\":\"2005-01-05\",\"end\":\"2067-12-14\",\"type\":\"corporis\",\"isCatering\":false,\"foodType\":\"qui\",\"description\":\"Nulla tempora aliquam ipsum dolorum id assumenda deleniti.\",\"guestsCount\":40,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":16,\"name\":\"ut\",\"start\":\"2005-11-09\",\"end\":\"2080-10-18\",\"type\":\"velit\",\"isCatering\":false,\"foodType\":\"occaecati\",\"description\":\"Voluptate neque ut sit autem amet sapiente inventore.\",\"guestsCount\":64,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -661,7 +629,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -679,7 +647,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":18,\"place\":\"fugiat\",\"placeWebsite\":\"dolor\",\"placeGoogleMapsLink\":\"ducimus\",\"pricePerGuest\":39,\"priceForFood\":87,\"priceForAccommodation\":2314.837,\"accommodationDetails\":\"eos\",\"accommodationContact\":\"quidem\"}"
+                            "raw": "{\"eventId\":6,\"place\":\"laboriosam\",\"placeWebsite\":\"beatae\",\"placeGoogleMapsLink\":\"iste\",\"pricePerGuest\":81,\"priceForFood\":40,\"priceForAccommodation\":4,\"accommodationDetails\":\"enim\",\"accommodationContact\":\"non\"}"
                         },
                         "description": ""
                     },
@@ -733,7 +701,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"wedding\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"wedding\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -771,7 +739,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"wedding\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"wedding\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -800,7 +768,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "et",
+                                    "value": "dolorem",
                                     "description": ""
                                 }
                             ]
@@ -823,7 +791,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -869,7 +837,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -898,7 +866,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "nobis",
+                                    "value": "quidem",
                                     "description": ""
                                 }
                             ]
@@ -921,7 +889,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -967,7 +935,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -1008,7 +976,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":1806.31596302}"
+                            "raw": "{\"id\":537.914107}"
                         },
                         "description": ""
                     },
@@ -1023,6 +991,137 @@
                             "header": [],
                             "code": 403,
                             "body": "{\n     \"message\": \"Non existing catering type\",\n     \"errors\": {\n     \"id\": [\n         \"Non existing catering type\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all user who the current user has chatted",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat\/list",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat\/list"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n     {\n         \"id\": 1,\n         \"value\": \"radina\"\n     }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get all messages the user has received and sent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n     {\n         \"id\": 1,\n         \"sender\": \"radina\",\n         \"message\": \"message\",\n         \"createdAt\": \"2023-02-03T10:54:59.000000Z\"\n     }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Save message",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"culpa\",\"message\":\"consequatur\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all organizers",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/organizers",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/organizers"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": {\n         \"id\": 2,\n         \"name\": \"radina\",\n         \"email\": \"dasda34e4d@dada.comh\"\n     },\n     \"status\": 200\n}",
                             "name": ""
                         }
                     ]
@@ -1084,7 +1183,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"ima.west@example.com\",\"password\":\"adipisci\"}"
+                            "raw": "{\"email\":\"zchristiansen@example.com\",\"password\":\"eligendi\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1128,7 +1227,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"non\",\"gender\":\"none\",\"email\":\"leuschke.raleigh@example.org\",\"role\":\"admin\",\"password\":\"veritatis\",\"phone_number\":\"quo\",\"address\":\"nihil\"}"
+                            "raw": "{\"name\":\"laborum\",\"gender\":\"female\",\"email\":\"payton34@example.org\",\"role\":\"organizer\",\"password\":\"debitis\",\"phone_number\":\"autem\",\"address\":\"eligendi\"}"
                         },
                         "description": "",
                         "auth": {

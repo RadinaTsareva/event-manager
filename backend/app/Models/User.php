@@ -19,6 +19,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $max_count_blacklists_in
  * @property string $phone_number
  * @property string $address
+ * @property mixed $eventTypes
+ * @property mixed $menuTypes
  *
  * @method static create(array $array)
  * @method static where(string $string, mixed $email)
@@ -132,5 +134,30 @@ class User extends Authenticatable
         } else {
             return $this->menuTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();
         }
+    }
+
+    public function messagesSend(): HasMany
+    {
+        return $this->hasMany(Message::class, 'user_id_sender');
+    }
+
+    public function messagesReceived(): HasMany
+    {
+        return $this->hasMany(Message::class, 'user_id_receiver');
+    }
+
+    public function getUserChatList(): array
+    {
+        $data = [];
+        $messagesReceivers = $this->messagesSend;
+        foreach ($messagesReceivers as $messagesReceiver) {
+            $user = User::find($messagesReceiver->user_id_receiver);
+            //ignoring messages with wrong id's
+            if ($user) {
+                $data[] = $user;
+            }
+        }
+
+        return $data;
     }
 }

@@ -129,7 +129,7 @@ class EventsService {
         // return RequestAPI.get(`/events/${id}/pics`) -> ready from Radi
     }
 
-    static getOrganizers = async () => {
+    static getOrganizers = async () => { //isn't that a duplicate?
         return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
         // return RequestAPI.get('/organizers')
     }
@@ -223,7 +223,7 @@ class EventsService {
         // return RequestAPI.get(`/events/${id}/comments`) -> ready from radi (user id == created_by_id in the DB)
     }
 
-    static sendFeedback = async (id, rating, feedback) => {
+    static sendFeedback = async (id, rating, feedback) => { // is that feedback for the organizer of the client?
         // rating is a number from 1 to 5
         // return RequestAPI.post(`/events/${id}/feedback`, {feedback, rating})
     }
