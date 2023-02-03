@@ -17,6 +17,7 @@ const defaultValues = {
     accommodationDetails: { name: 'accommodationDetails', value: "", valid: true, message: 'Accommodation details should be at least 20 characters long' },
     accommodationContact: { name: 'accommodationContact', value: "", valid: true, message: 'Accommodation contact should be a valid phone number' },
     accommodationWebsite: { name: 'accommodationWebsite', value: "", valid: true, message: 'Accommodation website should be a valid URL' },
+    mapsLink: { name: 'mapsLink', value: "", valid: true, message: 'Maps link should be a valid URL' },
 }
 
 const EditableForm = (props) => {
@@ -41,7 +42,7 @@ const EditableForm = (props) => {
         setPriceForAccommodation({ ...priceForAccommodation, value: props.event.priceForAccommodation })
         setAccommodationDetails({ ...accommodationDetails, value: props.event.accommodationDetails })
         setAccommodationContact({ ...accommodationContact, value: props.event.accommodationContact })
-        setMapsLink(props.event.placeGoogleMapsLink)
+        setMapsLink({ ...mapsLink, value: props.event.placeGoogleMapsLink })
         setLoading(false)
     }
 
@@ -84,6 +85,10 @@ const EditableForm = (props) => {
         {
             label: 'Accommodation website', type: 'text', placeholder: 'https://www.hotel.com',
             field: accommodationWebsite, setField: setAccommodationWebsite, validateFn: validateURL
+        },
+        {
+            label: 'Link to Google maps pin', type: 'text', placeholder: 'https://www.google.com/maps/place/...',
+            field: mapsLink, setField: setMapsLink, validateFn: validateURL
         }
     ]
 
@@ -123,7 +128,6 @@ const EditableForm = (props) => {
                 {!props.disableFields
                     && <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
                 }
-                {/* <MapWithSearch /> */}
             </Form>
         </>
     );

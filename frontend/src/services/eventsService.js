@@ -30,7 +30,7 @@ const personalEvents = [{
 }, {
     // TODO an event should look like this, with empty fields on commencement
     id: 3,
-    status: STATUS.REJECTED,
+    status: STATUS.PENDING,
     name: 'Event 3',
     start: new Date(Date.now() + 10000 * 60 * 60 * 3),
     end: new Date(Date.now() + 10000 * 60 * 60 * 5),
