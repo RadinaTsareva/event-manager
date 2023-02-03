@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "ebbe24ac-ebf7-4eb1-9f99-6280b8c10e08",
+        "_postman_id": "ef321f80-d2cd-4ca7-8a56-39858042e306",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"voluptate\",\"new_password\":\"a\"}"
+                            "raw": "{\"current_password\":\"est\",\"new_password\":\"dignissimos\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"nesciunt\",\"gender\":\"male\",\"email\":\"manuel67@example.net\",\"role\":\"admin\",\"address\":\"itaque\",\"phone_number\":\"consequuntur\"}"
+                            "raw": "{\"name\":\"vel\",\"gender\":\"male\",\"email\":\"kweissnat@example.org\",\"role\":\"organizer\",\"address\":\"deleniti\",\"phone_number\":\"assumenda\"}"
                         },
                         "description": ""
                     },
@@ -254,7 +254,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "17",
+                                    "value": "14",
                                     "description": ""
                                 }
                             ]
@@ -370,7 +370,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -410,7 +410,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "11",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -450,7 +450,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -502,7 +502,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "4",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -542,7 +542,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "15",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -592,7 +592,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":13,\"name\":\"voluptate\",\"start\":\"2010-09-17\",\"end\":\"2109-04-01\",\"type\":\"deserunt\",\"isCatering\":true,\"foodType\":\"consequatur\",\"description\":\"Ratione mollitia et omnis eligendi.\",\"guestsCount\":18,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":16,\"name\":\"ut\",\"start\":\"2005-11-09\",\"end\":\"2080-10-18\",\"type\":\"velit\",\"isCatering\":false,\"foodType\":\"occaecati\",\"description\":\"Voluptate neque ut sit autem amet sapiente inventore.\",\"guestsCount\":64,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -629,7 +629,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "6",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -647,7 +647,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":14,\"place\":\"non\",\"placeWebsite\":\"et\",\"placeGoogleMapsLink\":\"debitis\",\"pricePerGuest\":49,\"priceForFood\":18,\"priceForAccommodation\":557676.089528,\"accommodationDetails\":\"a\",\"accommodationContact\":\"quasi\"}"
+                            "raw": "{\"eventId\":6,\"place\":\"laboriosam\",\"placeWebsite\":\"beatae\",\"placeGoogleMapsLink\":\"iste\",\"pricePerGuest\":81,\"priceForFood\":40,\"priceForAccommodation\":4,\"accommodationDetails\":\"enim\",\"accommodationContact\":\"non\"}"
                         },
                         "description": ""
                     },
@@ -701,7 +701,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"wedding\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"wedding\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -739,7 +739,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"wedding\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"wedding\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -768,7 +768,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "alias",
+                                    "value": "dolorem",
                                     "description": ""
                                 }
                             ]
@@ -791,7 +791,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -837,7 +837,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -866,7 +866,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "qui",
+                                    "value": "quidem",
                                     "description": ""
                                 }
                             ]
@@ -889,7 +889,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -935,7 +935,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "[\n    \"sea-food\"\n]",
+                            "body": "[\n     {\n         \"id\": 1,\n         \"name\": \"sea-food\"\n     }\n]",
                             "name": ""
                         },
                         {
@@ -976,7 +976,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":5654.0418241}"
+                            "raw": "{\"id\":537.914107}"
                         },
                         "description": ""
                     },
@@ -1081,7 +1081,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":\"aut\",\"message\":\"fuga\"}"
+                            "raw": "{\"id\":\"culpa\",\"message\":\"consequatur\"}"
                         },
                         "description": ""
                     },
@@ -1183,7 +1183,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"cremin.eunice@example.com\",\"password\":\"possimus\"}"
+                            "raw": "{\"email\":\"zchristiansen@example.com\",\"password\":\"eligendi\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1227,7 +1227,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"et\",\"gender\":\"female\",\"email\":\"rboyle@example.net\",\"role\":\"organizer\",\"password\":\"autem\",\"phone_number\":\"non\",\"address\":\"eum\"}"
+                            "raw": "{\"name\":\"laborum\",\"gender\":\"female\",\"email\":\"payton34@example.org\",\"role\":\"organizer\",\"password\":\"debitis\",\"phone_number\":\"autem\",\"address\":\"eligendi\"}"
                         },
                         "description": "",
                         "auth": {

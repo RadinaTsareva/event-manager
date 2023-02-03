@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ErrorResponse;
+use App\Http\Resources\Api\TypeResource;
 use App\Models\EventType;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
@@ -15,7 +16,10 @@ class CateringTypeController extends Controller
      *
      * @response
      * [
-     *     "sea-food"
+     *      {
+     *          "id": 1,
+     *          "name": "sea-food"
+     *      }
      * ]
      *
      * @response 403
@@ -40,7 +44,10 @@ class CateringTypeController extends Controller
      *
      * @response
      * [
-     *     "sea-food"
+     *      {
+     *          "id": 1,
+     *          "name": "sea-food"
+     *      }
      * ]
      *
      * @response 403
@@ -62,6 +69,7 @@ class CateringTypeController extends Controller
 
     protected function validateUserAndCateringTypes(int $eventTypeId, User $user = null): array|ErrorResponse
     {
+        $resources = [];
         if (!$user || $user->role != User::ROLE_ORGANISER) {
             return new ErrorResponse(['User either does not exist or it is not an organizer']);
         }
@@ -72,7 +80,10 @@ class CateringTypeController extends Controller
             return new ErrorResponse(['Non valid or missing event type']);
         }
 
-        return $user->cateringTypes()->where('event_type_id', $eventType->id)->pluck('name')->toArray();
+        foreach ($user->cateringTypes()->where('event_type_id', $eventType->id) as $type) {
+            $resources[] = new TypeResource($type);
+        }
+        return $resources;
     }
 
 }

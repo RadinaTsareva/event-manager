@@ -4,6 +4,7 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Resources\Api\ErrorResponse;
+use App\Http\Resources\Api\TypeResource;
 use App\Models\User;
 use Illuminate\Support\Facades\Auth;
 
@@ -14,7 +15,10 @@ class EventTypeController extends Controller
      *
      * @response
      * [
-     *     "wedding"
+     *      {
+     *          "id": 1,
+     *          "name": "wedding"
+     *      }
      * ]
      *
      * @response 403
@@ -39,7 +43,10 @@ class EventTypeController extends Controller
      *
      * @response
      * [
-     *     "wedding"
+     *      {
+     *          "id": 1,
+     *          "name": "wedding"
+     *      }
      * ]
      *
      * @response 403
@@ -59,11 +66,15 @@ class EventTypeController extends Controller
 
     protected function validateUserAndGetEventTypes(User $user = null): array|ErrorResponse
     {
+        $resources = [];
         if (!$user || $user->role != User::ROLE_ORGANISER) {
             return new ErrorResponse(['User either does not exist or it is not an organizer']);
         }
 
-        return $user->eventTypes()->pluck('name')->toArray();
+        foreach ($user->eventTypes as $type) {
+            $resources[] = new TypeResource($type);
+        }
+        return $resources;
     }
 
 }

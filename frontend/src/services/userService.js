@@ -29,7 +29,7 @@ class UserService {
     }
 
     static blacklistUser = async (id) => {
-        // await RequestAPI.post(`/users/${id}/blacklist`)
+        // await RequestAPI.post(`/users/${id}/blacklist`) -> ready from radi
     }
 
     static updateInfo = async (data) => {
@@ -71,7 +71,7 @@ class UserService {
         const index = typeArr.findIndex(t => t.id === id);
         typeArr.splice(index, 1);
         // type: 'event-types' || 'menu-types' || 'catering-types'
-        // await RequestAPI.delete(`/users/${type}`, { id })
+        // await RequestAPI.delete(`/users/${type}`, { id }) -> ready from Radi
     }
 
     static updateType = async (type, data) => { //ready from Radi
@@ -80,7 +80,7 @@ class UserService {
         typeArr[index].value = data.value;
         // type: 'event-types' || 'menu-types' || 'catering-types'
         // data: { id: 1, value: 'type name' }
-        // await RequestAPI.put(`/users/${type}`, data)
+        // await RequestAPI.put(`/users/${type}`, data) -> ready from Radi
     }
 
     static addNewType = async (type, data) => {
@@ -88,7 +88,7 @@ class UserService {
         typeArr.push({ id: typeArr.length + 1, ...data });
         // type: 'event-types' || 'menu-types' || 'catering-types'
         // data: { value: 'type name' , eventTypeId: 1 }
-        // await RequestAPI.post(`/users/${type}`, data)
+        // await RequestAPI.post(`/users/${type}`, data) -> ready from Radi
     }
 }
 

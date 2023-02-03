@@ -19,6 +19,8 @@ use Laravel\Sanctum\HasApiTokens;
  * @property int $max_count_blacklists_in
  * @property string $phone_number
  * @property string $address
+ * @property mixed $eventTypes
+ * @property mixed $menuTypes
  *
  * @method static create(array $array)
  * @method static where(string $string, mixed $email)
