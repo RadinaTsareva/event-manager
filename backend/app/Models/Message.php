@@ -11,6 +11,7 @@ use Illuminate\Database\Eloquent\Relations\BelongsTo;
  * @property int $user_id_sender
  * @property int $user_id_receiver
  * @property int $message
+ * @method static create(array $array)
  */
 class Message extends Model
 {
@@ -24,11 +25,11 @@ class Message extends Model
 
     public function sender(): BelongsTo
     {
-        return $this->BelongsTo(User::class);
+        return $this->BelongsTo(User::class, 'user_id_sender');
     }
 
     public function receiver(): BelongsTo
     {
-        return $this->BelongsTo(User::class);
+        return $this->BelongsTo(User::class, 'user_id_receiver');
     }
 }

@@ -8,7 +8,6 @@ use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Validation\Rules\Enum;
 use Laravel\Sanctum\HasApiTokens;
-use Mockery\Exception;
 
 /**
  * @property int $id
@@ -148,17 +147,12 @@ class User extends Authenticatable
     public function getUserChatList(): array
     {
         $data = [];
-        $messagesReceivers = $this->messagesSend()->pluck('user_id_receiver');
+        $messagesReceivers = $this->messagesSend;
         foreach ($messagesReceivers as $messagesReceiver) {
             $user = User::find($messagesReceiver->user_id_receiver);
+            //ignoring messages with wrong id's
             if ($user) {
-                $newItem = [
-                    'id' => $user->id,
-                    'name' => $user->name
-                ];
-                $data[] = $newItem;
-            } else {
-                throw new Exception();
+                $data[] = $user;
             }
         }
 

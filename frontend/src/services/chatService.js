@@ -31,7 +31,7 @@ class ChatService {
     static getChatsList = async () => {
         // get active chats list (users with previous messages)
         return [{ id: 1, value: 'User 1' }, { id: 2, value: 'User 2' }, { id: 3, value: 'User 3' }]
-        // return await RequestAPI.get('/chat/list');
+        // return await RequestAPI.get('/chat/list'); -> ready from Radi
     }
 
     static getOrganizers = async () => {
@@ -40,7 +40,7 @@ class ChatService {
         // return await RequestAPI.get('/organizers'); -> ready from Radi (sending id,name,email)
     }
 
-    static sendMessage = async (id, message) => {
+    static sendMessage = async (id, message) => { // ready from Radi
         messages.push({
             id: messages.length + 1,
             sender: 'name',
@@ -52,7 +52,7 @@ class ChatService {
         // await RequestAPI.post('/chat', { message, id });
     }
 
-    static getMessages = async (id) => {
+    static getMessages = async (id) => { //ready from Radi, I'm sending both received and sent messages
         // id: user id
         return messages;
         // return await RequestAPI.get('/chat', id);

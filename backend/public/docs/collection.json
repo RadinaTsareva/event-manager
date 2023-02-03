@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "6783f265-6424-478e-9316-bcb5acd94705",
+        "_postman_id": "ebbe24ac-ebf7-4eb1-9f99-6280b8c10e08",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"voluptatem\",\"new_password\":\"deleniti\"}"
+                            "raw": "{\"current_password\":\"voluptate\",\"new_password\":\"a\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"maiores\",\"gender\":\"female\",\"email\":\"makenna.hermiston@example.net\",\"role\":\"organizer\",\"address\":\"pariatur\",\"phone_number\":\"atque\"}"
+                            "raw": "{\"name\":\"nesciunt\",\"gender\":\"male\",\"email\":\"manuel67@example.net\",\"role\":\"admin\",\"address\":\"itaque\",\"phone_number\":\"consequuntur\"}"
                         },
                         "description": ""
                     },
@@ -254,7 +254,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "18",
+                                    "value": "17",
                                     "description": ""
                                 }
                             ]
@@ -370,7 +370,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "19",
+                                    "value": "9",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -410,7 +410,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "2",
+                                    "value": "3",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -450,7 +450,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "17",
+                                    "value": "19",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -502,7 +502,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "18",
+                                    "value": "8",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -542,7 +542,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "15",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -592,7 +592,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":12,\"name\":\"qui\",\"start\":\"2010-12-17\",\"end\":\"2083-06-14\",\"type\":\"commodi\",\"isCatering\":true,\"foodType\":\"nulla\",\"description\":\"Reprehenderit rerum quasi tempora ipsam aut repudiandae.\",\"guestsCount\":11,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":13,\"name\":\"voluptate\",\"start\":\"2010-09-17\",\"end\":\"2109-04-01\",\"type\":\"deserunt\",\"isCatering\":true,\"foodType\":\"consequatur\",\"description\":\"Ratione mollitia et omnis eligendi.\",\"guestsCount\":18,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -629,7 +629,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "3",
+                                    "value": "6",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -647,7 +647,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":7,\"place\":\"debitis\",\"placeWebsite\":\"recusandae\",\"placeGoogleMapsLink\":\"autem\",\"pricePerGuest\":66,\"priceForFood\":15,\"priceForAccommodation\":21,\"accommodationDetails\":\"repudiandae\",\"accommodationContact\":\"exercitationem\"}"
+                            "raw": "{\"eventId\":14,\"place\":\"non\",\"placeWebsite\":\"et\",\"placeGoogleMapsLink\":\"debitis\",\"pricePerGuest\":49,\"priceForFood\":18,\"priceForAccommodation\":557676.089528,\"accommodationDetails\":\"a\",\"accommodationContact\":\"quasi\"}"
                         },
                         "description": ""
                     },
@@ -768,7 +768,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "qui",
+                                    "value": "alias",
                                     "description": ""
                                 }
                             ]
@@ -866,7 +866,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "consequatur",
+                                    "value": "qui",
                                     "description": ""
                                 }
                             ]
@@ -976,7 +976,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":2.4505}"
+                            "raw": "{\"id\":5654.0418241}"
                         },
                         "description": ""
                     },
@@ -991,6 +991,105 @@
                             "header": [],
                             "code": 403,
                             "body": "{\n     \"message\": \"Non existing catering type\",\n     \"errors\": {\n     \"id\": [\n         \"Non existing catering type\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Getting all user who the current user has chatted",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat\/list",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat\/list"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n     {\n         \"id\": 1,\n         \"value\": \"radina\"\n     }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Get all messages the user has received and sent",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat"
+                        },
+                        "method": "GET",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "[\n     {\n         \"id\": 1,\n         \"sender\": \"radina\",\n         \"message\": \"message\",\n         \"createdAt\": \"2023-02-03T10:54:59.000000Z\"\n     }\n]",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Save message",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/chat",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/chat"
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":\"aut\",\"message\":\"fuga\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
                             "name": ""
                         }
                     ]
@@ -1084,7 +1183,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"estella52@example.net\",\"password\":\"in\"}"
+                            "raw": "{\"email\":\"cremin.eunice@example.com\",\"password\":\"possimus\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1128,7 +1227,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"aliquam\",\"gender\":\"male\",\"email\":\"zoie.hayes@example.com\",\"role\":\"admin\",\"password\":\"et\",\"phone_number\":\"aliquam\",\"address\":\"veritatis\"}"
+                            "raw": "{\"name\":\"et\",\"gender\":\"female\",\"email\":\"rboyle@example.net\",\"role\":\"organizer\",\"password\":\"autem\",\"phone_number\":\"non\",\"address\":\"eum\"}"
                         },
                         "description": "",
                         "auth": {
