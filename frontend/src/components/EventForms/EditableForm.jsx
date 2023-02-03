@@ -7,7 +7,7 @@ import Spinner from '../common/Spinner/Spinner';
 import { Form } from 'react-bootstrap';
 import Input from '../common/Input/Input';
 import { validateNumber, validatePhoneNumber, validateText, validateURL } from '../../utils/validation';
-// import MapWithSearch from '../GoogleMapsPreview/GoogleMapsPreview';
+import Map from '../Map/Map';
 
 const defaultValues = {
     place: { name: 'place', value: "", valid: true, message: 'Place should be at least 5 characters long' },
@@ -28,7 +28,7 @@ const EditableForm = (props) => {
     const [accommodationDetails, setAccommodationDetails] = useState(defaultValues.accommodationDetails);
     const [accommodationContact, setAccommodationContact] = useState(defaultValues.accommodationContact);
     const [accommodationWebsite, setAccommodationWebsite] = useState(defaultValues.accommodationWebsite);
-    const [mapsLink, setMapsLink] = useState('');
+    const [mapsLink, setMapsLink] = useState(defaultValues.mapsLink);
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
@@ -47,6 +47,26 @@ const EditableForm = (props) => {
     }
 
     const sendClickedHandler = async () => {
+        let valid = true;
+        for (const data of responseFields) {
+            if (!data.field.valid || data.field.value === "") {
+                valid = false
+                break
+            }
+        }
+
+        if (valid && props.event.accommodationNeeded) {
+            for (const data of accommodationFields) {
+                if (!data.field.valid || data.field.value === "") {
+                    valid = false
+                }
+            }
+        }
+
+        if (!valid) {
+            return toastHandler({ success: TOAST_STATES.ERROR, message: 'Please fill in all required fields' })
+        }
+
         let accommodationData = {}
         if (props.event.accommodationNeeded) {
             accommodationData = {
@@ -67,6 +87,10 @@ const EditableForm = (props) => {
             ...accommodationData //can be null depending if the event wants accommodation
         })
         toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
+    }
+
+    const setPositionHandler = (pos) => {
+        setMapsLink({ ...mapsLink, valid: true, value: `https://www.google.com/maps/search/?api=1&query=${pos.latitude},${pos.longitude}` })
     }
 
     const accommodationFields = [
@@ -125,6 +149,7 @@ const EditableForm = (props) => {
                             disabled={props.disableFields} />
                     </div>
                 )}
+                <Map setPosition={setPositionHandler} />
                 {!props.disableFields
                     && <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
                 }

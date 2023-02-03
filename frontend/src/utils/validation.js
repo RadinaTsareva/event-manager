@@ -60,11 +60,10 @@ const validateOptions = (value) => {
 }
 
 const validateURL = (url) => {
-    return url.toString()
+    return !url || url.toString()
         .toLowerCase()
         .match(urlRegex) || url.toString() === "";;
 }
-
 
 export {
     validateOptions,

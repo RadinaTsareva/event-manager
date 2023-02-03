@@ -49,6 +49,7 @@ const Registration = (props) => {
         for (const data of fields.slice(0, 5)) {
             if (!data.field.valid || data.field.value === "") {
                 valid = false
+                break
             }
         }
 

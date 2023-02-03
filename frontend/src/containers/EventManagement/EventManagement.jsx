@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';

@@ -1,3 +1,4 @@
+import React from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import classes from './App.module.scss';
 import Header from './components/common/Header/Header';

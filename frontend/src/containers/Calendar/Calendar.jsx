@@ -2,7 +2,7 @@ import React, { useEffect, useRef, useState } from 'react';
 import { DayPilot, DayPilotMonth } from "daypilot-pro-react";
 import { useNavigate } from 'react-router';
 
-import { ROLES, STATUS } from '../../utils/enums';
+import { STATUS } from '../../utils/enums';
 import classes from './Calendar.module.scss';
 import { convertColorByStatus } from '../../utils/converter';
 
