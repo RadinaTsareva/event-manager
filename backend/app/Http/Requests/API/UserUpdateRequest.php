@@ -14,7 +14,7 @@ use Illuminate\Validation\Rules\Password;
  * @property mixed $name
  * @property mixed $role
  * @property mixed $gender
- * @property mixed $phone_number
+ * @property mixed $phoneNumber
  * @property mixed $address
  */
 class UserUpdateRequest extends FormRequest
@@ -32,7 +32,7 @@ class UserUpdateRequest extends FormRequest
             'email' => ['nullable', 'email', 'unique:users,email'],
             'role' => ['nullable', 'string', Rule::in(User::ROLES)],
             'address' => ['nullable', 'string'],
-            'phone_number' => ['nullable', 'string'],
+            'phoneNumber' => ['nullable', 'string'],
         ];
     }
 }

@@ -31,8 +31,8 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/events/types', [EventController::class, 'getTypes']);
     Route::get('/events/{eventType}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
-    Route::get('/events/personal', [EventController::class, 'getPersonalEvents']);
-    Route::get('/events/personal/all',[EventController::class, 'getAllPersonalEvents']);
+    Route::get('/events/personal/{mouth}/{year}', [EventController::class, 'getPersonalEvents']);
+    Route::get('/events/personal/all/{mouth}/{year}',[EventController::class, 'getAllPersonalEvents']);
     Route::post('/events/{id}/accept', [EventController::class, 'acceptEvent']);
     Route::post('/events/{id}/reject', [EventController::class, 'rejectEvent']);
     Route::get('/events/{id}', [EventController::class, 'getPersonalEvent']);
@@ -58,8 +58,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/organizers', [UserController::class, 'getOrganizers']);
 });
 
-Route::get('/events', [EventController::class, 'getAllEvents']);
+Route::get('/events/{mouth}/{year}', [EventController::class, 'getAllEvents']);
 
-Route::post('/users/login', [UserController::class, 'loginUser']);
-Route::post('/users/register', [UserController::class, 'createUser']);
+Route::post('/auth/login', [UserController::class, 'loginUser']);
+Route::post('/auth/register', [UserController::class, 'createUser']);
 

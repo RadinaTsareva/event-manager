@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "ef321f80-d2cd-4ca7-8a56-39858042e306",
+        "_postman_id": "e81bd73b-2145-49a8-bcf2-ddbefc761b4f",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"est\",\"new_password\":\"dignissimos\"}"
+                            "raw": "{\"current_password\":\"quod\",\"new_password\":\"quae\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"vel\",\"gender\":\"male\",\"email\":\"kweissnat@example.org\",\"role\":\"organizer\",\"address\":\"deleniti\",\"phone_number\":\"assumenda\"}"
+                            "raw": "{\"name\":\"aperiam\",\"gender\":\"female\",\"email\":\"sarai.wunsch@example.net\",\"role\":\"organizer\",\"address\":\"provident\",\"phoneNumber\":\"non\"}"
                         },
                         "description": ""
                     },
@@ -254,7 +254,7 @@
                                 {
                                     "id": "eventType",
                                     "key": "eventType",
-                                    "value": "14",
+                                    "value": "12",
                                     "description": ""
                                 }
                             ]
@@ -299,9 +299,23 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events\/personal",
+                            "path": "api\/events\/personal\/:mouth\/:year",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/personal"
+                            "raw": "{{baseUrl}}\/api\/events\/personal\/:mouth\/:year",
+                            "variable": [
+                                {
+                                    "id": "mouth",
+                                    "key": "mouth",
+                                    "value": "odit",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "year",
+                                    "key": "year",
+                                    "value": "ut",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -331,9 +345,23 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events\/personal\/all",
+                            "path": "api\/events\/personal\/all\/:mouth\/:year",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/personal\/all"
+                            "raw": "{{baseUrl}}\/api\/events\/personal\/all\/:mouth\/:year",
+                            "variable": [
+                                {
+                                    "id": "mouth",
+                                    "key": "mouth",
+                                    "value": "voluptatem",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "year",
+                                    "key": "year",
+                                    "value": "quo",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -370,7 +398,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "13",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -410,7 +438,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "15",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -450,7 +478,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "20",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -502,7 +530,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -542,7 +570,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "1",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -592,7 +620,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":16,\"name\":\"ut\",\"start\":\"2005-11-09\",\"end\":\"2080-10-18\",\"type\":\"velit\",\"isCatering\":false,\"foodType\":\"occaecati\",\"description\":\"Voluptate neque ut sit autem amet sapiente inventore.\",\"guestsCount\":64,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":11,\"name\":\"minima\",\"start\":\"2007-07-29\",\"end\":\"2054-07-08\",\"type\":\"qui\",\"isCatering\":false,\"foodType\":\"aliquam\",\"description\":\"Veritatis quae magnam non commodi non ut.\",\"guestsCount\":75,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -629,7 +657,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "15",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -647,7 +675,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":6,\"place\":\"laboriosam\",\"placeWebsite\":\"beatae\",\"placeGoogleMapsLink\":\"iste\",\"pricePerGuest\":81,\"priceForFood\":40,\"priceForAccommodation\":4,\"accommodationDetails\":\"enim\",\"accommodationContact\":\"non\"}"
+                            "raw": "{\"eventId\":20,\"place\":\"odit\",\"placeWebsite\":\"in\",\"placeGoogleMapsLink\":\"fugit\",\"pricePerGuest\":9,\"priceForFood\":11,\"priceForAccommodation\":4.158,\"accommodationDetails\":\"ea\",\"accommodationContact\":\"amet\"}"
                         },
                         "description": ""
                     },
@@ -768,7 +796,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "dolorem",
+                                    "value": "omnis",
                                     "description": ""
                                 }
                             ]
@@ -866,7 +894,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "quidem",
+                                    "value": "saepe",
                                     "description": ""
                                 }
                             ]
@@ -976,7 +1004,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":537.914107}"
+                            "raw": "{\"id\":47.7845}"
                         },
                         "description": ""
                     },
@@ -1081,7 +1109,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":\"culpa\",\"message\":\"consequatur\"}"
+                            "raw": "{\"id\":\"et\",\"message\":\"sint\"}"
                         },
                         "description": ""
                     },
@@ -1131,9 +1159,23 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events",
+                            "path": "api\/events\/:mouth\/:year",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events"
+                            "raw": "{{baseUrl}}\/api\/events\/:mouth\/:year",
+                            "variable": [
+                                {
+                                    "id": "mouth",
+                                    "key": "mouth",
+                                    "value": "11",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "year",
+                                    "key": "year",
+                                    "value": "dicta",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -1166,9 +1208,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/login",
+                            "path": "api\/auth\/login",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/login"
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
                         },
                         "method": "POST",
                         "header": [
@@ -1183,7 +1225,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"zchristiansen@example.com\",\"password\":\"eligendi\"}"
+                            "raw": "{\"email\":\"smitham.johann@example.org\",\"password\":\"rem\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1210,9 +1252,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/register",
+                            "path": "api\/auth\/register",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/register"
+                            "raw": "{{baseUrl}}\/api\/auth\/register"
                         },
                         "method": "POST",
                         "header": [
@@ -1227,7 +1269,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"laborum\",\"gender\":\"female\",\"email\":\"payton34@example.org\",\"role\":\"organizer\",\"password\":\"debitis\",\"phone_number\":\"autem\",\"address\":\"eligendi\"}"
+                            "raw": "{\"name\":\"esse\",\"gender\":\"male\",\"email\":\"kelsie.yost@example.com\",\"role\":\"client\",\"password\":\"veniam\",\"phoneNumber\":\"veniam\",\"address\":\"quia\"}"
                         },
                         "description": "",
                         "auth": {

@@ -49,7 +49,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer eaEa1dc6kfPv36Zb54VhgD8'
+      - 'Bearer 68hbeZEa31DcVgfv6ka5Pd4'
     controller: null
     method: null
     route: null
@@ -83,7 +83,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Ehbd56afke4ZP6aV8Dc31vg'
+      - 'Bearer f8Z61Pvdaa5b3DgkVe4hEc6'
     controller: null
     method: null
     route: null
@@ -114,14 +114,14 @@ endpoints:
         name: current_password
         description: ''
         required: true
-        example: est
+        example: quod
         type: string
         custom: []
       new_password:
         name: new_password
         description: ''
         required: true
-        example: dignissimos
+        example: quae
         type: string
         custom: []
       new_confirm_password:
@@ -132,8 +132,8 @@ endpoints:
         type: string
         custom: []
     cleanBodyParameters:
-      current_password: est
-      new_password: dignissimos
+      current_password: quod
+      new_password: quae
     fileParameters: []
     responses:
       -
@@ -164,7 +164,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer bP5V6ga6EcaefDk31dhv4Z8'
+      - 'Bearer 3v6d6h4Ec5bVegkDP18afaZ'
     controller: null
     method: null
     route: null
@@ -195,21 +195,21 @@ endpoints:
         name: name
         description: ''
         required: false
-        example: vel
+        example: aperiam
         type: string
         custom: []
       gender:
         name: gender
         description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
         required: false
-        example: male
+        example: female
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: false
-        example: kweissnat@example.org
+        example: sarai.wunsch@example.net
         type: string
         custom: []
       role:
@@ -223,23 +223,23 @@ endpoints:
         name: address
         description: ''
         required: false
-        example: deleniti
+        example: provident
         type: string
         custom: []
-      phone_number:
-        name: phone_number
+      phoneNumber:
+        name: phoneNumber
         description: ''
         required: false
-        example: assumenda
+        example: non
         type: string
         custom: []
     cleanBodyParameters:
-      name: vel
-      gender: male
-      email: kweissnat@example.org
+      name: aperiam
+      gender: female
+      email: sarai.wunsch@example.net
       role: organizer
-      address: deleniti
-      phone_number: assumenda
+      address: provident
+      phoneNumber: non
     fileParameters: []
     responses:
       -
@@ -270,7 +270,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer VP586Da46e1fachgZd3Evkb'
+      - 'Bearer Pcgh6aaZdb5VEf8431k6evD'
     controller: null
     method: null
     route: null
@@ -332,7 +332,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer hgDPbckZ6vd6af85V3E4e1a'
+      - 'Bearer d6fh5gDa4eVvbEk1c3Z6P8a'
     controller: null
     method: null
     route: null
@@ -384,7 +384,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Z16EVDaf58gbPdcvh46a3ek'
+      - 'Bearer 6cvfha3Pbg8dDaEZVke6451'
     controller: null
     method: null
     route: null
@@ -411,11 +411,11 @@ endpoints:
         name: eventType
         description: ''
         required: true
-        example: 14
+        example: 12
         type: integer
         custom: []
     cleanUrlParameters:
-      eventType: 14
+      eventType: 12
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -456,7 +456,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer v6bE5P6f8DhgZVe1a4cak3d'
+      - 'Bearer Ea1kah5DcPbZVf3v6ge486d'
     controller: null
     method: null
     route: null
@@ -464,7 +464,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/events/personal
+    uri: 'api/events/personal/{mouth}/{year}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -478,8 +478,24 @@ endpoints:
       Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      mouth:
+        name: mouth
+        description: ''
+        required: true
+        example: odit
+        type: string
+        custom: []
+      year:
+        name: year
+        description: ''
+        required: true
+        example: ut
+        type: string
+        custom: []
+    cleanUrlParameters:
+      mouth: odit
+      year: ut
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -522,7 +538,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ea83h4Dcb1E6P6avZg5Vdfk'
+      - 'Bearer fab6dEka3Dgv8VZ1654hPec'
     controller: null
     method: null
     route: null
@@ -530,7 +546,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/events/personal/all
+    uri: 'api/events/personal/all/{mouth}/{year}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -544,8 +560,24 @@ endpoints:
       Authorization: 'Bearer {YOUR_AUTH_KEY}'
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      mouth:
+        name: mouth
+        description: ''
+        required: true
+        example: voluptatem
+        type: string
+        custom: []
+      year:
+        name: year
+        description: ''
+        required: true
+        example: quo
+        type: string
+        custom: []
+    cleanUrlParameters:
+      mouth: voluptatem
+      year: quo
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -571,7 +603,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 5vb6dD68PV1hfkEaZ43ecga'
+      - 'Bearer v43VZdbh1EPec5gaDf68ak6'
     controller: null
     method: null
     route: null
@@ -598,11 +630,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 11
+        example: 13
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 11
+      id: 13
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -623,7 +655,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Evd6e4D8Phk135gV6fZbcaa'
+      - 'Bearer dgEvP5cV1a6kh86Z3ebaf4D'
     controller: null
     method: null
     route: null
@@ -650,11 +682,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 11
+        example: 15
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 11
+      id: 15
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -675,7 +707,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer DhZk36aa6gf85e41bPVdcEv'
+      - 'Bearer 1V5PkDE6cevbgZdh48a63fa'
     controller: null
     method: null
     route: null
@@ -702,11 +734,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 8
+        example: 20
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 8
+      id: 20
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -774,7 +806,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer fbE8P3hkDg6evZaVd6ca541'
+      - 'Bearer bZgk5caPe6avh38D64Vf1Ed'
     controller: null
     method: null
     route: null
@@ -801,11 +833,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 4
+        example: 2
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 4
+      id: 2
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -829,7 +861,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ZevEagDkd65V4f6b1aP8hc3'
+      - 'Bearer 8V4va6g36fPDd1kcbEhZ5ae'
     controller: null
     method: null
     route: null
@@ -856,11 +888,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 20
+        example: 1
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 20
+      id: 1
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -877,7 +909,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer f41dkbE3ZP66gDaa5cV8evh'
+      - 'Bearer 3D46adVaekE8Zgc6hv1fbP5'
     controller: null
     method: null
     route: null
@@ -908,35 +940,35 @@ endpoints:
         name: organizerId
         description: ''
         required: true
-        example: 16
+        example: 11
         type: integer
         custom: []
       name:
         name: name
         description: ''
         required: true
-        example: ut
+        example: minima
         type: string
         custom: []
       start:
         name: start
         description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
         required: true
-        example: '2005-11-09'
+        example: '2007-07-29'
         type: string
         custom: []
       end:
         name: end
         description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
         required: true
-        example: '2080-10-18'
+        example: '2054-07-08'
         type: string
         custom: []
       type:
         name: type
         description: ''
         required: true
-        example: velit
+        example: qui
         type: string
         custom: []
       isCatering:
@@ -950,21 +982,21 @@ endpoints:
         name: foodType
         description: ''
         required: true
-        example: occaecati
+        example: aliquam
         type: string
         custom: []
       description:
         name: description
         description: ''
         required: true
-        example: 'Voluptate neque ut sit autem amet sapiente inventore.'
+        example: 'Veritatis quae magnam non commodi non ut.'
         type: string
         custom: []
       guestsCount:
         name: guestsCount
         description: 'Must be at least 1.'
         required: true
-        example: 64
+        example: 75
         type: integer
         custom: []
       accommodationNeeded:
@@ -975,15 +1007,15 @@ endpoints:
         type: boolean
         custom: []
     cleanBodyParameters:
-      organizerId: 16
-      name: ut
-      start: '2005-11-09'
-      end: '2080-10-18'
-      type: velit
+      organizerId: 11
+      name: minima
+      start: '2007-07-29'
+      end: '2054-07-08'
+      type: qui
       isCatering: false
-      foodType: occaecati
-      description: 'Voluptate neque ut sit autem amet sapiente inventore.'
-      guestsCount: 64
+      foodType: aliquam
+      description: 'Veritatis quae magnam non commodi non ut.'
+      guestsCount: 75
       accommodationNeeded: true
     fileParameters: []
     responses:
@@ -1030,7 +1062,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 6fVD31P6akEZehdcb8g5a4v'
+      - 'Bearer Z1d6k8fc6bPaEv3ehg5V4Da'
     controller: null
     method: null
     route: null
@@ -1057,11 +1089,11 @@ endpoints:
         name: id
         description: 'The ID of the event.'
         required: true
-        example: 8
+        example: 15
         type: integer
         custom: []
     cleanUrlParameters:
-      id: 8
+      id: 15
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters:
@@ -1069,75 +1101,75 @@ endpoints:
         name: eventId
         description: ''
         required: true
-        example: 6
+        example: 20
         type: integer
         custom: []
       place:
         name: place
         description: ''
         required: true
-        example: laboriosam
+        example: odit
         type: string
         custom: []
       placeWebsite:
         name: placeWebsite
         description: ''
         required: true
-        example: beatae
+        example: in
         type: string
         custom: []
       placeGoogleMapsLink:
         name: placeGoogleMapsLink
         description: ''
         required: true
-        example: iste
+        example: fugit
         type: string
         custom: []
       pricePerGuest:
         name: pricePerGuest
         description: 'Must be at least 1.'
         required: true
-        example: 81
+        example: 9
         type: number
         custom: []
       priceForFood:
         name: priceForFood
         description: 'Must be at least 1.'
         required: true
-        example: 40
+        example: 11
         type: number
         custom: []
       priceForAccommodation:
         name: priceForAccommodation
         description: ''
         required: false
-        example: 4.0
+        example: 4.158
         type: number
         custom: []
       accommodationDetails:
         name: accommodationDetails
         description: ''
         required: false
-        example: enim
+        example: ea
         type: string
         custom: []
       accommodationContact:
         name: accommodationContact
         description: ''
         required: false
-        example: non
+        example: amet
         type: string
         custom: []
     cleanBodyParameters:
-      eventId: 6
-      place: laboriosam
-      placeWebsite: beatae
-      placeGoogleMapsLink: iste
-      pricePerGuest: 81
-      priceForFood: 40
-      priceForAccommodation: 4.0
-      accommodationDetails: enim
-      accommodationContact: non
+      eventId: 20
+      place: odit
+      placeWebsite: in
+      placeGoogleMapsLink: fugit
+      pricePerGuest: 9
+      priceForFood: 11
+      priceForAccommodation: 4.158
+      accommodationDetails: ea
+      accommodationContact: amet
     fileParameters: []
     responses:
       -
@@ -1174,7 +1206,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer f4PhvkcZ8D3abeV1da5g6E6'
+      - 'Bearer DZdEVePkvf45a1863gcba6h'
     controller: null
     method: null
     route: null
@@ -1240,7 +1272,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer b3fVdkeaE8DZh664ga5cv1P'
+      - 'Bearer gfPVZhbve1ak6a4DEc36d85'
     controller: null
     method: null
     route: null
@@ -1298,7 +1330,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer ckZ15d4Df6a6Vv3EeaPgbh8'
+      - 'Bearer v64Vg5e6Zk31Pbd8DafhEac'
     controller: null
     method: null
     route: null
@@ -1332,12 +1364,12 @@ endpoints:
         name: eventTypeId
         description: ''
         required: true
-        example: dolorem
+        example: omnis
         type: string
         custom: []
     cleanUrlParameters:
       id: 1
-      eventTypeId: dolorem
+      eventTypeId: omnis
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1372,7 +1404,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer kDhabgP34d8ZE165efVa6cv'
+      - 'Bearer 5Eb46f6a3Zgk8hdDecva1PV'
     controller: null
     method: null
     route: null
@@ -1438,7 +1470,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 1hd5abf6gZe3PcV48EDvak6'
+      - 'Bearer 1dhav5kD4f6ZE36bgec8PVa'
     controller: null
     method: null
     route: null
@@ -1472,12 +1504,12 @@ endpoints:
         name: eventTypeId
         description: ''
         required: true
-        example: quidem
+        example: saepe
         type: string
         custom: []
     cleanUrlParameters:
       id: 1
-      eventTypeId: quidem
+      eventTypeId: saepe
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1512,7 +1544,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer PVE4kv3DgaZb1acf65d68he'
+      - 'Bearer fcVD6hv5g1ka6ZPb4aE8e3d'
     controller: null
     method: null
     route: null
@@ -1578,7 +1610,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Vk5Pdc34eg6a6DahEZfv81b'
+      - 'Bearer ecf1566k3VZ8hDaP4bvgaEd'
     controller: null
     method: null
     route: null
@@ -1617,11 +1649,11 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: 537.914107
+        example: 47.7845
         type: number
         custom: []
     cleanBodyParameters:
-      id: 537.914107
+      id: 47.7845
     fileParameters: []
     responses:
       -
@@ -1652,7 +1684,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 5a1vEbD43a6hZde8kcf6gVP'
+      - 'Bearer f4D3eE1gVbhkZ68aaPvd65c'
     controller: null
     method: null
     route: null
@@ -1698,7 +1730,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer gkfEa5a6Z1De48V63hvdcbP'
+      - 'Bearer 65eaf3Z1hcb6DPgvEV4d8ak'
     controller: null
     method: null
     route: null
@@ -1746,7 +1778,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer Z4VD8hdk36fvgEcaPbea165'
+      - 'Bearer V4eb66aa1vchf5gPkEZd38D'
     controller: null
     method: null
     route: null
@@ -1777,19 +1809,19 @@ endpoints:
         name: id
         description: ''
         required: true
-        example: culpa
+        example: et
         type: string
         custom: []
       message:
         name: message
         description: ''
         required: true
-        example: consequatur
+        example: sint
         type: string
         custom: []
     cleanBodyParameters:
-      id: culpa
-      message: consequatur
+      id: et
+      message: sint
     fileParameters: []
     responses:
       -
@@ -1806,7 +1838,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer 3dV18D4fvP56khceaEba6Zg'
+      - 'Bearer d8D3b5a6VEveca4g16fZkhP'
     controller: null
     method: null
     route: null
@@ -1854,7 +1886,7 @@ endpoints:
     auth:
       - headers
       - Authorization
-      - 'Bearer D64VdPafc1kh6bZeg3av85E'
+      - 'Bearer bc8a6Z5f3V6gEPva4dh1keD'
     controller: null
     method: null
     route: null
@@ -1862,7 +1894,7 @@ endpoints:
   -
     httpMethods:
       - GET
-    uri: api/events
+    uri: 'api/events/{mouth}/{year}'
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -1875,8 +1907,24 @@ endpoints:
     headers:
       Content-Type: application/json
       Accept: application/json
-    urlParameters: []
-    cleanUrlParameters: []
+    urlParameters:
+      mouth:
+        name: mouth
+        description: ''
+        required: true
+        example: 11
+        type: integer
+        custom: []
+      year:
+        name: year
+        description: ''
+        required: true
+        example: dicta
+        type: string
+        custom: []
+    cleanUrlParameters:
+      mouth: 11
+      year: dicta
     queryParameters: []
     cleanQueryParameters: []
     bodyParameters: []
@@ -1913,7 +1961,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/users/login
+    uri: api/auth/login
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -1935,19 +1983,19 @@ endpoints:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: zchristiansen@example.com
+        example: smitham.johann@example.org
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: eligendi
+        example: rem
         type: string
         custom: []
     cleanBodyParameters:
-      email: zchristiansen@example.com
-      password: eligendi
+      email: smitham.johann@example.org
+      password: rem
     fileParameters: []
     responses:
       -
@@ -1986,7 +2034,7 @@ endpoints:
   -
     httpMethods:
       - POST
-    uri: api/users/register
+    uri: api/auth/register
     metadata:
       groupName: Endpoints
       groupDescription: ''
@@ -2008,59 +2056,59 @@ endpoints:
         name: name
         description: ''
         required: true
-        example: laborum
+        example: esse
         type: string
         custom: []
       gender:
         name: gender
         description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
         required: true
-        example: female
+        example: male
         type: string
         custom: []
       email:
         name: email
         description: 'Must be a valid email address.'
         required: true
-        example: payton34@example.org
+        example: kelsie.yost@example.com
         type: string
         custom: []
       role:
         name: role
         description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
         required: true
-        example: organizer
+        example: client
         type: string
         custom: []
       password:
         name: password
         description: ''
         required: true
-        example: debitis
+        example: veniam
         type: string
         custom: []
-      phone_number:
-        name: phone_number
+      phoneNumber:
+        name: phoneNumber
         description: ''
         required: true
-        example: autem
+        example: veniam
         type: string
         custom: []
       address:
         name: address
         description: ''
         required: true
-        example: eligendi
+        example: quia
         type: string
         custom: []
     cleanBodyParameters:
-      name: laborum
-      gender: female
-      email: payton34@example.org
-      role: organizer
-      password: debitis
-      phone_number: autem
-      address: eligendi
+      name: esse
+      gender: male
+      email: kelsie.yost@example.com
+      role: client
+      password: veniam
+      phoneNumber: veniam
+      address: quia
     fileParameters: []
     responses:
       -

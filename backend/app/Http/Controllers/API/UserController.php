@@ -100,7 +100,7 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'gender' => $request->gender,
                     'role' => $request->role,
-                    'phone_number' => $request->phone_number,
+                    'phone_number' => $request->phoneNumber,
                     'address' => $request->address,
                 ]
             );
@@ -171,7 +171,7 @@ class UserController extends Controller
                     'name' => $request->name ?? $user->name,
                     'email' => $request->email ?? $user->email,
                     'role' => $request->role ?? $user->role, //not sure of that should be changeable
-                    'phone_number' => $request->phone_number ?? $user->phone_number,
+                    'phone_number' => $request->phoneNumber ?? $user->phone_number,
                     'address' => $request->address ?? $user->address,
                 ]
             );
