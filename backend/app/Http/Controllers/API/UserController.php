@@ -34,7 +34,8 @@ class UserController extends Controller
      *  "token_type": "Bearer",
      *  "role" => "admin",
      *  "email" => "radina@gmail.com",
-     *  "blacklistedCount" =>  0 // TODO
+     *  "blacklistedCount" =>  [],
+     *  "pendingEventsCount" => 0
      * }
      *
      * @response 403 {
@@ -57,7 +58,8 @@ class UserController extends Controller
                     'token_type' => 'Bearer',
                     'role' => $user->role,
                     'email' => $user->email,
-                    'blacklistedCount' => $user->blacklistsIn()->count()
+                    'blacklisted' => $user->blackListed(),
+                    'pendingEventsCount' => $user->pendingEventsCount()
                 ]
             );
         } catch (\Throwable $th) {
@@ -76,6 +78,8 @@ class UserController extends Controller
      *  "token_type": "Bearer",
      *  "role" => "admin",
      *  "email" => "radina@gmail.com",
+     *  "blacklistedCount" =>  [],
+     *  "pendingEventsCount" => 0
      * }
      *
      * @response 403 {
@@ -100,7 +104,7 @@ class UserController extends Controller
                     'password' => Hash::make($request->password),
                     'gender' => $request->gender,
                     'role' => $request->role,
-                    'phone_number' => $request->phone_number,
+                    'phone_number' => $request->phoneNumber,
                     'address' => $request->address,
                 ]
             );
@@ -111,6 +115,8 @@ class UserController extends Controller
                     'token_type' => 'Bearer',
                     'role' => $user->role,
                     'email' => $user->email,
+                    'blacklisted' => $user->blackListed(),
+                    'pendingEventsCount' => $user->pendingEventsCount()
                 ]
             );
         } catch (\Throwable $th) {
@@ -171,7 +177,7 @@ class UserController extends Controller
                     'name' => $request->name ?? $user->name,
                     'email' => $request->email ?? $user->email,
                     'role' => $request->role ?? $user->role, //not sure of that should be changeable
-                    'phone_number' => $request->phone_number ?? $user->phone_number,
+                    'phone_number' => $request->phoneNumber ?? $user->phone_number,
                     'address' => $request->address ?? $user->address,
                 ]
             );
@@ -194,7 +200,7 @@ class UserController extends Controller
      *      "blocked": 0,
      *      "role": "client",
      *      "address": "Address 1",
-     *      "phone-number" : "08990889011"
+     *      "phoneNumber" : "08990889011"
      *   },
      *   "status": 200
      * }
@@ -227,15 +233,15 @@ class UserController extends Controller
      *      "status": 200
      * }
      *
-     * @return BasicUserResource|array
+     * @return array
      */
-    public function getOrganizers(): BasicUserResource|array
+    public function getOrganizers(): array
     {
         $usersResources = [];
         $users = User::where('role', User::ROLE_ORGANISER)->get();
         if (count($users) != 0) {
             foreach ($users as $user) {
-                $usersResources = new BasicUserResource($user);
+                $usersResources[] = new BasicUserResource($user);
             }
         }
 

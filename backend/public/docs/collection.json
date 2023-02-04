@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "ef321f80-d2cd-4ca7-8a56-39858042e306",
+        "_postman_id": "7eb40051-276e-44a0-8ee3-7a717fd7e4e5",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -46,7 +46,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n  \"data\": {\n     \"id\": 1,\n     \"name\": \"radina555eee\",\n     \"email\": \"dasdar44d@dada.com\",\n     \"gender\": \"none\",\n     \"blocked\": 0,\n     \"role\": \"client\",\n     \"address\": \"Address 1\",\n     \"phone-number\" : \"08990889011\"\n  },\n  \"status\": 200\n}",
+                            "body": "{\n  \"data\": {\n     \"id\": 1,\n     \"name\": \"radina555eee\",\n     \"email\": \"dasdar44d@dada.com\",\n     \"gender\": \"none\",\n     \"blocked\": 0,\n     \"role\": \"client\",\n     \"address\": \"Address 1\",\n     \"phoneNumber\" : \"08990889011\"\n  },\n  \"status\": 200\n}",
                             "name": ""
                         }
                     ]
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"est\",\"new_password\":\"dignissimos\"}"
+                            "raw": "{\"current_password\":\"provident\",\"new_password\":\"beatae\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"vel\",\"gender\":\"male\",\"email\":\"kweissnat@example.org\",\"role\":\"organizer\",\"address\":\"deleniti\",\"phone_number\":\"assumenda\"}"
+                            "raw": "{\"name\":\"dicta\",\"gender\":\"none\",\"email\":\"marquardt.mittie@example.com\",\"role\":\"client\",\"address\":\"quas\",\"phoneNumber\":\"quos\"}"
                         },
                         "description": ""
                     },
@@ -170,7 +170,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the user."
                                 }
                             ]
@@ -205,56 +205,18 @@
                     ]
                 },
                 {
-                    "name": "Getting all event's types",
-                    "request": {
-                        "url": {
-                            "host": "{{baseUrl}}",
-                            "path": "api\/events\/types",
-                            "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/types"
-                        },
-                        "method": "GET",
-                        "header": [
-                            {
-                                "key": "Content-Type",
-                                "value": "application\/json"
-                            },
-                            {
-                                "key": "Accept",
-                                "value": "application\/json"
-                            }
-                        ],
-                        "body": null,
-                        "description": ""
-                    },
-                    "response": [
-                        {
-                            "header": [],
-                            "code": 200,
-                            "body": "[\"wedding\",\"party\"]",
-                            "name": ""
-                        },
-                        {
-                            "header": [],
-                            "code": 403,
-                            "body": "{\n \"success\":false,\n \"messages\":[\n     \"The selected organizer is not an organizer or doesn't exists.\"\n ]\n}",
-                            "name": ""
-                        }
-                    ]
-                },
-                {
                     "name": "Getting food types for event type",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events\/:eventType\/foodTypes",
+                            "path": "api\/events\/:eventTypeId\/foodTypes",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/:eventType\/foodTypes",
+                            "raw": "{{baseUrl}}\/api\/events\/:eventTypeId\/foodTypes",
                             "variable": [
                                 {
-                                    "id": "eventType",
-                                    "key": "eventType",
-                                    "value": "14",
+                                    "id": "eventTypeId",
+                                    "key": "eventTypeId",
+                                    "value": "2",
                                     "description": ""
                                 }
                             ]
@@ -299,9 +261,23 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events\/personal",
+                            "path": "api\/events\/personal\/:mouth\/:year",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/personal"
+                            "raw": "{{baseUrl}}\/api\/events\/personal\/:mouth\/:year",
+                            "variable": [
+                                {
+                                    "id": "mouth",
+                                    "key": "mouth",
+                                    "value": "et",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "year",
+                                    "key": "year",
+                                    "value": "vero",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -370,7 +346,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -410,7 +386,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "11",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -450,7 +426,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -473,7 +449,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"data\": {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"organizerId\": 1,\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"accommodationWebsite\": null,\n     \"hasGivenFeedback\": false,\n     \"isPublic\": false\n   },\n  \"status\": 200\n}",
+                            "body": "[\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"organizerId\": 1,\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"accommodationWebsite\": null,\n     \"hasGivenFeedback\": false,\n     \"isPublic\": false\n   ],",
                             "name": ""
                         },
                         {
@@ -502,7 +478,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "4",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -542,7 +518,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "20",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -592,7 +568,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":16,\"name\":\"ut\",\"start\":\"2005-11-09\",\"end\":\"2080-10-18\",\"type\":\"velit\",\"isCatering\":false,\"foodType\":\"occaecati\",\"description\":\"Voluptate neque ut sit autem amet sapiente inventore.\",\"guestsCount\":64,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":14,\"name\":\"culpa\",\"start\":\"2020-10-24\",\"end\":\"2096-05-19\",\"type\":9,\"isCatering\":false,\"foodType\":\"harum\",\"description\":\"Omnis in aut magnam.\",\"guestsCount\":53,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -629,7 +605,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -647,7 +623,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":6,\"place\":\"laboriosam\",\"placeWebsite\":\"beatae\",\"placeGoogleMapsLink\":\"iste\",\"pricePerGuest\":81,\"priceForFood\":40,\"priceForAccommodation\":4,\"accommodationDetails\":\"enim\",\"accommodationContact\":\"non\"}"
+                            "raw": "{\"eventId\":17,\"place\":\"qui\",\"placeWebsite\":\"quisquam\",\"placeGoogleMapsLink\":\"iure\",\"pricePerGuest\":60,\"priceForFood\":90,\"priceForAccommodation\":58,\"accommodationDetails\":\"et\",\"accommodationContact\":\"velit\"}"
                         },
                         "description": ""
                     },
@@ -678,7 +654,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the user."
                                 }
                             ]
@@ -762,13 +738,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the user."
                                 },
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "dolorem",
+                                    "value": "qui",
                                     "description": ""
                                 }
                             ]
@@ -814,7 +790,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": ""
                                 }
                             ]
@@ -860,13 +836,13 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": "The ID of the user."
                                 },
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "quidem",
+                                    "value": "ipsam",
                                     "description": ""
                                 }
                             ]
@@ -912,7 +888,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "1",
+                                    "value": "3",
                                     "description": ""
                                 }
                             ]
@@ -947,18 +923,18 @@
                     ]
                 },
                 {
-                    "name": "Deleting type",
+                    "name": "Adding new type (event,menu,catering)",
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/:type",
+                            "path": "api\/users\/create\/:type",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/:type",
+                            "raw": "{{baseUrl}}\/api\/users\/create\/:type",
                             "variable": [
                                 {
                                     "id": "type",
                                     "key": "type",
-                                    "value": "1",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -976,7 +952,105 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":537.914107}"
+                            "raw": "{\"eventTypeId\":3,\"value\":\"aut\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"The value field is required.\",\n     \"errors\": {\n         \"value\": [\n             \"The value field is required.\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Updating type's info",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/update\/:type",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/update\/:type",
+                            "variable": [
+                                {
+                                    "id": "type",
+                                    "key": "type",
+                                    "value": "et",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":17,\"value\":\"omnis\"}"
+                        },
+                        "description": ""
+                    },
+                    "response": [
+                        {
+                            "header": [],
+                            "code": 200,
+                            "body": "{\n     \"data\": [],\n     \"status\": 200\n}",
+                            "name": ""
+                        },
+                        {
+                            "header": [],
+                            "code": 403,
+                            "body": "{\n     \"message\": \"The given data was invalid.\",\n     \"errors\": {\n         \"id\": [\n             null,\n             \"Non existing catering type\"\n         ]\n     }\n}",
+                            "name": ""
+                        }
+                    ]
+                },
+                {
+                    "name": "Deleting type",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/users\/:type",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/users\/:type",
+                            "variable": [
+                                {
+                                    "id": "type",
+                                    "key": "type",
+                                    "value": "3",
+                                    "description": ""
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": {
+                            "mode": "raw",
+                            "raw": "{\"id\":87558629.03204373}"
                         },
                         "description": ""
                     },
@@ -1032,9 +1106,17 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/chat",
+                            "path": "api\/chat\/:id",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/chat"
+                            "raw": "{{baseUrl}}\/api\/chat\/:id",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "voluptatem",
+                                    "description": "The ID of the chat."
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -1081,7 +1163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":\"culpa\",\"message\":\"consequatur\"}"
+                            "raw": "{\"id\":\"odit\",\"message\":\"et\"}"
                         },
                         "description": ""
                     },
@@ -1131,9 +1213,23 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events",
+                            "path": "api\/events\/:mouth\/:year",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events"
+                            "raw": "{{baseUrl}}\/api\/events\/:mouth\/:year",
+                            "variable": [
+                                {
+                                    "id": "mouth",
+                                    "key": "mouth",
+                                    "value": "2",
+                                    "description": ""
+                                },
+                                {
+                                    "id": "year",
+                                    "key": "year",
+                                    "value": "ut",
+                                    "description": ""
+                                }
+                            ]
                         },
                         "method": "GET",
                         "header": [
@@ -1166,9 +1262,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/login",
+                            "path": "api\/auth\/login",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/login"
+                            "raw": "{{baseUrl}}\/api\/auth\/login"
                         },
                         "method": "POST",
                         "header": [
@@ -1183,7 +1279,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"zchristiansen@example.com\",\"password\":\"eligendi\"}"
+                            "raw": "{\"email\":\"carlee30@example.org\",\"password\":\"ab\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1194,7 +1290,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  0 \/\/ TODO\n}",
+                            "body": "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  [],\n \"pendingEventsCount\" => 0\n}",
                             "name": ""
                         },
                         {
@@ -1210,9 +1306,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/users\/register",
+                            "path": "api\/auth\/register",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/users\/register"
+                            "raw": "{{baseUrl}}\/api\/auth\/register"
                         },
                         "method": "POST",
                         "header": [
@@ -1227,7 +1323,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"laborum\",\"gender\":\"female\",\"email\":\"payton34@example.org\",\"role\":\"organizer\",\"password\":\"debitis\",\"phone_number\":\"autem\",\"address\":\"eligendi\"}"
+                            "raw": "{\"name\":\"voluptatem\",\"gender\":\"male\",\"email\":\"grimes.jeffery@example.com\",\"role\":\"organizer\",\"password\":\"autem\",\"phoneNumber\":\"illum\",\"address\":\"laboriosam\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1238,7 +1334,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n}",
+                            "body": "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  [],\n \"pendingEventsCount\" => 0\n}",
                             "name": ""
                         },
                         {

@@ -10,8 +10,7 @@ class BasicUserResource extends ApiResource
     {
         return [
             'id' => $this->resource->id,
-            'name' => $this->resource->name,
-            'email' => $this->resource->email,
+            'value' => $this->resource->name,
         ];
     }
 }

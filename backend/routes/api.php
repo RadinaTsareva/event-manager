@@ -29,9 +29,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
-    Route::get('/events/types', [EventController::class, 'getTypes']);
-    Route::get('/events/{eventType}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
-    Route::get('/events/personal', [EventController::class, 'getPersonalEvents']);
+    Route::get('/events/{eventTypeId}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
+    Route::get('/events/personal/{mouth}/{year}', [EventController::class, 'getPersonalEvents']);
     Route::get('/events/personal/all',[EventController::class, 'getAllPersonalEvents']);
     Route::post('/events/{id}/accept', [EventController::class, 'acceptEvent']);
     Route::post('/events/{id}/reject', [EventController::class, 'rejectEvent']);
@@ -47,19 +46,19 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/users/{eventTypeId}/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
     Route::get('/users/{id}/{eventTypeId}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
     Route::get('/users/{eventTypeId}/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
-    Route::post('/users/{type}', [UserController::class, 'addNewType']);
-    Route::post('/users/{type}', [UserController::class, 'updateType']);
+    Route::post('/users/create/{type}', [UserController::class, 'addNewType']);
+    Route::post('/users/update/{type}', [UserController::class, 'updateType']);
     Route::post('/users/{type}', [UserController::class, 'deleteType']);
 
     Route::get('/chat/list', [MessageController::class, 'getChatsList']);
-    Route::get('/chat', [MessageController::class, 'getMessages']);
+    Route::get('/chat/{id}', [MessageController::class, 'getMessages']);
     Route::post('/chat', [MessageController::class, 'saveMessage']);
 
     Route::get('/organizers', [UserController::class, 'getOrganizers']);
 });
 
-Route::get('/events', [EventController::class, 'getAllEvents']);
+Route::get('/events/{mouth}/{year}', [EventController::class, 'getAllEvents']);
 
-Route::post('/users/login', [UserController::class, 'loginUser']);
-Route::post('/users/register', [UserController::class, 'createUser']);
+Route::post('/auth/login', [UserController::class, 'loginUser']);
+Route::post('/auth/register', [UserController::class, 'createUser']);
 

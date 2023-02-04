@@ -86,14 +86,11 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users--id--blacklist">
                                 <a href="#endpoints-POSTapi-users--id--blacklist">Blocking user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events-types">
-                                <a href="#endpoints-GETapi-events-types">Getting all event's types</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events--eventTypeId--foodTypes">
+                                <a href="#endpoints-GETapi-events--eventTypeId--foodTypes">Getting food types for event type</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events--eventType--foodTypes">
-                                <a href="#endpoints-GETapi-events--eventType--foodTypes">Getting food types for event type</a>
-                            </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events-personal">
-                                <a href="#endpoints-GETapi-events-personal">Getting all events that are not finished for user</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events-personal--mouth---year-">
+                                <a href="#endpoints-GETapi-events-personal--mouth---year-">Getting all events that are not finished for user</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-events-personal-all">
                                 <a href="#endpoints-GETapi-events-personal-all">Getting all owned events</a>
@@ -137,14 +134,20 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-users--eventTypeId--catering-types">
                                 <a href="#endpoints-GETapi-users--eventTypeId--catering-types">Getting all catering types for organizer</a>
                             </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users-create--type-">
+                                <a href="#endpoints-POSTapi-users-create--type-">Adding new type (event,menu,catering)</a>
+                            </li>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users-update--type-">
+                                <a href="#endpoints-POSTapi-users-update--type-">Updating type's info</a>
+                            </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users--type-">
                                 <a href="#endpoints-POSTapi-users--type-">Deleting type</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-chat-list">
                                 <a href="#endpoints-GETapi-chat-list">Getting all user who the current user has chatted</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-chat">
-                                <a href="#endpoints-GETapi-chat">Get all messages the user has received and sent</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-chat--id-">
+                                <a href="#endpoints-GETapi-chat--id-">Get all messages the user has received and sent</a>
                             </li>
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-POSTapi-chat">
                                 <a href="#endpoints-POSTapi-chat">Save message</a>
@@ -152,14 +155,14 @@
                                                                                 <li class="tocify-item level-2" data-unique="endpoints-GETapi-organizers">
                                 <a href="#endpoints-GETapi-organizers">Getting all organizers</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events">
-                                <a href="#endpoints-GETapi-events">Getting all finished events</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-GETapi-events--mouth---year-">
+                                <a href="#endpoints-GETapi-events--mouth---year-">Getting all finished events</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users-login">
-                                <a href="#endpoints-POSTapi-users-login">Log in the user</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-login">
+                                <a href="#endpoints-POSTapi-auth-login">Log in the user</a>
                             </li>
-                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-users-register">
-                                <a href="#endpoints-POSTapi-users-register">Create User</a>
+                                                                                <li class="tocify-item level-2" data-unique="endpoints-POSTapi-auth-register">
+                                <a href="#endpoints-POSTapi-auth-register">Create User</a>
                             </li>
                                                                         </ul>
                             </ul>
@@ -172,7 +175,7 @@
     </ul>
 
     <ul class="toc-footer" id="last-updated">
-        <li>Last updated: February 3, 2023</li>
+        <li>Last updated: February 4, 2023</li>
     </ul>
 </div>
 
@@ -249,7 +252,7 @@ fetch(url, {
         &quot;blocked&quot;: 0,
         &quot;role&quot;: &quot;client&quot;,
         &quot;address&quot;: &quot;Address 1&quot;,
-        &quot;phone-number&quot;: &quot;08990889011&quot;
+        &quot;phoneNumber&quot;: &quot;08990889011&quot;
     },
     &quot;status&quot;: 200
 }</code>
@@ -462,8 +465,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"current_password\": \"est\",
-    \"new_password\": \"dignissimos\"
+    \"current_password\": \"provident\",
+    \"new_password\": \"beatae\"
 }"
 </code></pre></div>
 
@@ -480,8 +483,8 @@ const headers = {
 };
 
 let body = {
-    "current_password": "est",
-    "new_password": "dignissimos"
+    "current_password": "provident",
+    "new_password": "beatae"
 };
 
 fetch(url, {
@@ -597,10 +600,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="current_password"                data-endpoint="POSTapi-users-change-password"
-               value="est"
+               value="provident"
                data-component="body">
     <br>
-<p>Example: <code>est</code></p>
+<p>Example: <code>provident</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_password</code></b>&nbsp;&nbsp;
@@ -608,10 +611,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="new_password"                data-endpoint="POSTapi-users-change-password"
-               value="dignissimos"
+               value="beatae"
                data-component="body">
     <br>
-<p>Example: <code>dignissimos</code></p>
+<p>Example: <code>beatae</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>new_confirm_password</code></b>&nbsp;&nbsp;
@@ -645,12 +648,12 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"vel\",
-    \"gender\": \"male\",
-    \"email\": \"kweissnat@example.org\",
-    \"role\": \"organizer\",
-    \"address\": \"deleniti\",
-    \"phone_number\": \"assumenda\"
+    \"name\": \"dicta\",
+    \"gender\": \"none\",
+    \"email\": \"marquardt.mittie@example.com\",
+    \"role\": \"client\",
+    \"address\": \"quas\",
+    \"phoneNumber\": \"quos\"
 }"
 </code></pre></div>
 
@@ -667,12 +670,12 @@ const headers = {
 };
 
 let body = {
-    "name": "vel",
-    "gender": "male",
-    "email": "kweissnat@example.org",
-    "role": "organizer",
-    "address": "deleniti",
-    "phone_number": "assumenda"
+    "name": "dicta",
+    "gender": "none",
+    "email": "marquardt.mittie@example.com",
+    "role": "client",
+    "address": "quas",
+    "phoneNumber": "quos"
 };
 
 fetch(url, {
@@ -788,10 +791,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-users-update"
-               value="vel"
+               value="dicta"
                data-component="body">
     <br>
-<p>Example: <code>vel</code></p>
+<p>Example: <code>dicta</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
@@ -799,10 +802,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="gender"                data-endpoint="POSTapi-users-update"
-               value="male"
+               value="none"
                data-component="body">
     <br>
-<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>male</code></p>
+<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>none</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
@@ -810,10 +813,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="email"                data-endpoint="POSTapi-users-update"
-               value="kweissnat@example.org"
+               value="marquardt.mittie@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>kweissnat@example.org</code></p>
+<p>Must be a valid email address. Example: <code>marquardt.mittie@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
@@ -821,10 +824,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="role"                data-endpoint="POSTapi-users-update"
-               value="organizer"
+               value="client"
                data-component="body">
     <br>
-<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>organizer</code></p>
+<p>Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>. Example: <code>client</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
@@ -832,21 +835,21 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="address"                data-endpoint="POSTapi-users-update"
-               value="deleniti"
+               value="quas"
                data-component="body">
     <br>
-<p>Example: <code>deleniti</code></p>
+<p>Example: <code>quas</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
+            <b style="line-height: 2;"><code>phoneNumber</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
-               name="phone_number"                data-endpoint="POSTapi-users-update"
-               value="assumenda"
+               name="phoneNumber"                data-endpoint="POSTapi-users-update"
+               value="quos"
                data-component="body">
     <br>
-<p>Example: <code>assumenda</code></p>
+<p>Example: <code>quos</code></p>
         </div>
         </form>
 
@@ -864,7 +867,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/users/1/blacklist" \
+    "http://127.0.0.1:8000/api/users/3/blacklist" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -872,7 +875,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/blacklist"
+    "http://127.0.0.1:8000/api/users/3/blacklist"
 );
 
 const headers = {
@@ -991,14 +994,14 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="POSTapi-users--id--blacklist"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of the user. Example: <code>3</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-GETapi-events-types">Getting all event&#039;s types</h2>
+                    <h2 id="endpoints-GETapi-events--eventTypeId--foodTypes">Getting food types for event type</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1006,13 +1009,13 @@ fetch(url, {
 
 
 
-<span id="example-requests-GETapi-events-types">
+<span id="example-requests-GETapi-events--eventTypeId--foodTypes">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/types" \
+    --get "http://127.0.0.1:8000/api/events/2/foodTypes" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1020,7 +1023,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/types"
+    "http://127.0.0.1:8000/api/events/2/foodTypes"
 );
 
 const headers = {
@@ -1036,143 +1039,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-events-types">
-            <blockquote>
-            <p>Example response (200):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">[
-    &quot;wedding&quot;,
-    &quot;party&quot;
-]</code>
- </pre>
-            <blockquote>
-            <p>Example response (403):</p>
-        </blockquote>
-                <pre>
-
-<code class="language-json" style="max-height: 300px;">{
-    &quot;success&quot;: false,
-    &quot;messages&quot;: [
-        &quot;The selected organizer is not an organizer or doesn&#039;t exists.&quot;
-    ]
-}</code>
- </pre>
-    </span>
-<span id="execution-results-GETapi-events-types" hidden>
-    <blockquote>Received response<span
-                id="execution-response-status-GETapi-events-types"></span>:
-    </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-events-types" style="max-height: 400px;"></code></pre>
-</span>
-<span id="execution-error-GETapi-events-types" hidden>
-    <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-events-types"></code></pre>
-</span>
-<form id="form-GETapi-events-types" data-method="GET"
-      data-path="api/events/types"
-      data-authed="1"
-      data-hasfiles="0"
-      data-isarraybody="0"
-      autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-events-types', this);">
-    <h3>
-        Request&nbsp;&nbsp;&nbsp;
-                    <button type="button"
-                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-events-types"
-                    onclick="tryItOut('GETapi-events-types');">Try it out ⚡
-            </button>
-            <button type="button"
-                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-events-types"
-                    onclick="cancelTryOut('GETapi-events-types');" hidden>Cancel 🛑
-            </button>&nbsp;&nbsp;
-            <button type="submit"
-                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-events-types" hidden>Send Request 💥
-            </button>
-            </h3>
-            <p>
-            <small class="badge badge-green">GET</small>
-            <b><code>api/events/types</code></b>
-        </p>
-                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="Authorization" class="auth-value"               data-endpoint="GETapi-events-types"
-               value="Bearer {YOUR_AUTH_KEY}"
-               data-component="header">
-    <br>
-<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="GETapi-events-types"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                                <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
-&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="Accept"                data-endpoint="GETapi-events-types"
-               value="application/json"
-               data-component="header">
-    <br>
-<p>Example: <code>application/json</code></p>
-            </div>
-                        </form>
-
-                    <h2 id="endpoints-GETapi-events--eventType--foodTypes">Getting food types for event type</h2>
-
-<p>
-<small class="badge badge-darkred">requires authentication</small>
-</p>
-
-
-
-<span id="example-requests-GETapi-events--eventType--foodTypes">
-<blockquote>Example request:</blockquote>
-
-
-<div class="bash-example">
-    <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/14/foodTypes" \
-    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
-    --header "Content-Type: application/json" \
-    --header "Accept: application/json"</code></pre></div>
-
-
-<div class="javascript-example">
-    <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/14/foodTypes"
-);
-
-const headers = {
-    "Authorization": "Bearer {YOUR_AUTH_KEY}",
-    "Content-Type": "application/json",
-    "Accept": "application/json",
-};
-
-fetch(url, {
-    method: "GET",
-    headers,
-}).then(response =&gt; response.json());</code></pre></div>
-
-</span>
-
-<span id="example-responses-GETapi-events--eventType--foodTypes">
+<span id="example-responses-GETapi-events--eventTypeId--foodTypes">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1210,43 +1077,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-events--eventType--foodTypes" hidden>
+<span id="execution-results-GETapi-events--eventTypeId--foodTypes" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-events--eventType--foodTypes"></span>:
+                id="execution-response-status-GETapi-events--eventTypeId--foodTypes"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-events--eventType--foodTypes" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-events--eventTypeId--foodTypes" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-events--eventType--foodTypes" hidden>
+<span id="execution-error-GETapi-events--eventTypeId--foodTypes" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-events--eventType--foodTypes"></code></pre>
+    <pre><code id="execution-error-message-GETapi-events--eventTypeId--foodTypes"></code></pre>
 </span>
-<form id="form-GETapi-events--eventType--foodTypes" data-method="GET"
-      data-path="api/events/{eventType}/foodTypes"
+<form id="form-GETapi-events--eventTypeId--foodTypes" data-method="GET"
+      data-path="api/events/{eventTypeId}/foodTypes"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-events--eventType--foodTypes', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-events--eventTypeId--foodTypes', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-events--eventType--foodTypes"
-                    onclick="tryItOut('GETapi-events--eventType--foodTypes');">Try it out ⚡
+                    id="btn-tryout-GETapi-events--eventTypeId--foodTypes"
+                    onclick="tryItOut('GETapi-events--eventTypeId--foodTypes');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-events--eventType--foodTypes"
-                    onclick="cancelTryOut('GETapi-events--eventType--foodTypes');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-events--eventTypeId--foodTypes"
+                    onclick="cancelTryOut('GETapi-events--eventTypeId--foodTypes');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-events--eventType--foodTypes" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-events--eventTypeId--foodTypes" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/events/{eventType}/foodTypes</code></b>
+            <b><code>api/events/{eventTypeId}/foodTypes</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1254,7 +1121,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Authorization" class="auth-value"               data-endpoint="GETapi-events--eventType--foodTypes"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-events--eventTypeId--foodTypes"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1265,7 +1132,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="GETapi-events--eventType--foodTypes"
+               name="Content-Type"                data-endpoint="GETapi-events--eventTypeId--foodTypes"
                value="application/json"
                data-component="header">
     <br>
@@ -1276,7 +1143,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="GETapi-events--eventType--foodTypes"
+               name="Accept"                data-endpoint="GETapi-events--eventTypeId--foodTypes"
                value="application/json"
                data-component="header">
     <br>
@@ -1284,19 +1151,19 @@ fetch(url, {
             </div>
                         <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
                     <div style="padding-left: 28px; clear: unset;">
-                <b style="line-height: 2;"><code>eventType</code></b>&nbsp;&nbsp;
+                <b style="line-height: 2;"><code>eventTypeId</code></b>&nbsp;&nbsp;
 <small>integer</small>&nbsp;
  &nbsp;
                 <input type="number" style="display: none"
-               name="eventType"                data-endpoint="GETapi-events--eventType--foodTypes"
-               value="14"
+               name="eventTypeId"                data-endpoint="GETapi-events--eventTypeId--foodTypes"
+               value="2"
                data-component="url">
     <br>
-<p>Example: <code>14</code></p>
+<p>Example: <code>2</code></p>
             </div>
                     </form>
 
-                    <h2 id="endpoints-GETapi-events-personal">Getting all events that are not finished for user</h2>
+                    <h2 id="endpoints-GETapi-events-personal--mouth---year-">Getting all events that are not finished for user</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -1304,13 +1171,13 @@ fetch(url, {
 
 
 
-<span id="example-requests-GETapi-events-personal">
+<span id="example-requests-GETapi-events-personal--mouth---year-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/personal" \
+    --get "http://127.0.0.1:8000/api/events/personal/et/vero" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1318,7 +1185,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/personal"
+    "http://127.0.0.1:8000/api/events/personal/et/vero"
 );
 
 const headers = {
@@ -1334,7 +1201,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-events-personal">
+<span id="example-responses-GETapi-events-personal--mouth---year-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -1368,43 +1235,43 @@ fetch(url, {
 ]</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-events-personal" hidden>
+<span id="execution-results-GETapi-events-personal--mouth---year-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-events-personal"></span>:
+                id="execution-response-status-GETapi-events-personal--mouth---year-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-events-personal" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-events-personal--mouth---year-" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-events-personal" hidden>
+<span id="execution-error-GETapi-events-personal--mouth---year-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-events-personal"></code></pre>
+    <pre><code id="execution-error-message-GETapi-events-personal--mouth---year-"></code></pre>
 </span>
-<form id="form-GETapi-events-personal" data-method="GET"
-      data-path="api/events/personal"
+<form id="form-GETapi-events-personal--mouth---year-" data-method="GET"
+      data-path="api/events/personal/{mouth}/{year}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-events-personal', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-events-personal--mouth---year-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-events-personal"
-                    onclick="tryItOut('GETapi-events-personal');">Try it out ⚡
+                    id="btn-tryout-GETapi-events-personal--mouth---year-"
+                    onclick="tryItOut('GETapi-events-personal--mouth---year-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-events-personal"
-                    onclick="cancelTryOut('GETapi-events-personal');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-events-personal--mouth---year-"
+                    onclick="cancelTryOut('GETapi-events-personal--mouth---year-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-events-personal" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-events-personal--mouth---year-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/events/personal</code></b>
+            <b><code>api/events/personal/{mouth}/{year}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -1412,7 +1279,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Authorization" class="auth-value"               data-endpoint="GETapi-events-personal"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-events-personal--mouth---year-"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -1423,7 +1290,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="GETapi-events-personal"
+               name="Content-Type"                data-endpoint="GETapi-events-personal--mouth---year-"
                value="application/json"
                data-component="header">
     <br>
@@ -1434,13 +1301,36 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="GETapi-events-personal"
+               name="Accept"                data-endpoint="GETapi-events-personal--mouth---year-"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>mouth</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="mouth"                data-endpoint="GETapi-events-personal--mouth---year-"
+               value="et"
+               data-component="url">
+    <br>
+<p>Example: <code>et</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="year"                data-endpoint="GETapi-events-personal--mouth---year-"
+               value="vero"
+               data-component="url">
+    <br>
+<p>Example: <code>vero</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-GETapi-events-personal-all">Getting all owned events</h2>
 
@@ -1585,7 +1475,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/events/11/accept" \
+    "http://127.0.0.1:8000/api/events/2/accept" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1593,7 +1483,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/11/accept"
+    "http://127.0.0.1:8000/api/events/2/accept"
 );
 
 const headers = {
@@ -1702,10 +1592,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="POSTapi-events--id--accept"
-               value="11"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>11</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                     </form>
 
@@ -1723,7 +1613,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/events/11/reject" \
+    "http://127.0.0.1:8000/api/events/2/reject" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1731,7 +1621,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/11/reject"
+    "http://127.0.0.1:8000/api/events/2/reject"
 );
 
 const headers = {
@@ -1840,10 +1730,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="POSTapi-events--id--reject"
-               value="11"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>11</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                     </form>
 
@@ -1861,7 +1751,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/8" \
+    --get "http://127.0.0.1:8000/api/events/2" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -1869,7 +1759,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/8"
+    "http://127.0.0.1:8000/api/events/2"
 );
 
 const headers = {
@@ -1891,33 +1781,30 @@ fetch(url, {
         </blockquote>
                 <pre>
 
-<code class="language-json" style="max-height: 300px;">{
-    &quot;data&quot;: {
-        &quot;id&quot;: 1,
-        &quot;status&quot;: &quot;finished&quot;,
-        &quot;name&quot;: &quot;radi&quot;,
-        &quot;start&quot;: null,
-        &quot;end&quot;: null,
-        &quot;organizerName&quot;: &quot;radina&quot;,
-        &quot;organizerEmail&quot;: &quot;radina@gmail.com&quot;,
-        &quot;organizerId&quot;: 1,
-        &quot;type&quot;: &quot;wedding&quot;,
-        &quot;moreInfo&quot;: null,
-        &quot;description&quot;: null,
-        &quot;accommodationNeeded&quot;: 1,
-        &quot;place&quot;: null,
-        &quot;pricePerGuest&quot;: null,
-        &quot;priceForFood&quot;: null,
-        &quot;foodDetails&quot;: null,
-        &quot;priceForAccommodation&quot;: null,
-        &quot;accommodationDetails&quot;: null,
-        &quot;accommodationContact&quot;: null,
-        &quot;accommodationWebsite&quot;: null,
-        &quot;hasGivenFeedback&quot;: false,
-        &quot;isPublic&quot;: false
-    },
-    &quot;status&quot;: 200
-}</code>
+<code class="language-json" style="max-height: 300px;">[
+     &quot;id&quot;: 1,
+     &quot;status&quot;: &quot;finished&quot;,
+     &quot;name&quot;: &quot;radi&quot;,
+     &quot;start&quot;: null,
+     &quot;end&quot;: null,
+     &quot;organizerName&quot;: &quot;radina&quot;,
+     &quot;organizerEmail&quot;: &quot;radina@gmail.com&quot;,
+     &quot;organizerId&quot;: 1,
+     &quot;type&quot;: &quot;wedding&quot;,
+     &quot;moreInfo&quot;: null,
+     &quot;description&quot;: null,
+     &quot;accommodationNeeded&quot;: 1,
+     &quot;place&quot;: null,
+     &quot;pricePerGuest&quot;: null,
+     &quot;priceForFood&quot;: null,
+     &quot;foodDetails&quot;: null,
+     &quot;priceForAccommodation&quot;: null,
+     &quot;accommodationDetails&quot;: null,
+     &quot;accommodationContact&quot;: null,
+     &quot;accommodationWebsite&quot;: null,
+     &quot;hasGivenFeedback&quot;: false,
+     &quot;isPublic&quot;: false
+   ],</code>
  </pre>
             <blockquote>
             <p>Example response (403):</p>
@@ -2023,10 +1910,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-events--id-"
-               value="8"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>8</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                     </form>
 
@@ -2044,7 +1931,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/4/comments" \
+    --get "http://127.0.0.1:8000/api/events/2/comments" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2052,7 +1939,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/4/comments"
+    "http://127.0.0.1:8000/api/events/2/comments"
 );
 
 const headers = {
@@ -2162,10 +2049,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-events--id--comments"
-               value="4"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>4</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                     </form>
 
@@ -2183,7 +2070,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events/20/pics" \
+    --get "http://127.0.0.1:8000/api/events/2/pics" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2191,7 +2078,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/20/pics"
+    "http://127.0.0.1:8000/api/events/2/pics"
 );
 
 const headers = {
@@ -2297,10 +2184,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-events--id--pics"
-               value="20"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>20</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                     </form>
 
@@ -2323,15 +2210,15 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"organizerId\": 16,
-    \"name\": \"ut\",
-    \"start\": \"2005-11-09\",
-    \"end\": \"2080-10-18\",
-    \"type\": \"velit\",
+    \"organizerId\": 14,
+    \"name\": \"culpa\",
+    \"start\": \"2020-10-24\",
+    \"end\": \"2096-05-19\",
+    \"type\": 9,
     \"isCatering\": false,
-    \"foodType\": \"occaecati\",
-    \"description\": \"Voluptate neque ut sit autem amet sapiente inventore.\",
-    \"guestsCount\": 64,
+    \"foodType\": \"harum\",
+    \"description\": \"Omnis in aut magnam.\",
+    \"guestsCount\": 53,
     \"accommodationNeeded\": true
 }"
 </code></pre></div>
@@ -2349,15 +2236,15 @@ const headers = {
 };
 
 let body = {
-    "organizerId": 16,
-    "name": "ut",
-    "start": "2005-11-09",
-    "end": "2080-10-18",
-    "type": "velit",
+    "organizerId": 14,
+    "name": "culpa",
+    "start": "2020-10-24",
+    "end": "2096-05-19",
+    "type": 9,
     "isCatering": false,
-    "foodType": "occaecati",
-    "description": "Voluptate neque ut sit autem amet sapiente inventore.",
-    "guestsCount": 64,
+    "foodType": "harum",
+    "description": "Omnis in aut magnam.",
+    "guestsCount": 53,
     "accommodationNeeded": true
 };
 
@@ -2489,10 +2376,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="organizerId"                data-endpoint="POSTapi-events-new"
-               value="16"
+               value="14"
                data-component="body">
     <br>
-<p>Example: <code>16</code></p>
+<p>Example: <code>14</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>name</code></b>&nbsp;&nbsp;
@@ -2500,10 +2387,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="name"                data-endpoint="POSTapi-events-new"
-               value="ut"
+               value="culpa"
                data-component="body">
     <br>
-<p>Example: <code>ut</code></p>
+<p>Example: <code>culpa</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>start</code></b>&nbsp;&nbsp;
@@ -2511,10 +2398,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="start"                data-endpoint="POSTapi-events-new"
-               value="2005-11-09"
+               value="2020-10-24"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date before or equal to <code>end</code>. Example: <code>2005-11-09</code></p>
+<p>Must be a valid date. Must be a date before or equal to <code>end</code>. Example: <code>2020-10-24</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>end</code></b>&nbsp;&nbsp;
@@ -2522,21 +2409,21 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="end"                data-endpoint="POSTapi-events-new"
-               value="2080-10-18"
+               value="2096-05-19"
                data-component="body">
     <br>
-<p>Must be a valid date. Must be a date after or equal to <code>start</code>. Example: <code>2080-10-18</code></p>
+<p>Must be a valid date. Must be a date after or equal to <code>start</code>. Example: <code>2096-05-19</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
+<small>integer</small>&nbsp;
  &nbsp;
-                <input type="text" style="display: none"
+                <input type="number" style="display: none"
                name="type"                data-endpoint="POSTapi-events-new"
-               value="velit"
+               value="9"
                data-component="body">
     <br>
-<p>Example: <code>velit</code></p>
+<p>Example: <code>9</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>isCatering</code></b>&nbsp;&nbsp;
@@ -2565,10 +2452,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="foodType"                data-endpoint="POSTapi-events-new"
-               value="occaecati"
+               value="harum"
                data-component="body">
     <br>
-<p>Example: <code>occaecati</code></p>
+<p>Example: <code>harum</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>description</code></b>&nbsp;&nbsp;
@@ -2576,10 +2463,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="description"                data-endpoint="POSTapi-events-new"
-               value="Voluptate neque ut sit autem amet sapiente inventore."
+               value="Omnis in aut magnam."
                data-component="body">
     <br>
-<p>Example: <code>Voluptate neque ut sit autem amet sapiente inventore.</code></p>
+<p>Example: <code>Omnis in aut magnam.</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>guestsCount</code></b>&nbsp;&nbsp;
@@ -2587,10 +2474,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="guestsCount"                data-endpoint="POSTapi-events-new"
-               value="64"
+               value="53"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>64</code></p>
+<p>Must be at least 1. Example: <code>53</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationNeeded</code></b>&nbsp;&nbsp;
@@ -2629,27 +2516,27 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/events/8" \
+    "http://127.0.0.1:8000/api/events/2" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"eventId\": 6,
-    \"place\": \"laboriosam\",
-    \"placeWebsite\": \"beatae\",
-    \"placeGoogleMapsLink\": \"iste\",
-    \"pricePerGuest\": 81,
-    \"priceForFood\": 40,
-    \"priceForAccommodation\": 4,
-    \"accommodationDetails\": \"enim\",
-    \"accommodationContact\": \"non\"
+    \"eventId\": 17,
+    \"place\": \"qui\",
+    \"placeWebsite\": \"quisquam\",
+    \"placeGoogleMapsLink\": \"iure\",
+    \"pricePerGuest\": 60,
+    \"priceForFood\": 90,
+    \"priceForAccommodation\": 58,
+    \"accommodationDetails\": \"et\",
+    \"accommodationContact\": \"velit\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events/8"
+    "http://127.0.0.1:8000/api/events/2"
 );
 
 const headers = {
@@ -2659,15 +2546,15 @@ const headers = {
 };
 
 let body = {
-    "eventId": 6,
-    "place": "laboriosam",
-    "placeWebsite": "beatae",
-    "placeGoogleMapsLink": "iste",
-    "pricePerGuest": 81,
-    "priceForFood": 40,
-    "priceForAccommodation": 4,
-    "accommodationDetails": "enim",
-    "accommodationContact": "non"
+    "eventId": 17,
+    "place": "qui",
+    "placeWebsite": "quisquam",
+    "placeGoogleMapsLink": "iure",
+    "pricePerGuest": 60,
+    "priceForFood": 90,
+    "priceForAccommodation": 58,
+    "accommodationDetails": "et",
+    "accommodationContact": "velit"
 };
 
 fetch(url, {
@@ -2789,10 +2676,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="POSTapi-events--id-"
-               value="8"
+               value="2"
                data-component="url">
     <br>
-<p>The ID of the event. Example: <code>8</code></p>
+<p>The ID of the event. Example: <code>2</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -2801,10 +2688,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="eventId"                data-endpoint="POSTapi-events--id-"
-               value="6"
+               value="17"
                data-component="body">
     <br>
-<p>Example: <code>6</code></p>
+<p>Example: <code>17</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>place</code></b>&nbsp;&nbsp;
@@ -2812,10 +2699,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="place"                data-endpoint="POSTapi-events--id-"
-               value="laboriosam"
+               value="qui"
                data-component="body">
     <br>
-<p>Example: <code>laboriosam</code></p>
+<p>Example: <code>qui</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>placeWebsite</code></b>&nbsp;&nbsp;
@@ -2823,10 +2710,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="placeWebsite"                data-endpoint="POSTapi-events--id-"
-               value="beatae"
+               value="quisquam"
                data-component="body">
     <br>
-<p>Example: <code>beatae</code></p>
+<p>Example: <code>quisquam</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>placeGoogleMapsLink</code></b>&nbsp;&nbsp;
@@ -2834,10 +2721,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="placeGoogleMapsLink"                data-endpoint="POSTapi-events--id-"
-               value="iste"
+               value="iure"
                data-component="body">
     <br>
-<p>Example: <code>iste</code></p>
+<p>Example: <code>iure</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>pricePerGuest</code></b>&nbsp;&nbsp;
@@ -2845,10 +2732,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="pricePerGuest"                data-endpoint="POSTapi-events--id-"
-               value="81"
+               value="60"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>81</code></p>
+<p>Must be at least 1. Example: <code>60</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priceForFood</code></b>&nbsp;&nbsp;
@@ -2856,10 +2743,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="priceForFood"                data-endpoint="POSTapi-events--id-"
-               value="40"
+               value="90"
                data-component="body">
     <br>
-<p>Must be at least 1. Example: <code>40</code></p>
+<p>Must be at least 1. Example: <code>90</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>priceForAccommodation</code></b>&nbsp;&nbsp;
@@ -2867,10 +2754,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="number" style="display: none"
                name="priceForAccommodation"                data-endpoint="POSTapi-events--id-"
-               value="4"
+               value="58"
                data-component="body">
     <br>
-<p>Example: <code>4</code></p>
+<p>Example: <code>58</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationDetails</code></b>&nbsp;&nbsp;
@@ -2878,10 +2765,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="accommodationDetails"                data-endpoint="POSTapi-events--id-"
-               value="enim"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>enim</code></p>
+<p>Example: <code>et</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>accommodationContact</code></b>&nbsp;&nbsp;
@@ -2889,10 +2776,10 @@ fetch(url, {
 <i>optional</i> &nbsp;
                 <input type="text" style="display: none"
                name="accommodationContact"                data-endpoint="POSTapi-events--id-"
-               value="non"
+               value="velit"
                data-component="body">
     <br>
-<p>Example: <code>non</code></p>
+<p>Example: <code>velit</code></p>
         </div>
         </form>
 
@@ -2910,7 +2797,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/users/1/event-types" \
+    --get "http://127.0.0.1:8000/api/users/3/event-types" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -2918,7 +2805,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/event-types"
+    "http://127.0.0.1:8000/api/users/3/event-types"
 );
 
 const headers = {
@@ -3039,10 +2926,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-users--id--event-types"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of the user. Example: <code>3</code></p>
             </div>
                     </form>
 
@@ -3198,7 +3085,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/users/1/dolorem/menu-types" \
+    --get "http://127.0.0.1:8000/api/users/3/qui/menu-types" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3206,7 +3093,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/dolorem/menu-types"
+    "http://127.0.0.1:8000/api/users/3/qui/menu-types"
 );
 
 const headers = {
@@ -3327,10 +3214,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-users--id---eventTypeId--menu-types"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of the user. Example: <code>3</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>eventTypeId</code></b>&nbsp;&nbsp;
@@ -3338,10 +3225,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="eventTypeId"                data-endpoint="GETapi-users--id---eventTypeId--menu-types"
-               value="dolorem"
+               value="qui"
                data-component="url">
     <br>
-<p>Example: <code>dolorem</code></p>
+<p>Example: <code>qui</code></p>
             </div>
                     </form>
 
@@ -3359,7 +3246,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/users/1/menu-types" \
+    --get "http://127.0.0.1:8000/api/users/3/menu-types" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3367,7 +3254,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/menu-types"
+    "http://127.0.0.1:8000/api/users/3/menu-types"
 );
 
 const headers = {
@@ -3488,10 +3375,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="eventTypeId"                data-endpoint="GETapi-users--eventTypeId--menu-types"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>3</code></p>
             </div>
                     </form>
 
@@ -3509,7 +3396,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/users/1/quidem/catering-types" \
+    --get "http://127.0.0.1:8000/api/users/3/ipsam/catering-types" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3517,7 +3404,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/quidem/catering-types"
+    "http://127.0.0.1:8000/api/users/3/ipsam/catering-types"
 );
 
 const headers = {
@@ -3638,10 +3525,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="GETapi-users--id---eventTypeId--catering-types"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>The ID of the user. Example: <code>1</code></p>
+<p>The ID of the user. Example: <code>3</code></p>
             </div>
                     <div style="padding-left: 28px; clear: unset;">
                 <b style="line-height: 2;"><code>eventTypeId</code></b>&nbsp;&nbsp;
@@ -3649,10 +3536,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="eventTypeId"                data-endpoint="GETapi-users--id---eventTypeId--catering-types"
-               value="quidem"
+               value="ipsam"
                data-component="url">
     <br>
-<p>Example: <code>quidem</code></p>
+<p>Example: <code>ipsam</code></p>
             </div>
                     </form>
 
@@ -3670,7 +3557,7 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/users/1/catering-types" \
+    --get "http://127.0.0.1:8000/api/users/3/catering-types" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -3678,7 +3565,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1/catering-types"
+    "http://127.0.0.1:8000/api/users/3/catering-types"
 );
 
 const headers = {
@@ -3799,12 +3686,381 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="eventTypeId"                data-endpoint="GETapi-users--eventTypeId--catering-types"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>3</code></p>
             </div>
                     </form>
+
+                    <h2 id="endpoints-POSTapi-users-create--type-">Adding new type (event,menu,catering)</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users-create--type-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/users/create/quia" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"eventTypeId\": 3,
+    \"value\": \"aut\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/users/create/quia"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "eventTypeId": 3,
+    "value": "aut"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users-create--type-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;status&quot;: 200
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The value field is required.&quot;,
+    &quot;errors&quot;: {
+        &quot;value&quot;: [
+            &quot;The value field is required.&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-users-create--type-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users-create--type-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users-create--type-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users-create--type-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users-create--type-"></code></pre>
+</span>
+<form id="form-POSTapi-users-create--type-" data-method="POST"
+      data-path="api/users/create/{type}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users-create--type-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users-create--type-"
+                    onclick="tryItOut('POSTapi-users-create--type-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users-create--type-"
+                    onclick="cancelTryOut('POSTapi-users-create--type-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users-create--type-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/create/{type}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-users-create--type-"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-users-create--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-users-create--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="type"                data-endpoint="POSTapi-users-create--type-"
+               value="quia"
+               data-component="url">
+    <br>
+<p>Example: <code>quia</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>eventTypeId</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+<i>optional</i> &nbsp;
+                <input type="number" style="display: none"
+               name="eventTypeId"                data-endpoint="POSTapi-users-create--type-"
+               value="3"
+               data-component="body">
+    <br>
+<p>Example: <code>3</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="value"                data-endpoint="POSTapi-users-create--type-"
+               value="aut"
+               data-component="body">
+    <br>
+<p>Example: <code>aut</code></p>
+        </div>
+        </form>
+
+                    <h2 id="endpoints-POSTapi-users-update--type-">Updating type&#039;s info</h2>
+
+<p>
+<small class="badge badge-darkred">requires authentication</small>
+</p>
+
+
+
+<span id="example-requests-POSTapi-users-update--type-">
+<blockquote>Example request:</blockquote>
+
+
+<div class="bash-example">
+    <pre><code class="language-bash">curl --request POST \
+    "http://127.0.0.1:8000/api/users/update/et" \
+    --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
+    --header "Content-Type: application/json" \
+    --header "Accept: application/json" \
+    --data "{
+    \"id\": 17,
+    \"value\": \"omnis\"
+}"
+</code></pre></div>
+
+
+<div class="javascript-example">
+    <pre><code class="language-javascript">const url = new URL(
+    "http://127.0.0.1:8000/api/users/update/et"
+);
+
+const headers = {
+    "Authorization": "Bearer {YOUR_AUTH_KEY}",
+    "Content-Type": "application/json",
+    "Accept": "application/json",
+};
+
+let body = {
+    "id": 17,
+    "value": "omnis"
+};
+
+fetch(url, {
+    method: "POST",
+    headers,
+    body: JSON.stringify(body),
+}).then(response =&gt; response.json());</code></pre></div>
+
+</span>
+
+<span id="example-responses-POSTapi-users-update--type-">
+            <blockquote>
+            <p>Example response (200):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;data&quot;: [],
+    &quot;status&quot;: 200
+}</code>
+ </pre>
+            <blockquote>
+            <p>Example response (403):</p>
+        </blockquote>
+                <pre>
+
+<code class="language-json" style="max-height: 300px;">{
+    &quot;message&quot;: &quot;The given data was invalid.&quot;,
+    &quot;errors&quot;: {
+        &quot;id&quot;: [
+            null,
+            &quot;Non existing catering type&quot;
+        ]
+    }
+}</code>
+ </pre>
+    </span>
+<span id="execution-results-POSTapi-users-update--type-" hidden>
+    <blockquote>Received response<span
+                id="execution-response-status-POSTapi-users-update--type-"></span>:
+    </blockquote>
+    <pre class="json"><code id="execution-response-content-POSTapi-users-update--type-" style="max-height: 400px;"></code></pre>
+</span>
+<span id="execution-error-POSTapi-users-update--type-" hidden>
+    <blockquote>Request failed with error:</blockquote>
+    <pre><code id="execution-error-message-POSTapi-users-update--type-"></code></pre>
+</span>
+<form id="form-POSTapi-users-update--type-" data-method="POST"
+      data-path="api/users/update/{type}"
+      data-authed="1"
+      data-hasfiles="0"
+      data-isarraybody="0"
+      autocomplete="off"
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users-update--type-', this);">
+    <h3>
+        Request&nbsp;&nbsp;&nbsp;
+                    <button type="button"
+                    style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-tryout-POSTapi-users-update--type-"
+                    onclick="tryItOut('POSTapi-users-update--type-');">Try it out ⚡
+            </button>
+            <button type="button"
+                    style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-canceltryout-POSTapi-users-update--type-"
+                    onclick="cancelTryOut('POSTapi-users-update--type-');" hidden>Cancel 🛑
+            </button>&nbsp;&nbsp;
+            <button type="submit"
+                    style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
+                    id="btn-executetryout-POSTapi-users-update--type-" hidden>Send Request 💥
+            </button>
+            </h3>
+            <p>
+            <small class="badge badge-black">POST</small>
+            <b><code>api/users/update/{type}</code></b>
+        </p>
+                <h4 class="fancy-heading-panel"><b>Headers</b></h4>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Authorization</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Authorization" class="auth-value"               data-endpoint="POSTapi-users-update--type-"
+               value="Bearer {YOUR_AUTH_KEY}"
+               data-component="header">
+    <br>
+<p>Example: <code>Bearer {YOUR_AUTH_KEY}</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Content-Type</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Content-Type"                data-endpoint="POSTapi-users-update--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                                <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>Accept</code></b>&nbsp;&nbsp;
+&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="Accept"                data-endpoint="POSTapi-users-update--type-"
+               value="application/json"
+               data-component="header">
+    <br>
+<p>Example: <code>application/json</code></p>
+            </div>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>type</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="type"                data-endpoint="POSTapi-users-update--type-"
+               value="et"
+               data-component="url">
+    <br>
+<p>Example: <code>et</code></p>
+            </div>
+                            <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
+        <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="id"                data-endpoint="POSTapi-users-update--type-"
+               value="17"
+               data-component="body">
+    <br>
+<p>Example: <code>17</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>value</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="value"                data-endpoint="POSTapi-users-update--type-"
+               value="omnis"
+               data-component="body">
+    <br>
+<p>Example: <code>omnis</code></p>
+        </div>
+        </form>
 
                     <h2 id="endpoints-POSTapi-users--type-">Deleting type</h2>
 
@@ -3820,19 +4076,19 @@ fetch(url, {
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/users/1" \
+    "http://127.0.0.1:8000/api/users/3" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": 537.914107
+    \"id\": 87558629.03204373
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/1"
+    "http://127.0.0.1:8000/api/users/3"
 );
 
 const headers = {
@@ -3842,7 +4098,7 @@ const headers = {
 };
 
 let body = {
-    "id": 537.914107
+    "id": 87558629.03204373
 };
 
 fetch(url, {
@@ -3958,10 +4214,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="type"                data-endpoint="POSTapi-users--type-"
-               value="1"
+               value="3"
                data-component="url">
     <br>
-<p>Example: <code>1</code></p>
+<p>Example: <code>3</code></p>
             </div>
                             <h4 class="fancy-heading-panel"><b>Body Parameters</b></h4>
         <div style=" padding-left: 28px;  clear: unset;">
@@ -3970,10 +4226,10 @@ fetch(url, {
  &nbsp;
                 <input type="number" style="display: none"
                name="id"                data-endpoint="POSTapi-users--type-"
-               value="537.914107"
+               value="87558629.032044"
                data-component="body">
     <br>
-<p>Example: <code>537.914107</code></p>
+<p>Example: <code>87558629.032044</code></p>
         </div>
         </form>
 
@@ -4103,7 +4359,7 @@ fetch(url, {
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-chat">Get all messages the user has received and sent</h2>
+                    <h2 id="endpoints-GETapi-chat--id-">Get all messages the user has received and sent</h2>
 
 <p>
 <small class="badge badge-darkred">requires authentication</small>
@@ -4111,13 +4367,13 @@ fetch(url, {
 
 
 
-<span id="example-requests-GETapi-chat">
+<span id="example-requests-GETapi-chat--id-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/chat" \
+    --get "http://127.0.0.1:8000/api/chat/voluptatem" \
     --header "Authorization: Bearer {YOUR_AUTH_KEY}" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
@@ -4125,7 +4381,7 @@ fetch(url, {
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/chat"
+    "http://127.0.0.1:8000/api/chat/voluptatem"
 );
 
 const headers = {
@@ -4141,7 +4397,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-chat">
+<span id="example-responses-GETapi-chat--id-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4157,43 +4413,43 @@ fetch(url, {
 ]</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-chat" hidden>
+<span id="execution-results-GETapi-chat--id-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-chat"></span>:
+                id="execution-response-status-GETapi-chat--id-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-chat" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-chat--id-" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-chat" hidden>
+<span id="execution-error-GETapi-chat--id-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-chat"></code></pre>
+    <pre><code id="execution-error-message-GETapi-chat--id-"></code></pre>
 </span>
-<form id="form-GETapi-chat" data-method="GET"
-      data-path="api/chat"
+<form id="form-GETapi-chat--id-" data-method="GET"
+      data-path="api/chat/{id}"
       data-authed="1"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-chat', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-chat--id-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-chat"
-                    onclick="tryItOut('GETapi-chat');">Try it out ⚡
+                    id="btn-tryout-GETapi-chat--id-"
+                    onclick="tryItOut('GETapi-chat--id-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-chat"
-                    onclick="cancelTryOut('GETapi-chat');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-chat--id-"
+                    onclick="cancelTryOut('GETapi-chat--id-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-chat" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-chat--id-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/chat</code></b>
+            <b><code>api/chat/{id}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4201,7 +4457,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Authorization" class="auth-value"               data-endpoint="GETapi-chat"
+               name="Authorization" class="auth-value"               data-endpoint="GETapi-chat--id-"
                value="Bearer {YOUR_AUTH_KEY}"
                data-component="header">
     <br>
@@ -4212,7 +4468,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="GETapi-chat"
+               name="Content-Type"                data-endpoint="GETapi-chat--id-"
                value="application/json"
                data-component="header">
     <br>
@@ -4223,13 +4479,25 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="GETapi-chat"
+               name="Accept"                data-endpoint="GETapi-chat--id-"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>id</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="id"                data-endpoint="GETapi-chat--id-"
+               value="voluptatem"
+               data-component="url">
+    <br>
+<p>The ID of the chat. Example: <code>voluptatem</code></p>
+            </div>
+                    </form>
 
                     <h2 id="endpoints-POSTapi-chat">Save message</h2>
 
@@ -4250,8 +4518,8 @@ fetch(url, {
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"id\": \"culpa\",
-    \"message\": \"consequatur\"
+    \"id\": \"odit\",
+    \"message\": \"et\"
 }"
 </code></pre></div>
 
@@ -4268,8 +4536,8 @@ const headers = {
 };
 
 let body = {
-    "id": "culpa",
-    "message": "consequatur"
+    "id": "odit",
+    "message": "et"
 };
 
 fetch(url, {
@@ -4371,10 +4639,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="id"                data-endpoint="POSTapi-chat"
-               value="culpa"
+               value="odit"
                data-component="body">
     <br>
-<p>Example: <code>culpa</code></p>
+<p>Example: <code>odit</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>message</code></b>&nbsp;&nbsp;
@@ -4382,10 +4650,10 @@ fetch(url, {
  &nbsp;
                 <input type="text" style="display: none"
                name="message"                data-endpoint="POSTapi-chat"
-               value="consequatur"
+               value="et"
                data-component="body">
     <br>
-<p>Example: <code>consequatur</code></p>
+<p>Example: <code>et</code></p>
         </div>
         </form>
 
@@ -4517,27 +4785,27 @@ fetch(url, {
             </div>
                         </form>
 
-                    <h2 id="endpoints-GETapi-events">Getting all finished events</h2>
+                    <h2 id="endpoints-GETapi-events--mouth---year-">Getting all finished events</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-GETapi-events">
+<span id="example-requests-GETapi-events--mouth---year-">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request GET \
-    --get "http://127.0.0.1:8000/api/events" \
+    --get "http://127.0.0.1:8000/api/events/2/ut" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json"</code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/events"
+    "http://127.0.0.1:8000/api/events/2/ut"
 );
 
 const headers = {
@@ -4552,7 +4820,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-GETapi-events">
+<span id="example-responses-GETapi-events--mouth---year-">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4575,43 +4843,43 @@ fetch(url, {
 ]</code>
  </pre>
     </span>
-<span id="execution-results-GETapi-events" hidden>
+<span id="execution-results-GETapi-events--mouth---year-" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-GETapi-events"></span>:
+                id="execution-response-status-GETapi-events--mouth---year-"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-GETapi-events" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-GETapi-events--mouth---year-" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-GETapi-events" hidden>
+<span id="execution-error-GETapi-events--mouth---year-" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-GETapi-events"></code></pre>
+    <pre><code id="execution-error-message-GETapi-events--mouth---year-"></code></pre>
 </span>
-<form id="form-GETapi-events" data-method="GET"
-      data-path="api/events"
+<form id="form-GETapi-events--mouth---year-" data-method="GET"
+      data-path="api/events/{mouth}/{year}"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('GETapi-events', this);">
+      onsubmit="event.preventDefault(); executeTryOut('GETapi-events--mouth---year-', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-GETapi-events"
-                    onclick="tryItOut('GETapi-events');">Try it out ⚡
+                    id="btn-tryout-GETapi-events--mouth---year-"
+                    onclick="tryItOut('GETapi-events--mouth---year-');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-GETapi-events"
-                    onclick="cancelTryOut('GETapi-events');" hidden>Cancel 🛑
+                    id="btn-canceltryout-GETapi-events--mouth---year-"
+                    onclick="cancelTryOut('GETapi-events--mouth---year-');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-GETapi-events" hidden>Send Request 💥
+                    id="btn-executetryout-GETapi-events--mouth---year-" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-green">GET</small>
-            <b><code>api/events</code></b>
+            <b><code>api/events/{mouth}/{year}</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4619,7 +4887,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="GETapi-events"
+               name="Content-Type"                data-endpoint="GETapi-events--mouth---year-"
                value="application/json"
                data-component="header">
     <br>
@@ -4630,40 +4898,63 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="GETapi-events"
+               name="Accept"                data-endpoint="GETapi-events--mouth---year-"
                value="application/json"
                data-component="header">
     <br>
 <p>Example: <code>application/json</code></p>
             </div>
-                        </form>
+                        <h4 class="fancy-heading-panel"><b>URL Parameters</b></h4>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>mouth</code></b>&nbsp;&nbsp;
+<small>integer</small>&nbsp;
+ &nbsp;
+                <input type="number" style="display: none"
+               name="mouth"                data-endpoint="GETapi-events--mouth---year-"
+               value="2"
+               data-component="url">
+    <br>
+<p>Example: <code>2</code></p>
+            </div>
+                    <div style="padding-left: 28px; clear: unset;">
+                <b style="line-height: 2;"><code>year</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="year"                data-endpoint="GETapi-events--mouth---year-"
+               value="ut"
+               data-component="url">
+    <br>
+<p>Example: <code>ut</code></p>
+            </div>
+                    </form>
 
-                    <h2 id="endpoints-POSTapi-users-login">Log in the user</h2>
+                    <h2 id="endpoints-POSTapi-auth-login">Log in the user</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-users-login">
+<span id="example-requests-POSTapi-auth-login">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/users/login" \
+    "http://127.0.0.1:8000/api/auth/login" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"email\": \"zchristiansen@example.com\",
-    \"password\": \"eligendi\"
+    \"email\": \"carlee30@example.org\",
+    \"password\": \"ab\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/login"
+    "http://127.0.0.1:8000/api/auth/login"
 );
 
 const headers = {
@@ -4672,8 +4963,8 @@ const headers = {
 };
 
 let body = {
-    "email": "zchristiansen@example.com",
-    "password": "eligendi"
+    "email": "carlee30@example.org",
+    "password": "ab"
 };
 
 fetch(url, {
@@ -4684,7 +4975,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-users-login">
+<span id="example-responses-POSTapi-auth-login">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4695,7 +4986,8 @@ fetch(url, {
  &quot;token_type&quot;: &quot;Bearer&quot;,
  &quot;role&quot; =&gt; &quot;admin&quot;,
  &quot;email&quot; =&gt; &quot;radina@gmail.com&quot;,
- &quot;blacklistedCount&quot; =&gt;  0 // TODO
+ &quot;blacklistedCount&quot; =&gt;  [],
+ &quot;pendingEventsCount&quot; =&gt; 0
 }</code>
  </pre>
             <blockquote>
@@ -4713,43 +5005,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-users-login" hidden>
+<span id="execution-results-POSTapi-auth-login" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-users-login"></span>:
+                id="execution-response-status-POSTapi-auth-login"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-users-login" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-login" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-users-login" hidden>
+<span id="execution-error-POSTapi-auth-login" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-users-login"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-auth-login"></code></pre>
 </span>
-<form id="form-POSTapi-users-login" data-method="POST"
-      data-path="api/users/login"
+<form id="form-POSTapi-auth-login" data-method="POST"
+      data-path="api/auth/login"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users-login', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-login', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-users-login"
-                    onclick="tryItOut('POSTapi-users-login');">Try it out ⚡
+                    id="btn-tryout-POSTapi-auth-login"
+                    onclick="tryItOut('POSTapi-auth-login');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-users-login"
-                    onclick="cancelTryOut('POSTapi-users-login');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-auth-login"
+                    onclick="cancelTryOut('POSTapi-auth-login');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-users-login" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-auth-login" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/users/login</code></b>
+            <b><code>api/auth/login</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4757,7 +5049,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="POSTapi-users-login"
+               name="Content-Type"                data-endpoint="POSTapi-auth-login"
                value="application/json"
                data-component="header">
     <br>
@@ -4768,7 +5060,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="POSTapi-users-login"
+               name="Accept"                data-endpoint="POSTapi-auth-login"
                value="application/json"
                data-component="header">
     <br>
@@ -4780,56 +5072,56 @@ fetch(url, {
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="email"                data-endpoint="POSTapi-users-login"
-               value="zchristiansen@example.com"
+               name="email"                data-endpoint="POSTapi-auth-login"
+               value="carlee30@example.org"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>zchristiansen@example.com</code></p>
+<p>Must be a valid email address. Example: <code>carlee30@example.org</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>password</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="password"                data-endpoint="POSTapi-users-login"
-               value="eligendi"
+               name="password"                data-endpoint="POSTapi-auth-login"
+               value="ab"
                data-component="body">
     <br>
-<p>Example: <code>eligendi</code></p>
+<p>Example: <code>ab</code></p>
         </div>
         </form>
 
-                    <h2 id="endpoints-POSTapi-users-register">Create User</h2>
+                    <h2 id="endpoints-POSTapi-auth-register">Create User</h2>
 
 <p>
 </p>
 
 
 
-<span id="example-requests-POSTapi-users-register">
+<span id="example-requests-POSTapi-auth-register">
 <blockquote>Example request:</blockquote>
 
 
 <div class="bash-example">
     <pre><code class="language-bash">curl --request POST \
-    "http://127.0.0.1:8000/api/users/register" \
+    "http://127.0.0.1:8000/api/auth/register" \
     --header "Content-Type: application/json" \
     --header "Accept: application/json" \
     --data "{
-    \"name\": \"laborum\",
-    \"gender\": \"female\",
-    \"email\": \"payton34@example.org\",
+    \"name\": \"voluptatem\",
+    \"gender\": \"male\",
+    \"email\": \"grimes.jeffery@example.com\",
     \"role\": \"organizer\",
-    \"password\": \"debitis\",
-    \"phone_number\": \"autem\",
-    \"address\": \"eligendi\"
+    \"password\": \"autem\",
+    \"phoneNumber\": \"illum\",
+    \"address\": \"laboriosam\"
 }"
 </code></pre></div>
 
 
 <div class="javascript-example">
     <pre><code class="language-javascript">const url = new URL(
-    "http://127.0.0.1:8000/api/users/register"
+    "http://127.0.0.1:8000/api/auth/register"
 );
 
 const headers = {
@@ -4838,13 +5130,13 @@ const headers = {
 };
 
 let body = {
-    "name": "laborum",
-    "gender": "female",
-    "email": "payton34@example.org",
+    "name": "voluptatem",
+    "gender": "male",
+    "email": "grimes.jeffery@example.com",
     "role": "organizer",
-    "password": "debitis",
-    "phone_number": "autem",
-    "address": "eligendi"
+    "password": "autem",
+    "phoneNumber": "illum",
+    "address": "laboriosam"
 };
 
 fetch(url, {
@@ -4855,7 +5147,7 @@ fetch(url, {
 
 </span>
 
-<span id="example-responses-POSTapi-users-register">
+<span id="example-responses-POSTapi-auth-register">
             <blockquote>
             <p>Example response (200):</p>
         </blockquote>
@@ -4866,6 +5158,8 @@ fetch(url, {
  &quot;token_type&quot;: &quot;Bearer&quot;,
  &quot;role&quot; =&gt; &quot;admin&quot;,
  &quot;email&quot; =&gt; &quot;radina@gmail.com&quot;,
+ &quot;blacklistedCount&quot; =&gt;  [],
+ &quot;pendingEventsCount&quot; =&gt; 0
 }</code>
  </pre>
             <blockquote>
@@ -4886,43 +5180,43 @@ fetch(url, {
 }</code>
  </pre>
     </span>
-<span id="execution-results-POSTapi-users-register" hidden>
+<span id="execution-results-POSTapi-auth-register" hidden>
     <blockquote>Received response<span
-                id="execution-response-status-POSTapi-users-register"></span>:
+                id="execution-response-status-POSTapi-auth-register"></span>:
     </blockquote>
-    <pre class="json"><code id="execution-response-content-POSTapi-users-register" style="max-height: 400px;"></code></pre>
+    <pre class="json"><code id="execution-response-content-POSTapi-auth-register" style="max-height: 400px;"></code></pre>
 </span>
-<span id="execution-error-POSTapi-users-register" hidden>
+<span id="execution-error-POSTapi-auth-register" hidden>
     <blockquote>Request failed with error:</blockquote>
-    <pre><code id="execution-error-message-POSTapi-users-register"></code></pre>
+    <pre><code id="execution-error-message-POSTapi-auth-register"></code></pre>
 </span>
-<form id="form-POSTapi-users-register" data-method="POST"
-      data-path="api/users/register"
+<form id="form-POSTapi-auth-register" data-method="POST"
+      data-path="api/auth/register"
       data-authed="0"
       data-hasfiles="0"
       data-isarraybody="0"
       autocomplete="off"
-      onsubmit="event.preventDefault(); executeTryOut('POSTapi-users-register', this);">
+      onsubmit="event.preventDefault(); executeTryOut('POSTapi-auth-register', this);">
     <h3>
         Request&nbsp;&nbsp;&nbsp;
                     <button type="button"
                     style="background-color: #8fbcd4; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-tryout-POSTapi-users-register"
-                    onclick="tryItOut('POSTapi-users-register');">Try it out ⚡
+                    id="btn-tryout-POSTapi-auth-register"
+                    onclick="tryItOut('POSTapi-auth-register');">Try it out ⚡
             </button>
             <button type="button"
                     style="background-color: #c97a7e; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-canceltryout-POSTapi-users-register"
-                    onclick="cancelTryOut('POSTapi-users-register');" hidden>Cancel 🛑
+                    id="btn-canceltryout-POSTapi-auth-register"
+                    onclick="cancelTryOut('POSTapi-auth-register');" hidden>Cancel 🛑
             </button>&nbsp;&nbsp;
             <button type="submit"
                     style="background-color: #6ac174; padding: 5px 10px; border-radius: 5px; border-width: thin;"
-                    id="btn-executetryout-POSTapi-users-register" hidden>Send Request 💥
+                    id="btn-executetryout-POSTapi-auth-register" hidden>Send Request 💥
             </button>
             </h3>
             <p>
             <small class="badge badge-black">POST</small>
-            <b><code>api/users/register</code></b>
+            <b><code>api/auth/register</code></b>
         </p>
                 <h4 class="fancy-heading-panel"><b>Headers</b></h4>
                                 <div style="padding-left: 28px; clear: unset;">
@@ -4930,7 +5224,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Content-Type"                data-endpoint="POSTapi-users-register"
+               name="Content-Type"                data-endpoint="POSTapi-auth-register"
                value="application/json"
                data-component="header">
     <br>
@@ -4941,7 +5235,7 @@ fetch(url, {
 &nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="Accept"                data-endpoint="POSTapi-users-register"
+               name="Accept"                data-endpoint="POSTapi-auth-register"
                value="application/json"
                data-component="header">
     <br>
@@ -4953,40 +5247,40 @@ fetch(url, {
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="name"                data-endpoint="POSTapi-users-register"
-               value="laborum"
+               name="name"                data-endpoint="POSTapi-auth-register"
+               value="voluptatem"
                data-component="body">
     <br>
-<p>Example: <code>laborum</code></p>
+<p>Example: <code>voluptatem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>gender</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="gender"                data-endpoint="POSTapi-users-register"
-               value="female"
+               name="gender"                data-endpoint="POSTapi-auth-register"
+               value="male"
                data-component="body">
     <br>
-<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>female</code></p>
+<p>Must be one of <code>female</code>, <code>male</code>, or <code>none</code>. Example: <code>male</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>email</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="email"                data-endpoint="POSTapi-users-register"
-               value="payton34@example.org"
+               name="email"                data-endpoint="POSTapi-auth-register"
+               value="grimes.jeffery@example.com"
                data-component="body">
     <br>
-<p>Must be a valid email address. Example: <code>payton34@example.org</code></p>
+<p>Must be a valid email address. Example: <code>grimes.jeffery@example.com</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>role</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="role"                data-endpoint="POSTapi-users-register"
+               name="role"                data-endpoint="POSTapi-auth-register"
                value="organizer"
                data-component="body">
     <br>
@@ -4997,33 +5291,33 @@ fetch(url, {
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="password"                data-endpoint="POSTapi-users-register"
-               value="debitis"
-               data-component="body">
-    <br>
-<p>Example: <code>debitis</code></p>
-        </div>
-                <div style=" padding-left: 28px;  clear: unset;">
-            <b style="line-height: 2;"><code>phone_number</code></b>&nbsp;&nbsp;
-<small>string</small>&nbsp;
- &nbsp;
-                <input type="text" style="display: none"
-               name="phone_number"                data-endpoint="POSTapi-users-register"
+               name="password"                data-endpoint="POSTapi-auth-register"
                value="autem"
                data-component="body">
     <br>
 <p>Example: <code>autem</code></p>
         </div>
                 <div style=" padding-left: 28px;  clear: unset;">
+            <b style="line-height: 2;"><code>phoneNumber</code></b>&nbsp;&nbsp;
+<small>string</small>&nbsp;
+ &nbsp;
+                <input type="text" style="display: none"
+               name="phoneNumber"                data-endpoint="POSTapi-auth-register"
+               value="illum"
+               data-component="body">
+    <br>
+<p>Example: <code>illum</code></p>
+        </div>
+                <div style=" padding-left: 28px;  clear: unset;">
             <b style="line-height: 2;"><code>address</code></b>&nbsp;&nbsp;
 <small>string</small>&nbsp;
  &nbsp;
                 <input type="text" style="display: none"
-               name="address"                data-endpoint="POSTapi-users-register"
-               value="eligendi"
+               name="address"                data-endpoint="POSTapi-auth-register"
+               value="laboriosam"
                data-component="body">
     <br>
-<p>Example: <code>eligendi</code></p>
+<p>Example: <code>laboriosam</code></p>
         </div>
         </form>
 

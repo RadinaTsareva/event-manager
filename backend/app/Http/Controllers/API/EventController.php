@@ -13,6 +13,8 @@ use App\Http\Resources\Api\SuccessResource;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\User;
+use Carbon\Carbon;
+use Illuminate\Http\JsonResponse;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +51,7 @@ class EventController extends Controller
      * Getting food types for event type
      *
      * @param Request $request
-     * @param string $eventType
+     * @param int $eventTypeId
      * @return ErrorResponse|array
      *
      * @response ["sea-food","sweets"]
@@ -67,15 +69,19 @@ class EventController extends Controller
      *      }
      * }
      */
-    public function getFoodTypesForEventType(Request $request, string $eventType): ErrorResponse|array
+    public function getFoodTypesForEventType(Request $request, int $eventTypeId): ErrorResponse|array
     {
         $user = User::find($request->get('organizerId'));
         if ($user && $user->role == User::ROLE_ORGANISER) {
-            $eventType = EventType::where('name', $eventType)->where('organizer_id', $user->id)->first();
-            if (!$request->get('isCatering')) {
+            $eventType = EventType::find($eventTypeId);
+            if ($eventType->organizer_id != $user->id) {
+                new ErrorResponse(['The event type does not belong to the user']);
+            }
+            if (!$request->has('isCatering')) {
                 return new ErrorResponse((array)'The field isCatering is required.');
             }
             if ($eventType) {
+//                return [$request->get('isCatering')];
                 return $user->foodTypesForEventType($eventType->id, $request->get('isCatering'));
             }
             return new ErrorResponse((array)'Non existent event type for that organizer');
@@ -114,14 +120,23 @@ class EventController extends Controller
      *      "isPublic": false
      *   }
      * ]
+     * @param int $month
+     * @param int $year
      * @return array
      */
-    public function getPersonalEvents(): array
+    public function getPersonalEvents(int $month, int $year): array
     {
+        if (!$month || !$year) {
+            $date = Carbon::now();
+        } else {
+            $date = Carbon::create($year, $month);
+        }
         $user = Auth::user();
         $events = Event::where('client_id', $user->id)
             ->orWhere('organizer_id', $user->id)
             ->where('status', '!=', Event::EVENT_STATUS_FINISHED)
+            ->where('start_date', '>=', $date->clone()->startOfMonth())
+            ->where('end_date', '<=', $date->clone()->endOfMonth())
             ->get();
         $eventsResources = [];
 
@@ -156,11 +171,31 @@ class EventController extends Controller
      *      "organizerEmail": "radina@gmail.com"
      *   }
      * ]
+     * @param Request $request
+     * @param int|null $month
+     * @param int|null $year
      * @return array
      */
-    public function getAllEvents(): array
+    public function getAllEvents(Request $request, int $month = null, int $year = null): array
     {
-        $events = Event::where('status', Event::EVENT_STATUS_FINISHED)->where('is_public', true)->get();
+        if (!$month || !$year) {
+            $date = Carbon::now();
+        } else {
+            $date = Carbon::create($year, $month);
+        }
+        if ($request->has('organizerId')) {
+            $events = Event::where('organizer_id', $request->get('organizerId'))
+                ->where('start_date', '>=', $date->clone()->startOfMonth())
+                ->where('end_date', '<=', $date->clone()->endOfMonth())
+                ->get();
+        } else {
+            $events = Event::where('status', Event::EVENT_STATUS_FINISHED)
+                ->where('start_date', '>=', $date->clone()->startOfMonth())
+                ->where('end_date', '<=', $date->clone()->endOfMonth())
+                ->where('is_public', true)
+                ->get();
+        }
+
         $eventsResources = [];
 
         if (count($events) != 0) {
@@ -190,7 +225,9 @@ class EventController extends Controller
     public function getAllPersonalEvents(): array
     {
         $user = Auth::user();
-        $events = Event::where('client_id', $user->id)->orWhere('organizer_id', $user->id)->get();
+        $events = Event::where('client_id', $user->id)
+            ->orWhere('organizer_id', $user->id)
+            ->get();
         $eventsResources = [];
 
         if (count($events) != 0) {
@@ -205,8 +242,8 @@ class EventController extends Controller
     /**
      * Getting event by id
      *
-     * @response {
-     *  "data": {
+     * @response
+     *   [
      *      "id": 1,
      *      "status": "finished",
      *      "name": "radi",
@@ -229,9 +266,7 @@ class EventController extends Controller
      *      "accommodationWebsite": null,
      *      "hasGivenFeedback": false,
      *      "isPublic": false
-     *    },
-     *   "status": 200
-     * }
+     *    ],
      *
      * @response 403
      * {
@@ -251,9 +286,9 @@ class EventController extends Controller
      *
      *
      * @param int $id
-     * @return ErrorResponse|EventResource
+     * @return JsonResponse|ErrorResponse
      */
-    public function getPersonalEvent(int $id): ErrorResponse|EventResource
+    public function getPersonalEvent(int $id): JsonResponse|ErrorResponse
     {
         $event = Event::find($id);
         $user = Auth::user();
@@ -267,8 +302,34 @@ class EventController extends Controller
                 return new ErrorResponse((array)'This event is private');
             }
         }
-
-        return new EventResource($event);
+        return response()->json(
+            [
+                'id' => $event->id,
+                'status' => $event->status,
+                'name' => $event->name,
+                'start' => $event->start_date,
+                'end' => $event->end_date,
+                'organizerName' => $event->organizer->name,
+                'organizerEmail' => $event->organizer->email,
+                'organizerId' => $event->organizer->id,
+                'type' => $event->type,
+                'moreInfo' => $event->more_info,
+                'description' => $event->description,
+                'accommodationNeeded' => $event->needs_hotel,
+                'place' => $event->place,
+                'pricePerGuest' => $event->price_per_person,
+                'priceForFood' => $event->price_for_food,
+                'foodDetails' => $event->menu_info,
+                'priceForAccommodation' => $event->price_for_hotel,
+                'accommodationDetails' => $event->hotel_details,
+                'accommodationContact' => $event->hotel_phone_number,
+                'accommodationWebsite' => $event->hotel_website_link,
+                'hasGivenFeedback' => $event->checkForFeedback(),
+                'isPublic' => $event->is_public,
+                'guestsCount' => $event->number_of_people,
+                'foodType' => $event->food_type
+            ]
+        );
     }
 
     /**
@@ -352,13 +413,14 @@ class EventController extends Controller
     public function saveFirstStageEvent(EventCreateFirstStageRequest $request): SuccessResource
     {
         $client = Auth::user();
+        $type = EventType::find($request->type);
         Event::create(
             array(
                 'name' => $request->name,
                 'client_id' => $client->id,
                 'organizer_id' => $request->organizerId,
                 'status' => Event::EVENT_STATUS_PENDING,
-                'type' => $request->type,
+                'type' => $type ?? '',
                 'has_catering' => $request->isCatering,
                 'food_type' => $request->foodType,
                 'description' => $request->description,

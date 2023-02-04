@@ -4,14 +4,13 @@ namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
 use App\Http\Requests\API\CreateMessageRequest;
+use App\Http\Resources\Api\ErrorResponse;
 use App\Http\Resources\Api\MessageResource;
 use App\Http\Resources\Api\SuccessResource;
 use App\Http\Resources\Api\User\ChatListUserResource;
 use App\Models\Message;
-use http\Client\Curl\User;
-use Illuminate\Http\Request;
+use App\Models\User;
 use Illuminate\Support\Facades\Auth;
-use PHPUnit\Exception;
 
 class MessageController extends Controller
 {
@@ -50,18 +49,15 @@ class MessageController extends Controller
      *          "createdAt": "2023-02-03T10:54:59.000000Z"
      *      }
      * ]
-     * @param Request $request
-     * @return array
+     * @param int $id
+     * @return array|ErrorResponse
      */
-    public function getMessages(Request $request): array
+    public function getMessages(int $id): array|ErrorResponse
     {
-        $user = null;
-        if ($request->has('id')) {
-            $user = User::find($request->get('id'));
-        }
+        $user = User::find($id);
 
         if (!$user) {
-            $user = Auth::user();
+            return new ErrorResponse(['Wrong user']);
         }
 
         $messageResources = [];
