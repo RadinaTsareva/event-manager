@@ -120,10 +120,9 @@ class User extends Authenticatable
 
     public function pendingEventsCount()
     {
-        return Event::where('client_id', $this->id)
-            ->orWhere('organizer_id', $this->id)
-            ->where('status', '!=', Event::EVENT_STATUS_PENDING)
-            ->count();
+        return 0;
+        //TODO organizer: pending count + edit_pending count + finished without feedback
+        //todo client: editable count + finished without feedback
     }
 
     public function eventTypes(): HasMany
