@@ -29,7 +29,6 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
-    Route::get('/events/types', [EventController::class, 'getTypes']);
     Route::get('/events/{eventType}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
     Route::get('/events/personal/{mouth}/{year}', [EventController::class, 'getPersonalEvents']);
     Route::get('/events/personal/all/{mouth}/{year}',[EventController::class, 'getAllPersonalEvents']);
@@ -41,6 +40,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
     Route::post('/events/{id}', [EventController::class, 'saveSecondStageEvent']);
 
+    Route::get('/users/event-types', [EventController::class, 'getTypes']);
     Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
     Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);
     Route::get('/users/{id}/{eventTypeId}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
