@@ -21,6 +21,7 @@ use Laravel\Sanctum\HasApiTokens;
  * @property string $address
  * @property mixed $eventTypes
  * @property mixed $menuTypes
+ * @property mixed $cateringTypes
  *
  * @method static create(array $array)
  * @method static where(string $string, mixed $email)
@@ -112,6 +113,19 @@ class User extends Authenticatable
         return $this->hasMany(Blacklist::class, 'block_user_id', 'id');
     }
 
+    public function blackListed()
+    {
+        return Blacklist::where('created_by_user_id', $this->id)->pluck('block_user_id')->toArray();
+    }
+
+    public function pendingEventsCount()
+    {
+        return Event::where('client_id', $this->id)
+            ->orWhere('organizer_id', $this->id)
+            ->where('status', '!=', Event::EVENT_STATUS_PENDING)
+            ->count();
+    }
+
     public function eventTypes(): HasMany
     {
         return $this->hasMany(EventType::class, 'organizer_id');
@@ -127,9 +141,9 @@ class User extends Authenticatable
         return $this->hasMany(CateringType::class, 'organizer_id');
     }
 
-    public function foodTypesForEventType(int $eventTypeId, bool $isCatering): array
+    public function foodTypesForEventType(int $eventTypeId, string $isCatering): array
     {
-        if ($isCatering) {
+        if ($isCatering == 'true') {
             return $this->cateringTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();
         } else {
             return $this->menuTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();

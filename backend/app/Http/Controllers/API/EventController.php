@@ -13,6 +13,7 @@ use App\Http\Resources\Api\SuccessResource;
 use App\Models\Event;
 use App\Models\EventType;
 use App\Models\User;
+use Carbon\Carbon;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 
@@ -49,7 +50,7 @@ class EventController extends Controller
      * Getting food types for event type
      *
      * @param Request $request
-     * @param string $eventType
+     * @param int $eventTypeId
      * @return ErrorResponse|array
      *
      * @response ["sea-food","sweets"]
@@ -67,15 +68,19 @@ class EventController extends Controller
      *      }
      * }
      */
-    public function getFoodTypesForEventType(Request $request, string $eventType): ErrorResponse|array
+    public function getFoodTypesForEventType(Request $request, int $eventTypeId): ErrorResponse|array
     {
         $user = User::find($request->get('organizerId'));
         if ($user && $user->role == User::ROLE_ORGANISER) {
-            $eventType = EventType::where('name', $eventType)->where('organizer_id', $user->id)->first();
-            if (!$request->get('isCatering')) {
+            $eventType = EventType::find($eventTypeId);
+            if ($eventType->organizer_id != $user->id) {
+                new ErrorResponse(['The event type does not belong to the user']);
+            }
+            if (!$request->has('isCatering')) {
                 return new ErrorResponse((array)'The field isCatering is required.');
             }
             if ($eventType) {
+//                return [$request->get('isCatering')];
                 return $user->foodTypesForEventType($eventType->id, $request->get('isCatering'));
             }
             return new ErrorResponse((array)'Non existent event type for that organizer');
@@ -114,14 +119,23 @@ class EventController extends Controller
      *      "isPublic": false
      *   }
      * ]
+     * @param int $month
+     * @param int $year
      * @return array
      */
-    public function getPersonalEvents(): array
+    public function getPersonalEvents(int $month, int $year): array
     {
+        if (!$month || !$year) {
+            $date = Carbon::now();
+        } else {
+            $date = Carbon::create($year, $month);
+        }
         $user = Auth::user();
         $events = Event::where('client_id', $user->id)
             ->orWhere('organizer_id', $user->id)
             ->where('status', '!=', Event::EVENT_STATUS_FINISHED)
+            ->where('start_date', '>=', $date->clone()->startOfMonth())
+            ->where('end_date', '<=', $date->clone()->endOfMonth())
             ->get();
         $eventsResources = [];
 
@@ -156,11 +170,22 @@ class EventController extends Controller
      *      "organizerEmail": "radina@gmail.com"
      *   }
      * ]
+     * @param int|null $month
+     * @param int|null $year
      * @return array
      */
-    public function getAllEvents(): array
+    public function getAllEvents(int $month = null, int $year = null): array
     {
-        $events = Event::where('status', Event::EVENT_STATUS_FINISHED)->where('is_public', true)->get();
+        if (!$month || !$year) {
+            $date = Carbon::now();
+        } else {
+            $date = Carbon::create($year, $month);
+        }
+        $events = Event::where('status', Event::EVENT_STATUS_FINISHED)
+            ->where('start_date', '>=', $date->clone()->startOfMonth())
+            ->where('end_date', '<=', $date->clone()->endOfMonth())
+            ->where('is_public', true)
+            ->get();
         $eventsResources = [];
 
         if (count($events) != 0) {
@@ -185,12 +210,24 @@ class EventController extends Controller
      *          "clientEmail": "dasda34e4d@dada.comhee"
      *      }
      * ]
+     * @param int|null $month
+     * @param int|null $year
      * @return array
      */
-    public function getAllPersonalEvents(): array
+    public function getAllPersonalEvents(int $month = null, int $year = null): array
     {
+        if (!$month || !$year) {
+            $date = Carbon::now();
+        } else {
+            $date = Carbon::create($year, $month);
+        }
+
         $user = Auth::user();
-        $events = Event::where('client_id', $user->id)->orWhere('organizer_id', $user->id)->get();
+        $events = Event::where('client_id', $user->id)
+            ->where('start_date', '>=', $date->clone()->startOfMonth())
+            ->where('end_date', '<=', $date->clone()->endOfMonth())
+            ->orWhere('organizer_id', $user->id)
+            ->get();
         $eventsResources = [];
 
         if (count($events) != 0) {

@@ -29,7 +29,7 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/users/update', [UserController::class, 'updateUser']);
     Route::post('/users/{id}/blacklist', [BlacklistController::class,'blockUser']);
 
-    Route::get('/events/{eventType}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
+    Route::get('/events/{eventTypeId}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
     Route::get('/events/personal/{mouth}/{year}', [EventController::class, 'getPersonalEvents']);
     Route::get('/events/personal/all/{mouth}/{year}',[EventController::class, 'getAllPersonalEvents']);
     Route::post('/events/{id}/accept', [EventController::class, 'acceptEvent']);
@@ -40,19 +40,18 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
     Route::post('/events/{id}', [EventController::class, 'saveSecondStageEvent']);
 
-    Route::get('/users/event-types', [EventController::class, 'getTypes']);
     Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
     Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);
     Route::get('/users/{id}/{eventTypeId}/menu-types', [MenuTypeController::class, 'getMenuTypesForUser']);
     Route::get('/users/{eventTypeId}/menu-types', [MenuTypeController::class, 'getMenuTypesForOrganizer']);
     Route::get('/users/{id}/{eventTypeId}/catering-types', [CateringTypeController::class, 'getCateringTypesForUser']);
     Route::get('/users/{eventTypeId}/catering-types', [CateringTypeController::class, 'getCateringTypesForOrganizer']);
-    Route::post('/users/{type}', [UserController::class, 'addNewType']);
-    Route::post('/users/{type}', [UserController::class, 'updateType']);
+    Route::post('/users/create/{type}', [UserController::class, 'addNewType']);
+    Route::post('/users/update/{type}', [UserController::class, 'updateType']);
     Route::post('/users/{type}', [UserController::class, 'deleteType']);
 
     Route::get('/chat/list', [MessageController::class, 'getChatsList']);
-    Route::get('/chat', [MessageController::class, 'getMessages']);
+    Route::get('/chat/{id}', [MessageController::class, 'getMessages']);
     Route::post('/chat', [MessageController::class, 'saveMessage']);
 
     Route::get('/organizers', [UserController::class, 'getOrganizers']);

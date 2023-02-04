@@ -80,7 +80,7 @@ class CateringTypeController extends Controller
             return new ErrorResponse(['Non valid or missing event type']);
         }
 
-        foreach ($user->cateringTypes()->where('event_type_id', $eventType->id) as $type) {
+        foreach ($user->cateringTypes->where('event_type_id', $eventType->id) as $type) {
             $resources[] = new TypeResource($type);
         }
         return $resources;

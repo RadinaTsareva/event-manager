@@ -50,7 +50,7 @@ paths:
                     blocked: 0
                     role: client
                     address: 'Address 1'
-                    phone-number: '08990889011'
+                    phoneNumber: '08990889011'
                   status: 200
                 properties:
                   data:
@@ -77,7 +77,7 @@ paths:
                       address:
                         type: string
                         example: 'Address 1'
-                      phone-number:
+                      phoneNumber:
                         type: string
                         example: '08990889011'
                   status:
@@ -195,11 +195,11 @@ paths:
                 current_password:
                   type: string
                   description: ''
-                  example: quod
+                  example: necessitatibus
                 new_password:
                   type: string
                   description: ''
-                  example: quae
+                  example: est
                 new_confirm_password:
                   type: string
                   description: 'The value and <code>new_password</code> must match.'
@@ -287,15 +287,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: aperiam
+                  example: quia
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: female
+                  example: none
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: sarai.wunsch@example.net
+                  example: kaitlyn36@example.org
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
@@ -303,7 +303,7 @@ paths:
                 address:
                   type: string
                   description: ''
-                  example: provident
+                  example: et
                 phoneNumber:
                   type: string
                   description: ''
@@ -379,72 +379,11 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
-  /api/events/types:
-    get:
-      summary: "Getting all event's types"
-      operationId: gettingAllEventsTypes
-      description: ''
-      parameters:
-        -
-          in: header
-          name: Authorization
-          description: ''
-          example: 'Bearer {YOUR_AUTH_KEY}'
-          schema:
-            type: string
-        -
-          in: header
-          name: Content-Type
-          description: ''
-          example: application/json
-          schema:
-            type: string
-        -
-          in: header
-          name: Accept
-          description: ''
-          example: application/json
-          schema:
-            type: string
-      responses:
-        200:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: array
-                items:
-                  type: string
-                example:
-                  - wedding
-                  - party
-        403:
-          description: ''
-          content:
-            application/json:
-              schema:
-                type: object
-                example:
-                  success: false
-                  messages:
-                    - "The selected organizer is not an organizer or doesn't exists."
-                properties:
-                  success:
-                    type: boolean
-                    example: false
-                  messages:
-                    type: array
-                    example:
-                      - "The selected organizer is not an organizer or doesn't exists."
-                    items:
-                      type: string
-      tags:
-        - Endpoints
-  '/api/events/{eventType}/foodTypes':
+  '/api/events/{eventTypeId}/foodTypes':
     get:
       summary: 'Getting food types for event type'
       operationId: gettingFoodTypesForEventType
@@ -512,9 +451,9 @@ paths:
     parameters:
       -
         in: path
-        name: eventType
+        name: eventTypeId
         description: ''
-        example: 12
+        example: 3
         required: true
         schema:
           type: integer
@@ -560,7 +499,7 @@ paths:
         in: path
         name: mouth
         description: ''
-        example: odit
+        example: quam
         required: true
         schema:
           type: string
@@ -568,7 +507,7 @@ paths:
         in: path
         name: year
         description: ''
-        example: ut
+        example: occaecati
         required: true
         schema:
           type: string
@@ -622,7 +561,7 @@ paths:
         in: path
         name: mouth
         description: ''
-        example: voluptatem
+        example: quo
         required: true
         schema:
           type: string
@@ -630,7 +569,7 @@ paths:
         in: path
         name: year
         description: ''
-        example: quo
+        example: earum
         required: true
         schema:
           type: string
@@ -689,7 +628,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 13
+        example: 5
         required: true
         schema:
           type: integer
@@ -748,7 +687,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 15
+        example: 12
         required: true
         schema:
           type: integer
@@ -1001,39 +940,39 @@ paths:
                 eventId:
                   type: integer
                   description: ''
-                  example: 20
+                  example: 12
                 place:
                   type: string
                   description: ''
-                  example: odit
+                  example: non
                 placeWebsite:
                   type: string
                   description: ''
-                  example: in
+                  example: ab
                 placeGoogleMapsLink:
                   type: string
                   description: ''
-                  example: fugit
+                  example: fugiat
                 pricePerGuest:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 9
+                  example: 40
                 priceForFood:
                   type: number
                   description: 'Must be at least 1.'
-                  example: 11
+                  example: 20
                 priceForAccommodation:
                   type: number
                   description: ''
-                  example: 4.158
+                  example: 0.255357
                 accommodationDetails:
                   type: string
                   description: ''
-                  example: ea
+                  example: saepe
                 accommodationContact:
                   type: string
                   description: ''
-                  example: amet
+                  example: saepe
               required:
                 - eventId
                 - place
@@ -1046,7 +985,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 20
+        example: 8
         required: true
         schema:
           type: integer
@@ -1098,7 +1037,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 2
+        example: 12
         required: true
         schema:
           type: integer
@@ -1147,7 +1086,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the event.'
-        example: 1
+        example: 9
         required: true
         schema:
           type: integer
@@ -1233,39 +1172,39 @@ paths:
                 organizerId:
                   type: integer
                   description: ''
-                  example: 11
+                  example: 17
                 name:
                   type: string
                   description: ''
-                  example: minima
+                  example: ea
                 start:
                   type: string
                   description: 'Must be a valid date. Must be a date before or equal to <code>end</code>.'
-                  example: '2007-07-29'
+                  example: '2002-12-20'
                 end:
                   type: string
                   description: 'Must be a valid date. Must be a date after or equal to <code>start</code>.'
-                  example: '2054-07-08'
+                  example: '2048-10-16'
                 type:
                   type: string
                   description: ''
-                  example: qui
+                  example: perferendis
                 isCatering:
                   type: boolean
                   description: ''
-                  example: false
+                  example: true
                 foodType:
                   type: string
                   description: ''
-                  example: aliquam
+                  example: cum
                 description:
                   type: string
                   description: ''
-                  example: 'Veritatis quae magnam non commodi non ut.'
+                  example: 'Omnis quia et sint ut.'
                 guestsCount:
                   type: integer
                   description: 'Must be at least 1.'
-                  example: 75
+                  example: 61
                 accommodationNeeded:
                   type: boolean
                   description: ''
@@ -1348,7 +1287,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1481,7 +1420,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1489,7 +1428,7 @@ paths:
         in: path
         name: eventTypeId
         description: ''
-        example: omnis
+        example: ratione
         required: true
         schema:
           type: string
@@ -1560,7 +1499,7 @@ paths:
         in: path
         name: eventTypeId
         description: ''
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1631,7 +1570,7 @@ paths:
         in: path
         name: id
         description: 'The ID of the user.'
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1710,10 +1649,205 @@ paths:
         in: path
         name: eventTypeId
         description: ''
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
+  '/api/users/create/{type}':
+    post:
+      summary: 'Adding new type (event,menu,catering)'
+      operationId: addingNewTypeeventmenucatering
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  status: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The value field is required.'
+                  errors:
+                    value:
+                      - 'The value field is required.'
+                properties:
+                  message:
+                    type: string
+                    example: 'The value field is required.'
+                  errors:
+                    type: object
+                    properties:
+                      value:
+                        type: array
+                        example:
+                          - 'The value field is required.'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                eventTypeId:
+                  type: integer
+                  description: ''
+                  example: 17
+                value:
+                  type: string
+                  description: ''
+                  example: fugit
+              required:
+                - value
+    parameters:
+      -
+        in: path
+        name: type
+        description: ''
+        example: quis
+        required: true
+        schema:
+          type: string
+  '/api/users/update/{type}':
+    post:
+      summary: "Updating type's info"
+      operationId: updatingTypesInfo
+      description: ''
+      parameters:
+        -
+          in: header
+          name: Authorization
+          description: ''
+          example: 'Bearer {YOUR_AUTH_KEY}'
+          schema:
+            type: string
+        -
+          in: header
+          name: Content-Type
+          description: ''
+          example: application/json
+          schema:
+            type: string
+        -
+          in: header
+          name: Accept
+          description: ''
+          example: application/json
+          schema:
+            type: string
+      responses:
+        200:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  data: []
+                  status: 200
+                properties:
+                  data:
+                    type: array
+                    example: []
+                  status:
+                    type: integer
+                    example: 200
+        403:
+          description: ''
+          content:
+            application/json:
+              schema:
+                type: object
+                example:
+                  message: 'The given data was invalid.'
+                  errors:
+                    id:
+                      - null
+                      - 'Non existing catering type'
+                properties:
+                  message:
+                    type: string
+                    example: 'The given data was invalid.'
+                  errors:
+                    type: object
+                    properties:
+                      id:
+                        type: array
+                        example:
+                          - null
+                          - 'Non existing catering type'
+                        items:
+                          type: string
+      tags:
+        - Endpoints
+      requestBody:
+        required: true
+        content:
+          application/json:
+            schema:
+              type: object
+              properties:
+                id:
+                  type: integer
+                  description: ''
+                  example: 2
+                value:
+                  type: string
+                  description: ''
+                  example: cum
+              required:
+                - id
+                - value
+    parameters:
+      -
+        in: path
+        name: type
+        description: ''
+        example: minus
+        required: true
+        schema:
+          type: string
   '/api/users/{type}':
     post:
       summary: 'Deleting type'
@@ -1794,7 +1928,7 @@ paths:
                 id:
                   type: number
                   description: ''
-                  example: 47.7845
+                  example: 2479.4
               required:
                 - id
     parameters:
@@ -1802,7 +1936,7 @@ paths:
         in: path
         name: type
         description: ''
-        example: 1
+        example: 3
         required: true
         schema:
           type: integer
@@ -1848,7 +1982,7 @@ paths:
                     value: radina
       tags:
         - Endpoints
-  /api/chat:
+  '/api/chat/{id}':
     get:
       summary: 'Get all messages the user has received and sent'
       operationId: getAllMessagesTheUserHasReceivedAndSent
@@ -1892,6 +2026,16 @@ paths:
                     createdAt: '2023-02-03T10:54:59.000000Z'
       tags:
         - Endpoints
+    parameters:
+      -
+        in: path
+        name: id
+        description: 'The ID of the chat.'
+        example: in
+        required: true
+        schema:
+          type: string
+  /api/chat:
     post:
       summary: 'Save message'
       operationId: saveMessage
@@ -1947,11 +2091,11 @@ paths:
                 id:
                   type: string
                   description: ''
-                  example: et
+                  example: non
                 message:
                   type: string
                   description: ''
-                  example: sint
+                  example: deleniti
               required:
                 - id
                 - message
@@ -2063,7 +2207,7 @@ paths:
         in: path
         name: mouth
         description: ''
-        example: 11
+        example: 14
         required: true
         schema:
           type: integer
@@ -2071,7 +2215,7 @@ paths:
         in: path
         name: year
         description: ''
-        example: dicta
+        example: cupiditate
         required: true
         schema:
           type: string
@@ -2102,7 +2246,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  0 // TODO\n}"
+                example: "{\n \"token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  [],\n \"pendingEventsCount\" => 0\n}"
         403:
           description: ''
           content:
@@ -2139,11 +2283,11 @@ paths:
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: smitham.johann@example.org
+                  example: mayert.leon@example.org
                 password:
                   type: string
                   description: ''
-                  example: rem
+                  example: odit
               required:
                 - email
                 - password
@@ -2175,7 +2319,7 @@ paths:
             text/plain:
               schema:
                 type: string
-                example: "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n}"
+                example: "{\n \"access_token\": \"eyJ0eXA...\",\n \"token_type\": \"Bearer\",\n \"role\" => \"admin\",\n \"email\" => \"radina@gmail.com\",\n \"blacklistedCount\" =>  [],\n \"pendingEventsCount\" => 0\n}"
         403:
           description: ''
           content:
@@ -2220,15 +2364,15 @@ paths:
                 name:
                   type: string
                   description: ''
-                  example: esse
+                  example: amet
                 gender:
                   type: string
                   description: 'Must be one of <code>female</code>, <code>male</code>, or <code>none</code>.'
-                  example: male
+                  example: none
                 email:
                   type: string
                   description: 'Must be a valid email address.'
-                  example: kelsie.yost@example.com
+                  example: ufadel@example.com
                 role:
                   type: string
                   description: 'Must be one of <code>client</code>, <code>organizer</code>, or <code>admin</code>.'
@@ -2236,15 +2380,15 @@ paths:
                 password:
                   type: string
                   description: ''
-                  example: veniam
+                  example: aliquid
                 phoneNumber:
                   type: string
                   description: ''
-                  example: veniam
+                  example: esse
                 address:
                   type: string
                   description: ''
-                  example: quia
+                  example: culpa
               required:
                 - name
                 - gender

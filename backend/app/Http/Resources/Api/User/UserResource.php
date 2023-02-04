@@ -16,7 +16,9 @@ class UserResource extends ApiResource
             'blocked' => $this->resource->blocked,
             'role' => $this->resource->role,
             'address' => $this->resource->address,
-            'phone-number' => $this->resource->phone_number,
+            'phoneNumber' => $this->resource->phone_number,
+            'blacklisted' => $this->blackListed(),
+            'pendingEventsCount' => $this->pendingEventsCount()
         ];
     }
 }
