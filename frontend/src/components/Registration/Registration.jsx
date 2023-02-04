@@ -12,11 +12,11 @@ import { GENDER, ROLES } from '../../utils/enums';
 const defaultValues = {
     email: { name: 'email', value: "", valid: true, message: 'Invalid email' },
     password: { name: 'password', value: "", valid: true, message: 'Password must contain at least 1 upper case letter, 1 lower case letter and 1 number. It should be at least 8 characters!' },
-    confirmPassword: { name: 'confirmPassword', value: "", valid: true, message: 'Passwords not matching' },
+    confirmPassword: { name: 'password_confirmation', value: "", valid: true, message: 'Passwords not matching' },
     name: { name: 'name', value: "", valid: true, message: 'Name should be at least 2 characters long' },
     description: { name: 'description', value: "", valid: true, message: 'Description should be at least 20 characters long' },
     address: { name: 'address', value: "", valid: true, message: 'Address should be at least 10 characters long' },
-    phoneNumber: { name: 'phone', value: "", valid: true, message: 'Invalid phone number' },
+    phoneNumber: { name: 'phoneNumber', value: "", valid: true, message: 'Invalid phone number' },
     role: { name: 'role', value: "", valid: true, message: 'Not selected' },
     gender: { name: 'gender', value: "", valid: true, message: 'Not selected' }
 }
@@ -62,9 +62,13 @@ const Registration = (props) => {
         }
 
         const data = {}
-        fields.slice(0, 5).forEach(el => {
+        fields.forEach(el => {
             data[el.field.name] = el.field.value
         })
+
+        data[genderField.name] = genderField.value
+        data[roleField.name] = roleField.value
+        data[confirmPasswordField.name] = confirmPasswordField.value
 
         if (valid) {
             registerUser(data)

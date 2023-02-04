@@ -25,7 +25,8 @@ const Calendar = (props) => {
 
     useEffect(() => {
         loadEvents()
-        props.monthChangedHandler(new Date(data.startDate).getMonth())
+        const date = new Date(data.startDate)
+        props.dateChangedHandler({ month: date.getMonth(), year: date.getFullYear() })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [data.startDate, props.events]);
 
@@ -36,7 +37,7 @@ const Calendar = (props) => {
             const end = new Date(e.end)
             e.start = start
             e.end = end
-            e.text = `${e.name || 'Event'}${e.organizerName ? ', ' + e.organizerName : ''}`
+            e.text = props.preview ? 'Event' : `${e.name}, ${e.organizerName}`
             e.backColor = 'white'
             e.fontColor = 'black'
             e.barColor = color

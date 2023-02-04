@@ -8,6 +8,7 @@ import { Form } from 'react-bootstrap';
 import Input from '../common/Input/Input';
 import { validateNumber, validatePhoneNumber, validateText, validateURL } from '../../utils/validation';
 import Map from '../Map/Map';
+import { useNavigate } from 'react-router';
 
 const defaultValues = {
     place: { name: 'place', value: "", valid: true, message: 'Place should be at least 5 characters long' },
@@ -30,6 +31,8 @@ const EditableForm = (props) => {
     const [accommodationWebsite, setAccommodationWebsite] = useState(defaultValues.accommodationWebsite);
     const [mapsLink, setMapsLink] = useState(defaultValues.mapsLink);
     const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadData()
@@ -70,23 +73,24 @@ const EditableForm = (props) => {
         let accommodationData = {}
         if (props.event.accommodationNeeded) {
             accommodationData = {
-                priceForAccommodation,
-                accommodationDetails,
-                accommodationContact
+                priceForAccommodation: priceForAccommodation.value,
+                accommodationDetails: accommodationDetails.value,
+                accommodationContact: accommodationContact.value,
+                accommodationWebsite: accommodationWebsite.value,
+                mapsLink: mapsLink.value
             }
         }
 
-        //needs also the placeGoogleMapsLink and placeWebsite
         await EventsService.send({
             id: props.event.id,
-            place,
-            pricePerGuest,
-            priceForFood,
-            placeGoogleMapsLink: mapsLink,
-            placeWebsite: accommodationWebsite,
-            ...accommodationData //can be null depending if the event wants accommodation
+            place: place.value,
+            pricePerGuest: pricePerGuest.value,
+            priceForFood: priceForFood.value,
+            ...accommodationData
         })
         toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
+
+        navigate('/')
     }
 
     const setPositionHandler = (pos) => {
@@ -149,9 +153,11 @@ const EditableForm = (props) => {
                             disabled={props.disableFields} />
                     </div>
                 )}
-                <Map setPosition={setPositionHandler} />
                 {!props.disableFields
-                    && <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
+                    && <>
+                        <Map setPosition={setPositionHandler} />
+                        <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
+                    </>
                 }
             </Form>
         </>

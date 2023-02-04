@@ -4,7 +4,6 @@ import { flushSync } from 'react-dom';
 
 import classes from './Chat.module.scss';
 import Select from '../../components/common/Select/Select';
-import EventsService from '../../services/eventsService';
 import Spinner from '../../components/common/Spinner/Spinner';
 import Input from '../../components/common/Input/Input';
 import Button from '../../components/common/Button/Button';
@@ -23,7 +22,8 @@ const Chat = (props) => {
     const [chatsList, setChatsList] = useState([]);
     const [input, setInput] = useState('');
     const [messages, setMessages] = useState([]);
-    const [loading, setLoading] = useState(false);
+    const [loading, setLoading] = useState(true);
+    const [loadingChat, setLoadingChat] = useState(false);
 
     const messagesEndRef = useRef(null);
 
@@ -39,17 +39,22 @@ const Chat = (props) => {
 
     const loadData = async () => {
         if (account.role === ROLES.CLIENT) {
-            const organizers = await EventsService.getOrganizers()
+            const organizers = await ChatService.getOrganizers()
             setOrganizers(organizers)
         }
 
-        const chatsList = await ChatService.getChatsList()
-        setChatsList(chatsList)
+        await loadChatList()
         setLoading(false)
     }
 
+    const loadChatList = async () => {
+        const chatsList = await ChatService.getChatsList()
+        setChatsList(chatsList)
+    }
+
+
     const loadMessages = async (id) => {
-        flushSync(async () => {
+        await flushSync(async () => {
             const messages = await ChatService.getMessages(id || organizerId)
             setMessages(messages)
         })
@@ -60,6 +65,7 @@ const Chat = (props) => {
         setInput('')
         await ChatService.sendMessage(organizerId, input)
         await loadMessages()
+        await loadChatList()
     }
 
     const organizerSelectedHandler = async (newValue) => {
@@ -67,20 +73,24 @@ const Chat = (props) => {
             return
         }
 
-        setLoading(true)
+        setLoadingChat(true)
         const organizer = organizers.find(o => o.id === +newValue)
         await loadMessages(organizer.id)
 
         setOrganizer(organizer.value)
         setOrganizerId(organizer.id)
-        setLoading(false)
+        setLoadingChat(false)
     }
 
     const userClickedHandler = async (u) => {
+        setMessages([])
+        setLoadingChat(true)
         setOrganizer(u.value)
         setOrganizerId(u.id)
 
         await loadMessages(u.id)
+
+        setLoadingChat(false)
     }
 
     if (loading) {
@@ -120,6 +130,7 @@ const Chat = (props) => {
                 <Col>
                     {organizerId && <div className={classes.Chat}>
                         <div className={classes.Messages} ref={messagesEndRef}>
+                            {loadingChat && <Spinner />}
                             {messages.map((m, i) => {
                                 return (
                                     <div key={i} className={classes.Message}>

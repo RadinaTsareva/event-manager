@@ -2,10 +2,10 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Nav } from 'react-bootstrap';
+import Spinner from '../../components/common/Spinner/Spinner';
 
-import EventList from '../../components/EventList/EventList';
 import EventsService from '../../services/eventsService';
-import { ROLES, STATUS } from '../../utils/enums';
+import { ROLES } from '../../utils/enums';
 import Calendar from '../Calendar/Calendar';
 import classes from './Home.module.scss';
 
@@ -15,23 +15,20 @@ const Home = () => {
     const [personalEvents, setPersonalEvents] = useState([]);
     const [allEvents, setAllEvents] = useState([]);
     const [events, setEvents] = useState([]);
-    const [month, setMonth] = useState(new Date(Date.now()).getMonth());
+    const [date, setDate] = useState({ month: new Date(Date.now()).getMonth(), year: new Date(Date.now()).getFullYear() });
+    const [loading, setLoading] = useState(true);
 
     useEffect((e) => {
         if (isLoggedIn) {
             loadPersonalEvents()
         }
-    }, [month]);
-
-    useEffect((e) => {
-        console.log('MONTH CHANGED', month);
         if (!isLoggedIn || (isLoggedIn && account.role !== ROLES.ORGANIZER)) {
             loadAllEvents()
         }
-    }, [month]);
+    }, [date.month, date.year]);
 
     const loadPersonalEvents = async () => {
-        const res = await EventsService.getPersonal(account.id, month)
+        const res = await EventsService.getPersonal(date.month + 1, date.year)
         setPersonalEvents(res)
 
         if (account?.role === ROLES.ORGANIZER) {
@@ -40,9 +37,10 @@ const Home = () => {
     }
 
     const loadAllEvents = async () => {
-        const res = await EventsService.getAll(month)
+        const res = await EventsService.getAll(date.month + 1, date.year)
         setAllEvents(res)
         setEvents(res)
+        setLoading(false)
     }
 
     const clientEventTypeChangedHandler = (e) => {
@@ -51,10 +49,6 @@ const Home = () => {
         } else {
             setEvents(personalEvents)
         }
-    }
-
-    const getEventsByStatus = (status) => {
-        personalEvents.filter(e => e.status === status)
     }
 
     const clientSelection = () => {
@@ -73,6 +67,10 @@ const Home = () => {
         return null
     }
 
+    if (loading) {
+        return <Spinner />
+    }
+
     return (
         <div className={classes.Layout}>
             <div className={classes.Heading}>
@@ -86,19 +84,7 @@ const Home = () => {
                 }
             </div>
             <div className={classes.Container}>
-                {isLoggedIn &&
-                    (<div className={classes.ContainerSection}>
-                        <EventList status={STATUS.ACCEPTED} events={getEventsByStatus(STATUS.ACCEPTED)} />
-                        <EventList status={STATUS.REJECTED} events={getEventsByStatus(STATUS.REJECTED)} />
-                    </div>)
-                }
-                <Calendar monthChangedHandler={setMonth} events={events} account={account} />
-                {isLoggedIn &&
-                    (<div className={classes.ContainerSection}>
-                        <EventList status={STATUS.PENDING} events={getEventsByStatus(STATUS.PENDING)} />
-                        <EventList status={STATUS.EDITABLE} events={getEventsByStatus(STATUS.EDITABLE)} />
-                    </div>)
-                }
+                <Calendar dateChangedHandler={setDate} events={events} account={account} />
             </div>
         </div>
     )

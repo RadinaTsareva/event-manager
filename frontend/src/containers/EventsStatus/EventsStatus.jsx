@@ -11,7 +11,7 @@ import Button from '../../components/common/Button/Button';
 import Spinner from '../../components/common/Spinner/Spinner';
 import Badge from '../../components/common/Badge/Badge';
 import EventsService from '../../services/eventsService';
-import { getStatusOrderByRole } from '../../utils/converter';
+import { convertEventStatus, getStatusOrderByRole } from '../../utils/converter';
 
 const EventsStatus = (props) => {
     const { account } = useStoreState((state) => state.userStore);
@@ -25,7 +25,7 @@ const EventsStatus = (props) => {
 
     useEffect(() => {
         loadEvents();
-    }, [activeTab, loading]);
+    }, [loading]);
 
     const loadEvents = async () => {
         const eventsRes = await EventsService.getAllPersonal();
@@ -51,18 +51,10 @@ const EventsStatus = (props) => {
     }
 
     const getTitle = (status, index) => {
-        if (status === STATUS.EDIT_PENDING) {
-            status = 'Edit pending'
-        }
-
-        if (status === STATUS.EDITABLE || status === STATUS.FINISHED) {
-            return <>
-                <span>{status}</span>
-                <Badge>{importantCount[index]}</Badge>
-            </>
-        }
-
-        return <span>{status}</span>
+        return <>
+            <span>{convertEventStatus(status)}</span>
+            {importantCount[index] > 0 && <Badge>{importantCount[index]}</Badge>}
+        </>
     }
 
     const navigateEventHandler = (event) => {

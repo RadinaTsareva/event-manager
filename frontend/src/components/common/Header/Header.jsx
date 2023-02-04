@@ -4,7 +4,7 @@ import { Navbar, Nav, Container, Offcanvas } from 'react-bootstrap';
 import classes from './Header.module.scss';
 import { Link } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'easy-peasy';
-import { GearFill, BoxArrowInRight, StarFill, CalendarEventFill, ExclamationCircle } from 'react-bootstrap-icons';
+import { GearFill, BoxArrowInRight, StarFill, CalendarEventFill, ExclamationCircle, ChatRightDotsFill, CalendarRangeFill } from 'react-bootstrap-icons';
 import { ADMIN_ROLE, ROLES } from '../../../utils/enums';
 import Spinner from '../Spinner/Spinner';
 import Badge from '../Badge/Badge';
@@ -42,25 +42,30 @@ const Header = (props) => {
                             </Offcanvas.Header>
                             <Offcanvas.Body className={classes.Body}>
                                 <div className={classes.Account}>
-                                    <h1>{account.email}</h1>
+                                    <h1>{account.name}</h1>
+                                    <h2>{account.email}</h2>
                                     <h3>{account.role}</h3>
                                 </div>
                                 <hr />
                                 <div className={classes.BodyNav}>
                                     <Nav>
+                                        <div className={classes.Nav}>
+                                            <CalendarRangeFill />
+                                            <Link className="nav-link" to="/">Home</Link>
+                                        </div>
                                         {account.role === ROLES.CLIENT ?
                                             <div className={classes.Nav}>
                                                 <CalendarEventFill />
-                                                <Link className="nav-link" to="/request">Make a new request</Link>
+                                                <Link className="nav-link" to="/request" state={{ newEvent: true }}>Make a new request</Link>
                                             </div>
                                             : null
                                         }
                                         <div className={classes.Nav}>
                                             <StarFill />
-                                            <Link className="nav-link" to="/events/status">My events <Badge>{account.pendingEventsCount}</Badge></Link>
+                                            <Link className="nav-link" to="/events/status">My events {account.pendingEventsCount ? <Badge>{account.pendingEventsCount}</Badge> : null}</Link>
                                         </div>
                                         <div className={classes.Nav}>
-                                            <StarFill />
+                                            <ChatRightDotsFill />
                                             <Link className="nav-link" to="/chat">Chat</Link>
                                         </div>
                                         <div className={classes.Nav}>

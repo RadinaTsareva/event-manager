@@ -263,7 +263,7 @@ const Settings = (props) => {
                                     </thead>
                                     <tbody>
                                         {data.arrayField.map(type =>
-                                            <tr className={classes.Type} key={type.value} onDoubleClick={() => enableEditHandler(type, data)}>
+                                            <tr className={classes.Type} key={type.id} onDoubleClick={() => enableEditHandler(type, data)}>
                                                 <td><TrashFill onClick={() => deleteProductHandler(type, data)} /></td>
                                                 <td><input disabled={!type.edit} defaultValue={type.value} onChange={(e) => type.value = e.target.value}></input></td>
                                                 <td>{type.edit

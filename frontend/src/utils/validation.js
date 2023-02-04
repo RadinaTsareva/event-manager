@@ -5,13 +5,13 @@ const upperCaseLetters = /[A-Z]/g;
 const numbers = /[0-9]/g;
 
 const validateEmail = (email) => {
-    return email.toString()
+    return !email || email.toString()
         .toLowerCase()
         .match(emailRegex) || email.toString() === "";
 };
 
 const validateNumber = (num) => {
-    return +num > 0
+    return !num || +num > 0
 }
 
 const validatePassword = (password) => {
