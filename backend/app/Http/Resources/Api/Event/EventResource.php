@@ -22,6 +22,8 @@ class EventResource extends ApiResource
             'description' => $this->resource->description,
             'accommodationNeeded' => $this->resource->needs_hotel,
             'place' => $this->resource->place,
+            'placeWebsiteLink' => $this->resource->place_website_link,
+            'placeGoogleMapsLink' => $this->resource->place_google_maps_link,
             'pricePerGuest' => $this->resource->price_per_person,
             'priceForFood' => $this->resource->price_for_food,
             'foodDetails' => $this->resource->menu_info,

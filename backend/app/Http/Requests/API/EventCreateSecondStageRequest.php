@@ -45,7 +45,7 @@ class EventCreateSecondStageRequest extends FormRequest
         if($event) {
             $validator->after(function ($validator) use ($event) {
                 if($event->needs_hotel) {
-                    if(!$this->has('priceForAccommodation') || !$this->has('accommodationDetails') || !!$this->has('accommodationContact')) {
+                    if(!$this->has('priceForAccommodation') || !$this->has('accommodationDetails') || !$this->has('accommodationContact')) {
                         $validator->errors()->add('priceForAccommodation', 'This field is required.');
                         $validator->errors()->add('accommodationDetails', 'This field is required.');
                         $validator->errors()->add('accommodationContact', 'This field is required.');

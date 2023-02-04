@@ -329,6 +329,8 @@ class EventController extends Controller
                 'description' => $event->description,
                 'accommodationNeeded' => $event->needs_hotel,
                 'place' => $event->place,
+                'placeWebsiteLink' => $event->place_website_link,
+                'placeGoogleMapsLink' => $event->place_google_maps_link,
                 'pricePerGuest' => $event->price_per_person,
                 'priceForFood' => $event->price_for_food,
                 'foodDetails' => $event->menu_info,
