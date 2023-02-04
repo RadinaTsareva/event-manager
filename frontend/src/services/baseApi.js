@@ -24,26 +24,6 @@ export class RequestAPI {
         }
     }
 
-    static async put(endpoint, body = undefined) {
-        try {
-            const data = await axios.put(process.env.REACT_APP_API_ENDPOINT + endpoint, body ? { ...body } : {});
-            this.handleSuccess(data.data);
-            return data.data;
-        } catch (error) {
-            this.handleError(error);
-        }
-    }
-
-    static async delete(endpoint) {
-        try {
-            const data = await axios.delete(process.env.REACT_APP_API_ENDPOINT + endpoint);
-            this.handleSuccess(data.data);
-            return data.data;
-        } catch (error) {
-            this.handleError(error);
-        }
-    }
-
     static handleSuccess(data) {
         if (data && data.status === RESPONSE_STATUS.SUCCESS && data.message) {
             toastHandler({ success: TOAST_STATES.SUCCESS, message: data.message })
@@ -71,5 +51,6 @@ export class RequestAPI {
     static auth = () => {
         const token = store.getState().userStore.account?.token
         axios.defaults.headers.common['Authorization'] = `Bearer ${token}`;
+        axios.defaults.headers.common['ngrok-skip-browser-warning'] = '*';
     }
 }

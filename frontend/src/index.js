@@ -14,23 +14,17 @@ import store from './store';
 const root = ReactDOM.createRoot(document.getElementById('root'));
 
 root.render(
-  <React.StrictMode>
-    <StoreProvider store={store}>
-      <HashRouter>
-        <ToastContainer
-          position={toast.POSITION.TOP_RIGHT}
-          newestOnTop={true}
-          closeButton={false}
-          autoClose={5000} />
-        <App />
-      </HashRouter>
-    </StoreProvider>
-  </React.StrictMode>
+  <StoreProvider store={store}>
+    <HashRouter>
+      <ToastContainer
+        position={toast.POSITION.TOP_RIGHT}
+        newestOnTop={true}
+        closeButton={false}
+        autoClose={5000} />
+      <App />
+    </HashRouter>
+  </StoreProvider>
 );
-
-if (window.Cypress || process.env.NODE_ENV === 'development') {
-  window.store = store;
-}
 
 // If you want to start measuring performance in your app, pass a function
 // to log results (for example: reportWebVitals(console.log))

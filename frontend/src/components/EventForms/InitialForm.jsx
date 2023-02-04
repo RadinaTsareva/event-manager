@@ -4,12 +4,12 @@ import { Form } from 'react-bootstrap';
 import classes from './EventForms.module.scss';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
-import Spinner from '../common/Spinner/Spinner';
 import Input from '../common/Input/Input';
 import Select from '../common/Select/Select';
 import { validateDate, validateOptions, validateText, validateNumber } from '../../utils/validation';
 import UserService from '../../services/userService';
 import Calendar from '../../containers/Calendar/Calendar';
+import { useNavigate } from 'react-router';
 
 const defaultValues = {
     eventName: { name: 'eventName', value: "", valid: true, message: 'Event name should be at least 5 characters long' },
@@ -26,7 +26,7 @@ const defaultValues = {
 const InitialForm = (props) => {
     const [organizer, setOrganizer] = useState(defaultValues.organizer);
     const [organizers, setOrganizers] = useState([]);
-    const [month, setMonth] = useState(new Date(Date.now()).getMonth());
+    const [date, setDate] = useState({ month: new Date(Date.now()).getMonth(), year: new Date(Date.now()).getFullYear() });
     const [events, setEvents] = useState([]);
     const [eventName, setEventName] = useState(defaultValues.eventName);
     const [dateFrom, setDateFrom] = useState(defaultValues.dateFrom);
@@ -39,14 +39,15 @@ const InitialForm = (props) => {
     const [accommodationNeeded, setAccommodationNeeded] = useState(false);
     const [types, setTypes] = useState([]);
     const [foodTypes, setFoodTypes] = useState([]);
-    const [loading, setLoading] = useState(true);
+
+    const navigate = useNavigate();
 
     useEffect(() => {
         loadData()
-    }, [loading]);
+    }, []);
 
     const loadEvents = async (organizer) => {
-        const res = await EventsService.getAllByOrganizer(month, organizer.value)
+        const res = await EventsService.getAllByOrganizer(organizer.value, date.month + 1, date.year)
         setEvents(res)
     }
 
@@ -57,39 +58,36 @@ const InitialForm = (props) => {
         } else {
             setOrganizer({ ...organizer, value: props.event.organizerName })
             setEventName({ ...eventName, value: props.event.name })
-            setDateFrom({ ...dateFrom, value: props.event.start.toISOString().substring(0, 16) })
-            setDateTo({ ...dateTo, value: props.event.end.toISOString().substring(0, 16) })
+            setDateFrom({ ...dateFrom, value: new Date(props.event.start).toISOString().substring(0, 16) })
+            setDateTo({ ...dateTo, value: new Date(props.event.end).toISOString().substring(0, 16) })
             setType({ ...type, value: props.event.type })
             setIsCatering(props.event.isCatering)
             setFoodType({ ...foodType, value: props.event.foodType })
             setDescription({ ...description, value: props.event.description })
             setGuestsCount({ ...guestsCount, value: props.event.guestsCount })
-            setAccommodationNeeded(props.event.accommodationNeeded)
+            setAccommodationNeeded(!!props.event.accommodationNeeded)
         }
-
-        setLoading(false)
     }
 
     const typeSelectedHandler = async (newValue) => {
         setType(newValue)
-
-        const res = await EventsService.getFoodTypes(organizer, newValue.value, isCatering)
+        const res = await EventsService.getFoodTypes(organizer.value, newValue.value, isCatering)
         setFoodTypes(res)
     }
 
     const menuOrCateringSelectedHandler = async (value) => {
-        let res = await EventsService.getFoodTypes(organizer, type.value, value)
+        let res = await EventsService.getFoodTypes(organizer.value, type.value, value)
+        setFoodType(defaultValues.foodType)
         setFoodTypes(res)
         setIsCatering(value)
     }
-
 
     const organizerSelectedHandler = async (newValue) => {
         setOrganizer(newValue)
 
         await loadEvents(newValue)
 
-        const res = await UserService.getEventTypes(organizer.value)
+        const res = await UserService.getEventTypes(newValue.value)
         setTypes(res)
     }
 
@@ -101,27 +99,31 @@ const InitialForm = (props) => {
     const sendClickedHandler = async () => {
         if (!props.event) {
             await EventsService.create({
-                organizer,
-                start: dateFrom,
-                end: dateTo,
-                type,
-                foodType,
-                description,
-                guestsCount,
+                organizerId: organizer.value,
+                name: eventName.value,
+                isCatering,
+                start: dateFrom.value,
+                end: dateTo.value,
+                type: type.value,
+                foodType: foodType.value,
+                description: description.value,
+                guestsCount: guestsCount.value,
                 accommodationNeeded,
             })
             toastHandler({ success: TOAST_STATES.SUCCESS, message: 'Request sent' })
         } else {
             await EventsService.send(props.event.id, {
-                start: dateFrom,
-                end: dateTo,
-                type,
-                foodType,
-                description,
+                start: dateFrom.value,
+                end: dateTo.value,
+                type: type.value,
+                foodType: foodType.value,
+                description: description.value,
                 accommodationNeeded,
             })
             toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
         }
+
+        navigate('/')
     }
 
     const fields = [
@@ -151,10 +153,6 @@ const InitialForm = (props) => {
         }
     ]
 
-    if (loading) {
-        return <Spinner />
-    }
-
     return (
         <>
             <div className={classes.Category}>{props.heading}</div>
@@ -170,7 +168,7 @@ const InitialForm = (props) => {
                 />
                 {organizer.value && !props.disableFields &&
                     <Calendar
-                        monthChangedHandler={setMonth}
+                        dateChangedHandler={setDate}
                         events={events}
                         timeRangeHandler={timeRangeHandler}
                         preview={true} />}

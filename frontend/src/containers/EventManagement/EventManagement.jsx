@@ -2,7 +2,7 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
-import { useParams } from 'react-router';
+import { useLocation, useNavigate, useParams } from 'react-router';
 import Spinner from '../../components/common/Spinner/Spinner';
 import EditableForm from '../../components/EventForms/EditableForm';
 import InitialForm from '../../components/EventForms/InitialForm';
@@ -18,15 +18,18 @@ const EventManagement = (props) => {
     const [event, setEvent] = useState({});
     const [loading, setLoading] = useState(true);
 
-    const urlParams = useParams()
+    const urlParams = useParams();
+    const location = useLocation();
+    const navigate = useNavigate();
 
     useEffect(() => {
         if (!!props.newEvent) {
+            setEvent({})
             setLoading(false)
         } else {
             loadEventData()
         }
-    }, [event]);
+    }, [event?.id, location.state]);
 
     const loadEventData = async () => {
         const res = await EventsService.getById(urlParams.id)
@@ -37,14 +40,15 @@ const EventManagement = (props) => {
     const acceptClickedHandler = async () => {
         await EventsService.accept(event.id)
         toastHandler({ success: TOAST_STATES.SUCCESS, message: `${event.name} accepted` })
+        navigate('/')
     }
 
     const rejectClickedHandler = async () => {
         await EventsService.reject(event.id)
         toastHandler({ success: TOAST_STATES.ERROR, message: `${event.name} rejected` })
+        navigate('/')
     }
-
-    if (loading) {
+    if (loading || (event.id && !urlParams.id)) {
         return <Spinner />
     }
 
@@ -139,7 +143,6 @@ const EventManagement = (props) => {
             {
                 event.status === STATUS.PENDING &&
                 <div className={classes.ActionBtns}>
-                    <button className={classes.AcceptBtn} type='button' onClick={acceptClickedHandler}>Accept</button>
                     <button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</button>
                 </div>
             }

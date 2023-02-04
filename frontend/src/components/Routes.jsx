@@ -23,7 +23,7 @@ const RouteOptions = {
 
 const Router = (props) => {
     const { isLoggedIn, account } = useStoreState((state) => state.userStore);
-    const { setAccount } = useStoreActions((actions) => actions.userStore);
+    const { loadUser, setAccount } = useStoreActions((actions) => actions.userStore);
 
     const [routerAction, setRouterAction] = useState(null);
 
@@ -32,7 +32,9 @@ const Router = (props) => {
 
     useEffect(() => {
         setRouterAction(resolveNavigationRoute())
-
+        if (isLoggedIn) {
+            loadUser()
+        }
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoggedIn]);
 
@@ -41,17 +43,17 @@ const Router = (props) => {
             navigate(location.pathname)
         }
         // TODO
-        setAccount({
-            role: ROLES.ORGANIZER,
-            token: 'token',
-            email: 'alabala@gmail.com',
-            blacklisted: [1, 2],
-            pendingEventsCount: 2,
-            address: 'address',
-            phoneNumber: '+359882701774',
-            name: 'name',
-            gender: GENDER.FEMALE
-        })
+        // setAccount({
+        //     role: ROLES.ORGANIZER,
+        //     token: 'token',
+        //     email: 'alabala@gmail.com',
+        //     blacklisted: [1, 2],
+        //     pendingEventsCount: 2,
+        //     address: 'address',
+        //     phoneNumber: '+359882701774',
+        //     name: 'name',
+        //     gender: GENDER.FEMALE
+        // })
         // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 

@@ -130,68 +130,69 @@ class EventsService {
     }
 
     static getOrganizers = async () => { //isn't that a duplicate?
-        return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
-        // return RequestAPI.get('/organizers')
+        // return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
+        return RequestAPI.get('/organizers')
     }
 
-    static getFoodTypes = async (organizer, eventType, isCatering) => {
-        if (isCatering) {
-            return ['Food type 1', 'Food type 2', 'Food type 3']
-        }
-        return ['Food type 4', 'Food type 5', 'Food type 6']
-        // return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}&&organizerId=${organizer.id}`) // TODO fix if wrong
+    static getFoodTypes = async (organizerId, eventType, isCatering) => {
+        console.log('organizerId', organizerId);
+        // if (isCatering) {
+        //     return ['Food type 1', 'Food type 2', 'Food type 3']
+        // }
+        // return ['Food type 4', 'Food type 5', 'Food type 6']
+        return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}&organizerId=${organizerId}`)
     }
 
-    static getPersonal = async (month) => {
-        return personalEvents
+    static getPersonal = async (month, year) => {
+        // return personalEvents
         // only not finished events
-        // return RequestAPI.get('/events/personal') -> ready from Radi
+        return RequestAPI.get(`/events/personal/${month}/${year}`)
     }
 
-    static getAll = async (month) => {
-        return allEvents
+    static getAll = async (month, year) => {
+        // return allEvents
         // only finished events
-        // return RequestAPI.get('/events') -> ready from Radi
+        return RequestAPI.get(`/events/${month}/${year}`)
     }
 
-    static getAllByOrganizer = async (month, id) => {
-        return [{
-            start: new Date(Date.now() + 1000 * 60 * 60 * 20 * id),
-            end: new Date(Date.now() + 1000 * 60 * 60 * 30 * id),
-        },
-        {
-            start: new Date(Date.now() + 1000 * 60 * 60 * 40 * id),
-            end: new Date(Date.now() + 1000 * 60 * 60 * 50 * id),
-        },
-        {
-            start: new Date(Date.now() + 1000 * 60 * 60 * 60 * id),
-            end: new Date(Date.now() + 1000 * 60 * 60 * 70 * id),
-        },
-        {
-            start: new Date(Date.now() + 1000 * 60 * 60 * 80 * id),
-            end: new Date(Date.now() + 1000 * 60 * 60 * 90 * id),
-        }]
+    static getAllByOrganizer = async (id, month, year) => {
+        // return [{
+        //     start: new Date(Date.now() + 1000 * 60 * 60 * 20 * id),
+        //     end: new Date(Date.now() + 1000 * 60 * 60 * 30 * id),
+        // },
+        // {
+        //     start: new Date(Date.now() + 1000 * 60 * 60 * 40 * id),
+        //     end: new Date(Date.now() + 1000 * 60 * 60 * 50 * id),
+        // },
+        // {
+        //     start: new Date(Date.now() + 1000 * 60 * 60 * 60 * id),
+        //     end: new Date(Date.now() + 1000 * 60 * 60 * 70 * id),
+        // },
+        // {
+        //     start: new Date(Date.now() + 1000 * 60 * 60 * 80 * id),
+        //     end: new Date(Date.now() + 1000 * 60 * 60 * 90 * id),
+        // }]
         // only finished events
-        // return RequestAPI.get(`/events?organizer=${id}`)
+        return RequestAPI.get(`/events/${month}/${year}?organizerId=${id}`)
     }
 
-    static getAllPersonal = async () => {
-        return personalStatusEvents
-        // return RequestAPI.get('/events/personal/all') -> ready from Radi
+    static getAllPersonal = async (month, year) => {
+        // return personalStatusEvents
+        return RequestAPI.get(`/events/personal/all`) //-> ready from Radi
     }
 
     static getById = async (id) => {
-        return personalEvents.concat(allEvents).filter(event => event.id === +id)[0]
-        // return RequestAPI.get(`/events/${id}`) -> ready from Radi (with auth)
+        // return personalEvents.concat(allEvents).filter(event => event.id === +id)[0]
+        return RequestAPI.get(`/events/${id}`)
     }
 
     static create = async (data) => {
         console.log('[CREATE] data', data)
-        // return RequestAPI.post('/events/new', data) ->ready from Radi
+        return RequestAPI.post('/events/new', data) //->ready from Radi
     }
 
     static accept = async (id) => {
-        // return RequestAPI.post(`/events/${id}/accept`) -> ready from Radi
+        return RequestAPI.post(`/events/${id}/accept`)
     }
 
     static reject = async (id) => {
