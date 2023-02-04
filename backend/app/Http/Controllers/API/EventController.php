@@ -81,7 +81,6 @@ class EventController extends Controller
                 return new ErrorResponse((array)'The field isCatering is required.');
             }
             if ($eventType) {
-//                return [$request->get('isCatering')];
                 return $user->foodTypesForEventType($eventType->id, $request->get('isCatering'));
             }
             return new ErrorResponse((array)'Non existent event type for that organizer');
@@ -126,22 +125,29 @@ class EventController extends Controller
      */
     public function getPersonalEvents(int $month, int $year): array
     {
+        $filteredEvents = [];
+        $eventsResources = [];
         if (!$month || !$year) {
             $date = Carbon::now();
         } else {
-            $date = Carbon::create($year, $month);
+            $date = Carbon::create($year, $month, 1);
         }
         $user = Auth::user();
         $events = Event::where('client_id', $user->id)
             ->orWhere('organizer_id', $user->id)
-            ->where('status', '!=', Event::EVENT_STATUS_FINISHED)
-            ->where('start_date', '>=', $date->clone()->startOfMonth())
-            ->where('end_date', '<=', $date->clone()->endOfMonth())
             ->get();
-        $eventsResources = [];
 
-        if (count($events) != 0) {
-            foreach ($events as $event) {
+        foreach ($events as $event) {
+            if (
+                Carbon::createFromFormat('Y-m-d H:i:s', $event->start_date)->gte($date->firstOfMonth()) &&
+                Carbon::createFromFormat('Y-m-d H:i:s', $event->end_date)->lte($date->endOfMonth())
+            ) {
+                $filteredEvents[] = $event;
+            }
+        }
+
+        if (count($filteredEvents) != 0) {
+            foreach ($filteredEvents as $event) {
                 $eventsResources[] = new EventResource($event);
             }
         }
@@ -185,21 +191,27 @@ class EventController extends Controller
         }
         if ($request->has('organizerId')) {
             $events = Event::where('organizer_id', $request->get('organizerId'))
-                ->where('start_date', '>=', $date->clone()->startOfMonth())
-                ->where('end_date', '<=', $date->clone()->endOfMonth())
                 ->get();
         } else {
             $events = Event::where('status', Event::EVENT_STATUS_FINISHED)
-                ->where('start_date', '>=', $date->clone()->startOfMonth())
-                ->where('end_date', '<=', $date->clone()->endOfMonth())
                 ->where('is_public', true)
                 ->get();
         }
 
+        $filteredEvents = [];
+        foreach ($events as $event) {
+            if (
+                Carbon::createFromFormat('Y-m-d H:i:s', $event->start_date)->gte($date->firstOfMonth()) &&
+                Carbon::createFromFormat('Y-m-d H:i:s', $event->end_date)->lte($date->endOfMonth())
+            ) {
+                $filteredEvents[] = $event;
+            }
+        }
+
         $eventsResources = [];
 
-        if (count($events) != 0) {
-            foreach ($events as $event) {
+        if (count($filteredEvents) != 0) {
+            foreach ($filteredEvents as $event) {
                 $eventsResources[] = new BasicInfoEventResource($event);
             }
         }
