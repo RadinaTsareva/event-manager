@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "6a679326-1134-44f7-9a59-4ef8f7f0cdbb",
+        "_postman_id": "7eb40051-276e-44a0-8ee3-7a717fd7e4e5",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"necessitatibus\",\"new_password\":\"est\"}"
+                            "raw": "{\"current_password\":\"provident\",\"new_password\":\"beatae\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"quia\",\"gender\":\"none\",\"email\":\"kaitlyn36@example.org\",\"role\":\"organizer\",\"address\":\"et\",\"phoneNumber\":\"non\"}"
+                            "raw": "{\"name\":\"dicta\",\"gender\":\"none\",\"email\":\"marquardt.mittie@example.com\",\"role\":\"client\",\"address\":\"quas\",\"phoneNumber\":\"quos\"}"
                         },
                         "description": ""
                     },
@@ -216,7 +216,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "3",
+                                    "value": "2",
                                     "description": ""
                                 }
                             ]
@@ -268,13 +268,13 @@
                                 {
                                     "id": "mouth",
                                     "key": "mouth",
-                                    "value": "quam",
+                                    "value": "et",
                                     "description": ""
                                 },
                                 {
                                     "id": "year",
                                     "key": "year",
-                                    "value": "occaecati",
+                                    "value": "vero",
                                     "description": ""
                                 }
                             ]
@@ -307,23 +307,9 @@
                     "request": {
                         "url": {
                             "host": "{{baseUrl}}",
-                            "path": "api\/events\/personal\/all\/:mouth\/:year",
+                            "path": "api\/events\/personal\/all",
                             "query": [],
-                            "raw": "{{baseUrl}}\/api\/events\/personal\/all\/:mouth\/:year",
-                            "variable": [
-                                {
-                                    "id": "mouth",
-                                    "key": "mouth",
-                                    "value": "quo",
-                                    "description": ""
-                                },
-                                {
-                                    "id": "year",
-                                    "key": "year",
-                                    "value": "earum",
-                                    "description": ""
-                                }
-                            ]
+                            "raw": "{{baseUrl}}\/api\/events\/personal\/all"
                         },
                         "method": "GET",
                         "header": [
@@ -360,7 +346,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "5",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -400,7 +386,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -440,7 +426,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "8",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -463,7 +449,7 @@
                         {
                             "header": [],
                             "code": 200,
-                            "body": "{\n \"data\": {\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"organizerId\": 1,\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"accommodationWebsite\": null,\n     \"hasGivenFeedback\": false,\n     \"isPublic\": false\n   },\n  \"status\": 200\n}",
+                            "body": "[\n     \"id\": 1,\n     \"status\": \"finished\",\n     \"name\": \"radi\",\n     \"start\": null,\n     \"end\": null,\n     \"organizerName\": \"radina\",\n     \"organizerEmail\": \"radina@gmail.com\",\n     \"organizerId\": 1,\n     \"type\": \"wedding\",\n     \"moreInfo\": null,\n     \"description\": null,\n     \"accommodationNeeded\": 1,\n     \"place\": null,\n     \"pricePerGuest\": null,\n     \"priceForFood\": null,\n     \"foodDetails\": null,\n     \"priceForAccommodation\": null,\n     \"accommodationDetails\": null,\n     \"accommodationContact\": null,\n     \"accommodationWebsite\": null,\n     \"hasGivenFeedback\": false,\n     \"isPublic\": false\n   ],",
                             "name": ""
                         },
                         {
@@ -492,7 +478,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "12",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -532,7 +518,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "9",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -582,7 +568,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":17,\"name\":\"ea\",\"start\":\"2002-12-20\",\"end\":\"2048-10-16\",\"type\":\"perferendis\",\"isCatering\":true,\"foodType\":\"cum\",\"description\":\"Omnis quia et sint ut.\",\"guestsCount\":61,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":14,\"name\":\"culpa\",\"start\":\"2020-10-24\",\"end\":\"2096-05-19\",\"type\":9,\"isCatering\":false,\"foodType\":\"harum\",\"description\":\"Omnis in aut magnam.\",\"guestsCount\":53,\"accommodationNeeded\":true}"
                         },
                         "description": ""
                     },
@@ -619,7 +605,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "16",
+                                    "value": "2",
                                     "description": "The ID of the event."
                                 }
                             ]
@@ -637,7 +623,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":12,\"place\":\"non\",\"placeWebsite\":\"ab\",\"placeGoogleMapsLink\":\"fugiat\",\"pricePerGuest\":40,\"priceForFood\":20,\"priceForAccommodation\":0.255357,\"accommodationDetails\":\"saepe\",\"accommodationContact\":\"saepe\"}"
+                            "raw": "{\"eventId\":17,\"place\":\"qui\",\"placeWebsite\":\"quisquam\",\"placeGoogleMapsLink\":\"iure\",\"pricePerGuest\":60,\"priceForFood\":90,\"priceForAccommodation\":58,\"accommodationDetails\":\"et\",\"accommodationContact\":\"velit\"}"
                         },
                         "description": ""
                     },
@@ -758,7 +744,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "ratione",
+                                    "value": "qui",
                                     "description": ""
                                 }
                             ]
@@ -856,7 +842,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "saepe",
+                                    "value": "ipsam",
                                     "description": ""
                                 }
                             ]
@@ -948,7 +934,7 @@
                                 {
                                     "id": "type",
                                     "key": "type",
-                                    "value": "quis",
+                                    "value": "quia",
                                     "description": ""
                                 }
                             ]
@@ -966,7 +952,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventTypeId\":17,\"value\":\"fugit\"}"
+                            "raw": "{\"eventTypeId\":3,\"value\":\"aut\"}"
                         },
                         "description": ""
                     },
@@ -997,7 +983,7 @@
                                 {
                                     "id": "type",
                                     "key": "type",
-                                    "value": "minus",
+                                    "value": "et",
                                     "description": ""
                                 }
                             ]
@@ -1015,7 +1001,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":2,\"value\":\"cum\"}"
+                            "raw": "{\"id\":17,\"value\":\"omnis\"}"
                         },
                         "description": ""
                     },
@@ -1064,7 +1050,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":2479.4}"
+                            "raw": "{\"id\":87558629.03204373}"
                         },
                         "description": ""
                     },
@@ -1127,7 +1113,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "in",
+                                    "value": "voluptatem",
                                     "description": "The ID of the chat."
                                 }
                             ]
@@ -1177,7 +1163,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":\"non\",\"message\":\"deleniti\"}"
+                            "raw": "{\"id\":\"odit\",\"message\":\"et\"}"
                         },
                         "description": ""
                     },
@@ -1234,13 +1220,13 @@
                                 {
                                     "id": "mouth",
                                     "key": "mouth",
-                                    "value": "14",
+                                    "value": "2",
                                     "description": ""
                                 },
                                 {
                                     "id": "year",
                                     "key": "year",
-                                    "value": "cupiditate",
+                                    "value": "ut",
                                     "description": ""
                                 }
                             ]
@@ -1293,7 +1279,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"mayert.leon@example.org\",\"password\":\"odit\"}"
+                            "raw": "{\"email\":\"carlee30@example.org\",\"password\":\"ab\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1337,7 +1323,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"amet\",\"gender\":\"none\",\"email\":\"ufadel@example.com\",\"role\":\"client\",\"password\":\"aliquid\",\"phoneNumber\":\"esse\",\"address\":\"culpa\"}"
+                            "raw": "{\"name\":\"voluptatem\",\"gender\":\"male\",\"email\":\"grimes.jeffery@example.com\",\"role\":\"organizer\",\"password\":\"autem\",\"phoneNumber\":\"illum\",\"address\":\"laboriosam\"}"
                         },
                         "description": "",
                         "auth": {

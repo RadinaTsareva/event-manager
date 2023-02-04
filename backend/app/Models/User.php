@@ -141,7 +141,7 @@ class User extends Authenticatable
         return $this->hasMany(CateringType::class, 'organizer_id');
     }
 
-    public function foodTypesForEventType(int $eventTypeId, string $isCatering): array
+    public function foodTypesForEventType(int $eventTypeId, bool $isCatering): array
     {
         if ($isCatering == 'true') {
             return $this->cateringTypes()->where('event_type_id', $eventTypeId)->pluck('name')->toArray();

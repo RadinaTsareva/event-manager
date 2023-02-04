@@ -31,7 +31,7 @@ Route::middleware('auth:sanctum')->group(function () {
 
     Route::get('/events/{eventTypeId}/foodTypes', [EventController::class, 'getFoodTypesForEventType']);
     Route::get('/events/personal/{mouth}/{year}', [EventController::class, 'getPersonalEvents']);
-    Route::get('/events/personal/all/{mouth}/{year}',[EventController::class, 'getAllPersonalEvents']);
+    Route::get('/events/personal/all',[EventController::class, 'getAllPersonalEvents']);
     Route::post('/events/{id}/accept', [EventController::class, 'acceptEvent']);
     Route::post('/events/{id}/reject', [EventController::class, 'rejectEvent']);
     Route::get('/events/{id}', [EventController::class, 'getPersonalEvent']);

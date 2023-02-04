@@ -6,6 +6,7 @@ use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\Relations\HasMany;
 use Illuminate\Database\Eloquent\Relations\HasOne;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Date;
 use Illuminate\Validation\Rules\Enum;
 
@@ -111,5 +112,24 @@ class Event extends Model
     public function ratingAndFeedback(): HasOne
     {
         return $this->hasOne(RatingAndFeedback::class);
+    }
+
+    public function checkForFeedback(): bool
+    {
+        $user = Auth::user();
+        if (!$user) {
+            return false;
+        }
+        if ($user->role == User::ROLE_ORGANISER && $this->organizer_id == $user->id) {
+            if ($this->ratingAndFeedback && $this->ratingAndFeedback->rating_for_client) {
+                return true;
+            }
+        } elseif ($user->role == User::ROLE_CLIENT && $this->client_id == $user->id) {
+            if ($this->ratingAndFeedback && $this->ratingAndFeedback->rating_for_organiser) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }

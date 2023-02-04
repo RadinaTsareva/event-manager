@@ -34,7 +34,7 @@ class EventCreateFirstStageRequest extends FormRequest
             'name' => ['required', 'string'],
             'start' => ['required', 'date', 'before_or_equal:end'],
             'end' => ['required', 'date', 'after_or_equal:start'],
-            'type' => ['required', 'string'],
+            'type' => ['required', 'integer', 'exists:event_types,id'],
             'isCatering' => ['required', 'boolean'],
             'foodType' => ['required', 'string'],
             'description' => ['required', 'string'],
@@ -48,20 +48,10 @@ class EventCreateFirstStageRequest extends FormRequest
         $organizer = User::find($this->get('organizerId'));
         if ($organizer) {
             $validator->after(function ($validator) use ($organizer) {
-                $evenTypes = $organizer->eventTypes()->pluck('name')->toArray();
+                $evenTypes = $organizer->eventTypes()->pluck('id')->toArray();
                 if (in_array($this->get('type'), $evenTypes)) {
                     $validator->errors()->add('type', 'This event type is not part of the organizer\'s ones');
                 }
-                if($this->get('isCatering')) {
-                    $foodTypes = $organizer->cateringTypes()->pluck('name')->toArray();
-                } else {
-                    $foodTypes = $organizer->menuTypes()->pluck('name')->toArray();
-                }
-
-                if (in_array($this->get('foodType'), $foodTypes)) {
-                    $validator->errors()->add('type', 'This food type is not part of the organizer\'s menu,catering options');
-                }
-
             });
         }
     }
