@@ -39,6 +39,8 @@ Route::middleware('auth:sanctum')->group(function () {
     Route::get('/events/{id}/pics', [EventPictureController::class, 'getEventPictures']);
     Route::post('/events/new', [EventController::class, 'saveFirstStageEvent']);
     Route::post('/events/{id}', [EventController::class, 'saveSecondStageEvent']);
+    Route::post('/events/{id}/comment', [EventController::class, 'saveComment']);
+    Route::post('/events/{id}/public', [EventController::class, 'makeEventPublic']);
 
     Route::get('/users/{id}/event-types', [EventTypeController::class, 'getEventTypesForUser']);
     Route::get('/users/event-types', [EventTypeController::class, 'getEventTypesForOrganizer']);

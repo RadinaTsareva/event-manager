@@ -24,12 +24,12 @@ class BlacklistController extends Controller
      *      "success":false,
      *      "messages":["Non existing user"]
      * }
-     * @param int $userId
+     * @param int $id
      * @return ErrorResponse|SuccessResource
      */
-    public function blockUser(int $userId): ErrorResponse|SuccessResource
+    public function blockUser(int $id): ErrorResponse|SuccessResource
     {
-        $user = User::find($userId);
+        $user = User::find($id);
         $currentUser = Auth::user();
         if (!$user) {
             return new ErrorResponse(['Non existing user']);
@@ -39,14 +39,14 @@ class BlacklistController extends Controller
             return new ErrorResponse(['You do not have rights to block this user']);
         }
 
-        if ($userId == $currentUser->id) {
+        if ($id == $currentUser->id) {
             return new ErrorResponse(['You cannot block yourself']);
         }
 
         Blacklist::create(
             [
                 'created_by_user_id' => $currentUser->id,
-                'block_user_id' => $userId,
+                'block_user_id' => $id,
             ]
         );
 

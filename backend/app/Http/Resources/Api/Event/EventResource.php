@@ -34,7 +34,8 @@ class EventResource extends ApiResource
             'hasGivenFeedback' => $this->resource->checkForFeedback(),
             'isPublic' => $this->resource->is_public,
             'guestsCount' => $this->resource->number_of_people,
-            'foodType' => $this->resource->food_type
+            'foodType' => $this->resource->food_type,
+            'clientEmail' => $this->resource->client->email
         ];
     }
 }
