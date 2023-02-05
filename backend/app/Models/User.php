@@ -166,7 +166,7 @@ class User extends Authenticatable
         foreach ($messagesReceivers as $messagesReceiver) {
             $user = User::find($messagesReceiver->user_id_receiver);
             //ignoring messages with wrong id's
-            if ($user) {
+            if ($user && !in_array($user, $data)) {
                 $data[] = $user;
             }
         }
