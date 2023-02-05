@@ -343,7 +343,8 @@ class EventController extends Controller
                 'hasGivenFeedback' => $event->checkForFeedback(),
                 'isPublic' => $event->is_public,
                 'guestsCount' => $event->number_of_people,
-                'foodType' => $event->food_type
+                'foodType' => $event->food_type,
+                'clientEmail' => $event->client->email
             ]
         );
     }
@@ -524,6 +525,28 @@ class EventController extends Controller
                 'comment' => $request->get('commentInput')
             ]
         );
+
+        return new SuccessResource([]);
+    }
+
+    /**
+     * Make event public
+     *
+     * @param Request $request
+     * @param int $id
+     * @return ErrorResponse|SuccessResource
+     */
+    public function makeEventPublic(Request $request, int $id): ErrorResponse|SuccessResource
+    {
+        $event = Event::find($id);
+        if (!$event) {
+            return new ErrorResponse(['Non existing event']);
+        }
+
+        if ($request->has('isPublic')) {
+            $event->is_public = $request->get('isPublic') == 'true';
+            $event->update();
+        }
 
         return new SuccessResource([]);
     }

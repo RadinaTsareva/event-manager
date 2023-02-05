@@ -17,6 +17,12 @@ class EventComment extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'created_by_user_id',
+        'event_id',
+        'comment'
+    ];
+
     public function event(): BelongsTo
     {
         return $this->BelongsTo(Event::class);
