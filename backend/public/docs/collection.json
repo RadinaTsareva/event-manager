@@ -10,7 +10,7 @@
     ],
     "info": {
         "name": "Laravel",
-        "_postman_id": "483bfe84-ad34-431c-9145-ea7ea9551b72",
+        "_postman_id": "fad57043-8420-4751-93cb-28b6560faec3",
         "description": "",
         "schema": "https:\/\/schema.getpostman.com\/json\/collection\/v2.1.0\/collection.json"
     },
@@ -98,7 +98,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"current_password\":\"possimus\",\"new_password\":\"amet\"}"
+                            "raw": "{\"current_password\":\"distinctio\",\"new_password\":\"ut\"}"
                         },
                         "description": ""
                     },
@@ -139,7 +139,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"culpa\",\"gender\":\"male\",\"email\":\"smitham.haylee@example.net\",\"role\":\"admin\",\"address\":\"enim\",\"phoneNumber\":\"quaerat\"}"
+                            "raw": "{\"name\":\"omnis\",\"gender\":\"none\",\"email\":\"wiegand.dock@example.net\",\"role\":\"client\",\"address\":\"dolor\",\"phoneNumber\":\"voluptatem\"}"
                         },
                         "description": ""
                     },
@@ -274,7 +274,7 @@
                                 {
                                     "id": "year",
                                     "key": "year",
-                                    "value": "aut",
+                                    "value": "est",
                                     "description": ""
                                 }
                             ]
@@ -568,7 +568,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"organizerId\":6,\"name\":\"voluptatem\",\"start\":\"2013-07-20\",\"end\":\"2086-06-10\",\"type\":10,\"isCatering\":false,\"foodType\":\"dolorum\",\"description\":\"Ipsam sequi dicta nemo et nemo delectus.\",\"guestsCount\":60,\"accommodationNeeded\":true}"
+                            "raw": "{\"organizerId\":14,\"name\":\"ipsa\",\"start\":\"2017-10-22\",\"end\":\"2103-01-28\",\"type\":1,\"isCatering\":false,\"foodType\":\"rerum\",\"description\":\"Aut voluptatem culpa assumenda.\",\"guestsCount\":71,\"accommodationNeeded\":false}"
                         },
                         "description": ""
                     },
@@ -623,7 +623,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventId\":14,\"place\":\"ipsam\",\"placeWebsite\":\"voluptas\",\"placeGoogleMapsLink\":\"sint\",\"pricePerGuest\":18,\"priceForFood\":68,\"priceForAccommodation\":2260.6058,\"accommodationDetails\":\"modi\",\"accommodationContact\":\"iure\"}"
+                            "raw": "{\"eventId\":8,\"place\":\"harum\",\"placeWebsite\":\"provident\",\"placeGoogleMapsLink\":\"error\",\"pricePerGuest\":68,\"priceForFood\":15,\"priceForAccommodation\":64374,\"accommodationDetails\":\"ut\",\"accommodationContact\":\"ea\"}"
                         },
                         "description": ""
                     },
@@ -672,7 +672,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"commentInput\":\"vitae\"}"
+                            "raw": "{\"commentInput\":\"eum\"}"
                         },
                         "description": ""
                     },
@@ -684,6 +684,39 @@
                             "name": ""
                         }
                     ]
+                },
+                {
+                    "name": "Make event public",
+                    "request": {
+                        "url": {
+                            "host": "{{baseUrl}}",
+                            "path": "api\/events\/:id\/public",
+                            "query": [],
+                            "raw": "{{baseUrl}}\/api\/events\/:id\/public",
+                            "variable": [
+                                {
+                                    "id": "id",
+                                    "key": "id",
+                                    "value": "2",
+                                    "description": "The ID of the event."
+                                }
+                            ]
+                        },
+                        "method": "POST",
+                        "header": [
+                            {
+                                "key": "Content-Type",
+                                "value": "application\/json"
+                            },
+                            {
+                                "key": "Accept",
+                                "value": "application\/json"
+                            }
+                        ],
+                        "body": null,
+                        "description": ""
+                    },
+                    "response": []
                 },
                 {
                     "name": "Getting all event types for user",
@@ -787,7 +820,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "nostrum",
+                                    "value": "ut",
                                     "description": ""
                                 }
                             ]
@@ -885,7 +918,7 @@
                                 {
                                     "id": "eventTypeId",
                                     "key": "eventTypeId",
-                                    "value": "ducimus",
+                                    "value": "voluptates",
                                     "description": ""
                                 }
                             ]
@@ -977,7 +1010,7 @@
                                 {
                                     "id": "type",
                                     "key": "type",
-                                    "value": "in",
+                                    "value": "natus",
                                     "description": ""
                                 }
                             ]
@@ -995,7 +1028,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"eventTypeId\":20,\"value\":\"quas\"}"
+                            "raw": "{\"eventTypeId\":7,\"value\":\"qui\"}"
                         },
                         "description": ""
                     },
@@ -1026,7 +1059,7 @@
                                 {
                                     "id": "type",
                                     "key": "type",
-                                    "value": "aperiam",
+                                    "value": "sit",
                                     "description": ""
                                 }
                             ]
@@ -1044,7 +1077,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":2,\"value\":\"dolorem\"}"
+                            "raw": "{\"id\":15,\"value\":\"et\"}"
                         },
                         "description": ""
                     },
@@ -1093,7 +1126,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":532813.36}"
+                            "raw": "{\"id\":9.353}"
                         },
                         "description": ""
                     },
@@ -1156,7 +1189,7 @@
                                 {
                                     "id": "id",
                                     "key": "id",
-                                    "value": "ullam",
+                                    "value": "sint",
                                     "description": "The ID of the chat."
                                 }
                             ]
@@ -1206,7 +1239,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"id\":\"perferendis\",\"message\":\"cumque\"}"
+                            "raw": "{\"id\":\"ut\",\"message\":\"maxime\"}"
                         },
                         "description": ""
                     },
@@ -1269,7 +1302,7 @@
                                 {
                                     "id": "year",
                                     "key": "year",
-                                    "value": "eos",
+                                    "value": "sit",
                                     "description": ""
                                 }
                             ]
@@ -1322,7 +1355,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"email\":\"devin.bartell@example.org\",\"password\":\"illo\"}"
+                            "raw": "{\"email\":\"mrobel@example.com\",\"password\":\"a\"}"
                         },
                         "description": "",
                         "auth": {
@@ -1366,7 +1399,7 @@
                         ],
                         "body": {
                             "mode": "raw",
-                            "raw": "{\"name\":\"laborum\",\"gender\":\"female\",\"email\":\"bernhard.colleen@example.org\",\"role\":\"organizer\",\"password\":\"saepe\",\"phoneNumber\":\"earum\",\"address\":\"qui\"}"
+                            "raw": "{\"name\":\"ex\",\"gender\":\"female\",\"email\":\"dicki.fae@example.com\",\"role\":\"organizer\",\"password\":\"voluptatem\",\"phoneNumber\":\"occaecati\",\"address\":\"sapiente\"}"
                         },
                         "description": "",
                         "auth": {
