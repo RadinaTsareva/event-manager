@@ -1,5 +1,5 @@
 /* eslint-disable react-hooks/exhaustive-deps */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useRef, useState } from 'react';
 import { Carousel, Form } from 'react-bootstrap';
 import { Eye, EyeSlash, PersonFillSlash } from 'react-bootstrap-icons';
 
@@ -13,6 +13,7 @@ import Button from '../../components/common/Button/Button';
 import Feedback from '../../components/Feedback/Feedback';
 import UserService from '../../services/userService';
 import { STATUS } from '../../utils/enums';
+import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 
 const defaultValues = {
     comment: { name: 'comment', value: "", valid: false, message: '' },
@@ -28,11 +29,17 @@ const Gallery = (props) => {
     const [commentField, setCommentField] = useState(defaultValues.comment);
     const [comments, setComments] = useState([]);
 
+    const messagesEndRef = useRef(null);
     const urlParams = useParams()
 
     useEffect(() => {
         loadData();
     }, [loading, account?.blacklisted.length]);
+
+
+    const scrollToBottom = () => {
+        setTimeout(() => messagesEndRef.current?.lastElementChild?.scrollIntoView({ inline: 'center', behavior: 'smooth' }), 100)
+    }
 
     const loadData = async () => {
         const resEvent = await EventsService.getById(urlParams.id);
@@ -41,9 +48,10 @@ const Gallery = (props) => {
         const resPics = await EventsService.getPics(urlParams.id);
         setImages(resPics);
 
-        if (event.isPublic) {
+        if (resEvent.isPublic) {
             const resComments = await EventsService.getCommentsByEventId(urlParams.id);
             setComments(resComments);
+            scrollToBottom();
         }
 
         setLoading(false);
@@ -56,15 +64,18 @@ const Gallery = (props) => {
     const eventPublicHandler = async (isPublic) => {
         await EventsService.update(urlParams.id, { isPublic });
         await loadData()
+        toastHandler({ success: TOAST_STATES.SUCCESS, message: `Event set to ${isPublic ? 'public' : 'private'}` })
     }
 
     const commentClickedHandler = async () => {
         await EventsService.comment(event.id, commentField.value);
         setCommentField(defaultValues.comment)
+        scrollToBottom();
     }
 
     const blockClickedHandler = async (userId) => {
         await UserService.blacklistUser(userId);
+        toastHandler({ success: TOAST_STATES.SUCCESS, message: 'User blocked successfully' })
     }
 
     const getVisibility = () => {
@@ -115,7 +126,7 @@ const Gallery = (props) => {
                         )}
                     </Carousel>
                 </div>
-                <div className={classes.EventInfo}>
+                <div className={classes.Event}>
                     <h3>Event details</h3>
                     <div className={classes.EventInfo}>
                         <p><span>Location:</span> {event.place}</p>
@@ -128,7 +139,7 @@ const Gallery = (props) => {
                     event.isPublic
                         ? <div className={classes.CommentSection}>
                             <h3>Comments</h3>
-                            <div className={classes.Comments}>
+                            <div className={classes.Comments} ref={messagesEndRef}>
                                 {
                                     comments.map((comment, index) =>
                                         <div key={index} className={classes.Comment}>

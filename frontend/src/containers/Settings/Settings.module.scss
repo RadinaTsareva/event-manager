@@ -104,3 +104,14 @@
         }
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Container {
+        min-width: 100vw;
+        padding: 0 10px;
+
+        .Types {
+            width: 100%;
+        }
+    }
+}

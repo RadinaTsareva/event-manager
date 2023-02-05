@@ -19,6 +19,7 @@ const FeedbackModal = (props) => {
 
     const blacklistUserHandler = async () => {
         await UserService.blacklistUser(props.event.organizerId);
+        toastHandler({ success: TOAST_STATES.SUCCESS, message: 'User blacklisted successfully' })
     }
 
     const submitClickedHandler = async (event) => {

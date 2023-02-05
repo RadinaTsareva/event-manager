@@ -4,6 +4,7 @@ import React, { useEffect, useState } from 'react';
 import { Col, Row } from 'react-bootstrap';
 import { useLocation, useNavigate, useParams } from 'react-router';
 import Spinner from '../../components/common/Spinner/Spinner';
+import Button from '../../components/common/Button/Button';
 import EditableForm from '../../components/EventForms/EditableForm';
 import InitialForm from '../../components/EventForms/InitialForm';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
@@ -11,6 +12,7 @@ import EventsService from '../../services/eventsService';
 import { convertEventStatus } from '../../utils/converter';
 import { ROLES, STATUS } from '../../utils/enums';
 import classes from './EventManagement.module.scss';
+import ImageUpload from '../../components/ImageUpload/ImageUpload';
 
 const EventManagement = (props) => {
     const { account } = useStoreState((state) => state.userStore);
@@ -98,8 +100,8 @@ const EventManagement = (props) => {
                 {
                     event.status === STATUS.EDITABLE &&
                     <div className={classes.ActionBtns}>
-                        <button className={classes.AcceptBtn} type='button' onClick={acceptClickedHandler}>Accept</button>
-                        <button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</button>
+                        <Button className={classes.AcceptBtn} type='button' onClick={acceptClickedHandler}>Accept</Button>
+                        <Button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</Button>
                     </div>
                 }
             </div>
@@ -143,7 +145,14 @@ const EventManagement = (props) => {
             {
                 event.status === STATUS.PENDING &&
                 <div className={classes.ActionBtns}>
-                    <button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</button>
+                    <Button className={classes.RejectBtn} type='button' onClick={rejectClickedHandler}>Reject</Button>
+                </div>
+            }
+            {
+                event.status === STATUS.ACCEPTED && account.role === ROLES.ORGANIZER &&
+                <div className={classes.UploadForm}>
+                    <h3>Upload images</h3>
+                    <ImageUpload />
                 </div>
             }
         </div >

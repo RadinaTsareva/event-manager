@@ -11,7 +11,6 @@
     width: 100%;
     display: flex;
     margin: 0 auto;
-    padding: 0 20px;
 
     .ContainerSection {
         align-items: center;
@@ -66,6 +65,36 @@
     }
 }
 
-.ServiceTheme {
-    background-color: pink;
+@media screen and (max-width: 768px) {
+    .Layout {
+        width: calc(100vw - 20px);
+        margin: 0 10px;
+
+        .Heading {
+            h1 {
+                font-size: calc(1.375rem + 1.5vw);
+                line-height: 28px;
+            }
+
+            p,
+            span {
+                font-size: calc(0.875rem + 0.5vw);
+                line-height: 14px;
+
+                >span {
+                    margin: 5px auto;
+                }
+
+                .Pills {
+                    a:hover {
+                        color: white;
+                    }
+                }
+            }
+        }
+
+        .Container {
+            width: 100%;
+        }
+    }
 }

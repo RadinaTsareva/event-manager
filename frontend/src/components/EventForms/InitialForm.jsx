@@ -5,6 +5,7 @@ import classes from './EventForms.module.scss';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
 import Input from '../common/Input/Input';
+import Button from '../common/Button/Button';
 import Select from '../common/Select/Select';
 import { validateDate, validateOptions, validateText, validateNumber } from '../../utils/validation';
 import UserService from '../../services/userService';
@@ -97,6 +98,24 @@ const InitialForm = (props) => {
     }
 
     const sendClickedHandler = async () => {
+        let valid = true;
+        for (const data of fields) {
+            if (!data.field.valid || data.field.value === "") {
+                valid = false
+                break
+            }
+        }
+
+        for (const data of additionalFields) {
+            if (!data.field.valid || data.field.value === "") {
+                valid = false
+            }
+        }
+
+        if (!valid) {
+            return toastHandler({ success: TOAST_STATES.ERROR, message: 'Please fill in all required fields' })
+        }
+
         if (!props.event) {
             await EventsService.create({
                 organizerId: organizer.value,
@@ -118,6 +137,9 @@ const InitialForm = (props) => {
                 type: type.value,
                 foodType: foodType.value,
                 description: description.value,
+                guestsCount: guestsCount.value,
+                name: eventName.value,
+                isCatering,
                 accommodationNeeded,
             })
             toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
@@ -128,27 +150,27 @@ const InitialForm = (props) => {
 
     const fields = [
         {
-            label: 'Event name', type: 'text', placeholder: 'Event name',
+            controlId: 'formGroupName', label: 'Event name', type: 'text', placeholder: 'Event name',
             field: eventName, setField: setEventName, validateFn: (text) => validateText(text, 4)
         },
         {
-            label: 'Date from', type: 'datetime-local',
+            controlId: 'formGroupDate', label: 'Date from', type: 'datetime-local',
             field: dateFrom, setField: setDateFrom, validateFn: validateDate
         },
         {
-            label: 'Date to', type: 'datetime-local',
+            controlId: 'formGroupDate', label: 'Date to', type: 'datetime-local',
             field: dateTo, setField: setDateTo, validateFn: validateDate,
             onBlur: () => !!dateFrom.value && !!dateTo.value && new Date(dateFrom.value).getTime() < new Date(dateTo.value).getTime()
         },
         {
-            label: 'Description', type: 'text', placeholder: 'Description',
+            controlId: 'formGroupDescription', label: 'Description', type: 'text', placeholder: 'Description',
             field: description, setField: setDescription, validateFn: (text) => validateText(text, 19)
         },
     ]
 
     const additionalFields = [
         {
-            label: 'Guests count', type: 'number', placeholder: 'Guests count',
+            controlId: 'formGroupGuestsCount', label: 'Guests count', type: 'number', placeholder: 'Guests count',
             field: guestsCount, setField: setGuestsCount, validateFn: validateNumber
         }
     ]
@@ -246,7 +268,7 @@ const InitialForm = (props) => {
                     </>
                 }
                 {!props.disableFields
-                    && <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
+                    && <Button className={classes.SendBtn} onClick={sendClickedHandler}>Send</Button>
                 }
             </Form>
         </>

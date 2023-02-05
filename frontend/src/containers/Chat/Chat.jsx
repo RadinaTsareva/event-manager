@@ -52,7 +52,6 @@ const Chat = (props) => {
         setChatsList(chatsList)
     }
 
-
     const loadMessages = async (id) => {
         await flushSync(async () => {
             const messages = await ChatService.getMessages(id || organizerId)

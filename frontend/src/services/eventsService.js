@@ -30,7 +30,7 @@ const personalEvents = [{
 }, {
     // TODO an event should look like this, with empty fields on commencement
     id: 3,
-    status: STATUS.PENDING,
+    status: STATUS.FINISHED,
     name: 'Event 3',
     start: new Date(Date.now() + 10000 * 60 * 60 * 3),
     end: new Date(Date.now() + 10000 * 60 * 60 * 5),
@@ -57,14 +57,14 @@ const personalEvents = [{
 }]
 
 const allEvents = [{
-    id: 2,
+    id: 10,
     status: STATUS.FINISHED,
     name: 'Event 2',
     type: 'Type 2',
     place: 'Place 2',
-    clientEmail: 'alabala@gmail.com',
+    clientEmail: 'alabala@email.com',
     isPublic: true,
-    hasFeedback: true,
+    hasFeedback: false,
     start: new Date(Date.now() + 1000 * 60 * 60 * 2),
     end: new Date(Date.now() + 1000 * 60 * 60 * 3),
     organizerName: 'John Doe',
@@ -89,101 +89,49 @@ const comments = [
     }
 ]
 
-const personalStatusEvents = [
-    {
-        id: 1,
-        status: STATUS.EDITABLE,
-        name: 'Event 1',
-        hasFeedback: false,
-        organizerEmail: 'alabala1@gmail.com',
-        clientEmail: 'alabala@gmail.com',
-    },
-    {
-        id: 2,
-        status: STATUS.EDIT_PENDING,
-        name: 'Event 2',
-        hasFeedback: false,
-        organizerEmail: 'alabala1@gmail.com',
-        clientEmail: 'alabala@gmail.com',
-    },
-    {
-        id: 3,
-        status: STATUS.FINISHED,
-        name: 'Event 3',
-        hasFeedback: false,
-        organizerEmail: 'alabala1@gmail.com',
-        clientEmail: 'alabala@gmail.com',
-    },
-    {
-        id: 4,
-        status: STATUS.FINISHED,
-        name: 'Event 4',
-        hasFeedback: true,
-        organizerEmail: 'alabala1@gmail.com',
-        clientEmail: 'alabala@gmail.com',
-    },
-]
 class EventsService {
     static getPics = async (id) => {
         return Array(10).fill('https://picsum.photos/200/300')
         // return RequestAPI.get(`/events/${id}/pics`) -> ready from Radi
     }
 
-    static getOrganizers = async () => { //isn't that a duplicate?
-        // return [{ id: 1, value: 'Organizer 1' }, { id: 2, value: 'Organizer 2' }, { id: 3, value: 'Organizer 3' }, { id: 4, value: 'Organizer 4' }]
+    static uploadPics = async (id, pics) => {
+        // return RequestAPI.post(`/events/${id}/pics`, pics)
+    }
+
+    static getOrganizers = async () => {
         return RequestAPI.get('/organizers')
     }
 
     static getFoodTypes = async (organizerId, eventType, isCatering) => {
-        console.log('organizerId', organizerId);
-        // if (isCatering) {
-        //     return ['Food type 1', 'Food type 2', 'Food type 3']
-        // }
-        // return ['Food type 4', 'Food type 5', 'Food type 6']
         return RequestAPI.get(`/events/${eventType}/foodTypes?isCatering=${isCatering}&organizerId=${organizerId}`)
     }
 
     static getPersonal = async (month, year) => {
         // return personalEvents
-        // only not finished events
         return RequestAPI.get(`/events/personal/${month}/${year}`)
     }
 
     static getAll = async (month, year) => {
-        // return allEvents
+        return allEvents
         // only finished events
-        return RequestAPI.get(`/events/${month}/${year}`)
+        // return RequestAPI.get(`/events/${month}/${year}`)
     }
 
     static getAllByOrganizer = async (id, month, year) => {
-        // return [{
-        //     start: new Date(Date.now() + 1000 * 60 * 60 * 20 * id),
-        //     end: new Date(Date.now() + 1000 * 60 * 60 * 30 * id),
-        // },
-        // {
-        //     start: new Date(Date.now() + 1000 * 60 * 60 * 40 * id),
-        //     end: new Date(Date.now() + 1000 * 60 * 60 * 50 * id),
-        // },
-        // {
-        //     start: new Date(Date.now() + 1000 * 60 * 60 * 60 * id),
-        //     end: new Date(Date.now() + 1000 * 60 * 60 * 70 * id),
-        // },
-        // {
-        //     start: new Date(Date.now() + 1000 * 60 * 60 * 80 * id),
-        //     end: new Date(Date.now() + 1000 * 60 * 60 * 90 * id),
-        // }]
-        // only finished events
         return RequestAPI.get(`/events/${month}/${year}?organizerId=${id}`)
     }
 
     static getAllPersonal = async (month, year) => {
-        // return personalStatusEvents
-        return RequestAPI.get(`/events/personal/all`) //-> ready from Radi
+        return RequestAPI.get(`/events/personal/all`)
     }
 
     static getById = async (id) => {
-        // return personalEvents.concat(allEvents).filter(event => event.id === +id)[0]
-        return RequestAPI.get(`/events/${id}`)
+        const event = await RequestAPI.get(`/events/${id}`)
+        if (!event) {
+            return personalEvents.concat(allEvents).filter(event => event.id === +id)[0]
+        }
+        return event
     }
 
     static create = async (data) => {
@@ -196,12 +144,12 @@ class EventsService {
     }
 
     static reject = async (id) => {
-        // return RequestAPI.post(`/events/${id}/reject`) -> ready from Radi
+        return RequestAPI.post(`/events/${id}/reject`)
     }
 
     static send = async (data) => { //this is for the whole data
         console.log('[SEND] data', data)
-        // return RequestAPI.post('/events', data) //TODO adding event_id in the data -> done in the BE
+        return RequestAPI.post(`/events/${data.eventId}`, data) //TODO adding event_id in the data -> done in the BE
     }
 
     static update = async (id, data) => {
@@ -214,7 +162,11 @@ class EventsService {
     }
 
     static comment = async (id, commentInput) => {
-        console.log('[COMMENT] data', commentInput)
+        comments.push({
+            userId: id,
+            userName: 'John Doe',
+            content: commentInput,
+        })
         // return RequestAPI.post(`/events/${id}/comment`, commentInput)
     }
 

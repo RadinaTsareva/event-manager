@@ -2,59 +2,58 @@
 import { useStoreState } from 'easy-peasy';
 import React, { useEffect, useState } from 'react';
 import { Nav } from 'react-bootstrap';
-import Spinner from '../../components/common/Spinner/Spinner';
+import classes from './Home.module.scss';
 
 import EventsService from '../../services/eventsService';
 import { ROLES } from '../../utils/enums';
 import Calendar from '../Calendar/Calendar';
-import classes from './Home.module.scss';
+import Spinner from '../../components/common/Spinner/Spinner';
 
 const Home = () => {
     const { isLoggedIn, account } = useStoreState((state) => state.userStore);
 
-    const [personalEvents, setPersonalEvents] = useState([]);
-    const [allEvents, setAllEvents] = useState([]);
     const [events, setEvents] = useState([]);
+    const [activePill, setActivePill] = useState('1');
     const [date, setDate] = useState({ month: new Date(Date.now()).getMonth(), year: new Date(Date.now()).getFullYear() });
     const [loading, setLoading] = useState(true);
 
     useEffect((e) => {
-        if (isLoggedIn) {
-            loadPersonalEvents()
+        loadAllData()
+    }, [date.month, date.year, isLoggedIn]);
+
+    const loadAllData = async () => {
+        if (isLoggedIn && (account.role === ROLES.ORGANIZER || activePill === '2')) {
+            await loadPersonalEvents()
         }
-        if (!isLoggedIn || (isLoggedIn && account.role !== ROLES.ORGANIZER)) {
-            loadAllEvents()
+        if (!isLoggedIn || (isLoggedIn && account.role !== ROLES.ORGANIZER && activePill === '1')) {
+            await loadAllEvents()
         }
-    }, [date.month, date.year]);
+        setLoading(false)
+    }
 
     const loadPersonalEvents = async () => {
         const res = await EventsService.getPersonal(date.month + 1, date.year)
-        setPersonalEvents(res)
-
-        if (account?.role === ROLES.ORGANIZER) {
-            setEvents(res)
-        }
+        setEvents(res)
     }
 
     const loadAllEvents = async () => {
         const res = await EventsService.getAll(date.month + 1, date.year)
-        setAllEvents(res)
         setEvents(res)
-        setLoading(false)
     }
 
     const clientEventTypeChangedHandler = (e) => {
+        setActivePill(e)
         if (e === '1') {
-            setEvents(allEvents)
+            loadAllEvents()
         } else {
-            setEvents(personalEvents)
+            loadPersonalEvents()
         }
     }
 
     const clientSelection = () => {
         if (account.role === ROLES.CLIENT) {
             return (
-                <Nav variant="pills" defaultActiveKey="1" className={classes.Pills} onSelect={clientEventTypeChangedHandler}>
+                <Nav variant="pills" activeKey={activePill} defaultActiveKey="1" className={classes.Pills} onSelect={clientEventTypeChangedHandler}>
                     <Nav.Item>
                         <Nav.Link eventKey="1">all events</Nav.Link>
                     </Nav.Item>

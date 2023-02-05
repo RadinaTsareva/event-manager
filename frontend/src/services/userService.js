@@ -1,27 +1,7 @@
 import { RequestAPI } from "./baseApi";
 
-const eventTypes = [
-    { id: 1, value: 'event type 1' },
-    { id: 2, value: 'event type 2' },
-    { id: 3, value: 'event type 3' },
-]
-
-const menuTypes = [
-    { id: 1, value: 'menu type 1' },
-    { id: 2, value: 'menu type 2' },
-]
-
-const cateringTypes = [
-    { id: 1, value: 'catering type 1' },
-    { id: 2, value: 'catering type 2' },
-    { id: 3, value: 'catering type 3' },
-    { id: 4, value: 'catering type 4' },
-]
-
 class UserService {
-    static login = async (data) => { //blacklistedCount -> the blacklist this user is blocked
-        console.log('data', data);
-        // return { role: ROLES.CLIENT, token: 'token', email: 'alabala@gmail.com', blacklistedCount: 1 }
+    static login = async (data) => {
         return RequestAPI.post('/auth/login', data)
     }
 
@@ -35,18 +15,14 @@ class UserService {
     }
 
     static blacklistUser = async (id) => {
-        await RequestAPI.post(`/users/${id}/blacklist`) //-> ready from radi
+        await RequestAPI.post(`/users/${id}/blacklist`)
     }
 
     static updateInfo = async (data) => {
-        // role and email cannot be changed
-        // data: { name: 'name' } || { password: 'password' } || ...
         await RequestAPI.post('/users/update', data)
     }
 
-    static getEventTypes = async (id = null) => { //ready from Radi
-        console.log('id', id);
-        // return eventTypes
+    static getEventTypes = async (id = null) => {
         if (id) {
             return RequestAPI.get(`/users/${id}/event-types`)
         } else {
@@ -54,9 +30,7 @@ class UserService {
         }
     }
 
-    static getMenuTypes = async (eventTypeId, id = null) => { // ready from Radi
-        // const item = menuTypes.find(t => t.id === +eventTypeId);
-        // return !!item ? [item] : [];
+    static getMenuTypes = async (eventTypeId, id = null) => {
         if (id) {
             return RequestAPI.get(`/users/${id}/${eventTypeId}/menu-types`)
         } else {
@@ -64,8 +38,7 @@ class UserService {
         }
     }
 
-    static getCateringTypes = async (eventTypeId, id = null) => { //ready from Radi
-        // return cateringTypes
+    static getCateringTypes = async (eventTypeId, id = null) => {
         if (id) {
             return RequestAPI.get(`/users/${id}/${eventTypeId}/catering-types`)
         } else {
@@ -73,29 +46,16 @@ class UserService {
         }
     }
 
-    static deleteType = async (id, type) => { //ready from Radi
-        // const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
-        // const index = typeArr.findIndex(t => t.id === id);
-        // typeArr.splice(index, 1);
-        // type: 'event-types' || 'menu-types' || 'catering-types'
-        await RequestAPI.post(`/users/${type}`, { id }) //-> ready from Radi
+    static deleteType = async (id, type) => {
+        await RequestAPI.post(`/users/${type}`, { id })
     }
 
-    static updateType = async (type, data) => { //ready from Radi
-        // const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
-        // const index = typeArr.findIndex(t => t.id === data.id);
-        // typeArr[index].value = data.value;
-        // type: 'event-types' || 'menu-types' || 'catering-types'
-        // data: { id: 1, value: 'type name' }
-        await RequestAPI.post(`/users/update/${type}`, data) //-> ready from Radi
+    static updateType = async (type, data) => {
+        await RequestAPI.post(`/users/update/${type}`, data)
     }
 
     static addNewType = async (type, data) => {
-        // const typeArr = type === 'event-types' ? eventTypes : type === 'menu-types' ? menuTypes : cateringTypes;
-        // typeArr.push({ id: typeArr.length + 1, ...data });
-        // type: 'event-types' || 'menu-types' || 'catering-types'
-        // data: { value: 'type name' , eventTypeId: 1 }
-        await RequestAPI.post(`/users/create/${type}`, data)// -> ready from Radi
+        await RequestAPI.post(`/users/create/${type}`, data)
     }
 }
 

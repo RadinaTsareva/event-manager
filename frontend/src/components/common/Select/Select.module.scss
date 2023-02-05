@@ -39,3 +39,23 @@ label {
     line-height: 20px;
     margin-top: 5px;
 }
+
+@media screen and (max-width: 768px) {
+    .FormGroup {
+        label {
+            font-size: calc(0.675rem + 0.5vw) !important;
+            margin: 3px 0 !important;
+        }
+
+        select {
+            font-size: calc(0.775rem + 0.5vw) !important;
+            position: relative;
+
+            option {
+                position: absolute;
+                margin-top: 50%;
+                background-origin: blue;
+            }
+        }
+    }
+}

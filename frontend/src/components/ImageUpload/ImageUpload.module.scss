@@ -1,0 +1,15 @@
+@import '../../sharedStyles/shared.module.scss';
+
+.Form {
+    margin: 10px;
+
+    img {
+        max-width: 100px;
+        margin: 5px;
+        cursor: pointer;
+    }
+
+    button {
+        margin: 10px auto;
+    }
+}

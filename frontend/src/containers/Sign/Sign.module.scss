@@ -33,6 +33,7 @@
 
 .Heading {
     font-size: 50pt;
+    margin: auto;
     margin-bottom: 30px;
 }
 
@@ -68,5 +69,22 @@
             margin-top: 30px;
             width: 400px;
         }
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .Form {
+        .Tabs {
+            width: calc(100vw - 20px);
+            margin: 0 10px;
+
+            form {
+                width: 100%;
+            }
+        }
+    }
+
+    .Heading {
+        font-size: calc(1.275rem + 3.5vw);
     }
 }

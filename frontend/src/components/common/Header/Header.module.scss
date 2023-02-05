@@ -99,3 +99,37 @@
         display: inline !important;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Header {
+        padding-left: 0;
+        padding-right: 0;
+    }
+
+    .Body {
+        .Account {
+            h1 {
+                font-size: calc(0.875rem + 1.5vw);
+            }
+
+            h2 {
+                font-size: calc(0.775rem + 1vw);
+            }
+
+            h3 {
+                font-size: calc(0.575rem + 1vw);
+            }
+        }
+
+        .BodyNav {
+            .Nav {
+
+                a,
+                p {
+                    font-size: calc(0.775rem + 1vw);
+                    margin-left: 20px;
+                }
+            }
+        }
+    }
+}

@@ -77,7 +77,7 @@ const Header = (props) => {
                                         <Nav>
                                             <div className={classes.Nav}>
                                                 <ExclamationCircle />
-                                                <Link className={[classes.Logout, "nav-link"].join(' ')} to='/' onClick={onLogoutClick}>Log out</Link>
+                                                <Link className={[classes.Logout, "nav-link"].join(' ')} to='/sign' onClick={onLogoutClick}>Log out</Link>
                                             </div>
                                         </Nav>
                                         : null}

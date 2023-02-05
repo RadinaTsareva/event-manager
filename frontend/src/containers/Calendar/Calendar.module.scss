@@ -97,3 +97,27 @@
         background-color: $edit-color;
     }
 }
+
+@media screen and (max-width: 768px) {
+    .Container {
+        min-width: 0;
+
+        .Selector {
+            font-size: calc(0.775rem + 0.5vw);
+        }
+
+        .Calendar {
+            width: 100%;
+        }
+
+        .Event {
+            margin: 20px 5px;
+            width: calc(100% - 10px);
+            flex-direction: column;
+
+            >div {
+                margin: 10px auto;
+            }
+        }
+    }
+}

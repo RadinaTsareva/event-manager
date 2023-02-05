@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useState } from 'react';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { useStoreActions, useStoreState } from 'easy-peasy';
@@ -7,7 +8,7 @@ import Sign from '../containers/Sign/Sign';
 import Spinner from './common/Spinner/Spinner';
 import Gallery from '../containers/Gallery/Gallery';
 import Home from '../containers/Home/Home';
-import { ADMIN_ROLE, GENDER, ROLES } from '../utils/enums';
+import { ADMIN_ROLE, ROLES } from '../utils/enums';
 import EventManagement from '../containers/EventManagement/EventManagement';
 import EventsStatus from '../containers/EventsStatus/EventsStatus';
 import Admin from '../containers/Admin/Admin';
@@ -23,7 +24,7 @@ const RouteOptions = {
 
 const Router = (props) => {
     const { isLoggedIn, account } = useStoreState((state) => state.userStore);
-    const { loadUser, setAccount } = useStoreActions((actions) => actions.userStore);
+    const { loadUser } = useStoreActions((actions) => actions.userStore);
 
     const [routerAction, setRouterAction] = useState(null);
 
@@ -35,26 +36,12 @@ const Router = (props) => {
         if (isLoggedIn) {
             loadUser()
         }
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [isLoggedIn]);
 
     useEffect(() => {
         if ('#' + location.pathname !== window.location.hash) {
             navigate(location.pathname)
         }
-        // TODO
-        // setAccount({
-        //     role: ROLES.ORGANIZER,
-        //     token: 'token',
-        //     email: 'alabala@gmail.com',
-        //     blacklisted: [1, 2],
-        //     pendingEventsCount: 2,
-        //     address: 'address',
-        //     phoneNumber: '+359882701774',
-        //     name: 'name',
-        //     gender: GENDER.FEMALE
-        // })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
     }, [location.pathname]);
 
     const resolveNavigationRoute = () => {
@@ -85,7 +72,7 @@ const Router = (props) => {
                             <Route path="/" exact element={<Home />} />
                             <Route path="/login" element={<Sign />} />
                             <Route path="/events/gallery/:id" exact element={<Gallery />} />
-                            <Route path="*" element={<Navigate to='/' />} />
+                            <Route path="*" element={<Navigate to='/login' />} />
                         </Routes>
                     )
                 );

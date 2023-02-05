@@ -1,3 +1,4 @@
+/* eslint-disable react-hooks/exhaustive-deps */
 import React, { useEffect, useRef, useState } from 'react';
 import { DayPilot, DayPilotMonth } from "daypilot-pro-react";
 import { useNavigate } from 'react-router';
@@ -17,6 +18,7 @@ const Calendar = (props) => {
         eventClickHandling: props.preview ? 'Disabled' : 'Enabled',
         cellHeaderClickHandling: props.preview ? 'Disabled' : 'Enabled',
         allowMultiSelect: false,
+        events: []
     });
     const [event, setEvent] = useState(null);
     const calendarRef = useRef(null);
@@ -25,10 +27,7 @@ const Calendar = (props) => {
 
     useEffect(() => {
         loadEvents()
-        const date = new Date(data.startDate)
-        props.dateChangedHandler({ month: date.getMonth(), year: date.getFullYear() })
-        // eslint-disable-next-line react-hooks/exhaustive-deps
-    }, [data.startDate, props.events]);
+    }, [props.events]);
 
     const loadEvents = () => {
         const events = props.events.map(e => {
@@ -73,6 +72,15 @@ const Calendar = (props) => {
         return null
     }
 
+    const changeDateHandler = (e) => {
+        const date = new Date(e.target.value)
+        setData({
+            ...data, startDate: date.toISOString()
+        })
+        setEvent(null)
+        props.dateChangedHandler({ month: date.getMonth(), year: date.getFullYear() })
+    }
+
     const beforeRender = (args) => {
         if (props.preview) {
             const disabled = props.events.find(item => DayPilot.Util.overlaps(args.cell.start, args.cell.end, new DayPilot.Date(item.start), new DayPilot.Date(item.end)));
@@ -95,13 +103,9 @@ const Calendar = (props) => {
                 <p>Select date</p>
                 <input type='date'
                     className={classes.DateSelector}
-                    onChange={(e) => {
-                        setData({
-                            ...data, startDate: new Date(e.target.value).toISOString()
-                        })
-                        setEvent(null)
-                    }
-                    } />
+                    onChange={changeDateHandler}
+                    value={new Date(data.startDate).toISOString().split('T')[0]}
+                />
             </div>
             <div className={classes.Calendar}>
                 <DayPilotMonth ref={calendarRef}

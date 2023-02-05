@@ -3,9 +3,9 @@ import React, { useEffect, useState } from 'react';
 import classes from './EventForms.module.scss';
 import { toastHandler, TOAST_STATES } from '../../helpers/toast';
 import EventsService from '../../services/eventsService';
-import Spinner from '../common/Spinner/Spinner';
 import { Form } from 'react-bootstrap';
 import Input from '../common/Input/Input';
+import Button from '../common/Button/Button';
 import { validateNumber, validatePhoneNumber, validateText, validateURL } from '../../utils/validation';
 import Map from '../Map/Map';
 import { useNavigate } from 'react-router';
@@ -17,7 +17,7 @@ const defaultValues = {
     priceForAccommodation: { name: 'priceForAccommodation', value: "", valid: true, message: 'Price for accommodation should be a number greater than 0' },
     accommodationDetails: { name: 'accommodationDetails', value: "", valid: true, message: 'Accommodation details should be at least 20 characters long' },
     accommodationContact: { name: 'accommodationContact', value: "", valid: true, message: 'Accommodation contact should be a valid phone number' },
-    accommodationWebsite: { name: 'accommodationWebsite', value: "", valid: true, message: 'Accommodation website should be a valid URL' },
+    placeWebsite: { name: 'placeWebsite', value: "", valid: true, message: 'Accommodation website should be a valid URL' },
     mapsLink: { name: 'mapsLink', value: "", valid: true, message: 'Maps link should be a valid URL' },
 }
 
@@ -28,15 +28,16 @@ const EditableForm = (props) => {
     const [priceForAccommodation, setPriceForAccommodation] = useState(defaultValues.priceForAccommodation);
     const [accommodationDetails, setAccommodationDetails] = useState(defaultValues.accommodationDetails);
     const [accommodationContact, setAccommodationContact] = useState(defaultValues.accommodationContact);
-    const [accommodationWebsite, setAccommodationWebsite] = useState(defaultValues.accommodationWebsite);
+    const [placeWebsite, setPlaceWebsite] = useState(defaultValues.placeWebsite);
     const [mapsLink, setMapsLink] = useState(defaultValues.mapsLink);
-    const [loading, setLoading] = useState(true);
 
     const navigate = useNavigate();
 
     useEffect(() => {
-        loadData()
-    }, [loading]);
+        if (props.event.place) {
+            loadData()
+        }
+    }, []);
 
     const loadData = () => {
         setPlace({ ...place, value: props.event.place })
@@ -45,8 +46,8 @@ const EditableForm = (props) => {
         setPriceForAccommodation({ ...priceForAccommodation, value: props.event.priceForAccommodation })
         setAccommodationDetails({ ...accommodationDetails, value: props.event.accommodationDetails })
         setAccommodationContact({ ...accommodationContact, value: props.event.accommodationContact })
+        setPlaceWebsite({ ...placeWebsite, value: props.event.placeWebsiteLink })
         setMapsLink({ ...mapsLink, value: props.event.placeGoogleMapsLink })
-        setLoading(false)
     }
 
     const sendClickedHandler = async () => {
@@ -76,16 +77,16 @@ const EditableForm = (props) => {
                 priceForAccommodation: priceForAccommodation.value,
                 accommodationDetails: accommodationDetails.value,
                 accommodationContact: accommodationContact.value,
-                accommodationWebsite: accommodationWebsite.value,
-                mapsLink: mapsLink.value
             }
         }
 
         await EventsService.send({
-            id: props.event.id,
+            eventId: props.event.id,
             place: place.value,
             pricePerGuest: pricePerGuest.value,
             priceForFood: priceForFood.value,
+            placeWebsite: placeWebsite.value,
+            placeGoogleMapsLink: mapsLink.value,
             ...accommodationData
         })
         toastHandler({ success: TOAST_STATES.PENDING, message: 'Response sent' })
@@ -99,45 +100,41 @@ const EditableForm = (props) => {
 
     const accommodationFields = [
         {
-            label: 'Price for accommodation', type: 'number', placeholder: '2000$',
+            controlId: 'formGroupAccommodationPrice', label: 'Price for accommodation', type: 'number', placeholder: '2000$',
             field: priceForAccommodation, setField: setPriceForAccommodation, validateFn: validateNumber
         },
         {
-            label: 'Accommodation details', type: 'textarea', placeholder: 'Hotel, 4 stars',
+            controlId: 'formGroupAccommodationDetails', label: 'Accommodation details', type: 'textarea', placeholder: 'Hotel, 4 stars',
             field: accommodationDetails, setField: setAccommodationDetails, validateFn: (text) => validateText(text, 19)
         },
         {
-            label: 'Accommodation contact', type: 'text', placeholder: '+359774839284',
+            controlId: 'formGroupAccommodationContact', label: 'Accommodation contact', type: 'text', placeholder: '+359774839284',
             field: accommodationContact, setField: setAccommodationContact, validateFn: validatePhoneNumber
         },
         {
-            label: 'Accommodation website', type: 'text', placeholder: 'https://www.hotel.com',
-            field: accommodationWebsite, setField: setAccommodationWebsite, validateFn: validateURL
+            controlId: 'formGroupplaceWebsite', label: 'Place website', type: 'text', placeholder: 'https://www.hotel.com',
+            field: placeWebsite, setField: setPlaceWebsite, validateFn: validateURL
         },
         {
-            label: 'Link to Google maps pin', type: 'text', placeholder: 'https://www.google.com/maps/place/...',
+            controlId: 'formGroupMapsLink', label: 'Link to Google maps pin', type: 'text', placeholder: 'https://www.google.com/maps/place/...',
             field: mapsLink, setField: setMapsLink, validateFn: validateURL
         }
     ]
 
     const responseFields = [
         {
-            label: 'Place', type: 'text', placeholder: 'Sofia, Tsar Boris №3',
+            controlId: 'formGroupPlace', label: 'Place', type: 'text', placeholder: 'Sofia, Tsar Boris №3',
             field: place, setField: setPlace, validateFn: (text) => validateText(text, 4)
         },
         {
-            label: 'Price per guest', type: 'number', placeholder: '200$',
+            controlId: 'formGroupGuestPrice', label: 'Price per guest', type: 'number', placeholder: '200$',
             field: pricePerGuest, setField: setPricePerGuest, validateFn: validateNumber
         },
         {
-            label: 'Price for food', type: 'number', placeholder: '1000$',
+            controlId: 'formGroupFoodPrice', label: 'Price for food', type: 'number', placeholder: '1000$',
             field: priceForFood, setField: setPriceForFood, validateFn: validateNumber
         },
     ]
-
-    if (loading) {
-        return <Spinner />
-    }
 
     return (
         <>
@@ -156,7 +153,7 @@ const EditableForm = (props) => {
                 {!props.disableFields
                     && <>
                         <Map setPosition={setPositionHandler} />
-                        <button className={classes.SaveBtn} type='button' onClick={sendClickedHandler}>Send</button>
+                        <Button className={classes.SendBtn} onClick={sendClickedHandler}>Send</Button>
                     </>
                 }
             </Form>
