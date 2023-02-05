@@ -161,7 +161,7 @@ class EventsService {
         // return RequestAPI.put(`/events/${id}`, data)
     }
 
-    static comment = async (id, commentInput) => {
+    static comment = async (id, commentInput) => { //ready (getting commentInput from the request)
         comments.push({
             userId: id,
             userName: 'John Doe',

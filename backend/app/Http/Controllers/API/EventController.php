@@ -3,6 +3,7 @@
 namespace App\Http\Controllers\API;
 
 use App\Http\Controllers\Controller;
+use App\Http\Requests\API\CommentCreateRequest;
 use App\Http\Requests\API\EventCreateFirstStageRequest;
 use App\Http\Requests\API\EventCreateSecondStageRequest;
 use App\Http\Resources\Api\ErrorResponse;
@@ -11,6 +12,7 @@ use App\Http\Resources\Api\Event\EventResource;
 use App\Http\Resources\Api\Event\PersonalEventResource;
 use App\Http\Resources\Api\SuccessResource;
 use App\Models\Event;
+use App\Models\EventComment;
 use App\Models\EventType;
 use App\Models\User;
 use Carbon\Carbon;
@@ -494,6 +496,34 @@ class EventController extends Controller
         }
         $event->status = Event::EVENT_STATUS_EDITABLE;
         $event->update();
+
+        return new SuccessResource([]);
+    }
+
+
+    /**
+     * Save comment
+     * @response
+     * {
+     *      "data": [],
+     *      "status": 200
+     * }
+     * @param CommentCreateRequest $request
+     * @param int $id
+     * @return SuccessResource|ErrorResponse
+     */
+    public function saveComment(CommentCreateRequest $request, int $id): SuccessResource|ErrorResponse
+    {
+        if (!Event::find($id)) {
+            return new ErrorResponse((array)'Non existing event');
+        }
+        EventComment::create(
+            [
+                'event_id' => $id,
+                'created_by_user_id' => Auth::user()->id,
+                'comment' => $request->get('commentInput')
+            ]
+        );
 
         return new SuccessResource([]);
     }
