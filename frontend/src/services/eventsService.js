@@ -71,24 +71,6 @@ const allEvents = [{
     organizerEmail: 'alabala1@gmail.com'
 }]
 
-const comments = [
-    {
-        userId: 1,
-        userName: 'John Doe 1',
-        content: 'Comment 1',
-    },
-    {
-        userId: 2,
-        userName: 'Jane Doe 2',
-        content: 'Comment 2',
-    },
-    {
-        userId: 3,
-        userName: 'John Doe 3',
-        content: 'Comment 3',
-    }
-]
-
 class EventsService {
     static getPics = async (id) => {
         return Array(10).fill('https://picsum.photos/200/300')
@@ -113,9 +95,9 @@ class EventsService {
     }
 
     static getAll = async (month, year) => {
-        return allEvents
+        // return allEvents
         // only finished events
-        // return RequestAPI.get(`/events/${month}/${year}`)
+        return RequestAPI.get(`/events/${month}/${year}`)
     }
 
     static getAllByOrganizer = async (id, month, year) => {
@@ -153,27 +135,15 @@ class EventsService {
     }
 
     static update = async (id, data) => {
-        console.log('[UPDATE] data', data)
-        let event = personalEvents.concat(allEvents).filter(event => event.id === +id)[0]
-        Object.keys(data).forEach(key => {
-            event[key] = data[key]
-        })
-        // return RequestAPI.put(`/events/${id}`, data)
+        return RequestAPI.post(`/events/${id}/public`, data)
     }
 
     static comment = async (id, commentInput) => {
-        comments.push({
-            userId: id,
-            userName: 'John Doe',
-            content: commentInput,
-        })
-        // return RequestAPI.post(`/events/${id}/comment`, commentInput)
+        return RequestAPI.post(`/events/${id}/comment`, { commentInput })
     }
 
     static getCommentsByEventId = async (id) => {
-        // sorted by date from newest to oldest
-        return comments
-        // return RequestAPI.get(`/events/${id}/comments`) -> ready from radi (user id == created_by_id in the DB)
+        return RequestAPI.get(`/events/${id}/comments`) //-> ready from radi (user id == created_by_id in the DB)
     }
 
     static sendFeedback = async (id, rating, feedback) => { // is that feedback for the organizer of the client?

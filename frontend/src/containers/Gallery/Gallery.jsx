@@ -49,12 +49,16 @@ const Gallery = (props) => {
         setImages(resPics);
 
         if (resEvent.isPublic) {
-            const resComments = await EventsService.getCommentsByEventId(urlParams.id);
-            setComments(resComments);
-            scrollToBottom();
+            await loadComments();
         }
 
         setLoading(false);
+    }
+
+    const loadComments = async () => {
+        const resComments = await EventsService.getCommentsByEventId(urlParams.id);
+        setComments(resComments);
+        scrollToBottom();
     }
 
     const selectHandler = (selectedIndex, e) => {
@@ -69,6 +73,7 @@ const Gallery = (props) => {
 
     const commentClickedHandler = async () => {
         await EventsService.comment(event.id, commentField.value);
+        await loadComments();
         setCommentField(defaultValues.comment)
         scrollToBottom();
     }
