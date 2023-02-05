@@ -162,7 +162,7 @@ class User extends Authenticatable
     public function getUserChatList(): array
     {
         $data = [];
-        $messagesReceivers = $this->messagesSend;
+        $messagesReceivers = $this->messagesSend->unique();
         foreach ($messagesReceivers as $messagesReceiver) {
             $user = User::find($messagesReceiver->user_id_receiver);
             //ignoring messages with wrong id's
